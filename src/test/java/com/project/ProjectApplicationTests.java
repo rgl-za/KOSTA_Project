@@ -10,6 +10,7 @@ class ProjectApplicationTests {
 	void contextLoads() {
 		System.out.println("ex");
 		System.out.println("joeong");
+		System.out.println("한지원");
 
 	}
 
