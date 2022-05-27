@@ -12,6 +12,8 @@ class ProjectApplicationTests {
 		System.out.println("joeong");
 		System.out.println("한지원");
 		System.out.println("김남혁형");
+		System.out.println("test1");
+	
 		
 
 	}
