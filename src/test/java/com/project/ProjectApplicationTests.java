@@ -11,11 +11,10 @@ class ProjectApplicationTests {
 		System.out.println("ex");
 		System.out.println("joeong");
 		System.out.println("한지원");
-		System.out.println("문정현!");
-		System.out.println("문정현!2");
-		System.out.println("문정현!2");
-		System.out.println("문정현!2");
-		System.out.println("문정현!2");
+		System.out.println("김남혁형");
+		System.out.println("test1");
+		System.out.println("test3");
+	
 		
 
 	}
