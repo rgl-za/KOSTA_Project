@@ -9,6 +9,8 @@ class ProjectApplicationTests {
 	@Test
 	void contextLoads() {
 		System.out.println("ex");
+		System.out.println("joeong");
+
 	}
 
 }
