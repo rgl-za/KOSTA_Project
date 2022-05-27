@@ -12,6 +12,7 @@ class ProjectApplicationTests {
 		System.out.println("joeong");
 		System.out.println("한지원");
 		System.out.println("문정현!");
+		System.out.println("문정현!2");
 		
 
 	}
