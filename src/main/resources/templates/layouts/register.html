@@ -37,44 +37,51 @@
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
                             <form class="user">
+                            	<div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="RegisterId"
+                                            placeholder="아이디">
+                            	</div>
+                                <div class="form-group row">
+                                	<div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="FullName"
+                                            placeholder="이름">
+                                    </div>
+                                	<div class="col-sm-6 ">
+                                        <input type="text" class="form-control form-control-user" id="Nickname"
+                                            placeholder="별명">
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="비밀번호">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="비밀번호 확인">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
                                         placeholder="Email Address">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
                                 <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
+                                    회원가입 버튼
                                 </a>
                                 <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <!--<a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
                                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                </a>-->
+                                <a href="" class=" btn btn-kakao btn-block ">
+                                    <img th:src="@{img/kakao_startLogin_medium_narrow.png}" text-align="center" />
                                 </a>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="small" href="forgot-password.html">비밀번호 찾기</a>
                             </div>
                             <div class="text-center">
                                 <a class="small" href="login.html">Already have an account? Login!</a>
