@@ -9,14 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BoardController{
-//
-//	@Autowired
-//	private BoardService boardService;
 
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
-		
+		System.out.println("ㅅㅂ");
 		return "/layouts/login";
 //		return "/layouts/index";
 //		return "/layouts/register";
