@@ -17,7 +17,9 @@ public class BoardController{
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
 		
-		return "/index";
+		return "/layouts/login";
+//		return "/layouts/index";
+//		return "/layouts/register";
 		
 	}
 
