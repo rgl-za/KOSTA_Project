@@ -45,6 +45,10 @@ form.user {
   @include button-variant($brand-google, $white);
 }
 
+.btn-kakao {
+  @include button-variant($brand-kakao, $white);
+}
+
 .btn-facebook {
   @include button-variant($brand-facebook, $white);
 }
