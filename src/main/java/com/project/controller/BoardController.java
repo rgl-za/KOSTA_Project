@@ -15,9 +15,9 @@ public class BoardController{
 	public String openBoardList(Model model) {
 
 //		return "/index";
+		return "/index2";
 //		return "/fragments/header";
-//		return "/layouts/index";
-		return "/layouts/login";
+//		return "/layouts/login";
 
 	}
 }
