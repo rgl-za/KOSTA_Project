@@ -14,7 +14,7 @@ public class BoardController{
 	public String openBoardList(Model model) {
 		//return "/main";
 		//return "/pick";
-		return "/detail";
+		return "/write";
 		//return "/fragments/header";
 		//return "/layouts/index";
 		//return "/layouts/login";
