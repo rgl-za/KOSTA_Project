@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/BoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/css/sb-admin-2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
