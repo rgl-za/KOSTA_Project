@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" afterDir="false" />
-    </list>
+    <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +111,7 @@
       <workItem from="1654062369880" duration="5630000" />
       <workItem from="1654130468996" duration="101000" />
       <workItem from="1654138190061" duration="220000" />
-      <workItem from="1654147602572" duration="666000" />
+      <workItem from="1654147602572" duration="1085000" />
     </task>
     <servers />
   </component>
