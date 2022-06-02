@@ -44,7 +44,32 @@
 
 /**
   jiwon
+  >>detail.html
   **/
+  .horizon{
+  	display: flex;
+    padding-top: 10px;
+  	height: 50%;
+  }
+  .vertical{
+  	height: 50%;
+  }
+  .detail-top_info{
+  	width: 50%;
+  }
+  .detail-top_timer{
+  	width:50%;
+  }
+  .detail-top_buttons{
+  }
+  .margin-bottom{
+  	margin-top: 30px;
+  	margin-bottom: 10px;
+  }
+  .img-item{
+	  height:100%;
+	  width:100%;
+  }
   .card-detail-top {
   	align-items: flex-start;
   	height: 400px;
