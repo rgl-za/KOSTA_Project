@@ -9,14 +9,7 @@ public class BoardController{
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
-<<<<<<< HEAD
-		//return "/main";
-		//return "/pick";
-		return "/write";
-		//return "/fragments/header";
-		//return "/layouts/index";
-		//return "/layouts/login";
-=======
+
 
 
 		return "/index";
@@ -26,7 +19,7 @@ public class BoardController{
 //		return "/fragments/header";
 //		return "/layouts/login";
 
->>>>>>> main
+
 
 	}
 }
