@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BoardController{
-//
-//	@Autowired
-//	private BoardService boardService;
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
-		//return "/main";
-		//return "/pick";
-		return "/detail";
-		//return "/fragments/header";
-		//return "/layouts/index";
-		//return "/layouts/login";
+
+
+		return "/index";
+//		return "/index2";
+//		return "/index3";
+//		return "/test";
+//		return "/fragments/header";
+//		return "/layouts/login";
+
 
 	}
 }
