@@ -20,7 +20,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -54,7 +59,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -63,6 +68,18 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/js" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/vendor/jquery" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/layouts" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="ProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -88,6 +105,12 @@
       <workItem from="1653617689021" duration="2000" />
       <workItem from="1653617703883" duration="248000" />
       <workItem from="1653617993048" duration="2106000" />
+      <workItem from="1653959298805" duration="10000" />
+      <workItem from="1653959340523" duration="6261000" />
+      <workItem from="1654002584714" duration="9324000" />
+      <workItem from="1654062369880" duration="5630000" />
+      <workItem from="1654130468996" duration="101000" />
+      <workItem from="1654138190061" duration="220000" />
     </task>
     <servers />
   </component>
