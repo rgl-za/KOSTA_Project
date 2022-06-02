@@ -32,6 +32,7 @@
   --danger: #e74a3b;
   --light: #f8f9fc;
   --dark: #5a5c69;
+  --lavender : #edaef9;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -1206,7 +1207,7 @@ pre code {
     max-width: 41.66667%;
   }
   .col-lg-6 {
-    flex: 0 0 50%;
+    flex: 0 0 25%;
     max-width: 50%;
   }
   .col-lg-7 {
@@ -2357,8 +2358,10 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #4e73df;
-  border-color: #4e73df;
+  /*background-color: #4e73df;*/
+  background-color: #edaef9;
+  border-color: #ffff;
+  /*border-color: #4e73df;*/
 }
 
 .btn-primary:hover {
@@ -9900,8 +9903,8 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #4e73df;
-  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-color: #edaef9;
+  /*background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);*/
   background-size: cover;
 }
 
@@ -10166,6 +10169,7 @@ a:focus {
   height: 2rem;
   width: 2rem;
 }
+
 
 .topbar {
   height: 4.375rem;
