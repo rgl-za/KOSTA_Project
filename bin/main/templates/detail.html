@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<th:block layout:fragment="content">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">거래 상세 페이지</h1>
+		</div>
+		<div
+			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+
+		</div>
+		<div class="row">
+
+			<!-- 이미지와 링크 -->
+			<div class="col-xl-4 col-lg-5">
+				<div class="card-detail-top shadow mb-4">
+					<!-- Card Body -->
+					<div class="card-body">
+
+						<div class="represent_img">
+							<img class="img-item rounded-circle" src="img/undraw_profile.svg">
+						</div>
+						<h7>링크주소: http://~~</h7>
+
+						<div class="text-black-50 small">쿠팡</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- 거래 정보 -->
+			<div class="col-xl-8 col-lg-7">
+				<div class="card-detail-top shadow mb-4">
+					<!-- Card Body -->
+					<div class="card-body">
+						<h7>거래상세정보</h7>
+						
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- row -->
+
+
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="card-detail-chat shadow mb-4">
+					<div class="card-body"></div>
+				</div>
+			</div>
+			
+		</div>
+
+
+		<!-- 거래 정보 표시 -->
+		<div class="detail_top">
+			<div class="detail_top_top"></div>
+			<div class="detail_top_content">
+				<div class="detial_top_content_left"></div>
+				<div class="detial_top_content_right"></div>
+				<div class="detial_top_content_bottom"></div>
+			</div>
+		</div>
+		<!-- 거래 정보 표시 end -->
+
+		<div class="row">
+
+			<!-- chating -->
+			<div id="detail_bottom"></div>
+			<!-- chating end-->
+			
+		</div>
+		<!-- row -->
+	</div>
+	<!-- /.container-fluid -->
+</th:block>
+
+</html>
