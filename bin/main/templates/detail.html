@@ -10,7 +10,7 @@
 		</div>
 		<div
 			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			<h6 class="m-0 font-weight-bold text-primary">글제목</h6>
+			<h6 class="m-0 font-weight-bold text-gray-900">글제목</h6>
 			<div class="float-right">
 				<a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
 					class="text">수정</span>
@@ -158,23 +158,74 @@
 
 							</div>
 							<!-- buttons -->
-							<a href="#" class="btn btn-primary btn-icon-split"> <span
-								class="icon text-white-50"> <i class="fas fa-flag"></i>
-							</span> <span class="text">시작하기!</span>
-							</a> <a href="#" class="btn btn-info btn-icon-split"> <span
-								class="icon text-white-50"> <i class="fas fa-info-circle"></i>
-							</span> <span class="text">중간 배송지 확인</span>
+							<a href="#" class="btn btn-primary btn-icon-split">
+								<span class="icon text-white-50"><i class="fas fa-flag"></i></span>
+								<span class="text">시작하기!</span>
 							</a>
 
+							<button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target=".bd-example-modal-xl">
+								<span class="icon text-white-50">
+									<i class="fas fa-info-circle"></i>
+								</span>
+								중간 배송지 확인
+							</button>
+
+							<!--중간 배송지 모달창-->
+							<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-xl">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">중간 배송지 확인하기</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="닫기">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<!--카카오맵 api 적용-->
+											<!-- 지도를 표시할 div 입니다 -->
+											<div id="map" style="width:100%;height:350px;"></div>
+
+											<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c"></script>
+											<script>
+												var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+														mapOption = {
+															center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+															level: 3 // 지도의 확대 레벨
+														};
+
+												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+												var map = new kakao.maps.Map(mapContainer, mapOption);
+
+												// 지도를 표시하는 div 크기를 변경하는 함수입니다
+												function resizeMap() {
+													var mapContainer = document.getElementById('map');
+													mapContainer.style.width = '1050px';
+													mapContainer.style.height = '650px';
+												}
+
+												function relayout() {
+
+													// 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+													// 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
+													// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+													map.relayout();
+												}
+											</script>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+											<button type="button" class="btn btn-primary">카카오맵으로 확인하기</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
 						</div>
-
-
 
 					</div>
 				</div>
 			</div>
-
-
 
 		</div>
 		<!-- row -->
@@ -188,18 +239,6 @@
 			</div>
 
 		</div>
-
-
-		<!-- 거래 정보 표시 -->
-		<div class="detail_top">
-			<div class="detail_top_top"></div>
-			<div class="detail_top_content">
-				<div class="detial_top_content_left"></div>
-				<div class="detial_top_content_right"></div>
-				<div class="detial_top_content_bottom"></div>
-			</div>
-		</div>
-		<!-- 거래 정보 표시 end -->
 
 		<div class="row">
 
