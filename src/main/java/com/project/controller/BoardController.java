@@ -12,7 +12,7 @@ public class BoardController{
 
 
 
-		return "/index";
+		return "/detail";
 //		return "/index2";
 //		return "/index3";
 //		return "/test";
