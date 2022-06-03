@@ -98,7 +98,13 @@
 								</p>
 
 							</div>
-							<div class="detail-top_timer">남은 기간 타이머</div>
+							<div class="detail-top_timer">
+								<h8>남은 시간</h8>
+								<p>
+								 <!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
+								 <span id="timer" style="font-size:80px; color:red;"></span>
+								</p>
+							</div>
 
 
 						</div>
@@ -227,10 +233,6 @@
 				</div>
 			</div>
 
-
-
-=======
->>>>>>> hyeonjeong
 		</div>
 		<!-- row -->
 
@@ -238,7 +240,22 @@
 		<div class="row">
 			<div class="col-xl-12">
 				<div class="card-detail-chat shadow mb-4">
-					<div class="card-body"></div>
+					<div class="card-body">
+						<div class="col-6">
+							<label><b>채팅방</b></label>
+						</div>
+						<div>
+							<div id="msgArea" class="col-10"></div>
+							<div class="col-6">
+								<div class="input-group mb-3">
+									<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -256,16 +273,58 @@
 		</div>
 		<!-- 거래 정보 표시 end -->
 
-		<div class="row">
-
-			<!-- chating -->
-			<div id="detail_bottom"></div>
-			<!-- chating end-->
-
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>
+				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
+			</div>
 		</div>
 		<!-- row -->
 	</div>
 	<!-- /.container-fluid -->
 </th:block>
-
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      function convertStringToDate(endDate) {
+		    let dateComponents = endDate.split(' ');
+		    let datePieces = dateComponents[0].split("-");
+		    let timePieces = dateComponents[1].split(":");
+		    return(new Date(datePieces[2], (datePieces[1] - 1), datePieces[0],
+		                         timePieces[0], timePieces[1], timePieces[2]))
+	  }
+		
+	  var endDate = convertStringToDate("22-07-03 17:50:00");
+	  console.log(endDate);
+      var stDate = new Date();
+      console.log(stDate);
+      var RemainDate = stDate - endDate;
+      const timerId = document.querySelector('#timer');
+      
+      function msg_time() {
+        var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+        var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
+        var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+        
+        m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
+        
+       timerId.innerHTML =m;
+        
+        if (RemainDate < 0) {      
+          // 시간이 종료 되었으면..
+          clearInterval(tid);   // 타이머 해제
+        }else{
+          RemainDate = RemainDate - 1000; // 남은시간 -1초
+        }
+      }
+      
+      setInterval(function() {
+    	 msg_time();
+    	 
+    	}, 1000);
+      
+      
+      /*]]>*/
+    </script>
+  </th:block>
 </html>
