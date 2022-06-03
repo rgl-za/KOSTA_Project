@@ -10,7 +10,7 @@
 		</div>
 		<div
 			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			<h6 class="m-0 font-weight-bold text-primary">글제목</h6>
+			<h6 class="m-0 font-weight-bold text-gray-900">글제목</h6>
 			<div class="float-right">
 				<a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
 					class="text">수정</span>
@@ -39,25 +39,25 @@
 								<!-- Card Body -->
 								<div class="card-body">
 									<p>
-										<h7 class="m-0 font-weight-bold text-primary">구매 동네:</h7>
+										<h7 class="m-0 font-weight-bold text-gray-900">구매 동네 </h7>
 										---
 									</p>
 									<p>
-										<h7 class="m-0 font-weight-bold text-primary">원가 : </h7>
+										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
 										8000원 &nbsp;<br>
-										<h7 class="m-0 font-weight-bold text-primary">물품 개수 : </h7>
+										<h7 class="m-0 font-weight-bold text-gray-900">물품 개수 </h7>
 										15개입 &ensp;<br>
 									</p>
 									<p>
 									<div class="margin-bottom">
-										<h7 class="m-0 font-weight-bold text-primary">링크주소:
+										<h7 class="m-0 font-weight-bold text-gray-900">링크주소:
 										http://~~</h7>
 
 
 									</div>
 									</p>
 
-									<span class="float-right">작성 날짜</span>
+									<span class="text-gray-900">작성 날짜 </span> 30분 전
 
 
 
@@ -78,22 +78,22 @@
 						<div class="horizon">
 							<div class="detail-top_info">
 								<p>
-									<h7 class="m-0 font-weight-bold text-primary"> 최대 구매가 : </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 최대 구매가 </h7>
 									--원&emsp;
-									<h7 class="m-0 font-weight-bold text-primary"> 최소 구매가 : </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 최소 구매가 </h7>
 									--원<br>
 								</p>
 								<p>
-									<h7 class="m-0 font-weight-bold text-primary">최소인원 : </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최소인원 </h7>
 									2명 &emsp;
-									<h7 class="m-0 font-weight-bold text-primary">최대인원 : </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최대인원 </h7>
 									5명
 								</p>
 								<p>
 
-									<h7 class="m-0 font-weight-bold text-primary"> 현재 인원수 : </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 현재 인원수 </h7>
 									1명&emsp;
-									<h7 class="m-0 font-weight-bold text-primary"> 현재 구매가 : </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 현재 구매가 </h7>
 									---원<br>
 								</p>
 
@@ -104,7 +104,8 @@
 								<h8>남은 시간</h8>
 								<p>
 								 <!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
-								 <span id="timer" style="font-size:90px; color:red;"></span>
+								 <span id="timer" style="font-size:-webkit-xxx-large; color:red;"></span>
+
 								</p>
 							</div>
 
@@ -242,7 +243,22 @@
 		<div class="row">
 			<div class="col-xl-12">
 				<div class="card-detail-chat shadow mb-4">
-					<div class="card-body"></div>
+					<div class="card-body">
+						<div class="col-6">
+							<label><b>채팅방</b></label>
+						</div>
+						<div>
+							<div id="msgArea" class="col-10"></div>
+							<div class="col-6">
+								<div class="input-group mb-3">
+									<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -260,11 +276,11 @@
 		</div>
 		<!-- 거래 정보 표시 end -->
 
-		<div class="row">
-
-			<!-- chating -->
-			<div id="detail_bottom"></div>
-			<!-- chating end-->
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>
+				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
+			</div>
 
 		</div>
 		<!-- row -->
