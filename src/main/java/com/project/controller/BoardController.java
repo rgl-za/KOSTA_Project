@@ -13,6 +13,10 @@ public class BoardController{
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
 		return "/comingsoon";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 35a73987c23ed84f700999550675ad1467b89170
 	}
 	
 	@GetMapping(value = "/거래상세")
