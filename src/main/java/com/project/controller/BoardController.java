@@ -12,6 +12,7 @@ public class BoardController{
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
+<<<<<<< HEAD
 //		return "/detail";
 //		return "/main";
 		return "/cobuy_info";
@@ -19,6 +20,9 @@ public class BoardController{
 		//return "/layouts/index";
 		//return "/layouts/login";
 
+=======
+		return "/cobuy_info";
+>>>>>>> 16c1e86581488935bbec51aee3ac77f78ec636db
 	}
 	
 	@GetMapping(value = "/거래상세")
@@ -28,7 +32,7 @@ public class BoardController{
 	
 	@GetMapping(value = "/거래내역")
 	public String openBoardListIndex(Model model) {
-		return "/index";
+		return "/breakdown";
 	}
 	
 	@GetMapping(value = "/메인")
