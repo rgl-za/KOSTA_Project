@@ -38,6 +38,15 @@
 					<div class="card-body">
 						<h7>거래상세정보</h7>
 						
+						<div class="js-clock">
+						 	<img src="img/clock.png" style="width: 10vw; min-width: 30px;">
+						 	<p>
+							 <label for="Timer">남은 시간:</label>
+							 <span id="exTimer"></span>
+							</p>
+						 </div>
+						
+						
 					</div>
 				</div>
 			</div>
@@ -79,5 +88,61 @@
 	</div>
 	<!-- /.container-fluid -->
 </th:block>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      function convertStringToDate(endDate) {
+		    let dateComponents = endDate.split(' ');
+		    let datePieces = dateComponents[0].split("-");
+		    let timePieces = dateComponents[1].split(":");
+		    return(new Date(datePieces[2], (datePieces[1] - 1), datePieces[0],
+		                         timePieces[0], timePieces[1], timePieces[2]))
+	  }
+		
+	  var endDate = convertStringToDate("2022-07-03 17:50:00");
+	  alert(endDate);
+      //document.getElementById("endTime").innerHTML = endDate;
+	  
+      /* function Timer(){
+    	  tid=setInterval('msg_time()',1000); // 타이머 1초간격으로 수행
+      };
+      Timer(); */
+      
+      /* var stDate = new Date().getTime();
+      alert(stDate);
+      var edDate = new Date('2022-06-03 17:50:00').getTime(); // 종료날짜 */
+      var stDate = new Date();
+      alert(stDate);
+      var RemainDate = stDate - endDate;
+      const timerId = document.querySelector('#exTimer');
+      
+      function msg_time() {
+        var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+        var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
+        var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+        
+        m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
+       /*  m = "'${hours<10 ? '0':''}${hours}':'${miniutes<10 ? '0':''}${miniutes}':'${seconds<10 ? '0':''}${seconds}'"; */
+      
+       timerId.innerHTML = m;
+        
+        if (RemainDate < 0) {      
+          // 시간이 종료 되었으면..
+          clearInterval(tid);   // 타이머 해제
+        }else{
+          RemainDate = RemainDate - 1000; // 남은시간 -1초
+        }
+      }
+      
+      setInterval(function() {
+    	 msg_time();
+    	 
+    	}, 1000);
+      
+      
+      /*]]>*/
+    </script>
+  </th:block>
 
 </html>
