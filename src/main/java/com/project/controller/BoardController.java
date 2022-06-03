@@ -14,7 +14,7 @@ public class BoardController{
 	public String openBoardList(Model model) {
 //		return "/detail";
 //		return "/main";
-		return "/pick";
+		return "/cobuy_info";
 		//return "/fragments/header";
 		//return "/layouts/index";
 		//return "/layouts/login";
