@@ -22,12 +22,13 @@
 					<div class="card-body">
 
 						<div class="represent_img">
-							<img class="img-item rounded-circle" src="img/undraw_profile.svg">
+							<img class="img-item" src="img/undraw_profile.svg">
 						</div>
-						<h7>링크주소: http://~~</h7>
+						<div class="margin-bottom">
+							<h7 class="m-0 font-weight-bold text-primary">링크주소:
+							http://~~</h7>
 
-						<div class="text-black-50 small">쿠팡</div>
-
+						</div>
 					</div>
 				</div>
 			</div>
@@ -35,18 +36,94 @@
 			<div class="col-xl-8 col-lg-7">
 				<div class="card-detail-top shadow mb-4">
 					<!-- Card Body -->
-					<div class="card-body">
+					<div class="card-body-nonauto">
 						<h7>거래상세정보</h7>
-						
-						<div class="js-clock">
-						 	<img src="img/clock.png" style="width: 10vw; min-width: 30px;">
-						 	<p>
-							 <label for="Timer">남은 시간:</label>
-							 <span id="exTimer"></span>
-							</p>
-						 </div>
-						
-						
+						<div class="horizon">
+							<div class="detail-top_info">
+								<h7 class="m-0 font-weight-bold text-primary">원가 : </h7>
+								8000원 &nbsp;<br>
+								<h7 class="m-0 font-weight-bold text-primary">물품 개수 : </h7>
+								15개입 &ensp;<br>
+								<p>
+									<h7 class="m-0 font-weight-bold text-primary">최소인원 : </h7>
+									2명 &emsp;
+									<h7 class="m-0 font-weight-bold text-primary">최대인원 : </h7>
+									5명
+								</p>
+								<p>
+									<h7 class="m-0 font-weight-bold text-primary"> 최대 구매가 : </h7>
+									--원
+									<h7 class="m-0 font-weight-bold text-primary"> 최소 구매가 : </h7>
+									--원<br>
+
+									<h7 class="m-0 font-weight-bold text-primary"> 현재 인원수 : </h7>
+									1명
+									<h7 class="m-0 font-weight-bold text-primary"> 현재 구매가 : </h7>
+									---원<br>
+							</div>
+							<div class="detail-top_timer">남은 기간 타이머</div>
+
+
+						</div>
+						<div class="vertical">
+							<!-- 참여자 ready 영역 -->
+							<div class="detail-ready">
+								<div class="user-ready-img">
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary btn-icon-split"> <span
+									class="icon text-white-50"> <i class="fas fa-flag"></i>
+								</span> <span class="text">준비</span>
+								</a>
+								</div>
+								<div class="user-ready-img">
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary btn-icon-split"> <span
+									class="icon text-white-50"> <i class="fas fa-flag"></i>
+								</span> <span class="text">준비</span>
+								</a>
+								</div>
+								<div class="user-ready-img">
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary btn-icon-split"> <span
+									class="icon text-white-50"> <i class="fas fa-flag"></i>
+								</span> <span class="text">준비</span>
+								</a>
+								</div>
+								<div class="user-ready-img">
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary btn-icon-split"> <span
+									class="icon text-white-50"> <i class="fas fa-flag"></i>
+								</span> <span class="text">준비</span>
+								</a>
+								</div>
+								<div class="user-ready-img">
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary btn-icon-split"> <span
+									class="icon text-white-50"> <i class="fas fa-flag"></i>
+								</span> <span class="text">준비</span>
+								</a>
+								</div>
+								
+							</div>
+							<!-- buttons -->
+							<a href="#" class="btn btn-primary btn-icon-split"> <span
+									class="icon text-white-50"> <i class="fas fa-flag"></i>
+								</span> <span class="text">시작하기!</span>
+								</a> <a href="#" class="btn btn-info btn-icon-split"> <span
+									class="icon text-white-50"> <i
+										class="fas fa-info-circle"></i>
+								</span> <span class="text">중간 배송지 확인</span>
+						</a>
+							
+						</div>
+
+
+
 					</div>
 				</div>
 			</div>
@@ -62,7 +139,7 @@
 					<div class="card-body"></div>
 				</div>
 			</div>
-			
+
 		</div>
 
 
@@ -82,67 +159,11 @@
 			<!-- chating -->
 			<div id="detail_bottom"></div>
 			<!-- chating end-->
-			
+
 		</div>
 		<!-- row -->
 	</div>
 	<!-- /.container-fluid -->
 </th:block>
-
-<th:block layout:fragment="script">
-    <script th:inline="javascript">
-      /*<![CDATA[*/
-      function convertStringToDate(endDate) {
-		    let dateComponents = endDate.split(' ');
-		    let datePieces = dateComponents[0].split("-");
-		    let timePieces = dateComponents[1].split(":");
-		    return(new Date(datePieces[2], (datePieces[1] - 1), datePieces[0],
-		                         timePieces[0], timePieces[1], timePieces[2]))
-	  }
-		
-	  var endDate = convertStringToDate("2022-07-03 17:50:00");
-	  alert(endDate);
-      //document.getElementById("endTime").innerHTML = endDate;
-	  
-      /* function Timer(){
-    	  tid=setInterval('msg_time()',1000); // 타이머 1초간격으로 수행
-      };
-      Timer(); */
-      
-      /* var stDate = new Date().getTime();
-      alert(stDate);
-      var edDate = new Date('2022-06-03 17:50:00').getTime(); // 종료날짜 */
-      var stDate = new Date();
-      alert(stDate);
-      var RemainDate = stDate - endDate;
-      const timerId = document.querySelector('#exTimer');
-      
-      function msg_time() {
-        var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
-        var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
-        var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
-        
-        m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
-       /*  m = "'${hours<10 ? '0':''}${hours}':'${miniutes<10 ? '0':''}${miniutes}':'${seconds<10 ? '0':''}${seconds}'"; */
-      
-       timerId.innerHTML = m;
-        
-        if (RemainDate < 0) {      
-          // 시간이 종료 되었으면..
-          clearInterval(tid);   // 타이머 해제
-        }else{
-          RemainDate = RemainDate - 1000; // 남은시간 -1초
-        }
-      }
-      
-      setInterval(function() {
-    	 msg_time();
-    	 
-    	}, 1000);
-      
-      
-      /*]]>*/
-    </script>
-  </th:block>
 
 </html>
