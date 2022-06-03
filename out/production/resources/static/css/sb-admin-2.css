@@ -45,7 +45,15 @@
   jiwon
   >>detail.html
   **/
+.align-center{
+	text-align: center;
+}
+
   .ready-img{
+  margin-left: auto;/*중앙정렬*/
+  margin-right: auto;/*중앙정렬*/
+  padding-top:0.2rem;
+  padding-bottom:0.2rem;
   width:5rem;
   height:5rem;
   }
@@ -100,6 +108,7 @@
 	/*flex: 1 1 25%;*/
 	display: flex;
 	flex-direction: column;
+	text-align: center;
 	
 }
 
@@ -2497,6 +2506,12 @@ fieldset:disabled a.btn {
   color: #fff;
   /*background-color: #4e73df;*/
   background-color: #edaef9;
+  border-color: #ffff;
+  /*border-color: #4e73df;*/
+}
+.btn-primary-cap {
+  color: #fff;
+  background-color: #4e73df;
   border-color: #ffff;
   /*border-color: #4e73df;*/
 }
