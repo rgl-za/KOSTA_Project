@@ -9,7 +9,7 @@ public class BoardController{
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
-
+		//return "/main";
 		return "/detail";
 		//return "/index";
 //		return "/index2";
