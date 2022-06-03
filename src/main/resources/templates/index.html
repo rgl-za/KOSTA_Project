@@ -3,66 +3,147 @@
 	layout:decorate="layouts/basic">
 <th:block layout:fragment="content">
 	<div class="container-fluid">
+<!-- 내정보 들어갈 자리입니다. -->
 
-		 <!-- Page Heading -->
-			<!--                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>-->
-			<!-- Cobuy breakdown details -->
-			<!--<div class="row">-->
+<!-- 내정보 끝. -->
 
-			<!-- Area Chart -->
-			<!--<div class="col-xl-8 col-lg-7">-->
-			<div class="card shadow mb-4" style="width: 100%;">
-				<!-- Card Header - Dropdown -->
-				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-					<h6 class="m-0 font-weight-bold text-primary">나의 거래 내역</h6>
-					<div class="dropdown no-arrow">
-						<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">
-							<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-							aria-labelledby="dropdownMenuLink">
-							<div class="dropdown-header">더보기</div>
-							<a class="dropdown-item" href="#">상세보기</a>
-							<a class="dropdown-item" href="#">미 정</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">도움말</a>
-						</div>
+<!-- 거래 내역 화면 입니다. -->
+		<div class="card shadow mb-4" style="width: 100%;">
+			<!-- Card Header - Dropdown -->
+			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">나의 거래 내역</h6>
+				<div class="dropdown no-arrow">
+					<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+						aria-labelledby="dropdownMenuLink">
+						<div class="dropdown-header">더보기</div>
+						<a class="dropdown-item" href="#">상세보기</a>
+						<a class="dropdown-item" href="#">미 정</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">도움말</a>
 					</div>
 				</div>
-				<!-- Card Body -->
-
-				<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
-<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
-					<div class="cobuy-box" style="display: flex; width:100%;">
-<!--					<div class="card mb-41">-->
-						<div class="one" style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:33%;">
-							<div class="small text-muted">January 1, 2022</div> <br>
-							<a href="#!"><img class="card-img-top"
-									src="https://dummyimage.com/500x300/dee2e6/6c757d.jpg" alt="..." /></a>
-						</div>
-						<div class="two" style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:50%;">
-						<br>
-							<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
-				<ul class="list-group list-group-flush">
-                    <!--<li class="list-group-item" id="cobuy_uploadDate">날짜 : </li>-->
-                    <li class="list-group-item" id="cobuy_title">제목 : </li>
-                    <li class="list-group-item" id="cobuy_dealingOrCompletion">거래중 or 거래 완료</li>
-                    <li class="list-group-item" id="cobuy_deliveryAddress">배달 주소 : 밑줄은 쓰는 글자 수 만큼 길어짐</li> <!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
-                    <li class="list-group-item" id="cobuy_price">가격 : </li>
-                    <li class="list-group-item"><a id="cobuy_price" target="_blank" v-bind:href="search_result.homePageLink">홈페이지</a> </li>
-                </ul>
-						</div>
-					</div>
-
 			</div>
-	
-	</div>
-	<!-- /.container-fluid -->
+			<!-- Card Body -->
+
+			<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
+			<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
+			<div class="cobuy-box" style="display: flex; width:100%;">
+				<!--					<div class="card mb-41">-->
+				<div class="one"
+					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:33%;">
+					<div class="small text-muted">January 1, 2022</div> <br>
+					<a href="#!"><img class="card-img-top" src="https://dummyimage.com/500x300/dee2e6/6c757d.jpg"
+							alt="..." /></a>
+				</div>
+				<div class="two"
+					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:50%;">
+					<br>
+					<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
+					<ul class="list-group list-group-flush">
+						<!--<li class="list-group-item" id="cobuy_uploadDate">날짜 : </li>-->
+						<li class="list-group-item" id="cobuy_title">제목 : </li>
+						<li class="list-group-item" id="cobuy_dealingOrCompletion">거래중 or 거래 완료</li>
+						<li class="list-group-item" id="cobuy_deliveryAddress">배달 주소 : 밑줄은 쓰는 글자 수 만큼 길어짐</li>
+						<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
+						<li class="list-group-item" id="cobuy_price">가격 : </li>
+						<li class="list-group-item"><a id="cobuy_price" target="_blank"
+								v-bind:href="search_result.homePageLink">홈페이지</a> </li>
+					</ul>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="card shadow mb-4" style="width: 100%;">
+			<!-- Card Header - Dropdown -->
+			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">나의 거래 내역</h6>
+				<div class="dropdown no-arrow">
+					<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+						aria-labelledby="dropdownMenuLink">
+						<div class="dropdown-header">더보기</div>
+						<a class="dropdown-item" href="#">상세보기</a>
+						<a class="dropdown-item" href="#">미 정</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">도움말</a>
+					</div>
+				</div>
+			</div>
+			<!-- Card Body -->
+
+			<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
+			<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
+			<div class="cobuy-box" style="display: flex; width:100%;">
+				<!--					<div class="card mb-41">-->
+				<div class="one"
+					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:33%;">
+					<div class="small text-muted">January 1, 2022</div> <br>
+					<a href="#!"><img class="card-img-top" src="https://dummyimage.com/500x300/dee2e6/6c757d.jpg"
+							alt="..." /></a>
+				</div>
+				<div class="two"
+					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:50%;">
+					<br>
+					<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
+					<ul class="list-group list-group-flush">
+						<!--<li class="list-group-item" id="cobuy_uploadDate">날짜 : </li>-->
+						<li class="list-group-item" id="cobuy_title">제목 : </li>
+						<li class="list-group-item" id="cobuy_dealingOrCompletion">거래중 or 거래 완료</li>
+						<li class="list-group-item" id="cobuy_deliveryAddress">배달 주소 : 밑줄은 쓰는 글자 수 만큼 길어짐</li>
+						<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
+						<li class="list-group-item" id="cobuy_price">가격 : </li>
+						<li class="list-group-item"><a id="cobuy_price" target="_blank"
+								v-bind:href="search_result.homePageLink">홈페이지</a> </li>
+					</ul>
+				</div>
+			</div>
+<!-- 거래 내역 화면 끝. -->
+
+		</div>
+		<!-- Content Row -->
+		<div class="row">
+
+			<!-- Content Column -->
+			<div class="col-lg-6 mb-4">
+
+
+				<div class="col-lg-6 mb-4">
+
+					<!-- Illustrations -->
+					<!--<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+						</div>
+						<div class="card-body">
+							<div class="text-center">
+								<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+									src="img/undraw_posting_photo.svg" alt="...">
+							</div>
+							<p>
+								Add some quality, svg illustrations to your project courtesy of <a target="_blank"
+									rel="nofollow" href="https://undraw.co/">unDraw</a>,
+								a constantly updated collection of beautiful svg images that you
+								can use completely free and without attribution!
+							</p>
+							<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
+								Illustrations on unDraw &rarr;</a>
+						</div>
+					</div>-->
+
+
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
 
 </th:block>
 </html>
