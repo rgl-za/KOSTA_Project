@@ -12,17 +12,8 @@ public class BoardController{
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
-<<<<<<< HEAD
-//		return "/detail";
-//		return "/main";
 		return "/cobuy_info";
-		//return "/fragments/header";
-		//return "/layouts/index";
-		//return "/layouts/login";
 
-=======
-		return "/cobuy_info";
->>>>>>> 16c1e86581488935bbec51aee3ac77f78ec636db
 	}
 	
 	@GetMapping(value = "/거래상세")
