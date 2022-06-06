@@ -3034,6 +3034,11 @@ textarea.form-control-lg {
   background-color: #2a5555;
   border-color: #2a5555;
 }
+.btn-primary-pick {
+  color: #fff;
+  background-color: #fbeeee;
+  border-color: #0d6efd;
+}
 .btn-primary:hover {
   color: #fff;
   background-color: #244848;
