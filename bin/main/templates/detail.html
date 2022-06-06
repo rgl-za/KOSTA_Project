@@ -99,12 +99,14 @@
 
 							</div>
 							<div class="detail-top_timer">
-								<!--카카오맵 api 적용-->
-											<!-- 지도를 표시할 div 입니다 -->
+								<p>
+									<span id="endtime" style="font-size:20px; color:black;"></span>
+								</p>
 								<h8>남은 시간</h8>
 								<p>
 								 <!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
 								 <span id="timer" style="font-size:-webkit-xxx-large; color:red;"></span>
+
 								</p>
 							</div>
 
@@ -242,17 +244,44 @@
 		<div class="row">
 			<div class="col-xl-12">
 				<div class="card-detail-chat shadow mb-4">
-					<div class="card-body"></div>
+					<div class="card-body">
+						<div class="col-6">
+							<label><b>채팅방</b></label>
+						</div>
+						<div>
+							<div id="msgArea" class="col-10"></div>
+							<div class="col-6">
+								<div class="input-group mb-3">
+									<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
 		</div>
 
-		<div class="row">
 
-			<!-- chating -->
-			<div id="detail_bottom"></div>
-			<!-- chating end-->
+		<!-- 거래 정보 표시 -->
+		<div class="detail_top">
+			<div class="detail_top_top"></div>
+			<div class="detail_top_content">
+				<div class="detial_top_content_left"></div>
+				<div class="detial_top_content_right"></div>
+				<div class="detial_top_content_bottom"></div>
+			</div>
+		</div>
+		<!-- 거래 정보 표시 end -->
+
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>
+				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
+			</div>
 
 		</div>
 		<!-- row -->
@@ -266,40 +295,44 @@
 		    let dateComponents = endDate.split(' ');
 		    let datePieces = dateComponents[0].split("-");
 		    let timePieces = dateComponents[1].split(":");
-		    return(new Date(datePieces[2], (datePieces[1] - 1), datePieces[0],
+		    return(new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
 		                         timePieces[0], timePieces[1], timePieces[2]))
 	  }
 		
-	  var endDate = convertStringToDate("22-07-03 17:50:00");
-	  console.log(endDate);
-      var stDate = new Date();
-      console.log(stDate);
-      var RemainDate = stDate - endDate;
+	  var endDate = convertStringToDate("2022-07-28 17:50:00");
+	  console.log("endDate: ", endDate);
+      document.getElementById("endtime").innerHTML = endDate;
+      
+      var startDatetime = new Date();
+      console.log("startDatetime: ", startDatetime);
+      
+      var RemainDate = endDate - startDatetime;
+      console.log("RemainDate: ",RemainDate);
       const timerId = document.querySelector('#timer');
       
       function msg_time() {
+    	var years = Math.floor(RemainDate/(1000*60*60*24*30*12));
+    	var months = Math.floor((RemainDate % ((1000*60*60*24*30*12)) / (1000*60*60*24*30)));
+    	var days = Math.floor(((RemainDate % (1000*60*60*24*30)) / (1000 * 60 * 60 * 24)));
+    	
         var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
         var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
         var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
         
-        m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
+        //m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
+        m = `${years>0 ? years+'년':''} ${months>0 ? months+'달':''} ${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
         
        timerId.innerHTML =m;
         
         if (RemainDate < 0) {      
           // 시간이 종료 되었으면..
-          clearInterval(tid);   // 타이머 해제
+          clearInterval(timer);   // 타이머 해제
         }else{
           RemainDate = RemainDate - 1000; // 남은시간 -1초
         }
       }
       
-      setInterval(function() {
-    	 msg_time();
-    	 
-    	}, 1000);
-      
-      
+      var timer = setInterval(msg_time, 1000);      
       /*]]>*/
     </script>
   </th:block>
