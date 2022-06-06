@@ -100,9 +100,9 @@
 							</div>
 							<div class="detail-top_timer">
 								<p>
-									<span id="endtime" style="font-size:20px; color:black;"></span>
+								마감기한:<span id="endtime" style="font-size:20px; color:black;"></span>
 								</p>
-								<h8>남은 시간</h8>
+								
 								<p>
 								 <!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
 								 <span id="timer" style="font-size:-webkit-xxx-large; color:red;"></span>
@@ -243,9 +243,6 @@
 
 		<div class="row">
 			<div class="col-xl-12">
-
-
-
 							<div class="card mt-5">
 <!--								안나옴 ㅜㅜ
 									<div class="d-flex flex-row justify-content-between p-3 adiv text-white">-->
@@ -285,10 +282,6 @@
 								</div>
 							</div>
 						</div>
-
-
-
-
 		</div>
 
 
@@ -327,7 +320,8 @@
 		
 	  var endDate = convertStringToDate("2022-07-28 17:50:00");
 	  console.log("endDate: ", endDate);
-      document.getElementById("endtime").innerHTML = endDate;
+      //document.getElementById("endtime").innerHTML = endDate;
+      document.getElementById("endtime").innerHTML = "2022-07-28 17:50:00";
       
       var startDatetime = new Date();
       console.log("startDatetime: ", startDatetime);
