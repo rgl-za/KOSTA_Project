@@ -12,7 +12,14 @@ public class BoardController{
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
+<<<<<<< Updated upstream
 		return "/cobuy_info";
+=======
+		
+		return "/templates/layouts/index";
+		
+	}
+>>>>>>> Stashed changes
 
 	}
 	
