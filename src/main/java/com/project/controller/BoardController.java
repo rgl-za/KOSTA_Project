@@ -19,8 +19,9 @@ public class BoardController{
 		//return "/update";
 		//return "/main";
 		//return "/write";
-
-		return "/register";
+		//return "/detail";
+		return "/detail"; 
+		//return "/register";
 
 	}
 }
