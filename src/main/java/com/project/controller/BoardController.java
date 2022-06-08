@@ -45,4 +45,8 @@ public class BoardController{
 	public String openBoardListWrite(Model model) {
 		return "/write";
 	}
+	@GetMapping(value = "/거래목록")
+	public String openBoardListDeal(Model model) {
+		return "/index";
+	}
 }
