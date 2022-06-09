@@ -81,18 +81,17 @@
 								<p>
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 									최대 구매가 </h7>
-									--원&emsp;
+									<text th:text="${postDTO.getPrice()/postDTO.getMinpeople()}"></text>원&emsp;
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 									최소 구매가 </h7>
-									--원<br>
+									<text th:text="${postDTO.getPrice()/postDTO.getMaxpeople()}"></text><br>
 								</p>
 								<p>
-									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최소인원
-									</h7>
-									2명 &emsp;
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최소인원</h7>
+									<text th:text="${postDTO.getMinpeople()}"></text>명 &emsp;
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최대인원
 									</h7>
-									5명
+									<text th:text="${postDTO.getMaxpeople()}"></text>명
 								</p>
 								<p>
 

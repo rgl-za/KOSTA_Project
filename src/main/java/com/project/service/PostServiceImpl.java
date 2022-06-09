@@ -62,5 +62,12 @@ public class PostServiceImpl implements PostService {
 
 		return postList;
 	}
+	
+	@Override
+	public PostDTO getPost(int pnum) {
+		PostDTO postDTO = postMapper.getPost(pnum);
+		// TODO Auto-generated method stub
+		return postDTO;
+	}
 
 }
