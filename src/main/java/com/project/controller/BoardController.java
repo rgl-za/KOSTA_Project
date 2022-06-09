@@ -31,6 +31,7 @@ public class BoardController{
 		PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
 		System.out.println("거래상세 controller=> "+ postDTO);
 		model.addAttribute("postDTO", postDTO);
+		
 		return "detail";
 	}
 	

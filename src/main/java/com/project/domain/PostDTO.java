@@ -51,6 +51,18 @@ public class PostDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public int getMaxPeople() {
+		return maxPeople;
+	}
+	public void setMaxPeople(int maxPeople) {
+		this.maxPeople = maxPeople;
+	}
+	public int getMinPeople() {
+		return minPeople;
+	}
+	public void setMinPeople(int minPeople) {
+		this.minPeople = minPeople;
+	}
 	
 	
 	
