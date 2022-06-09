@@ -20,17 +20,16 @@ public class BoardController{
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
 
-		return "/main";
+		return "/comingsoon";
 		//return "/templates/layouts/index";	
 	}
-
 	
 	@GetMapping(value = "/거래상세")
 	public String openBoardListDetail(Model model) {
 		int pnum = 12345;
-		PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
-		System.out.println("거래상세 controller=> "+ postDTO);
-		model.addAttribute("postDTO", postDTO);
+//		PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
+//		System.out.println("거래상세 controller=> "+ postDTO);
+//		model.addAttribute("postDTO", postDTO);
 		return "detail";
 	}
 	
