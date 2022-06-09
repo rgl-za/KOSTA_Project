@@ -76,6 +76,7 @@
 			pnum = #{pnum}
 	</select>
 	
+	<!-- main -->
 	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
 		SELECT
 		<include refid="postColumns" />
