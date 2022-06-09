@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -20,7 +19,9 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+<link href="css/sb-admin-2.css" rel="stylesheet">
+
 
 </head>
 
@@ -28,6 +29,7 @@
 
 	<div class="container">
 
+		
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
@@ -40,17 +42,15 @@
 							<form class="user">
 
 
-									<div class="input-group">
-										<input type="text" class="form-control form-control-user"
-											placeholder="ID 입력" aria-label="Search"
-											aria-describedby="basic-addon2">
-										<div class="input-group-append">
-											<button class="btn btn-primary" type="button">
-												<i class="fas fa-search fa-sm"></i>
-											</button>
-										</div>
-									</div>
-								
+								<div class="input-group"
+									style="padding-top: 10px; padding-bottom: 10px">
+									<input class="form-control form-control-user" type="text"
+										placeholder="아이디" aria-label="Enter search term..."
+										aria-describedby="id-check" />
+									<button class="btn btn-primary" id="id-check"
+										type="button" style="padding-right: 5px">아이디 중복 체크</button>
+								</div>
+								<p style="color:red;" id="checkid-msg" class="form-error">중복확인완료&nbsp;</p>
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
@@ -81,12 +81,28 @@
 										placeholder="Phone Number">
 								</div>
 
-								<div class="form-group">
-									<input type="button" value="상세주소 click"
-										class="form-control form-control-user" id="exampleInputEmail"
-										placeholder="Address">
+								<div class="input-group"
+									style="padding-top: 10px; padding-bottom: 10px">
+									<input class="form-control form-control-user" type="datetime-local"
+										placeholder="생년-월-일" aria-label="Enter search term..."
+										aria-describedby="button-search" />
 								</div>
 
+								
+									<div>
+										<input type="radio" id="contactChoice1" name="contact"
+											value="man"> <label for="contactChoice1">남자</label>
+
+										<input type="radio" id="contactChoice2" name="contact"
+											value="woman"> <label for="contactChoice2">여자</label>
+									</div>
+								
+
+
+								<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
+							<input class="form-control form-control-user" type="text" placeholder="우편번호" aria-label="Enter search term..." aria-describedby="button-search" />
+							<button class="btn btn-primary"  id="button-zipcode" type="button" style="padding-right: 10px">우편번호 검색</button>
+						</div>
 
 
 
@@ -121,16 +137,5 @@
 
 	</div>
 
-	<!-- Bootstrap core JavaScript-->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core plugin JavaScript-->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-	<!-- Custom scripts for all pages-->
-	<script src="js/sb-admin-2.min.js"></script>
-
 </body>
-
 </html>

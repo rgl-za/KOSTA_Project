@@ -6,11 +6,11 @@
 	<div class="container-fluid">
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
-			<h1 class="h3 mb-0 text-gray-800">거래 상세 페이지</h1>
+			
 		</div>
 		<div
 			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			<h6 class="m-0 font-weight-bold text-gray-900">글제목</h6>
+			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${postDTO.getTitle()}">거래명</h1>
 			<div class="float-right">
 				<a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
 					class="text">수정</span>
@@ -44,14 +44,15 @@
 									</p>
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
-										8000원 &nbsp;<br>
+										<text th:text="${postDTO.getPrice()}"></text>원 &nbsp;<br>
+										
 										<h7 class="m-0 font-weight-bold text-gray-900">물품 개수 </h7>
 										15개입 &ensp;<br>
 									</p>
 									<p>
 									<div class="margin-bottom">
 										<h7 class="m-0 font-weight-bold text-gray-900">링크주소:
-										http://~~</h7>
+										<text th:text="${postDTO.getLink()}"></text></h7>
 
 
 									</div>
@@ -78,35 +79,39 @@
 						<div class="horizon">
 							<div class="detail-top_info">
 								<p>
-									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 최대 구매가 </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
+									최대 구매가 </h7>
 									--원&emsp;
-									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 최소 구매가 </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
+									최소 구매가 </h7>
 									--원<br>
 								</p>
 								<p>
-									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최소인원 </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최소인원
+									</h7>
 									2명 &emsp;
-									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최대인원 </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최대인원
+									</h7>
 									5명
 								</p>
 								<p>
 
-									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 현재 인원수 </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
+									현재 인원수 </h7>
 									1명&emsp;
-									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 현재 구매가 </h7>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
+									현재 구매가 </h7>
 									---원<br>
 								</p>
 
 							</div>
 							<div class="detail-top_timer">
+								<h8>남은 시간</h8>
 								<p>
-								마감기한: <span id="endtime" style="font-size:20px; color:black;"></span>
-								</p>
-								
-								<p>
-								 <!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
-								 남은시간<br>
-								 <span id="timer" style="font-size:-webkit-xxx-large; color:red;"></span>
+									<!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
+									<span id="timer"
+										style="font-size: -webkit-xxx-large; color: red;"></span>
+
 								</p>
 							</div>
 
@@ -168,47 +173,179 @@
 
 							</div>
 							<!-- buttons -->
-							<a href="#" class="btn btn-primary btn-icon-split">
-								<span class="icon text-white-50"><i class="fas fa-flag"></i></span>
-								<span class="text">시작하기!</span>
+							<a href="#" class="btn btn-primary btn-icon-split"> <span
+								class="icon text-white-50"><i class="fas fa-flag"></i></span> <span
+								class="text">시작하기!</span>
 							</a>
 
-							<button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target=".bd-example-modal-xl">
-								<span class="icon text-white-50">
-									<i class="fas fa-info-circle"></i>
-								</span>
-								중간 배송지 확인
+							<button type="button" class="btn btn-info btn-icon-split"
+								data-toggle="modal" data-target=".bd-example-modal-xl">
+								<span class="icon text-white-50"> <i
+									class="fas fa-info-circle"></i>
+								</span> 중간 배송지 확인
 							</button>
 
 							<!--중간 배송지 모달창-->
-							<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+							<div class="modal fade bd-example-modal-xl" tabindex="-1"
+								role="dialog" aria-labelledby="myExtraLargeModalLabel"
+								aria-hidden="true">
 								<div class="modal-dialog modal-xl">
 									<div class="modal-content">
 										<div class="modal-header">
 											<h5 class="modal-title">중간 배송지 확인하기</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="닫기">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="닫기">
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
 										<div class="modal-body">
 											<!--카카오맵 api 적용-->
 											<!-- 지도를 표시할 div 입니다 -->
-											<div id="map" style="width:100%;height:350px;"></div>
+											<div id="map" style="width: 100%; height: 350px;"></div>
 
-											<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c"></script>
+											<script type="text/javascript"
+												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c"></script>
+
 											<script>
-												var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-														mapOption = {
-															center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-															level: 3 // 지도의 확대 레벨
-														};
+												/*
+												점이 2 개일 때 
+												*/
+												var minLatLng = function(lat1, lng1, lat2, lng2) {
+													this.lat1 = lat1;
+													this.lng1 = lng1;
+													this.lat2 = lat2;
+													this.lng2 = lng2;
+													//this.minus = lat1 + ( (lat2-lat1)/2 );
+													this.midLat = this.lat1 + (this.lat2 - this.lat1)/ 2;
+													this.midLng = this.lng1+ (this.lng2 - this.lng1)/ 2;
+
+													var LatLng = function(lat,lng) {
+														this.lat = lat;
+														this.lng = lng;
+														this.getLat = function() {
+															return this.lat;
+														}
+													}
+
+												}
+												/*
+												점이 여러개 일 때
+												*/
+												var latLngList = [ [37.655804, 127.024276] ,
+													[35.226257, 129.164313], [37.838326, 128.813553] ];
+												
+												//점이 3개라면 => 산술평균
+												var sumLat=0.0;
+												var sumLng=0.0;
+												for(i in latLngList){
+													sumLat += latLngList[i][0];
+													sumLng += latLngList[i][1];
+													
+												}
+												var midLat = sumLat/latLngList.length;
+												var midLng = sumLng/latLngList.length;
+												
+												alert("midLat"+midLat);
+												alert("midLng"+midLng);
+												var minLatLng = function(lat1, lng1, lat2, lng2) {
+													this.lat1 = lat1;
+													this.lng1 = lng1;
+													this.lat2 = lat2;
+													this.lng2 = lng2;
+													//this.minus = lat1 + ( (lat2-lat1)/2 );
+													this.midLat = this.lat1 + (this.lat2 - this.lat1)/ 2;
+													this.midLng = this.lng1+ (this.lng2 - this.lng1)/ 2;
+
+													var LatLng = function(lat,lng) {
+														this.lat = lat;
+														this.lng = lng;
+														this.getLat = function() {
+															return this.lat;
+														}
+													}
+
+												}
+
+												//var latlng = new latLng(33.450701,126.570667);
+												//alert(latlng.lat);//값 확인
+												var latlngWow = new minLatLng(
+														37.655804, 127.024276,
+														35.226257, 129.164313);
+												//alert(latlngWow.midLat);//ok
+												//alert(latlngWow.midLng);
+												//alert(latlngWow.minus);//ok
+
+												var mapContainer = document
+														.getElementById('map'), // 지도를 표시할 div
+												mapOption = {
+													center : new kakao.maps.LatLng(
+															latlngWow.midLat,
+															latlngWow.midLng),
+													//center: new kakao.maps.LatLng(latlng.lat, latlng.lng),
+													//center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+													level : 9
+												// 지도의 확대 레벨
+												};
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-												var map = new kakao.maps.Map(mapContainer, mapOption);
+												var map = new kakao.maps.Map(
+														mapContainer, mapOption);
+												// 마커가 표시될 위치입니다
+												var markerPosition = new kakao.maps.LatLng(
+														latlngWow.midLat,
+														latlngWow.midLng);
+												
+												// 마커가 표시될 위치입니다2
+												var markerPosition2 = new kakao.maps.LatLng(
+														midLat,
+														midLng);
+												
+												// 마커를 생성합니다
+												var marker = new kakao.maps.Marker(
+														{
+															position : markerPosition
+														});
+												marker.setTitle('중간지점');
+												
+												// 마커를 생성합니다 2
+												var marker2 = new kakao.maps.Marker(
+														{
+															position : markerPosition2
+														});
+												marker.setTitle('산술편균 중간지점');
+												// 마커가 지도 위에 표시되도록 설정합니다
+												
+												marker.setMap(map);
+												marker2.setMap(map);
+
+												// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+												var iwContent = '<div style="padding:5px;">중간지점입니다!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+												iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+												// 인포윈도우를 생성합니다
+												var infowindow = new kakao.maps.InfoWindow(
+														{
+															content : iwContent,
+															removable : iwRemoveable
+														});
+
+												// 마커에 클릭이벤트를 등록합니다
+												kakao.maps.event
+														.addListener(
+																marker,
+																'click',
+																function() {
+																	// 마커 위에 인포윈도우를 표시합니다
+																	infowindow
+																			.open(
+																					map,
+																					marker);
+																});
 
 												// 지도를 표시하는 div 크기를 변경하는 함수입니다
 												function resizeMap() {
-													var mapContainer = document.getElementById('map');
+													var mapContainer = document
+															.getElementById('map');
 													mapContainer.style.width = '1050px';
 													mapContainer.style.height = '650px';
 												}
@@ -223,8 +360,10 @@
 											</script>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-											<button type="button" class="btn btn-primary">카카오맵으로 확인하기</button>
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">닫기</button>
+											<button type="button" class="btn btn-primary">카카오맵으로
+												확인하기</button>
 										</div>
 
 									</div>
@@ -243,45 +382,29 @@
 
 		<div class="row">
 			<div class="col-xl-12">
-							<div class="card mt-5">
-<!--								안나옴 ㅜㅜ
-									<div class="d-flex flex-row justify-content-between p-3 adiv text-white">-->
-<!--									<i class="fas fa-chevron-left"></i>-->
-<!--									<span class="pb-3">Live chat</span>-->
-<!--									<i class="fas fa-times"></i>-->
-<!--								</div>-->
-
-								<div class="d-flex flex-row justify-content-between p-3 form-group px-3">
-									<i class="fas fa-chevron-left"></i>
-									<span class="pb-3">휴지 공동구매 채팅방입니다</span>
-									<i class="fas fa-times"></i>
-								</div>
-								<div class="d-flex flex-row p-3">
-									<img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="30">
-									<div class="chat ml-2 p-3">Hello and thankyou for visiting birdlymind. Please click the video above</div>
-								</div>
-
-								<div class="d-flex flex-row p-3">
-									<div class="bg-white mr-2 p-3"><span class="text-muted">Hello and thankyou for visiting birdlynind.</span></div>
-									<img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png" width="30" height="30">
-								</div>
-
-								<div class="d-flex flex-row p-3">
-									<img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="30">
-									<div class="myvideo ml-2"><img src="https://imgur.com/GOxU1jx.png" width="200"></div>
-								</div>
-
-								<div class="d-flex flex-row p-3">
-									<img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="30" height="30">
-									<div class="chat ml-2 p-3"><span class="text-muted dot">. . .</span></div>
-								</div>
-
-								<div class="form-group px-3">
-									<input type="text" class="form-control" placeholder="Enter text here...">
-
+				<div class="card-detail-chat shadow mb-4">
+					<div class="card-body">
+						<div class="col-6">
+							<label><b>채팅방</b></label>
+						</div>
+						<div>
+							<div id="msgArea" class="col-10"></div>
+							<div class="col-6">
+								<div class="input-group mb-3">
+									<input type="text" id="msg" class="form-control"
+										aria-label="Recipient's username"
+										aria-describedby="button-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button"
+											id="button-send">전송</button>
+									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 
@@ -308,52 +431,48 @@
 	<!-- /.container-fluid -->
 </th:block>
 <th:block layout:fragment="script">
-    <script th:inline="javascript">
-      /*<![CDATA[*/
-      function convertStringToDate(endDate) {
-		    let dateComponents = endDate.split(' ');
-		    let datePieces = dateComponents[0].split("-");
-		    let timePieces = dateComponents[1].split(":");
-		    return(new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
-		                         timePieces[0], timePieces[1], timePieces[2]))
-	  }
-		
-	  var endDate = convertStringToDate("2022-07-28 17:50:00");
-	  console.log("endDate: ", endDate);
-      //document.getElementById("endtime").innerHTML = endDate;
-      document.getElementById("endtime").innerHTML = "2022-07-28 17:50:00";
-      
-      var startDatetime = new Date();
-      console.log("startDatetime: ", startDatetime);
-      
-      var RemainDate = endDate - startDatetime;
-      console.log("RemainDate: ",RemainDate);
-      const timerId = document.querySelector('#timer');
-      
-      function msg_time() {
-    	//var years = Math.floor(RemainDate/(1000*60*60*24*30*12));
-    	//var months = Math.floor((RemainDate % ((1000*60*60*24*30*12)) / (1000*60*60*24*30)));
-    	var days = Math.floor((RemainDate / (1000 * 60 * 60 * 24)));
-    	
-        var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
-        var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
-        var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
-        
-        //m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
-        //m = `${years>0 ? years+'년':''} ${months>0 ? months+'달':''} ${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
-        m = `${days=0 ? '00':days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
-        timerId.innerHTML =m;
-        
-        if (RemainDate < 0) {      
-          // 시간이 종료 되었으면..
-          clearInterval(timer);   // 타이머 해제
-        }else{
-          RemainDate = RemainDate - 1000; // 남은시간 -1초
-        }
-      }
-      
-      var timer = setInterval(msg_time, 1000);      
-      /*]]>*/
-    </script>
-  </th:block>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		function convertStringToDate(endDate) {
+			let dateComponents = endDate.split(' ');
+			let datePieces = dateComponents[0].split("-");
+			let timePieces = dateComponents[1].split(":");
+			return (new Date(datePieces[2], (datePieces[1] - 1), datePieces[0],
+					timePieces[0], timePieces[1], timePieces[2]))
+		}
+
+		var endDate = convertStringToDate("22-07-03 17:50:00");
+		console.log(endDate);
+		var stDate = new Date();
+		console.log(stDate);
+		var RemainDate = stDate - endDate;
+		const timerId = document.querySelector('#timer');
+
+		function msg_time() {
+			var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))
+					/ (1000 * 60 * 60));
+			var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))
+					/ (1000 * 60));
+			var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+
+			m = hours + ":" + miniutes + ":" + seconds; // 남은 시간 text형태로 변경
+
+			timerId.innerHTML = m;
+
+			if (RemainDate < 0) {
+				// 시간이 종료 되었으면..
+				clearInterval(tid); // 타이머 해제
+			} else {
+				RemainDate = RemainDate - 1000; // 남은시간 -1초
+			}
+		}
+
+		setInterval(function() {
+			msg_time();
+
+		}, 1000);
+
+		/*]]>*/
+	</script>
+</th:block>
 </html>
