@@ -13,7 +13,7 @@ public class BoardController{
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
 
-		return "/cobuy_info";
+		return "/main";
 		//return "/templates/layouts/index";	
 	}
 
