@@ -12,8 +12,11 @@ public class BoardController{
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
-		return "/comingsoon";
+
+		return "/main";
+		//return "/templates/layouts/index";	
 	}
+
 	
 	@GetMapping(value = "/거래상세")
 	public String openBoardListDetail(Model model) {
@@ -43,5 +46,9 @@ public class BoardController{
 	@GetMapping(value = "/쓰기")
 	public String openBoardListWrite(Model model) {
 		return "/write";
+	}
+	@GetMapping(value = "/거래목록")
+	public String openBoardListDeal(Model model) {
+		return "/index";
 	}
 }

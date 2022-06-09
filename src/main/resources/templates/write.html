@@ -2,10 +2,19 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
-<th:block layout:fragment="content">
+<th:block layout:fragment="title">
+	<title>write page</title>
+</th:block>
 
+<th:block layout:fragment="content">
 	<div class="container mt-5">
-			<input class="form-control" type="text" placeholder="제품명" aria-label="Enter search term..." aria-describedby="button" />
+	<!-- 폼 시작 -->
+	<form class="form-horizontal" th:action="@{/com.project/register.do}"
+			th:object="${board}" method="post"
+			onsubmit="return registerBoard(this)">
+			<input class="form-control" type="text" th:field="*{title}" 
+			placeholder="제품명" aria-label="Enter search term..." 
+			aria-describedby="button" />
 		<div class="row">
 			<div class="col-lg-7">
 				<!-- Post content-->
@@ -92,6 +101,7 @@
 					<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
 				</div>
 			</div>
+		</form>
 	</div>
 
 </th:block>
