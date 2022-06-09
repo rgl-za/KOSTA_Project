@@ -63,5 +63,13 @@
 		WHERE
 		pnum = #{pnum}
 	</update>
+	
+	<select id="getPost" parameterType="int" resultType="PostDTO">
+		SELECT
+			*
+		FROM
+			post
+		WHERE pnum = #{pnum}
+	</select>
 
 </mapper>
