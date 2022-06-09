@@ -24,7 +24,7 @@ public class BoardController{
 		//return "/templates/layouts/index";	
 	}
 
-	
+	/*
 	@GetMapping(value = "/거래상세")
 	public String openBoardListDetail(Model model) {
 		int pnum = 12345;
@@ -33,11 +33,14 @@ public class BoardController{
 		model.addAttribute("postDTO", postDTO);
 		return "detail";
 	}
+	*/
 	
+	/*
 	@GetMapping(value = "/거래내역")
 	public String openBoardListIndex(Model model) {
 		return "/breakdown";
 	}
+	*/
 	
 	@GetMapping(value = "/메인")
 	public String openBoardListMain(Model model) {
@@ -58,8 +61,11 @@ public class BoardController{
 	public String openBoardListWrite(Model model) {
 		return "/write";
 	}
+	
+	/*
 	@GetMapping(value = "/거래목록")
 	public String openBoardListDeal(Model model) {
 		return "/index";
 	}
+	*/
 }
