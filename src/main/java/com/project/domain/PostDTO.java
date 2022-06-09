@@ -1,20 +1,57 @@
 package com.project.domain;
 
-import lombok.Data;
+import java.time.LocalDateTime;
 
-@Data
-public class PostDTO extends CommonDTO {
 
-  private Long pnum; 			// 포스트번호 (PK)
-  private String leaderid; 		// 방장 아이디
-  private String title; 		// 제목
-  private String content; 		// 내용
-  private String photo; 		// 사진
-  private String link; 			// 링크
-  private int price; 			// 가격
-  private int maxpeople; 		// 최대인원
-  private int minpeople; 		// 최소인원
-  private String accountpost; 	// 포스트 개수?
-  private String uploaddate; 	// 시작 날짜
-  private String enddate; 		// 끝나는 날짜
+
+public class PostDTO {
+	private int pnum;
+	private int catNum;
+	private String title;
+	private String content;
+	private String link;
+	private int price;
+	
+	
+	public int getPnum() {
+		return pnum;
+	}
+	public void setPnum(int pnum) {
+		this.pnum = pnum;
+	}
+	public int getCatNum() {
+		return catNum;
+	}
+	public void setCatNum(int catNum) {
+		this.catNum = catNum;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+	
+
+	
 }
