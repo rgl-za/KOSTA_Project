@@ -1,8 +1,12 @@
 package com.project.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.board.domain.BoardDTO;
 
 @Controller
 public class BoardController{
@@ -20,6 +24,9 @@ public class BoardController{
 	
 	@GetMapping(value = "/거래상세")
 	public String openBoardListDetail(Model model) {
+		int pnum = 12345;
+		List<BoardDTO> boardList = boardService.getBoardList(pnum);//임의의 pnum
+		model.addAttribute("boardList", boardList);
 		return "detail";
 	}
 	
