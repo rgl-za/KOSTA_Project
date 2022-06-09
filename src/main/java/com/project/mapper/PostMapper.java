@@ -19,4 +19,6 @@ public interface PostMapper {
 	public List<PostDTO> selectPostList();
 
 	public int selectPostTotalCount();
+	
+	public PostDTO getPost(int pnum);
 }
