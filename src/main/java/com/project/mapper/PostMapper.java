@@ -25,4 +25,6 @@ public interface PostMapper {
 
 	// 글 총 개수
 	public int selectPostTotalCount();
+	
+	public PostDTO getPost(int pnum);
 }
