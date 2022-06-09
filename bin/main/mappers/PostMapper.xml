@@ -4,38 +4,50 @@
 
 	<sql id="postColumns">
 		pnum
+		, catnum
 		, leaderid
 		, title
 		, content
 		, photo
 		, link
 		, price
+		, postnum
+		, dealaddress
 		, maxpeople
 		, minpeople
 		, accountpost
 		, uploaddate
 		, enddate
+		, delete_yn
+		, finaldate
 	</sql>
-
+	
+	<!-- 수정 필요 (문정현) -->
 	<insert id="insertPost" parameterType="PostDTO">
 		INSERT INTO post (
 		<include refid="postColumns" />
 		) VALUES (
 		pnum.nextval
-		, null 				<!-- , #{leaderid} -->
+		, #{catnum}
+		, #{leaderid}
 		, #{title}
 		, #{content}
 		, #{photo}
 		, #{link}
 		, #{price}
+		, #{postnum}
+		, #{dealaddress}
 		, #{maxpeople}
 		, #{minpeople}
-		, null 				<!-- , #{accountpost} -->
+		, #{accountpost}
 		, sysdate 			<!-- #{uploaddate} -->
 		, #{enddate}
+		, #{delete_yn}
+		, #{finaldate}
 		)
 	</insert>
-
+	
+	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
 		SET
@@ -45,16 +57,43 @@
 		, link 		= #{link}
 		, content 	= #{content}
 		, price 	= #{price}
-		, enddate 	= #{enddate}
 		, maxpeople = #{maxpeople}
-		, minpeople = #{minpeople}
+		, minpeople = #{minpeople} <!-- 고정값 1로 -->
 		, enddate 	= #{enddate}
-<!-- 		, notice_yn = NVL(#{noticeYn, jdbcType=VARCHAR}, 'N')
-		, secret_yn = NVL(#{secretYn, jdbcType=VARCHAR}, 'N') -->
 		WHERE
 		pnum = #{pnum}
 	</update>
+	
+	<!-- 포스트 상세내용 -->
+	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
+		SELECT
+			<include refid="postColumns" />
+		FROM
+			post
+		WHERE
+			delete_yn = 'N'
+		AND
+			pnum = #{pnum}
+	</select>
+	
+	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY pnum DESC, uploaddate DESC
+	</select>
+	
+	<select id="selectPostTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE delete_yn = 'N'
+	</select>
 
+
+	<!-- 남혁이형 부분 -->
 	<update id="deletePost" parameterType="long">
 		UPDATE post
 		SET
