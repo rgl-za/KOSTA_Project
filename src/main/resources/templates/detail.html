@@ -100,13 +100,13 @@
 							</div>
 							<div class="detail-top_timer">
 								<p>
-								마감기한:<span id="endtime" style="font-size:20px; color:black;"></span>
+								마감기한: <span id="endtime" style="font-size:20px; color:black;"></span>
 								</p>
 								
 								<p>
 								 <!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
+								 남은시간<br>
 								 <span id="timer" style="font-size:-webkit-xxx-large; color:red;"></span>
-
 								</p>
 							</div>
 
@@ -331,18 +331,18 @@
       const timerId = document.querySelector('#timer');
       
       function msg_time() {
-    	var years = Math.floor(RemainDate/(1000*60*60*24*30*12));
-    	var months = Math.floor((RemainDate % ((1000*60*60*24*30*12)) / (1000*60*60*24*30)));
-    	var days = Math.floor(((RemainDate % (1000*60*60*24*30)) / (1000 * 60 * 60 * 24)));
+    	//var years = Math.floor(RemainDate/(1000*60*60*24*30*12));
+    	//var months = Math.floor((RemainDate % ((1000*60*60*24*30*12)) / (1000*60*60*24*30)));
+    	var days = Math.floor((RemainDate / (1000 * 60 * 60 * 24)));
     	
         var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
         var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
         var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
         
         //m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
-        m = `${years>0 ? years+'년':''} ${months>0 ? months+'달':''} ${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
-        
-       timerId.innerHTML =m;
+        //m = `${years>0 ? years+'년':''} ${months>0 ? months+'달':''} ${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+        m = `${days=0 ? '00':days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+        timerId.innerHTML =m;
         
         if (RemainDate < 0) {      
           // 시간이 종료 되었으면..
