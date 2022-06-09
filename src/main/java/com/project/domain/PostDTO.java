@@ -11,6 +11,8 @@ public class PostDTO {
 	private String content;
 	private String link;
 	private int price;
+	private int maxPeople;
+	private int minPeople;
 	
 	
 	public int getPnum() {
