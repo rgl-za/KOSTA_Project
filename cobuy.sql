@@ -142,3 +142,8 @@ drop sequence seq_member_no;
 create sequence seq_member_no
 increment by 1
 start with 1;
+
+
+--수정 쿼리--
+alter table post add finalDate date not null;
+alter table post modify finalDate null;
