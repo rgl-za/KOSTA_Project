@@ -25,8 +25,6 @@ public class PostDTO {
 	
 	// 제품 원가
 	private int price;
-	private int maxPeople;
-	private int minPeople;
 	
 	// 우편번호
 	private int postnum;
