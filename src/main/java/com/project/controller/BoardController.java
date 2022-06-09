@@ -2,17 +2,20 @@ package com.project.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.board.domain.BoardDTO;
+import com.project.domain.PostDTO;
+import com.project.service.PostService;
+
 
 @Controller
 public class BoardController{
-//
-//	@Autowired
-//	private BoardService boardService;
+
+	@Autowired
+	private PostService postService;
 
 	@GetMapping(value = "/")
 	public String openBoardList(Model model) {
@@ -25,8 +28,9 @@ public class BoardController{
 	@GetMapping(value = "/거래상세")
 	public String openBoardListDetail(Model model) {
 		int pnum = 12345;
-		List<BoardDTO> boardList = boardService.getBoardList(pnum);//임의의 pnum
-		model.addAttribute("boardList", boardList);
+		PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
+		System.out.println("거래상세 controller=> "+ postDTO);
+		model.addAttribute("postDTO", postDTO);
 		return "detail";
 	}
 	

@@ -10,5 +10,6 @@ public interface PostMapper {
 
 	 public int updatePost(PostDTO params); // 업데이트
 	 
+	 public PostDTO getPost(int pNum);// get post by pnum	 
 
 }

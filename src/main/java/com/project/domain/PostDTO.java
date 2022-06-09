@@ -5,17 +5,19 @@ import java.time.LocalDateTime;
 
 
 public class PostDTO {
-	private int pNum;
+	private int pnum;
 	private int catNum;
 	private String title;
 	private String content;
 	private String link;
 	private int price;
-	public int getpNum() {
-		return pNum;
+	
+	
+	public int getPnum() {
+		return pnum;
 	}
-	public void setpNum(int pNum) {
-		this.pNum = pNum;
+	public void setPnum(int pnum) {
+		this.pnum = pnum;
 	}
 	public int getCatNum() {
 		return catNum;
@@ -47,6 +49,7 @@ public class PostDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
 	
 	
 

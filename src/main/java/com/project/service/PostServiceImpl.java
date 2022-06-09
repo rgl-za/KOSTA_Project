@@ -1,8 +1,10 @@
 package com.project.service;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.project.domain.PostDTO;
 import com.project.mapper.PostMapper;
 
@@ -17,13 +19,21 @@ public class PostServiceImpl implements PostService {
   public boolean registerPost(PostDTO params) {
     int queryResult = 0;
 
-    if (params.getPnum() == null) {
-      queryResult = postMapper.insertPost(params);
-    } else {
+//    if (params.getPnum() == null) {
+//      queryResult = postMapper.insertPost(params);
+//    } else {
       queryResult = postMapper.updatePost(params);
-    }
+//    }
 
     return (queryResult == 1) ? true : false;
   }
+  
+
+@Override
+public PostDTO getPost(int pnum) {
+	PostDTO postDTO = postMapper.getPost(pnum);
+	// TODO Auto-generated method stub
+	return postDTO;
+}
 
 }
