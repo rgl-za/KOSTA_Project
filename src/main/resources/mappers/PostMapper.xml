@@ -24,27 +24,30 @@
 	
 	<!-- 수정 필요 (문정현) -->
 	<insert id="insertPost" parameterType="PostDTO">
-		INSERT INTO post (
-		<include refid="postColumns" />
-		) VALUES (
-		pnum.nextval
-		, #{catnum}
-		, #{leaderid}
-		, #{title}
-		, #{content}
-		, #{photo}
-		, #{link}
-		, #{price}
-		, #{postnum}
-		, #{dealaddress}
-		, #{maxpeople}
-		, #{minpeople}
-		, #{accountpost}
-		, sysdate 			<!-- #{uploaddate} -->
-		, #{enddate}
-		, #{delete_yn}
-		, #{finaldate}
-		)
+		BEGIN
+			INSERT INTO post (
+			<include refid="postColumns" />
+			) VALUES (
+			pnum.nextval
+			, #{catnum}
+			, #{leaderid}
+			, #{title}
+			, #{content}
+			, #{photo}
+			, #{link}
+			, #{price}
+			, #{postnum}
+			, #{dealaddress}
+			, #{maxpeople}
+			, #{minpeople}
+			, #{accountpost}
+			, sysdate 			<!-- #{uploaddate} -->
+			, #{enddate}
+			, #{delete_yn}
+			, #{finaldate}
+			)
+			INSERT INTO CHATROOM (pnum, cnum) VALUES (pnum.currval, cnum.nextval)
+		END
 	</insert>
 	
 	<!-- 수정 필요 (문정현)-->
@@ -76,6 +79,7 @@
 			pnum = #{pnum}
 	</select>
 	
+	<!-- main -->
 	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
 		SELECT
 		<include refid="postColumns" />
