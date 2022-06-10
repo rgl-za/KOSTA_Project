@@ -12,15 +12,26 @@
 		finaldate
 	</sql>
 	
-	<!-- 포스트 상세내용 -->
-	<select id="selectPostDetail" parameterType="String" resultType="DealHistoryDTO">
+	<!-- 나의 거래완료 내역 -->
+	<select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
 		SELECT
-			<include refid="dealColumns" />
+			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.finaldate
 		FROM
 			( SELECT *
 		      FROM useraccount
 		      WHERE userId= #{userId}) usera, post p
 		WHERE usera.pnum = p.pnum and p.finaldate is not null
+	</select>
+	
+	<!-- 나의 거래중인 내역 -->
+	<select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
+		SELECT
+			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.finaldate
+		FROM
+			( SELECT *
+		      FROM useraccount
+		      WHERE userId= #{userId}) usera, post p
+		WHERE usera.pnum = p.pnum and p.finaldate is null
 	</select>
 	
 </mapper>
