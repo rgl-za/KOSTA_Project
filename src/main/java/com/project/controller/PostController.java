@@ -62,7 +62,7 @@ public class PostController {
 	}
 	
 	// 게시글 상세내용 detail
-	@GetMapping(value = "/post/detail.do")
+	@GetMapping(value = "/detail.do")
 	public String openPostDetail(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중..." );
 		if (pnum == null) {
