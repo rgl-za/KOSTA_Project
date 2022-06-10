@@ -27,12 +27,12 @@ public class PostController {
 	  } else {
 	    PostDTO post = postService.getPostDetail(pnum);
 	    if (post == null) {
-	      return "redirect:/post/main.do";
+	      return "redirect:/main";
 	    }
 	    model.addAttribute("post", post);
 	  }
 
-	  return "post/write";
+	  return "/write";
 	}
 	
 	// 게시글 등록, 수정
@@ -49,7 +49,7 @@ public class PostController {
 	  } catch (Exception e) {
 	    // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
 	  }
-	  return "redirect:/post/main.do";
+	  return "redirect:/main";
 	}
 	
 	// 게시글을 올리고 main으로
@@ -58,7 +58,7 @@ public class PostController {
 		List<PostDTO> postList = postService.getPostList();
 		model.addAttribute("postList", postList);
 		System.out.println("찍히나요?");
-		return "main";
+		return "/main";
 	}
 	
 	// 게시글 상세내용 detail
