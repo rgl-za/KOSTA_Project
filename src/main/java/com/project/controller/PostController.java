@@ -20,7 +20,7 @@ public class PostController {
 	private PostService postService;
 
 	// 게시글 작성 폼으로
-	@GetMapping(value = "/post/write.do")
+	@GetMapping(value = "/write.do")
 	public String openPostWrite(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 	  if (pnum == null) {
 	    model.addAttribute("post", new PostDTO());
@@ -36,7 +36,7 @@ public class PostController {
 	}
 	
 	// 게시글 등록, 수정
-	@PostMapping(value = "/post/register.do")
+	@PostMapping(value = "/register.do")
 	public String registerPost(final PostDTO params) {
 	  try {
 	    boolean isRegistered = postService.registerPost(params);
@@ -53,7 +53,7 @@ public class PostController {
 	}
 	
 	// 게시글을 올리고 main으로
-	@GetMapping(value = "/post/main.do")
+	@GetMapping(value = "/main.do")
 	public String openPostList(Model model) {
 		List<PostDTO> postList = postService.getPostList();
 		model.addAttribute("postList", postList);
@@ -62,7 +62,7 @@ public class PostController {
 	}
 	
 	// 게시글 상세내용 detail
-	@GetMapping(value = "/post/detail.do")
+	@GetMapping(value = "/detail.do")
 	public String openPostDetail(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중..." );
 		if (pnum == null) {
