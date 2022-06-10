@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/ChatConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/ChatMsgDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/ChatRoomDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/ChatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/ChatServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/BoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/mapper/PostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/mapper/PostMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/css/sb-admin-2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/ChatService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +64,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/mappers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -89,6 +76,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/mappers" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -139,7 +127,7 @@
       <workItem from="1654506290241" duration="1004000" />
       <workItem from="1654522782840" duration="225000" />
       <workItem from="1654649703720" duration="3382000" />
-      <workItem from="1654735534599" duration="8382000" />
+      <workItem from="1654735534599" duration="20204000" />
     </task>
     <servers />
   </component>

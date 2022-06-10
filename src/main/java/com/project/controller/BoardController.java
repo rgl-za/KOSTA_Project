@@ -16,8 +16,8 @@ public class BoardController{
 	
 	@GetMapping(value = "/거래상세")
 	public String openBoardListDetail(Model model) {
-
 		return "/detail";
+
 	}
 	
 	@GetMapping(value = "/거래내역")
