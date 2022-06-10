@@ -2,6 +2,7 @@ package com.project.controller;
 
 import java.util.List;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +32,12 @@ public class BoardController{
 		//return "/templates/layouts/index";	
 	}
 
-	/*
-	 * @GetMapping(value = "/거래상세") public String openBoardListDetail(Model model) {
-	 * int pnum = 2; PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
-	 * System.out.println("거래상세 controller=> "+ postDTO);
-	 * model.addAttribute("postDTO", postDTO); return "detail"; }
-	 */
+	
+	@GetMapping(value = "/거래상세") public String openBoardListDetail(Model model) {
+	int pnum = 2; PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
+	System.out.println("거래상세 controller=> "+ postDTO);
+	model.addAttribute("postDTO", postDTO); return "detail"; }
+	
 	
 	
 	@GetMapping(value = "/거래내역")

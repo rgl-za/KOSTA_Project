@@ -30,23 +30,23 @@ public class DealController {
 		String userId = "kmg";
 
 		List<DealHistoryDTO> dealList = dealService.getEndDealList(userId);
-		System.out.println(dealList);
+		System.out.println("dealList" + dealList);
 		model.addAttribute("dealList", dealList);
 
 		return "/breakdown";
 	}
 	
 	// 나의 거래완료 내역
-		@GetMapping(value = "/dealing")
-		public String getDealingList(Model model) {
+	@GetMapping(value = "/dealing")
+	public String getDealingList(Model model) {
 
-			String userId = "kmg";
+		String userId = "kmg";
 
-			List<DealHistoryDTO> dealList = dealService.getDealingList(userId);
-			System.out.println(dealList);
-			model.addAttribute("dealList", dealList);
+		List<DealHistoryDTO> dealList = dealService.getDealingList(userId);
+		System.out.println(dealList);
+		model.addAttribute("dealList", dealList);
 
-			return "/index";
-		}
+		return "/index";
+	}
 
 }

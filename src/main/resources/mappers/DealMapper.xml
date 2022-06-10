@@ -9,13 +9,15 @@
 		title,
 		photo,
 		dealaddress,
+		postnum,
+		link,
 		finaldate
 	</sql>
 	
 	<!-- 나의 거래완료 내역 -->
 	<select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
 		SELECT
-			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.finaldate
+			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.postnum, p.link, p.finaldate
 		FROM
 			( SELECT *
 		      FROM useraccount
