@@ -1,57 +1,60 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" 
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorate="layouts/basic">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
 <th:block layout:fragment="content">
 	<div class="container-fluid">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
 			<h1 class="h3 mb-0 text-gray-800">진행 중인 거래 목록</h1>
 
 			<div class="dropdown mb-4">
-				<button
-					class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
-					type="button" id="dropdownMenuButton" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false">추천순</button>
-				<div class="dropdown-menu animated--fade-in"
-					aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="#">거리순</a> <a class="dropdown-item"
-						href="#">최신순</a> <a class="dropdown-item" href="#">인기순</a>
+				<button class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none" type="button"
+					id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">추천순</button>
+				<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#">거리순</a> <a class="dropdown-item" href="#">최신순</a> <a
+						class="dropdown-item" href="#">인기순</a>
 				</div>
 			</div>
 
 
 		</div>
-
-		<div class="row">
-
-			<div class="col-lg-6 mb-4">
-				<div class="card bg-light text-black shadow">
-					<div class="card-body" th:each="postList : ${postList}">
-						제목 <p th:text="${postList.title}"></p>
-						<div class="text-black-50 small">날짜
-						<p th:text="${postList.uploaddate}"></p></div>
-
-						<div class="represent_img">
-							<!--<img class="img-item rounded-circle" th:src="${postList.photo}">-->
-						</div>
-						<!-- 찜 버튼 -->
-						<div style="text-align: right;">
-							<a href="#" class="btn btn-primary btn-icon-split"> <img
-								style="width: 30px; height: 30px;" alt="찜"
-								src="assets/heart.ico">
-							</a>
-
+		<section class="py-5">
+			<div class="container px-4 px-lg-5 mt-5">
+				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<div class="col mb-5" th:each="postList : ${postList}">
+						<div class="card h-100" >
+						
+							<!-- Product image-->
+							<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+								alt="..." />
+							<!-- Product details-->
+							<div class="card-body p-4"><a href="#" style="text-decoration: none;">
+								<div class="text-center">
+									<!-- Product name-->
+									<h5 class="fw-bolder" th:text="${postList.title}"></h5>
+									<!-- Product price-->
+									<p th:text="${postList.uploaddate}"></p>
+								</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+								</a>
+							</div>
+							<!-- Product actions-->
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<!--<a class="btn btn-outline-dark mt-auto" href="#" > 입장 하기 </a>-->
+								<i class="fa fa-heart-o" style="font-size:36px;"></i></div>
+						
 						</div>
 					</div>
 				</div>
 			</div>
-			
+	</div>
+	</section>
+	
+	
 
-		</div>
-		<!-- row -->
-		<!-- /.container-fluid -->
+	<!-- row -->
+	<!-- /.container-fluid -->
 </th:block>
 
 </html>
