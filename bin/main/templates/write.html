@@ -9,12 +9,12 @@
 <th:block layout:fragment="content">
 	<div class="container mt-5">
 	<!-- 폼 시작 -->
-	<form class="form-horizontal" th:action="@{/com.project/register.do}"
-			th:object="${board}" method="post"
+	<form class="form-horizontal" th:action="@{/register.do}"
+			th:object="${post}" method="post"
 			onsubmit="return registerBoard(this)">
-			<input class="form-control" type="text" th:field="*{title}" 
+			<input class="form-control" type="text" th:text="${post.title}" 
 			placeholder="제품명" aria-label="Enter search term..." 
-			aria-describedby="button" />
+			aria-describedby="button"/>
 		<div class="row">
 			<div class="col-lg-7">
 				<!-- Post content-->
@@ -38,26 +38,24 @@
 					<figure class="mb-4">
 						<div class="input-group" style="padding-top: 25px; padding-bottom: 10px">
 							<select class="custom-select">
-								<option value="">카테고리 선택</option>
+								<option value="">== 카테고리 선택 ==</option>
 								<option value="">1</option>
-								<option value="">2</option>
-								<option value="">3</option>
 							</select>
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="주소" aria-label="Enter search term..." aria-describedby="button-search" />
+							<input class="form-control" type="text" th:text="${post.address}" placeholder="주소" aria-label="Enter search term..." aria-describedby="button-search" />
 							<button class="btn btn-primary" id="button-zipcode" type="button" style="padding-right: 10px">주소 검색</button>
 							<input class="form-control" type="text" placeholder="상세주소" aria-label="Enter search term..." aria-describedby="button-search" />
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="제품 원가" aria-label="Enter search term..." aria-describedby="button-search" />
+							<input class="form-control" type="text" th:text="${post.price}" placeholder="제품 원가" aria-label="Enter search term..." aria-describedby="button-search" />
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="최소 인원" aria-label="Enter search term..." aria-describedby="button-search" />
-							<input class="form-control" type="text" placeholder="최대 인원" aria-label="Enter search term..." aria-describedby="button-search" />
+							<input class="form-control" type="text" th:text="${post.minpeople}" placeholder="최소 인원" aria-label="Enter search term..." aria-describedby="button-search" />
+							<input class="form-control" type="text" th:text="${post.maxpeople}" placeholder="최대 인원" aria-label="Enter search term..." aria-describedby="button-search" />
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
