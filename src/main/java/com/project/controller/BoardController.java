@@ -21,12 +21,11 @@ public class BoardController{
 	}
 	*/
 	
-	/*
+	
 	@GetMapping(value = "/거래내역")
 	public String openBoardListIndex(Model model) {
 		return "/breakdown";
 	}
-	*/
 	
 	@GetMapping(value = "/메인")
 	public String openBoardListMain(Model model) {
