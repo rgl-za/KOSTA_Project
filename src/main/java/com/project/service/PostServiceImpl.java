@@ -1,3 +1,4 @@
+
 package com.project.service;
 
 import java.util.Collections;
@@ -22,19 +23,23 @@ public class PostServiceImpl implements PostService {
 
 		if (params.getPnum() == null) {
 			queryResult = postMapper.insertPost(params);
-		} else {
-			queryResult = postMapper.updatePost(params);
 		}
+		// 난수 생길 예정 } else { queryResult = postMapper.updatePost(params); }
 
 		return (queryResult == 1) ? true : false;
 	}
-	
+
 	// 상세내용에 불러올 글
 	@Override
 	public PostDTO getPostDetail(Long pnum) {
 		return postMapper.selectPostDetail(pnum);
 	}
+<<<<<<< HEAD
     // 게시글 삭제--------------------------------------------------
+=======
+	
+	// 게시글 삭제
+>>>>>>> main
 	@Override
 	public boolean deletePost(Long pnum) {
 		int queryResult = 0;
@@ -47,7 +52,7 @@ public class PostServiceImpl implements PostService {
 
 		return (queryResult == 1) ? true : false;
 	}
-
+	
 	// main에 불러올 글
 	@Override
 	public List<PostDTO> getPostList() {
@@ -58,15 +63,13 @@ public class PostServiceImpl implements PostService {
 		if (postTotalCount > 0) {
 			postList = postMapper.selectPostList();
 		}
-
 		return postList;
 	}
-	
-	@Override
-	public PostDTO getPost(int pnum) {
-		PostDTO postDTO = postMapper.getPost(pnum);
-		// TODO Auto-generated method stub
-		return postDTO;
-	}
+
+	/*
+	 * @Override public PostDTO getPost(int pnum) { PostDTO postDTO =
+	 * postMapper.getPost(pnum); // TODO Auto-generated method stub return postDTO;
+	 * }
+	 */
 
 }

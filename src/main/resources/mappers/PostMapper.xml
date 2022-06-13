@@ -23,6 +23,7 @@
 	
 	<!-- 수정 필요 (문정현) -->
 	<insert id="insertPost" parameterType="PostDTO">
+<<<<<<< HEAD
 		INSERT INTO post (
 		<include refid="postColumns" />
 		) VALUES (
@@ -43,6 +44,29 @@
 		, #{enddate}
 		, #{delete_yn}
 		)
+=======
+			INSERT INTO post (
+			<include refid="postColumns" />
+			) VALUES (
+			seq_post_no.nextval
+			, 1
+			, 'NULL'
+			, #{title}
+			, #{content}
+			, '사진' <!-- #{photo} -->
+			, #{link}
+			, #{price}
+			, #{postnum}
+			, 'NULL'
+			, #{maxpeople}
+			, #{minpeople}
+			, 'NULL'
+			, SYSDATE 			
+			, #{enddate}
+			, 'N'
+			, #{finaldate}		
+			)
+>>>>>>> main
 	</insert>
 	
 	<!-- 수정 필요 (문정현)-->
