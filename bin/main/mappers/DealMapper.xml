@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.DealMapper">
+
+	<sql id="dealColumns">
+		userId,
+		pnum,
+		money,
+		title,
+		photo,
+		dealaddress,
+		postnum,
+		link,
+		finaldate
+	</sql>
+	
+	<!-- 나의 거래완료 내역 -->
+	<select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
+		SELECT
+			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.postnum, p.link, p.finaldate
+		FROM
+			( SELECT *
+		      FROM useraccount
+		      WHERE userId= #{userId}) usera, post p
+		WHERE usera.pnum = p.pnum and p.finaldate is not null
+	</select>
+	
+	<!-- 나의 거래중인 내역 -->
+	<select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
+		SELECT
+			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.finaldate
+		FROM
+			( SELECT *
+		      FROM useraccount
+		      WHERE userId= #{userId}) usera, post p
+		WHERE usera.pnum = p.pnum and p.finaldate is null
+	</select>
+	
+</mapper>
