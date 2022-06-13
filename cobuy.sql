@@ -75,7 +75,7 @@ create table post(
     title varchar2(100) not null, -- 게시글 제목 --
     content varchar2(3000) not null, -- 게시글 내용 -- 
     photo varchar2(500) not null, -- 제품 사진 --
-    link varchar2(100) not null, -- 제품 링크 --
+    link varchar2(1000) not null, -- 제품 링크 --
     price number not null, -- 제품 원가 --
     postNum number not null, -- 우편번호 --
     dealAddress varchar2(500) not null, -- 거래 주소 --
@@ -84,7 +84,8 @@ create table post(
     accountPost varchar2(50), -- 게시글 전용 계좌 --
     uploadDate date, -- 게시글 업로드 날짜 --
     endDate date not null, -- 거래 마감 날짜 --
-    
+    delete_yn varchar2(1)
+    finaldate date
     constraint pk_pnum primary key(pnum), -- 게시글 고유 번호 pk 설정 --
     constraint fk_catNum foreign key(catNum) references category(catNum) -- 카테고리 고유 번호 fk 설정 --
     
