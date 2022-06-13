@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 import com.project.service.PostService;
+import com.project.util.FileUtil;
 
 @Controller
 public class PostController {
@@ -37,11 +39,6 @@ public class PostController {
 				return "redirect:/main.do";
 			}
 			model.addAttribute("post", post);
-			
-			/*
-			 * List<FileDTO> fileList = postService.selectFileList(pnum);
-			 * model.addAttribute("fileList", fileList);
-			 */
 		}
 		System.out.println("logger");
 		logger.info("write.do");
@@ -49,16 +46,38 @@ public class PostController {
 	}
 
 	// 게시글 등록, 수정
-	@PostMapping(value = "/register.do")
-	public String registerPost(final PostDTO params) {
+	@PostMapping(value = "/register.do" )
+	public String registerPost(final PostDTO params, MultipartFile file) {
+	System.out.println("file!" + file);
 	System.out.println("register.do");
 	System.out.println(params);
+	System.out.println(params.getPhoto());
 		try {
-			boolean isRegistered = postService.registerPost(params);
-			System.out.println(isRegistered);
-			if (isRegistered == false) {
-				// TODO => 게시글 등록에 실패하였다는 메시지를 전달
-				System.out.println("등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!");
+			// 파일업로드
+			if(!file.isEmpty()) {
+				
+				FileUtil fileUtil = new FileUtil();
+				FileDTO fileDTO = fileUtil.fileUpload(file);
+				System.out.println("저장된 filevo: "+ fileDTO.toString());
+				System.out.println("저장된 file이름: "+ fileDTO.getSaveName());
+				
+				//블로그 logo-name 설정
+				params.setPhoto(fileDTO.getSaveName());
+				
+				
+				boolean isRegistered = postService.registerPost(params);
+				System.out.println(isRegistered);
+				if (isRegistered == false) {
+					// TODO => 게시글 등록에 실패하였다는 메시지를 전달
+					System.out.println("등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!");
+				}
+			}else {
+				boolean isRegistered = postService.registerPost(params);
+				System.out.println(isRegistered);
+				if (isRegistered == false) {
+					// TODO => 게시글 등록에 실패하였다는 메시지를 전달
+					System.out.println("등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!");
+				}
 			}
 		} catch (DataAccessException e) {
 			// TODO => 데이터베이스 처리 과정에 문제가 발생하였다는 메시지를 전달
@@ -87,7 +106,7 @@ public class PostController {
 		if (pnum == null) {
 			// TODO => 올바르지 않은 접근이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
-			return "/detail2";
+			return "/detail";
 		}
 
 		PostDTO post = postService.getPostDetail(pnum);
@@ -98,7 +117,7 @@ public class PostController {
 		model.addAttribute("post", post);
 
 		logger.info("detail.do");
-		return "/detail2";
+		return "/main";
 	}
 	
 }

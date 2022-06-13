@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/domain/PostDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/util/FileUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/util/FileUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/write.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostFileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/FileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/PostDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/PostDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/write.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +157,7 @@
       <workItem from="1654882328997" duration="1945000" />
       <workItem from="1654945944909" duration="600000" />
       <workItem from="1655081878997" duration="7255000" />
-      <workItem from="1655102316278" duration="1136000" />
+      <workItem from="1655102316278" duration="1336000" />
     </task>
     <servers />
   </component>

@@ -34,11 +34,12 @@ public class BoardController{
 
 	
 	@GetMapping(value = "/거래상세") public String openBoardListDetail(Model model) {
-//		int pnum = 2; PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
-//		System.out.println("거래상세 controller=> "+ postDTO);
-//		model.addAttribute("postDTO", postDTO);
-		return "detail";
-	}
+		/*
+		 * int pnum = 2; PostDTO postDTO = postService.getPost(pnum); //임의의 pnum
+		 * System.out.println("거래상세 controller=> "+ postDTO);
+		 * model.addAttribute("postDTO", postDTO);
+		 */
+	return "detail"; }
 	
 	
 	
