@@ -32,7 +32,7 @@
 			, 'NULL'
 			, #{title}
 			, #{content}
-			, '사진' <!-- #{photo} -->
+			, #{photo}
 			, #{link}
 			, #{price}
 			, #{postnum}
