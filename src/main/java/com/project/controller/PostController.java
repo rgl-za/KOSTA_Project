@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.domain.PostDTO;
@@ -62,21 +63,17 @@ public class PostController {
 	}
 	
 	// 게시글 상세내용 detail
-	@GetMapping(value = "/detail.do")
+	// 게시글 상세내용 detail
+	@RequestMapping(value = "/detail.do")
 	public String openPostDetail(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
-		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중..." );
-		if (pnum == null) {
-			// TODO => 올바르지 않은 접근이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
-			return "redirect:/post/main.do";
-		}
+		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 
-		PostDTO post = postService.getPostDetail(pnum);
-		if (post == null || "Y".equals(post.getDelete_yn())) {
-			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
-			return "redirect:/post/main.do";
-		}
-		model.addAttribute("post", post);
+		int pnum2 = 3;
+		//PostDTO post = postService.getPostDetail(pnum2);
+		PostDTO post = postService.getPost(pnum2);
 
+		model.addAttribute("postDTO", post);
+		
 		return "/detail";
 	}
 }
