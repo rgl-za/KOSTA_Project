@@ -177,6 +177,12 @@
 								class="text">시작하기!</span>
 							</a>
 
+<!--							<button type="button" class="btn btn-info btn-icon-split" th:action="@{/chat/room}">-->
+<!--								<span class="icon text-white-50"> <i-->
+<!--										class="fas fa-comment-dots"></i>-->
+<!--								</span> 채팅방 개설하기-->
+<!--							</button>-->
+
 							<button type="button" class="btn btn-info btn-icon-split"
 								data-toggle="modal" data-target=".bd-example-modal-xl">
 								<span class="icon text-white-50"> <i
@@ -252,167 +258,161 @@
 														.getElementById('map'), // 지도를 표시할 div
 												mapOption = {
 													center : new kakao.maps.LatLng(
-															midLat,
-															midLng),
-										
+															midLat, midLng),
+
 													//center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 													level : 10
 												// 지도의 확대 레벨
 												};
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-												var map = new kakao.maps.Map(
-														mapContainer, mapOption);
-												
-												
+												var map = new kakao.maps.Map(mapContainer, mapOption);
+
 												// 주소-좌표 변환 객체를 생성합니다
 												var geocoder = new kakao.maps.services.Geocoder();
-												
+
 												// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-												var markers=[];
-												
+												var markers = [];
+
+												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755'];
 												var nameList = ['jiwon1','jiwon2','jiwon3'];
 												
+												usersMarkers(addList,nameList);
+												
+												function usersMarkers(addressList, nameList){
+													//console.log("addressList"+addressList);
+													//let maps = [];
+													let position = [];
+													const geocoder = new kakao.maps.services.Geocoder();
+													const addressSearch = address => {
+													    return new Promise((resolve, reject) => {
+													    	//console.log("address"+address);
+													        geocoder.addressSearch(address, function(result, status) {
+													            if (status === kakao.maps.services.Status.OK) {
+													                resolve({result});
+													            } else {
+													                reject(status);
+													            }
+													        });
+													    });
+													};
+													
+													(async () => {
+													    try{
+													        for(const [i,addr] of addressList.entries()) {
+													       
+													            const data = await addressSearch(addr);
+													            coords = new kakao.maps.LatLng(data.result[0].y, data.result[0].x);
+													            
+													            //마커 생성
+													            addMarker(coords,nameList[i]);
+													            
+													            //주소 좌표와 생성한 지도 객체를 배열에 담아줍니다.
+													            position.push(coords);
+													            //maps.push(map);
+													            
+													            //map.relayout();
+													           
+													        }
+													    } catch(e) {
+													        console.error(e);
+													    }
+													})();
+												}//function usersMarkers
+												
 												// 마커를 생성하고 지도위에 표시하는 함수입니다
-												function addMarker(position) {
-												    
-												    // 마커를 생성합니다
-												    var marker = new kakao.maps.Marker({
-												        position: position
-												    });
-												    
-												    console.log("포지션"+position);
-
-												    // 마커가 지도 위에 표시되도록 설정합니다
-												    marker.setMap(map);
-												    
-												    // 생성된 마커를 배열에 추가합니다
-												    markers.push(marker);
-												}
-												// 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
-												function setMarkers(map) {
-												    for (var i = 0; i < markers.length; i++) {
-												  
-												        markers[i].setMap(map);
-												        
-												    }            
-												}
-												
-												var coords;
-												//callback 함수 정의
-												var callback = function(result, status) {
-													
-												    if (status === kakao.maps.services.Status.OK) {
-												    	
-												        console.log("call함수 내 "+user1Name);//jiwon1 * 3
-												        coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-												        console.log("------->"+coords+"<------");
-												        addMarker(coords); 
-												    	// 마커를 생성합니다 3 geocooder 
-												    	/*
-														var marker3 = new kakao.maps.Marker(
-																{
-																	position : coords,
-																	map: map
-																});
-														marker3.setTitle('geocooder');
-														*/
-														/*
-														// 인포윈도우로 장소에 대한 설명을 표시합니다
-												        var infowindow = new kakao.maps.InfoWindow({
-												            content: '<div style="width:150px;text-align:center;padding:6px 0;">user명의 위치</div>'
-												        });
-												        infowindow.open(map, marker3);
-												        */
-												        /*
-												     	// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-														var iwContent = '<div style="padding:5px;">'+user1Name+'의 위치</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-														iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-														// 인포윈도우를 생성합니다
-														var infowindow = new kakao.maps.InfoWindow(
-																{
-																	content : iwContent,
-																	removable : iwRemoveable
-																});
-
-														// 마커에 클릭이벤트를 등록합니다
-														kakao.maps.event
-																.addListener(
-																		marker3,
-																		'click',
-																		function() {
-																			// 마커 위에 인포윈도우를 표시합니다
-																			infowindow
-																					.open(
-																							map,
-																							marker3);
-																		});
-														*/
-												        
-												      //map.setCenter(coords);
-												    }
-												};
-											
+												function addMarker(position, title) {
 									
-												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755'];
-												
-												for(i in addList){
-													var user1Name = nameList[i]; 
+													// 마커를 생성합니다
+													var marker = new kakao.maps.Marker(
+															{
+																position : position
+															});
+
+													console.log("포지션" + position);
 													
-													console.log(user1Name);
-												
-													var coordsnew = geocoder.addressSearch(addList[i],callback);
-													
-													console.log("call함수 뒤"+user1Name);
-													
-													/*
 													// 인포윈도우로 장소에 대한 설명을 표시합니다
-											        var infowindow = new kakao.maps.InfoWindow({
-											            content: '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
-											        });
-											        infowindow.open(map, marker3);
-											        */
+										            var infowindow = new kakao.maps.InfoWindow({
+										                position: coords,
+										                content: '<div style="width:150px;text-align:center;padding:5px;font-size:12px;">'+title+'</div>'
+										            });
+										
+										            infowindow.open(map, marker);
+
+													// 마커가 지도 위에 표시되도록 설정합니다
+													marker.setMap(map);
 													
+													
+													//map.setCenter(coords);
+
+													// 생성된 마커를 배열에 추가합니다
+													//markers.push(marker);
+													
+												}//addMarker
+												
+												
+												// 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+												/*
+												function setMarkers(map) {
+													for (var i = 0; i < markers.length; i++) {
+
+														markers[i].setMap(map);
+
+													}
 												}
-												alert(coords);
+												*/
 												
-												// 주소로 좌표를 검색합니다
-												//geocoder.addressSearch('부산 강서구 가락대로 197-1 (송정동)', callback);
+							
+												/*
+												참고용, 나중에 지워두 O
+												for (i in addList) {
+													var user1Name = nameList[i];
+
+													console.log(user1Name);
+
+													var coordsnew = geocoder
+															.addressSearch(
+																	addList[i],
+																	callback);
+
+													console.log("call함수 뒤"
+															+ user1Name);
+
+													
+
+												}
+												*/
 												
-												//alert(coords);
 												
-												console.log("coords"+coords);
-												console.log("coordsnew"+coordsnew);
+												/**
+												여기부터 중간지점 마커 관련 코드
+												*/
+												
+									
 												// 마커가 표시될 위치입니다
 												var markerPosition = new kakao.maps.LatLng(
-														midLat,
-														midLng);
-												
-												
+														midLat, midLng);
+
 												// 마커를 생성합니다
 												var marker = new kakao.maps.Marker(
 														{
 															position : markerPosition
 														});
 												marker.setTitle('산술편균 중간지점');
-												
-												
+
 												// 마커가 지도 위에 표시되도록 설정합니다
 												marker.setMap(map);
-												
-												
 
 												// 인포윈도우로 장소에 대한 설명을 표시합니다
-												        var infowindow = new kakao.maps.InfoWindow({
-												            content: '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
-													       
+												var infowindow = new kakao.maps.InfoWindow(
+														{
+															content : '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
 
-												        });
+														});
+
+												infowindow.open(map, marker);
 												
-												
-												        infowindow.open(map, marker);
-												
+												map.setCenter(markerPosition);
 
 												// 지도를 표시하는 div 크기를 변경하는 함수입니다
 												function resizeMap() {
@@ -422,6 +422,7 @@
 													mapContainer.style.height = '650px';
 												}
 
+												
 												function relayout() {
 
 													// 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
@@ -429,7 +430,6 @@
 													// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
 													map.relayout();
 												}
-											
 											</script>
 										</div>
 										<div class="modal-footer">
@@ -442,40 +442,110 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
-
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<!-- row -->
 
 
 		<div class="row">
 			<div class="col-xl-12">
-				<div class="card-detail-chat shadow mb-4">
-					<div class="card-body">
-						<div class="col-6">
-							<label><b>채팅방</b></label>
-						</div>
-						<div>
-							<div id="msgArea" class="col-10"></div>
-							<div class="col-6">
-								<div class="input-group mb-3">
-									<input type="text" id="msg" class="form-control"
-										aria-label="Recipient's username"
-										aria-describedby="button-addon2">
-									<div class="input-group-append">
-										<button class="btn btn-outline-secondary" type="button"
-											id="button-send">전송</button>
+
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-12">
+						<div class="card shadow-0 border" style="background-color: #f0f2f5;" >
+							<div class="card-body p-4" style="overflow: scroll">
+<!--								<div class="form-outline mb-4">-->
+<!--									<input type="text" id="addANote" class="form-control" placeholder="Type comment..." />-->
+<!--									<label class="form-label" for="addANote">+ Add a note</label>-->
+<!--								</div>-->
+
+								<div class="card mb-4">
+									<div class="card-body">
+										<p>Type your note, and hit enter to add it</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">Martha</p>
+											</div>
+											<div class="d-flex flex-row align-items-center">
+												<p class="small text-muted mb-0">Upvote?</p>
+												<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+												<p class="small text-muted mb-0">3</p>
+											</div>
+										</div>
 									</div>
+								</div>
+
+								<div class="card mb-4">
+									<div class="card-body">
+										<p>내용내용ㅇ내용ㅇㅇㅇ</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">닉네임</p>
+											</div>
+											<div class="d-flex flex-row align-items-center">
+												<p class="small text-muted mb-0">2022-06-13 13:00:38</p>
+<!--												<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>-->
+<!--												<p class="small text-muted mb-0">4</p>-->
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card mb-4">
+									<div class="card-body">
+										<p>Type your note, and hit enter to add it</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">Mary Kate</p>
+											</div>
+											<div class="d-flex flex-row align-items-center text-primary">
+												<p class="small mb-0">Upvoted</p>
+												<i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+												<p class="small mb-0">2</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card">
+									<div class="card-body">
+										<p>Type your note, and hit enter to add it</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">Johny</p>
+											</div>
+											<div class="d-flex flex-row align-items-center">
+												<p class="small text-muted mb-0">Upvote?</p>
+												<i class="far fa-thumbs-up ms-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-outline mb-4" style="padding-top: 20px;">
+									<input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+									<label class="form-label" for="addANote">+ Add a note</label>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 
 		</div>
@@ -547,5 +617,6 @@
 
 		/*]]>*/
 	</script>
+
 </th:block>
 </html>
