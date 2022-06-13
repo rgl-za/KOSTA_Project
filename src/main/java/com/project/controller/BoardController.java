@@ -31,7 +31,7 @@ public class BoardController{
 		PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
 		System.out.println("거래상세 controller=> "+ postDTO);
 		model.addAttribute("postDTO", postDTO);
-		return "detail";
+		return "detail3";
 	}
 	
 	@GetMapping(value = "/거래내역")
@@ -62,4 +62,5 @@ public class BoardController{
 	public String openBoardListDeal(Model model) {
 		return "/index";
 	}
+
 }

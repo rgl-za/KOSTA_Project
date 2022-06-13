@@ -271,6 +271,8 @@
 												// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
 												var markers=[];
 												
+												var nameList = ['jiwon1','jiwon2','jiwon3'];
+												
 												// 마커를 생성하고 지도위에 표시하는 함수입니다
 												function addMarker(position) {
 												    
@@ -278,6 +280,8 @@
 												    var marker = new kakao.maps.Marker({
 												        position: position
 												    });
+												    
+												    console.log("포지션"+position);
 
 												    // 마커가 지도 위에 표시되도록 설정합니다
 												    marker.setMap(map);
@@ -288,10 +292,13 @@
 												// 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
 												function setMarkers(map) {
 												    for (var i = 0; i < markers.length; i++) {
+												  
 												        markers[i].setMap(map);
+												        
 												    }            
 												}
 												
+												var coords;
 												//callback 함수 정의
 												var callback = function(result, status) {
 													
@@ -299,6 +306,7 @@
 												    	
 												        console.log("call함수 내 "+user1Name);//jiwon1 * 3
 												        coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+												        console.log("------->"+coords+"<------");
 												        addMarker(coords); 
 												    	// 마커를 생성합니다 3 geocooder 
 												    	/*
@@ -348,7 +356,7 @@
 											
 									
 												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755'];
-												var nameList = ['jiwon1','jiwon2','jiwon3'];
+												
 												for(i in addList){
 													var user1Name = nameList[i]; 
 													
@@ -367,13 +375,15 @@
 											        */
 													
 												}
+												alert(coords);
 												
 												// 주소로 좌표를 검색합니다
 												//geocoder.addressSearch('부산 강서구 가락대로 197-1 (송정동)', callback);
 												
 												//alert(coords);
 												
-												
+												console.log("coords"+coords);
+												console.log("coordsnew"+coordsnew);
 												// 마커가 표시될 위치입니다
 												var markerPosition = new kakao.maps.LatLng(
 														midLat,
@@ -396,7 +406,11 @@
 												// 인포윈도우로 장소에 대한 설명을 표시합니다
 												        var infowindow = new kakao.maps.InfoWindow({
 												            content: '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
+													       
+
 												        });
+												
+												
 												        infowindow.open(map, marker);
 												
 
