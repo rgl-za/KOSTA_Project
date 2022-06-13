@@ -21,6 +21,9 @@ public class PostDTO {
 	// 게시글 내용
 	private String content;
 	
+	// 사진 업로드
+	private String photo;
+	
 	// 제품 링크
 	private String link;
 	
