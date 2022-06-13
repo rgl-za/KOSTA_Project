@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.domain.FileDTO;
+
 import com.project.domain.PostDTO;
 import com.project.service.PostService;
-import com.project.util.FileUtil;
+
+import ch.qos.logback.core.util.FileUtil;
 
 @Controller
 public class PostController {
