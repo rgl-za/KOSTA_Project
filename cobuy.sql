@@ -55,7 +55,7 @@ create table chat(
     chatDate date, -- 채팅 날짜 --
     
     constraint fk_cnum foreign key(cnum) references chatRoom(cnum) -- 채팅 고유 번호 fk 설정 --
-);
+);ㅂ
 
 DROP TABLE category;
 
