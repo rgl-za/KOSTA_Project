@@ -24,7 +24,7 @@ public interface PostMapper {
 	public List<PostDTO> selectPostList();
 
 	// 글 총 개수
-	public int selectPo stTotalCount();
+	public int selectPostTotalCount();
 	
 	public PostDTO getPost(int pnum);
 }

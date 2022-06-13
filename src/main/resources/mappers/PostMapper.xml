@@ -19,33 +19,34 @@
 		, uploaddate
 		, enddate
 		, delete_yn
+		, finaldate
 	</sql>
-	
+
 	<!-- 수정 필요 (문정현) -->
 	<insert id="insertPost" parameterType="PostDTO">
-			INSERT INTO post (
-			<include refid="postColumns" />
-			) VALUES (
-			seq_post_no.nextval
-			, 1
-			, 'NULL'
-			, #{title}
-			, #{content}
-			, #{photo}
-			, #{link}
-			, #{price}
-			, #{postnum}
-			, 'NULL'
-			, #{maxpeople}
-			, #{minpeople}
-			, 'NULL'
-			, SYSDATE 			
-			, #{enddate}
-			, 'N'
-			, #{finaldate}		
-			)
+		INSERT INTO post (
+		<include refid="postColumns" />
+		) VALUES (
+		seq_post_no.nextval
+		, 1
+		, 'NULL'
+		, #{title}
+		, #{content}
+		, #{photo}
+		, #{link}
+		, #{price}
+		, #{postnum}
+		, 'NULL'
+		, #{maxpeople}
+		, #{minpeople}
+		, 'NULL'
+		, SYSDATE
+		, #{enddate}
+		, 'N'
+		, #{finaldate}
+		)
 	</insert>
-	
+
 	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
@@ -63,6 +64,35 @@
 		pnum = #{pnum}
 	</update>
 
+	<!-- 포스트 상세내용 -->
+	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM
+		post
+		WHERE
+		delete_yn = 'N'
+		AND
+		pnum = #{pnum}
+	</select>
+
+	<!-- main -->
+	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY pnum DESC, uploaddate DESC
+	</select>
+
+	<select id="selectPostTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE delete_yn = 'N'
+	</select>
+
 
 	<!-- 남혁이형 부분 -->
 	<update id="deletePost" parameterType="long">
@@ -73,9 +103,6 @@
 		WHERE
 		pnum = #{pnum}
 	</update>
-	
-
-
 
 	<select id="getPost" parameterType="int" resultType="PostDTO">
 		SELECT
