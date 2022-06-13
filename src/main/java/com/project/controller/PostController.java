@@ -77,6 +77,6 @@ public class PostController {
 		}
 		model.addAttribute("post", post);
 
-		return "detail";
+		return "/detail";
 	}
 }
