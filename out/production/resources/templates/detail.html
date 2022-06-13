@@ -177,6 +177,12 @@
 								class="text">시작하기!</span>
 							</a>
 
+<!--							<button type="button" class="btn btn-info btn-icon-split" th:action="@{/chat/room}">-->
+<!--								<span class="icon text-white-50"> <i-->
+<!--										class="fas fa-comment-dots"></i>-->
+<!--								</span> 채팅방 개설하기-->
+<!--							</button>-->
+
 							<button type="button" class="btn btn-info btn-icon-split"
 								data-toggle="modal" data-target=".bd-example-modal-xl">
 								<span class="icon text-white-50"> <i
@@ -203,143 +209,166 @@
 											<div id="map" style="width: 100%; height: 350px;"></div>
 
 											<script type="text/javascript"
-												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c"></script>
+												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c&libraries=services"></script>
+											
+											<script>
+											
+											/*
+											점이 여러개 일 때
+											*/
+											var latLngList = [ [37.655804, 127.024276] ,
+												[35.226257, 129.164313], [37.838326, 128.813553] ];
+											
+											//점이 3개라면 => 산술평균
+											var sumLat=0.0;
+											var sumLng=0.0;
+											for(i in latLngList){
+												sumLat += latLngList[i][0];
+												sumLng += latLngList[i][1];
+												
+											}
+											var midLat = sumLat/latLngList.length;
+											var midLng = sumLng/latLngList.length;
+											
+											//alert("midLat"+midLat);
+											//alert("midLng"+midLng);
+											var minLatLng = function(lat1, lng1, lat2, lng2) {
+												this.lat1 = lat1;
+												this.lng1 = lng1;
+												this.lat2 = lat2;
+												this.lng2 = lng2;
+												//this.minus = lat1 + ( (lat2-lat1)/2 );
+												this.midLat = this.lat1 + (this.lat2 - this.lat1)/ 2;
+												this.midLng = this.lng1+ (this.lng2 - this.lng1)/ 2;
+
+												var LatLng = function(lat,lng) {
+													this.lat = lat;
+													this.lng = lng;
+													this.getLat = function() {
+														return this.lat;
+													}
+												}
+
+											}
+											</script>
 
 											<script>
-												/*
-												점이 2 개일 때 
-												*/
-												var minLatLng = function(lat1, lng1, lat2, lng2) {
-													this.lat1 = lat1;
-													this.lng1 = lng1;
-													this.lat2 = lat2;
-													this.lng2 = lng2;
-													//this.minus = lat1 + ( (lat2-lat1)/2 );
-													this.midLat = this.lat1 + (this.lat2 - this.lat1)/ 2;
-													this.midLng = this.lng1+ (this.lng2 - this.lng1)/ 2;
-
-													var LatLng = function(lat,lng) {
-														this.lat = lat;
-														this.lng = lng;
-														this.getLat = function() {
-															return this.lat;
-														}
-													}
-
-												}
-												/*
-												점이 여러개 일 때
-												*/
-												var latLngList = [ [37.655804, 127.024276] ,
-													[35.226257, 129.164313], [37.838326, 128.813553] ];
-												
-												//점이 3개라면 => 산술평균
-												var sumLat=0.0;
-												var sumLng=0.0;
-												for(i in latLngList){
-													sumLat += latLngList[i][0];
-													sumLng += latLngList[i][1];
-													
-												}
-												var midLat = sumLat/latLngList.length;
-												var midLng = sumLng/latLngList.length;
-												
-												alert("midLat"+midLat);
-												alert("midLng"+midLng);
-												var minLatLng = function(lat1, lng1, lat2, lng2) {
-													this.lat1 = lat1;
-													this.lng1 = lng1;
-													this.lat2 = lat2;
-													this.lng2 = lng2;
-													//this.minus = lat1 + ( (lat2-lat1)/2 );
-													this.midLat = this.lat1 + (this.lat2 - this.lat1)/ 2;
-													this.midLng = this.lng1+ (this.lng2 - this.lng1)/ 2;
-
-													var LatLng = function(lat,lng) {
-														this.lat = lat;
-														this.lng = lng;
-														this.getLat = function() {
-															return this.lat;
-														}
-													}
-
-												}
-
-												//var latlng = new latLng(33.450701,126.570667);
-												//alert(latlng.lat);//값 확인
-												var latlngWow = new minLatLng(
-														37.655804, 127.024276,
-														35.226257, 129.164313);
-												//alert(latlngWow.midLat);//ok
-												//alert(latlngWow.midLng);
-												//alert(latlngWow.minus);//ok
-
+											
 												var mapContainer = document
 														.getElementById('map'), // 지도를 표시할 div
 												mapOption = {
 													center : new kakao.maps.LatLng(
-															latlngWow.midLat,
-															latlngWow.midLng),
-													//center: new kakao.maps.LatLng(latlng.lat, latlng.lng),
+															midLat,
+															midLng),
+										
 													//center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-													level : 9
+													level : 10
 												// 지도의 확대 레벨
 												};
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 												var map = new kakao.maps.Map(
 														mapContainer, mapOption);
+												
+												
+												// 주소-좌표 변환 객체를 생성합니다
+												var geocoder = new kakao.maps.services.Geocoder();
+												
+												//callback 함수 정의
+												var callback = function(result, status) {
+												    if (status === kakao.maps.services.Status.OK) {
+												        console.log(result);
+												        coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+												    	// 마커를 생성합니다 3 geocooder 
+														var marker3 = new kakao.maps.Marker(
+																{
+																	position : coords,
+																	map: map
+																});
+														marker3.setTitle('geocooder');
+														/*
+														// 인포윈도우로 장소에 대한 설명을 표시합니다
+												        var infowindow = new kakao.maps.InfoWindow({
+												            content: '<div style="width:150px;text-align:center;padding:6px 0;">user명의 위치</div>'
+												        });
+												        infowindow.open(map, marker3);
+												        */
+												        
+												     	// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+														var iwContent = '<div style="padding:5px;">user명의 위치</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+														iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+														// 인포윈도우를 생성합니다
+														var infowindow = new kakao.maps.InfoWindow(
+																{
+																	content : iwContent,
+																	removable : iwRemoveable
+																});
+
+														// 마커에 클릭이벤트를 등록합니다
+														kakao.maps.event
+																.addListener(
+																		marker3,
+																		'click',
+																		function() {
+																			// 마커 위에 인포윈도우를 표시합니다
+																			infowindow
+																					.open(
+																							map,
+																							marker3);
+																		});
+												        
+												      //map.setCenter(coords);
+												    }
+												};
+									
+												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755'];
+
+												for(i in addList){
+													
+													geocoder.addressSearch(addList[i], callback);
+												}
+												var user1Add = '서울특별시 도봉구 해등로';
+												var user1Name = 'jiwon1';
+												
+												var user2Add = '서울특별시 도봉구 해등로';
+												var user2Name = 'jiwon2';
+												
+												var user3Add = '서울특별시 도봉구 해등로';
+												var user3Name = 'jiwon3';
+												
+												
+												// 주소로 좌표를 검색합니다
+												//geocoder.addressSearch('부산 강서구 가락대로 197-1 (송정동)', callback);
+												
+												//alert(coords);
+												
+												
 												// 마커가 표시될 위치입니다
 												var markerPosition = new kakao.maps.LatLng(
-														latlngWow.midLat,
-														latlngWow.midLng);
-												
-												// 마커가 표시될 위치입니다2
-												var markerPosition2 = new kakao.maps.LatLng(
 														midLat,
 														midLng);
+												
 												
 												// 마커를 생성합니다
 												var marker = new kakao.maps.Marker(
 														{
 															position : markerPosition
 														});
-												marker.setTitle('중간지점');
-												
-												// 마커를 생성합니다 2
-												var marker2 = new kakao.maps.Marker(
-														{
-															position : markerPosition2
-														});
 												marker.setTitle('산술편균 중간지점');
-												// 마커가 지도 위에 표시되도록 설정합니다
 												
+												
+												// 마커가 지도 위에 표시되도록 설정합니다
 												marker.setMap(map);
-												marker2.setMap(map);
+												
+												
 
-												// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-												var iwContent = '<div style="padding:5px;">중간지점입니다!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-												iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-												// 인포윈도우를 생성합니다
-												var infowindow = new kakao.maps.InfoWindow(
-														{
-															content : iwContent,
-															removable : iwRemoveable
-														});
-
-												// 마커에 클릭이벤트를 등록합니다
-												kakao.maps.event
-														.addListener(
-																marker,
-																'click',
-																function() {
-																	// 마커 위에 인포윈도우를 표시합니다
-																	infowindow
-																			.open(
-																					map,
-																					marker);
-																});
+												// 인포윈도우로 장소에 대한 설명을 표시합니다
+												        var infowindow = new kakao.maps.InfoWindow({
+												            content: '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
+												        });
+												        infowindow.open(map, marker);
+												
 
 												// 지도를 표시하는 div 크기를 변경하는 함수입니다
 												function resizeMap() {
@@ -356,6 +385,7 @@
 													// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
 													map.relayout();
 												}
+											
 											</script>
 										</div>
 										<div class="modal-footer">
@@ -368,40 +398,110 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
-
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<!-- row -->
 
 
 		<div class="row">
 			<div class="col-xl-12">
-				<div class="card-detail-chat shadow mb-4">
-					<div class="card-body">
-						<div class="col-6">
-							<label><b>채팅방</b></label>
-						</div>
-						<div>
-							<div id="msgArea" class="col-10"></div>
-							<div class="col-6">
-								<div class="input-group mb-3">
-									<input type="text" id="msg" class="form-control"
-										aria-label="Recipient's username"
-										aria-describedby="button-addon2">
-									<div class="input-group-append">
-										<button class="btn btn-outline-secondary" type="button"
-											id="button-send">전송</button>
+
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-12">
+						<div class="card shadow-0 border" style="background-color: #f0f2f5;" >
+							<div class="card-body p-4" style="overflow: scroll">
+<!--								<div class="form-outline mb-4">-->
+<!--									<input type="text" id="addANote" class="form-control" placeholder="Type comment..." />-->
+<!--									<label class="form-label" for="addANote">+ Add a note</label>-->
+<!--								</div>-->
+
+								<div class="card mb-4">
+									<div class="card-body">
+										<p>Type your note, and hit enter to add it</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">Martha</p>
+											</div>
+											<div class="d-flex flex-row align-items-center">
+												<p class="small text-muted mb-0">Upvote?</p>
+												<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+												<p class="small text-muted mb-0">3</p>
+											</div>
+										</div>
 									</div>
+								</div>
+
+								<div class="card mb-4">
+									<div class="card-body">
+										<p>내용내용ㅇ내용ㅇㅇㅇ</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">닉네임</p>
+											</div>
+											<div class="d-flex flex-row align-items-center">
+												<p class="small text-muted mb-0">2022-06-13 13:00:38</p>
+<!--												<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>-->
+<!--												<p class="small text-muted mb-0">4</p>-->
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card mb-4">
+									<div class="card-body">
+										<p>Type your note, and hit enter to add it</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">Mary Kate</p>
+											</div>
+											<div class="d-flex flex-row align-items-center text-primary">
+												<p class="small mb-0">Upvoted</p>
+												<i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+												<p class="small mb-0">2</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card">
+									<div class="card-body">
+										<p>Type your note, and hit enter to add it</p>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+													 height="25" />
+												<p class="small mb-0 ms-2">Johny</p>
+											</div>
+											<div class="d-flex flex-row align-items-center">
+												<p class="small text-muted mb-0">Upvote?</p>
+												<i class="far fa-thumbs-up ms-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-outline mb-4" style="padding-top: 20px;">
+									<input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+									<label class="form-label" for="addANote">+ Add a note</label>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 
 		</div>
@@ -473,5 +573,6 @@
 
 		/*]]>*/
 	</script>
+
 </th:block>
 </html>
