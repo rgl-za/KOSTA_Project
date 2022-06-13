@@ -19,8 +19,6 @@ import com.project.domain.PostDTO;
 import com.project.service.PostService;
 import com.project.util.FileUtil;
 
-
-
 @Controller
 public class PostController {
 
@@ -105,29 +103,20 @@ public class PostController {
 	@GetMapping(value = "/detail.do")
 	public String openPostDetail(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
-//		if (pnum == null) {
-//			
-//			return "detail";
-//			// TODO => 올바르지 않은 접근이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
-////			return "redirect:/main.do";
-//			
-//		}
 		long pnumex = 1;
 		PostDTO postDTO = postService.getPostDetail(pnumex);//임의의 pnum
-		
+
 		model.addAttribute("postDTO", postDTO);
 		//PostDTO post = postService.getPostDetail(pnum);
-		
-		
+
+
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
 //		}
 		//model.addAttribute("post", post);
-
 		//logger.info("detail.do");
 		return "/detail";
-		//return "/main";
 	}
 	
 }

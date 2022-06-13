@@ -258,117 +258,161 @@
 														.getElementById('map'), // 지도를 표시할 div
 												mapOption = {
 													center : new kakao.maps.LatLng(
-															midLat,
-															midLng),
-										
+															midLat, midLng),
+
 													//center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 													level : 10
 												// 지도의 확대 레벨
 												};
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-												var map = new kakao.maps.Map(
-														mapContainer, mapOption);
-												
-												
+												var map = new kakao.maps.Map(mapContainer, mapOption);
+
 												// 주소-좌표 변환 객체를 생성합니다
 												var geocoder = new kakao.maps.services.Geocoder();
-												
-												//callback 함수 정의
-												var callback = function(result, status) {
-												    if (status === kakao.maps.services.Status.OK) {
-												        console.log(result);
-												        coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-												    	// 마커를 생성합니다 3 geocooder 
-														var marker3 = new kakao.maps.Marker(
-																{
-																	position : coords,
-																	map: map
-																});
-														marker3.setTitle('geocooder');
-														/*
-														// 인포윈도우로 장소에 대한 설명을 표시합니다
-												        var infowindow = new kakao.maps.InfoWindow({
-												            content: '<div style="width:150px;text-align:center;padding:6px 0;">user명의 위치</div>'
-												        });
-												        infowindow.open(map, marker3);
-												        */
-												        
-												     	// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-														var iwContent = '<div style="padding:5px;">user명의 위치</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-														iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
-														// 인포윈도우를 생성합니다
-														var infowindow = new kakao.maps.InfoWindow(
-																{
-																	content : iwContent,
-																	removable : iwRemoveable
-																});
+												// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+												var markers = [];
 
-														// 마커에 클릭이벤트를 등록합니다
-														kakao.maps.event
-																.addListener(
-																		marker3,
-																		'click',
-																		function() {
-																			// 마커 위에 인포윈도우를 표시합니다
-																			infowindow
-																					.open(
-																							map,
-																							marker3);
-																		});
-												        
-												      //map.setCenter(coords);
-												    }
-												};
-									
 												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755'];
-
-												for(i in addList){
+												var nameList = ['jiwon1','jiwon2','jiwon3'];
+												
+												usersMarkers(addList,nameList);
+												
+												function usersMarkers(addressList, nameList){
+													//console.log("addressList"+addressList);
+													//let maps = [];
+													let position = [];
+													const geocoder = new kakao.maps.services.Geocoder();
+													const addressSearch = address => {
+													    return new Promise((resolve, reject) => {
+													    	//console.log("address"+address);
+													        geocoder.addressSearch(address, function(result, status) {
+													            if (status === kakao.maps.services.Status.OK) {
+													                resolve({result});
+													            } else {
+													                reject(status);
+													            }
+													        });
+													    });
+													};
 													
-													geocoder.addressSearch(addList[i], callback);
+													(async () => {
+													    try{
+													        for(const [i,addr] of addressList.entries()) {
+													       
+													            const data = await addressSearch(addr);
+													            coords = new kakao.maps.LatLng(data.result[0].y, data.result[0].x);
+													            
+													            //마커 생성
+													            addMarker(coords,nameList[i]);
+													            
+													            //주소 좌표와 생성한 지도 객체를 배열에 담아줍니다.
+													            position.push(coords);
+													            //maps.push(map);
+													            
+													            //map.relayout();
+													           
+													        }
+													    } catch(e) {
+													        console.error(e);
+													    }
+													})();
+												}//function usersMarkers
+												
+												// 마커를 생성하고 지도위에 표시하는 함수입니다
+												function addMarker(position, title) {
+									
+													// 마커를 생성합니다
+													var marker = new kakao.maps.Marker(
+															{
+																position : position
+															});
+
+													console.log("포지션" + position);
+													
+													// 인포윈도우로 장소에 대한 설명을 표시합니다
+										            var infowindow = new kakao.maps.InfoWindow({
+										                position: coords,
+										                content: '<div style="width:150px;text-align:center;padding:5px;font-size:12px;">'+title+'</div>'
+										            });
+										
+										            infowindow.open(map, marker);
+
+													// 마커가 지도 위에 표시되도록 설정합니다
+													marker.setMap(map);
+													
+													
+													//map.setCenter(coords);
+
+													// 생성된 마커를 배열에 추가합니다
+													//markers.push(marker);
+													
+												}//addMarker
+												
+												
+												// 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+												/*
+												function setMarkers(map) {
+													for (var i = 0; i < markers.length; i++) {
+
+														markers[i].setMap(map);
+
+													}
 												}
-												var user1Add = '서울특별시 도봉구 해등로';
-												var user1Name = 'jiwon1';
+												*/
 												
-												var user2Add = '서울특별시 도봉구 해등로';
-												var user2Name = 'jiwon2';
+							
+												/*
+												참고용, 나중에 지워두 O
+												for (i in addList) {
+													var user1Name = nameList[i];
+
+													console.log(user1Name);
+
+													var coordsnew = geocoder
+															.addressSearch(
+																	addList[i],
+																	callback);
+
+													console.log("call함수 뒤"
+															+ user1Name);
+
+													
+
+												}
+												*/
 												
-												var user3Add = '서울특별시 도봉구 해등로';
-												var user3Name = 'jiwon3';
 												
+												/**
+												여기부터 중간지점 마커 관련 코드
+												*/
 												
-												// 주소로 좌표를 검색합니다
-												//geocoder.addressSearch('부산 강서구 가락대로 197-1 (송정동)', callback);
-												
-												//alert(coords);
-												
-												
+									
 												// 마커가 표시될 위치입니다
 												var markerPosition = new kakao.maps.LatLng(
-														midLat,
-														midLng);
-												
-												
+														midLat, midLng);
+
 												// 마커를 생성합니다
 												var marker = new kakao.maps.Marker(
 														{
 															position : markerPosition
 														});
 												marker.setTitle('산술편균 중간지점');
-												
-												
+
 												// 마커가 지도 위에 표시되도록 설정합니다
 												marker.setMap(map);
-												
-												
 
 												// 인포윈도우로 장소에 대한 설명을 표시합니다
-												        var infowindow = new kakao.maps.InfoWindow({
-												            content: '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
-												        });
-												        infowindow.open(map, marker);
+												var infowindow = new kakao.maps.InfoWindow(
+														{
+															content : '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
+
+														});
+
+												infowindow.open(map, marker);
 												
+												map.setCenter(markerPosition);
 
 												// 지도를 표시하는 div 크기를 변경하는 함수입니다
 												function resizeMap() {
@@ -378,6 +422,7 @@
 													mapContainer.style.height = '650px';
 												}
 
+												
 												function relayout() {
 
 													// 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
@@ -385,7 +430,6 @@
 													// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
 													map.relayout();
 												}
-											
 											</script>
 										</div>
 										<div class="modal-footer">
