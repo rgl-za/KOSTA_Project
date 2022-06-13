@@ -29,4 +29,5 @@ public interface PostService {
 	 * //게시글 1개 불러오기(detail.html에서 사용) public PostDTO getPost(int pnum);
 	 */
 
+
 }
