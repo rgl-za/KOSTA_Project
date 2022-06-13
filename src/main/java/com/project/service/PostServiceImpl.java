@@ -34,8 +34,7 @@ public class PostServiceImpl implements PostService {
 	public PostDTO getPostDetail(Long pnum) {
 		return postMapper.selectPostDetail(pnum);
 	}
-	
-	// 게시글 삭제
+
 	@Override
 	public boolean deletePost(Long pnum) {
 		int queryResult = 0;
@@ -64,7 +63,7 @@ public class PostServiceImpl implements PostService {
 
 	/*
 	 * @Override public PostDTO getPost(int pnum) { PostDTO postDTO =
-	 * postMapper.getPost(pnum); // TODO Auto-generated method stub return postDTO;
+	 * postMapper.getPost(pnum);
 	 * }
 	 */
 

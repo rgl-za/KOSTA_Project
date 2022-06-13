@@ -106,7 +106,7 @@ public class PostController {
 		if (pnum == null) {
 			// TODO => 올바르지 않은 접근이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
-			return "/detail";
+			return "detail";
 		}
 
 		PostDTO post = postService.getPostDetail(pnum);
