@@ -280,6 +280,7 @@
 												
 												usersMarkers(addList,nameList);
 												
+												//users 마커 : 주소 -> 위경도
 												function usersMarkers(addressList, nameList){
 													//console.log("addressList"+addressList);
 													//let maps = [];
@@ -305,6 +306,8 @@
 													            const data = await addressSearch(addr);
 													            coords = new kakao.maps.LatLng(data.result[0].y, data.result[0].x);
 													            
+													            //getAddressByLatLng(coords);
+													            
 													            //마커 생성
 													            addMarker(coords,nameList[i]);
 													            
@@ -320,6 +323,38 @@
 													    }
 													})();
 												}//function usersMarkers
+												
+												/*
+												중심으로 선정된 위도 경도로 => 도로명 주소
+												*/
+												function getAddressByLatLng(coord){
+													
+													const coord2Address = coord => {
+													    return new Promise((resolve, reject) => {
+													        geocoder.coord2Address(coord.getLng(), coord.getLat(), function(result, status) {
+													            if (status === kakao.maps.services.Status.OK) {
+													                resolve({result});
+													            } else {
+													                reject(status);
+													            }
+													        });
+													    });
+													};
+													
+													(async () => {
+													    try{
+													    	const data = await coord2Address(coord);
+													   
+													    	//주소정보로 maker생성
+															centerMarker(coord,data.result[0].address.address_name);
+													    	
+													    } catch(e) {
+													        console.error(e);
+													    }
+													})();
+												
+												}//getAddressByLatLng
+												
 												
 												// 마커를 생성하고 지도위에 표시하는 함수입니다
 												function addMarker(position, title) {
@@ -377,61 +412,41 @@
 													}
 												}
 												*/
-												
-							
-												/*
-												참고용, 나중에 지워두 O
-												for (i in addList) {
-													var user1Name = nameList[i];
-
-													console.log(user1Name);
-
-													var coordsnew = geocoder
-															.addressSearch(
-																	addList[i],
-																	callback);
-
-													console.log("call함수 뒤"
-															+ user1Name);
-
+											
+												//중심마커를 생성하고 인포윈도우를 설정하는 함수입니다
+												function centerMarker(markerPosition,content){
 													
+													console.log("centerMarker호출");
+													// 마커를 생성합니다
+													var marker = new kakao.maps.Marker(
+															{
+																position : markerPosition
+															});
+													marker.setTitle('산술평균 중간지점');
+													
+													// 마커가 지도 위에 표시되도록 설정합니다
+													marker.setMap(map);
 
+													// 인포윈도우로 장소에 대한 설명을 표시합니다
+													
+													var infowindow = new kakao.maps.InfoWindow(
+															{
+																disableAutoPan: true,
+																content : '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">'+content+'</div>'
+
+															});
+
+													infowindow.open(map, marker);
 												}
-												*/
 												
 												
-												/**
-												여기부터 중간지점 마커 관련 코드
-												*/
-												
-									
+
 												// 마커가 표시될 위치입니다
 												var markerPosition = new kakao.maps.LatLng(
 														midLat, midLng);
-
-												// 마커를 생성합니다
-												var marker = new kakao.maps.Marker(
-														{
-															position : markerPosition
-														});
-												marker.setTitle('산술편균 중간지점');
 												
-												
-
-												// 마커가 지도 위에 표시되도록 설정합니다
-												marker.setMap(map);
-
-												// 인포윈도우로 장소에 대한 설명을 표시합니다
-												
-												var infowindow = new kakao.maps.InfoWindow(
-														{
-															disableAutoPan: true,
-															content : '<div style="width:100px;height:20px;text-align:center;padding:6px 0;">중간지점</div>'
-
-														});
-
-												infowindow.open(map, marker);
-												
+												//중심 마커 생성 => getAddressByLatLng 호출
+												getAddressByLatLng(markerPosition);
 												
 												
 												// 지도를 표시하는 div 크기를 변경하는 함수입니다
@@ -450,8 +465,8 @@
 													map.relayout();
 												}
 												
-												console.log(">>>infowindows"+infowindows[0]);
-												console.log(">>>markers"+markers[0]);
+												//console.log(">>>infowindows"+infowindows[0]);undefined
+												//console.log(">>>markers"+markers[0]);
 											</script>
 										</div>
 										<div class="modal-footer">
