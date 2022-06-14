@@ -1,64 +1,110 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
+
 <th:block layout:fragment="title">
 	<title>write page</title>
 </th:block>
 
 <th:block layout:fragment="content">
 	<div class="container mt-5">
-	<!-- 폼 시작 -->
-	<form class="form-horizontal" th:action="@{/com.project/register.do}"
-			th:object="${board}" method="post"
-			onsubmit="return registerBoard(this)">
-			<input class="form-control" type="text" th:field="*{title}" 
-			placeholder="제품명" aria-label="Enter search term..." 
-			aria-describedby="button" />
-		<div class="row">
-			<div class="col-lg-7">
-				<!-- Post content-->
-				<article>
-					<!-- Post header-->
-					<header class="mb-4">
-						<!-- Post title-->
-
-					</header>
-					<!-- Preview image figure-->
-					<figure class="mb-4">
-						<img class="img-fluid rounded" src="https://dummyimage.com/900x650/ced4da/6c757d.jpg" alt="..." />
-					</figure>
+		<!-- 폼 시작 -->
+		<form class="form-horizontal" th:action="@{/register.do}" th:object="${post}" method="post" enctype="multipart/form-data">
+			
+			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
+			<input type="hidden" th:if="*{pnum != null and pnum > 0}" th:field="*{pnum}" />
+			
+			<div class="row">
+				<div class="col-lg-7">
 					<!-- Post content-->
+					<article>
+						<!-- Post header-->
+						<header class="mb-4">
+							<!-- Post title-->
 
-				</article>
-				<!-- Comments section-->
-			</div>
-			<!-- Side widgets-->
-			<div class="col-lg-5">
+						</header>
+						<!-- Preview image figure-->
+						<!--/* 저장된 파일이 없는 파일 영역 */-->
+						<div data-name="fileDiv" class="form-group filebox bs3-primary">
+							<label for="file_0" class="col-sm-2 control-label">파일1</label>
+							<div class="col-sm-10">
+								<input type="text" class="upload-name" value="파일 찾기" readonly />
+								<label for="file_0" class="control-label">찾아보기</label>
+								<input type="file" name="file" id="file_0" class="upload-hidden" />
+							</div>
+						</div>						
+						<!-- Post content-->
+
+					</article>
+					<!-- Comments section-->
+				</div>
+				<!-- Side widgets-->
+				<div class="col-lg-5">
 					<figure class="mb-4">
+						<!-- 인서트 쿼리문 순서대로 넣었습니다. 후에 수정 필요 -->
 						<div class="input-group" style="padding-top: 25px; padding-bottom: 10px">
 							<select class="custom-select">
-								<option value="">카테고리 선택</option>
+								<option value="">== 카테고리 선택 ==</option>
 								<option value="">1</option>
-								<option value="">2</option>
-								<option value="">3</option>
 							</select>
+							<!--<input type="text" th:field="*{catnum}" class="form-control" placeholder="카테고리"
+								aria-label="Enter search term..." aria-describedby="button-search" />-->
+						</div>
+
+						<div class="input-group" style="padding-top: 25px; padding-bottom: 10px">
+							<input type="text" th:field="*{title}" class="form-control" placeholder="제목"
+								aria-label="Enter search term..." aria-describedby="button" />
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="주소" aria-label="Enter search term..." aria-describedby="button-search" />
-							<button class="btn btn-primary" id="button-zipcode" type="button" style="padding-right: 10px">주소 검색</button>
-							<input class="form-control" type="text" placeholder="상세주소" aria-label="Enter search term..." aria-describedby="button-search" />
+							<input type="text" th:field="*{content}" class="form-control" placeholder="글 내용"
+								aria-label="Enter search term..." aria-describedby="button-search" />
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="제품 원가" aria-label="Enter search term..." aria-describedby="button-search" />
+							<input type="text" th:field="*{link}" class="form-control" placeholder="제품 링크"
+								aria-label="Enter search term..." aria-describedby="button-search" />
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="최소 인원" aria-label="Enter search term..." aria-describedby="button-search" />
-							<input class="form-control" type="text" placeholder="최대 인원" aria-label="Enter search term..." aria-describedby="button-search" />
+							<input type="text" th:field="*{price}" class="form-control" placeholder="제품 원가"
+								aria-label="Enter search term..." aria-describedby="button-search" />
 						</div>
+
+						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
+							<input type="text" th:field="*{postnum}" class="form-control" placeholder="우편 번호"
+								aria-label="Enter search term..." aria-describedby="button-search" />
+						</div>
+
+
+						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
+							<input type="text" th:field="*{minpeople}" class="form-control" placeholder="최소 인원"
+								aria-label="Enter search term..." aria-describedby="button-search" />
+							<input type="text" th:field="*{maxpeople}" class="form-control" placeholder="최대 인원"
+								aria-label="Enter search term..." />
+						</div>
+
+						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
+						<p>날짜 형식으로 써주세요! 날짜 형식이 아니면 오류가 떠요!</p>
+							<input type="text" th:field="*{enddate}" class="form-control" placeholder="enddate"
+								aria-label="Enter search term..." aria-describedby="button-search" />
+						</div>
+
+						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
+							<input type="text" th:field="*{finaldate}" class="form-control" placeholder="finaldate"
+								aria-label="Enter search term..." aria-describedby="button-search" />
+						</div>
+
+
+						<!--<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
+							<input type="text" th:field="*{address}" class="form-control" placeholder="주소" />
+
+							<button class="btn btn-primary" id="button-zipcode" type="button"
+								style="padding-right: 10px">상세 주소 검색</button>
+
+							<input class="form-control" type="text" placeholder="상세주소" aria-label="Enter search term..."
+								aria-describedby="button-search" />
+						</div>-->
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
 							<div class="col-sm-6">
@@ -75,34 +121,33 @@
 							</div>
 						</div>
 
-						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="제품 사진" aria-label="Enter search term..." aria-describedby="button-search" />
-							<button class="btn btn-primary" id="button-search1" type="button">파일 업로드</button>
+						<div class="btn_wrap text-center">
+							<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
+							<button type="submit" class="btn btn-primary waves-effect waves-light">저장하기</button>
 						</div>
-
-						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="text" placeholder="제품 링크" aria-label="Enter search term..." aria-describedby="button-search" />
-						</div>
-
-						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
-							<input class="form-control" type="datetime-local" placeholder="모집 기간" aria-label="Enter search term..." aria-describedby="button-search" />
-						</div>
-
 					</figure>
-			</div>
-		</div>
-		<section class="mb-4">
-			<textarea class="form-control" placeholder="공동구매 거래 글 내용" rows="10" type="text"></textarea>
-		</section>
-
-			<div class="container my-auto">
-				<div class="copyright text-center my-auto">
-					<button class="btn btn-primary" id="button-save" type="button">저장하기</button>
-					<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
 				</div>
 			</div>
 		</form>
 	</div>
-
 </th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		function registerPost(form) {
+
+			var result = (isValid(form.title, "제목", null, null)
+				&& isValid(form.content, "글 내용", null, null)
+				&& isValid(form.photo, "제품 사진", null, null));
+
+			if (result == false) {
+				return false;
+			}
+		}
+
+		/*]]>*/
+	</script>
+</th:block>
+
 </html>

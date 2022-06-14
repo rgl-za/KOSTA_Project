@@ -17,7 +17,7 @@ public interface PostMapper {
 	// 수정
 	public int updatePost(PostDTO params);
 
-	//삭제
+	//삭제-------------------------
 	public int deletePost(Long pnum);
 
 	// main에 보낸다
@@ -25,4 +25,6 @@ public interface PostMapper {
 
 	// 글 총 개수
 	public int selectPostTotalCount();
+	
+	public PostDTO getPost(int pnum);
 }

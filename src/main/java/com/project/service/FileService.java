@@ -1,5 +1,5 @@
 package com.project.service;
 
-public interface ChatService {
+public interface FileService {
 
 }

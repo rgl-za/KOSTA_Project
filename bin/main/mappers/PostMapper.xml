@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.mapper.PostMapper">
+<mapper namespace="com.postMapper.Project.mapper">
 
 	<sql id="postColumns">
 		pnum
@@ -19,11 +19,11 @@
 		, uploaddate
 		, enddate
 		, delete_yn
-		, finaldate
 	</sql>
 	
 	<!-- 수정 필요 (문정현) -->
 	<insert id="insertPost" parameterType="PostDTO">
+<<<<<<< HEAD
 		INSERT INTO post (
 		<include refid="postColumns" />
 		) VALUES (
@@ -43,8 +43,30 @@
 		, sysdate 			<!-- #{uploaddate} -->
 		, #{enddate}
 		, #{delete_yn}
-		, #{finaldate}
 		)
+=======
+			INSERT INTO post (
+			<include refid="postColumns" />
+			) VALUES (
+			seq_post_no.nextval
+			, 1
+			, 'NULL'
+			, #{title}
+			, #{content}
+			, #{photo}
+			, #{link}
+			, #{price}
+			, #{postnum}
+			, 'NULL'
+			, #{maxpeople}
+			, #{minpeople}
+			, 'NULL'
+			, SYSDATE 			
+			, #{enddate}
+			, 'N'
+			, #{finaldate}		
+			)
+>>>>>>> main
 	</insert>
 	
 	<!-- 수정 필요 (문정현)-->
@@ -63,34 +85,6 @@
 		WHERE
 		pnum = #{pnum}
 	</update>
-	
-	<!-- 포스트 상세내용 -->
-	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
-		SELECT
-			<include refid="postColumns" />
-		FROM
-			post
-		WHERE
-			delete_yn = 'N'
-		AND
-			pnum = #{pnum}
-	</select>
-	
-	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
-		SELECT
-		<include refid="postColumns" />
-		FROM post
-		WHERE delete_yn = 'N'
-		ORDER BY pnum DESC, uploaddate DESC
-	</select>
-	
-	<select id="selectPostTotalCount" resultType="int">
-		SELECT
-			COUNT(*)
-		FROM
-			post
-		WHERE delete_yn = 'N'
-	</select>
 
 
 	<!-- 남혁이형 부분 -->
@@ -103,6 +97,9 @@
 		pnum = #{pnum}
 	</update>
 	
+
+
+
 	<select id="getPost" parameterType="int" resultType="PostDTO">
 		SELECT
 			*
