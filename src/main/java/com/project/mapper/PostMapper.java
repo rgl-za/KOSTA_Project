@@ -17,7 +17,7 @@ public interface PostMapper {
 	// 수정
 	public int updatePost(PostDTO params);
 
-	//삭제
+	//삭제-------------------------
 	public int deletePost(Long pnum);
 
 	// main에 보낸다

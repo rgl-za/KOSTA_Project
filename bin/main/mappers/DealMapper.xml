@@ -11,11 +11,14 @@
 		dealaddress,
 		postnum,
 		link,
-		finaldate
+		finaldate,
+		enddate,
+		uploaddate,
+		membercount
 	</sql>
 	
 	<!-- 나의 거래완료 내역 -->
-	<select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
+	<!-- <select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
 		SELECT
 			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.postnum, p.link, p.finaldate
 		FROM
@@ -23,17 +26,39 @@
 		      FROM useraccount
 		      WHERE userId= #{userId}) usera, post p
 		WHERE usera.pnum = p.pnum and p.finaldate is not null
+	</select> -->
+	<select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
+		select d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.finaldate, count(*) as membercount
+		from (select a.userId, a.pnum, a.money, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate
+		        from useraccount a, post p
+		        where a.pnum = p.pnum
+		        and a.userId= #{userId}
+		        and p.finaldate is not null) d, teammember t
+		where t.pnum = d.pnum 
+		group by d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate
+		order by d.enddate desc
 	</select>
 	
 	<!-- 나의 거래중인 내역 -->
-	<select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
+	<!-- <select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
 		SELECT
-			usera.userId, usera.pnum, usera.money, p.title, p.photo, p.dealaddress, p.finaldate
+			usera.userId, usera.pnum, usera.money, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.enddate, p.uploaddate
 		FROM
 			( SELECT *
 		      FROM useraccount
 		      WHERE userId= #{userId}) usera, post p
 		WHERE usera.pnum = p.pnum and p.finaldate is null
-	</select>
+	</select> -->
 	
+	<select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
+		select d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate, count(*) as membercount
+		from (select a.userId, a.pnum, a.money, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate
+		        from useraccount a, post p
+		        where a.pnum = p.pnum
+		        and a.userId= #{userId}
+		        and p.finaldate is null) d, teammember t
+		where t.pnum = d.pnum 
+		group by d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate
+		order by d.enddate desc
+	</select>
 </mapper>

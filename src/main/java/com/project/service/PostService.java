@@ -17,7 +17,7 @@ public interface PostService {
 	// 게시글 상세 내용 불러오기
 	public PostDTO getPostDetail(Long pnum);
 
-	// 게시글 삭제
+	// 게시글 삭제----------------------------
 	public boolean deletePost(Long pnum);
 
 	// 게시글 메인에 불러오기
@@ -28,5 +28,6 @@ public interface PostService {
 	/*
 	 * //게시글 1개 불러오기(detail.html에서 사용) public PostDTO getPost(int pnum);
 	 */
+
 
 }
