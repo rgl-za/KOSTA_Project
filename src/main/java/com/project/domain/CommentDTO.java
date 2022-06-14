@@ -2,6 +2,8 @@ package com.project.domain;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class CommentDTO {
 
@@ -9,5 +11,5 @@ public class CommentDTO {
     private Long pnum;
     private String comments;
     private String writer;
-    private String regDate;
+    private LocalDateTime regDate;
 }
