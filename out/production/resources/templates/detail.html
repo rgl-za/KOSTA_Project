@@ -52,7 +52,7 @@
 									<p>
 									<div class="margin-bottom">
 										<h7 class="m-0 font-weight-bold text-gray-900">링크주소:
-										<text th:text="${postDTO.getLink()}"></text></h7>
+										<text th:text="${postDTO.getLink()}" th:target="_blank" th:href="${postDTO.getLink()}"></text></h7>
 
 
 									</div>
@@ -490,7 +490,7 @@
 												<p class="small mb-0 ms-2" th:text="${comment.writer}" style="padding-left: 3px;"></p> <!--th:text="${comment.writer}"-->
 											</div>
 											<div class="d-flex flex-row align-items-center">
-												<p class="small text-muted mb-0" th:text="${#temporals.format(comment.regDate, 'yyyy-MM-dd')}"></p> <!--th:text="${comment.regDate}"-->
+												<p class="small text-muted mb-0" th:text="${#temporals.format(comment.regDate, 'yyyy-MM-dd:HH:mm')}"></p> <!--th:text="${comment.regDate}"-->
 											</div>
 										</div>
 									</div>
