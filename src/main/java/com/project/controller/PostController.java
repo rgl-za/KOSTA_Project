@@ -2,6 +2,8 @@ package com.project.controller;
 
 import java.util.List;
 
+import com.project.domain.CommentDTO;
+import com.project.service.CommentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class PostController {
 
 	@Autowired
 	private PostService postService;
+
+	@Autowired
+	private CommentService commentService;
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
@@ -105,11 +110,14 @@ public class PostController {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		long pnumex = 1;
 		PostDTO postDTO = postService.getPostDetail(pnumex);//임의의 pnum
+		List<CommentDTO> commentList= commentService.getCommentList(pnum);
 
 		model.addAttribute("postDTO", postDTO);
+		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
+		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
 		//PostDTO post = postService.getPostDetail(pnum);
 
-
+		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
