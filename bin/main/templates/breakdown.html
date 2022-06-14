@@ -113,8 +113,6 @@
 
 					<div class="cobuy-box" style="display: flex; width: 100%;">
 						<div class="one" style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 33%;">
-							<!-- <div class="small text-muted" th:text="${deallist.finaldate}"></div> <br> -->
-							<!-- <a href="#!"><img class="card-img-top" src="https://dummyimage.com/500x300/dee2e6/6c757d.jpg" alt="..." /></a> -->
 							<div class="small text-muted" style="margin-left: 10px;" th:text="${#temporals.format(deallist.finaldate, 'yyyy-MM-dd')}"></div>
 							<br> <a href="#!"><img class="card-img-top" th:src="|@{/productImgs/}${deallist.photo}|" /></a>
 						</div>
@@ -128,7 +126,8 @@
 								<li class="list-group-item" id="cobuy_deliveryAddress"
 									th:text="'배송지:&emsp;' + ${deallist.dealaddress} +' ('+${deallist.postnum}+ ')'"></li>
 								<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
-								<li class="list-group-item" id="cobuy_price" th:text="'구매가격:&emsp;' + ${deallist.money}"></li>
+								<li class="list-group-item" id="cobuy_price" th:text="'구매가격:&emsp;' + ${deallist.money} + '원&emsp;&emsp;&emsp;'
+																				+ '거래인원수:&emsp;' + ${deallist.membercount} + '명&emsp;'"></li>
 								<li class="list-group-item"><a id="cobuy_price" target="_blank" th:href="${deallist.link}">거래 상품 상세보기 >> </a></li>
 								<br>
 							</ul>
