@@ -1,12 +1,13 @@
 package com.project.mapper;
 
 import com.project.domain.CommentDTO;
-import com.project.domain.CommonDTO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface CommentMapper {
-    public int insertComment(CommentDTO params);
-    public int insertReply(CommentDTO params);
-//    public List<CommonDTO> readCommentsByPostNumber(@Param("pnum") Long pnum, )
+    public List<CommentDTO> selectCommentList(Long pnum);
+    public void insertComment(CommentDTO params);
+
 }
