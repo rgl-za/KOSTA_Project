@@ -105,7 +105,7 @@ public class PostController {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		long pnumex = 1;
 		PostDTO postDTO = postService.getPostDetail(pnumex);//임의의 pnum
-
+		
 		model.addAttribute("postDTO", postDTO);
 		//PostDTO post = postService.getPostDetail(pnum);
 
