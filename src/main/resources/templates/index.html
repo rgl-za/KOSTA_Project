@@ -1,26 +1,89 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
 <th:block layout:fragment="content">
 	<div class="container-fluid">
-<!-- 내정보 들어갈 자리입니다. -->
+		<!-- 내정보 들어갈 자리입니다. -->
 
-<!-- 내정보 끝. -->
+		<th:block th:each="deallist:${dealList}">
 
-<!-- 거래 내역 화면 입니다. -->
+			<!-- 거래 내역 화면 입니다. -->
+			<div class="card shadow mb-4" style="width: 100%;">
+				<!-- Card Header - Dropdown -->
+				<div
+					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+					<h6 class="m-0 font-weight-bold text-primary">나의 거래 중인 내역</h6>
+					<div class="dropdown no-arrow">
+						<a class="dropdown-toggle" href="#" role="button"
+							id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i
+							class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+							aria-labelledby="dropdownMenuLink">
+							<div class="dropdown-header">더보기</div>
+							<a class="dropdown-item" href="#">상세보기</a> <a
+								class="dropdown-item" href="#">미 정</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">도움말</a>
+						</div>
+					</div>
+				</div>
+				<!-- Card Body -->
+				<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
+				<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
+				<div class="cobuy-box" style="display: flex; width: 100%;">
+					<!--					<div class="card mb-41">-->
+					<div class="one" style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 230px; height: 80px; object-fit: cover">
+						<div class="small text-muted" style="margin-left: 10px;" th:text="${#temporals.format(deallist.uploaddate, 'yyyy-MM-dd')}"></div>
+						<br> <a href="#!"><img class="card-img-top" th:src="|@{/productImgs/}${deallist.photo}|" /></a>
+					</div>
+					<div class="two"
+						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
+						<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
+						<ul class="list-group list-group-flush">
+							<div id="dealing" style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">
+								<span>거래중</span>&emsp;&emsp; 
+								<img src="img/clock.png" style="width: 28px;"> 
+								<input type="hidden" id="enddate" th:value="${#temporals.format(deallist.enddate, 'yyyy-MM-dd HH:mm:ss')}">
+								<span class="timer" style="font-size: 15px; color: red;"></span>
+							</div>
+							<!-- <span style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">거래중</span> -->
+							<li class="list-group-item" id="cobuy_title"
+								th:text="'제목:&emsp;' + ${deallist.title}"></li>
+							<li class="list-group-item" id="cobuy_deliveryAddress"
+								th:text="'배송지:&emsp;' + ${deallist.dealaddress} +' ('+${deallist.postnum}+ ')'"></li>
+							<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
+							<li class="list-group-item" id="cobuy_price"
+								th:text="'구매가격:&emsp;' + ${deallist.money} + '원&emsp;&emsp;&emsp;'
+																				+ '거래인원수:&emsp;' + ${deallist.membercount} + '명&emsp;'"></li>
+							<li class="list-group-item"><a id="cobuy_price"
+								target="_blank" th:href="@{/detail.do(pnum = ${deallist.pnum})}">거래상세보기 >> </a></li>
+							<br>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</th:block>
+
 		<div class="card shadow mb-4" style="width: 100%;">
 			<!-- Card Header - Dropdown -->
-			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<div
+				class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 				<h6 class="m-0 font-weight-bold text-primary">나의 거래 내역</h6>
 				<div class="dropdown no-arrow">
-					<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+					<a class="dropdown-toggle" href="#" role="button"
+						id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> <i
+						class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
 					</a>
-					<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+					<div
+						class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
 						aria-labelledby="dropdownMenuLink">
 						<div class="dropdown-header">더보기</div>
-						<a class="dropdown-item" href="#">상세보기</a>
+						<a class="dropdown-item" href="#">상세보기</a> 
 						<a class="dropdown-item" href="#">미 정</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">도움말</a>
@@ -31,79 +94,34 @@
 
 			<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
 			<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
-			<div class="cobuy-box" style="display: flex; width:100%;">
+			<div class="cobuy-box" style="display: flex; width: 100%;">
 				<!--					<div class="card mb-41">-->
 				<div class="one"
-					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:33%;">
-					<div class="small text-muted">거래완료 일자: January 1, 2022</div> <br>
-					<a href="#!"><img class="card-img-top" src="https://dummyimage.com/500x300/dee2e6/6c757d.jpg" alt="..." /></a>
+					style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 33%;">
+					<div class="small text-muted">January 1, 2022</div>
+					<br> <a href="#!"><img class="card-img-top"
+						src="https://dummyimage.com/500x300/dee2e6/6c757d.jpg" alt="..." /></a>
 				</div>
 				<div class="two"
-					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:50%;">
-					<br>
-					<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
-					<ul class="list-group list-group-flush">
-						<!--<li class="list-group-item" id="cobuy_uploadDate">날짜 : </li>-->
-						<li class="list-group-item" id="cobuy_title">제목 : </li>
-						<li class="list-group-item" id="cobuy_dealingOrCompletion">거래중 or 거래 완료</li>
-						<li class="list-group-item" id="cobuy_deliveryAddress">배달 주소 : 밑줄은 쓰는 글자 수 만큼 길어짐</li>
-						<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
-						<li class="list-group-item" id="cobuy_price">가격 : </li>
-						<li class="list-group-item"><a id="cobuy_price" target="_blank" v-bind:href="search_result.homePageLink">홈페이지</a></li>
-					</ul>
-				</div>
-			</div>
-
-
-		</div>
-		<div class="card shadow mb-4" style="width: 100%;">
-			<!-- Card Header - Dropdown -->
-			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-				<h6 class="m-0 font-weight-bold text-primary">나의 거래 내역</h6>
-				<div class="dropdown no-arrow">
-					<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-						aria-labelledby="dropdownMenuLink">
-						<div class="dropdown-header">더보기</div>
-						<a class="dropdown-item" href="#">상세보기</a>
-						<a class="dropdown-item" href="#">미 정</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">도움말</a>
-					</div>
-				</div>
-			</div>
-			<!-- Card Body -->
-
-			<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
-			<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
-			<div class="cobuy-box" style="display: flex; width:100%;">
-				<!--					<div class="card mb-41">-->
-				<div class="one"
-					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:33%;">
-					<div class="small text-muted">January 1, 2022</div> <br>
-					<a href="#!"><img class="card-img-top" src="https://dummyimage.com/500x300/dee2e6/6c757d.jpg"
-							alt="..." /></a>
-				</div>
-				<div class="two"
-					style="margin-right: 20px; margin-left:10px; margin-top:10px; margin-bottom:10px; width:50%;">
+					style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
 					<br>
 					<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
 					<ul class="list-group list-group-flush">
 						<!--<li class="list-group-item" id="cobuy_uploadDate">날짜 : </li>-->
 						<li class="list-group-item" id="cobuy_title"></li>
-						<li class="list-group-item" id="cobuy_dealingOrCompletion">거래중 or 거래 완료</li>
-						<li class="list-group-item" id="cobuy_deliveryAddress">배달 주소 : 밑줄은 쓰는 글자 수 만큼 길어짐</li>
+						<li class="list-group-item" id="cobuy_dealingOrCompletion">거래중
+							or 거래 완료</li>
+						<li class="list-group-item" id="cobuy_deliveryAddress">배달 주소
+							: 밑줄은 쓰는 글자 수 만큼 길어짐</li>
 						<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
-						<li class="list-group-item" id="cobuy_price">가격 : </li>
-						<li class="list-group-item"><a id="cobuy_price" target="_blank"
-								v-bind:href="search_result.homePageLink">홈페이지</a> </li>
+						<li class="list-group-item" id="cobuy_price">가격 :</li>
+						<li class="list-group-item"><a id="cobuy_price"
+							target="_blank" v-bind:href="search_result.homePageLink">홈페이지</a>
+						</li>
 					</ul>
 				</div>
 			</div>
-<!-- 거래 내역 화면 끝. -->
+			<!-- 거래 내역 화면 끝. -->
 
 		</div>
 		<!-- Content Row -->
@@ -142,6 +160,77 @@
 
 		</div>
 		<!-- /.container-fluid -->
+</th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		function convertStringToDate(endDate) {
+			console.log(enddate);
+			let dateComponents = endDate.split(' ');
+			let datePieces = dateComponents[0].split("-");
+			let timePieces = dateComponents[1].split(":");
+			return (new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
+					timePieces[0], timePieces[1], timePieces[2]))
+		}
 
+		function msg_time(RemainDate) {
+			//var years = Math.floor(RemainDate/(1000*60*60*24*30*12));
+			//var months = Math.floor((RemainDate % ((1000*60*60*24*30*12)) / (1000*60*60*24*30)));
+			var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+			var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60));
+			var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))/ (1000 * 60));
+			var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+
+			//m = `${years>0 ? years+'년':''} ${months>0 ? months+'달':''} ${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+			m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+			const timerId = document.querySelector('#timer');
+			timerId.innerHTML = m;
+
+			
+			if (RemainDate < 0) {
+				// 시간이 종료 되었으면..
+				clearInterval(timer); // 타이머 해제
+			} else {
+				RemainDate = RemainDate - 1000; // 남은시간 -1초
+			}
+		}
+
+		$(function() {
+
+			var values = $("#enddate")
+			console.log(values.length);
+			for(i=0;i<values.length;i++){
+				console.log(i);
+				console.log(values[i]);
+				
+			}
+			$('.timer').each(function(index, item){
+				$(this).addClass(index);
+				
+			});
+			
+			$('#enddate').each(function (index, item) {
+				
+				console.log(index + " : " + item);
+				var endDate = convertStringToDate($("#enddate").val());
+				
+				console.log("endDate: ", endDate);
+
+				var startDatetime = new Date();
+				console.log("startDatetime: ", startDatetime);
+
+				var RemainDate = endDate - startDatetime;
+				console.log("RemainDate: ", RemainDate);
+
+				//var timer = setInterval(msg_time(RemainDate), 1000);
+
+			});
+			//var endDate = convertStringToDate("2022-06-28 17:50:00");
+			
+
+		});
+
+		/*]]>*/
+	</script>
 </th:block>
 </html>
