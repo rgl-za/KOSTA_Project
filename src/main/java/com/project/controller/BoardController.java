@@ -25,14 +25,15 @@ public class BoardController{
 	}
 
 	
-	@GetMapping(value = "/거래상세")
-	public String openBoardListDetail(Model model) {
-		int pnum = 12345;
-		PostDTO postDTO = postService.getPost(pnum);//임의의 pnum
-		System.out.println("거래상세 controller=> "+ postDTO);
-		model.addAttribute("postDTO", postDTO);
-		return "detail";
-	}
+	
+	//@GetMapping(value = "/거래상세")
+	//public String openBoardListDetail(Model model) {
+	//	int pnum = 12345;
+	//	PostDTO postDTO = postService.getPost(pnum);// 임의의 pnum
+	//	System.out.println("거래상세 controller=> " + postDTO);
+	//	model.addAttribute("postDTO", postDTO);
+	//	return "detail";
+	//}
 	
 	@GetMapping(value = "/거래내역")
 	public String openBoardListIndex(Model model) {
@@ -62,4 +63,6 @@ public class BoardController{
 	public String openBoardListDeal(Model model) {
 		return "/index";
 	}
+	
+
 }
