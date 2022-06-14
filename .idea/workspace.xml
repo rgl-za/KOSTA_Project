@@ -5,9 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/CommentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/PostFileRequestDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/PostFileResponseDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/CommentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/CommentServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostFileRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/mappers/CommentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/165510377844401a94a70-6a22-486d-8c7c-583e5185e9b8.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655107744290a182782a-7998-4248-b27e-744e9eb93976.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/165517072065322e48a47-961b-4e23-b6bc-ba4aad27080b.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655170799435d15c4958-793f-4224-b156-cb5cacec5fb0.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/PostFileRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/PostFileResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostFileRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/165510377844401a94a70-6a22-486d-8c7c-583e5185e9b8.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/1655107744290a182782a-7998-4248-b27e-744e9eb93976.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/165517072065322e48a47-961b-4e23-b6bc-ba4aad27080b.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/1655170799435d15c4958-793f-4224-b156-cb5cacec5fb0.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostFileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/domain/CommentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/domain/CommentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/mapper/CommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/CommentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/FileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/FileServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostFileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/FileServiceImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/write.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +183,7 @@
       <workItem from="1655081878997" duration="7255000" />
       <workItem from="1655102316278" duration="6980000" />
       <workItem from="1655125336676" duration="3763000" />
-      <workItem from="1655167151104" duration="16873000" />
+      <workItem from="1655167151104" duration="17229000" />
     </task>
     <servers />
   </component>
