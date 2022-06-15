@@ -148,3 +148,29 @@ start with 1;
 --수정 쿼리--
 alter table post add finalDate date not null;
 alter table post modify finalDate null;
+
+create table comments(
+    cnum number not null,
+    pnum number not null,
+    comments varchar2(1000) not null,
+    writer varchar2(50) not null,
+    regDate date not null,
+    constraint pk_cnum primary key(cnum),
+    constraint pnum_fk2 foreign key(pnum) references post(pnum)
+);
+
+drop sequence seq_comments_no;
+
+create sequence seq_comments_no
+increment by 1
+start with 1;
+
+
+insert into comments
+values(1, 1, 'test', 'tester', sysdate);
+commit;
+
+delete 
+from comments
+where cnum = 1;
+commit;
