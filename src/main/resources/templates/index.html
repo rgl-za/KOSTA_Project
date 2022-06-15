@@ -190,12 +190,21 @@
 		//Run Interval
 		function RunInterval(list){
 		  var timers = $("div#dealing").children("span#timer")
-		  //console.log(timers);
-		  for(var i=0;i<timers.length;i++){
-			console.log("timers[i]:"+timers[i].document.getElementById("born"));
+		  console.log("timers.length: "+timers.length);
+		  $.each(timers, function (i, it) {
+			  console.log("index: "+ i +"item: "+ it);
+			  $(this).innerHTML = list[i]
+
+			  //$(it).val();
+			  //$(it).innerHTML = list[i];
+			  //'<span id="timer" style="font-size: 15px; color: red;">'+list[i]+'</span>'
+			  
+		  });
+		  /* for(var i=0;i<timers.length;i++){
+			console.log("timers[i]:"+timers[i]);
 		    $(timers[i]).innerHTML = list[i];
-		  }
-		  setTimeout(RunInterval(list), 1000);
+		  } */ 
+		  //setTimeout(RunInterval(list), 1000);
 		}
 
 		
