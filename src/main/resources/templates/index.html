@@ -6,7 +6,7 @@
 	<div class="container-fluid">
 		<!-- 내정보 들어갈 자리입니다. -->
 
-		<th:block th:each="deallist:${dealList}">
+		<th:block th:each="deallist,i:${dealList}">
 
 			<!-- 거래 내역 화면 입니다. -->
 			<div class="card shadow mb-4" style="width: 100%;">
@@ -44,11 +44,11 @@
 						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
 						<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
 						<ul class="list-group list-group-flush">
-							<div id="dealing" style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">
+							<div class="dealing" th:id="|deal*{i.index}|" style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">
 								<span>거래중</span>&emsp;&emsp; 
 								<img src="img/clock.png" style="width: 28px;"> 
 								<input type="hidden" id="enddate" th:value="${#temporals.format(deallist.enddate, 'yyyy-MM-dd HH:mm:ss')}">
-								<span id="timer" style="font-size: 15px; color: red;">2020-01-01</span>
+								<span th:id="|timer*{i.index}|" style="font-size: 15px; color: red;"></span>
 							</div>
 							<!-- <span style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">거래중</span> -->
 							<li class="list-group-item" id="cobuy_title"
@@ -164,6 +164,8 @@
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
 		/*<![CDATA[*/
+		const remainDate = new float();
+		const list = new Array();
 		function convertStringToDate(endDate) {
 			console.log(enddate);
 			let dateComponents = endDate.split(' ');
@@ -185,38 +187,46 @@
 		}
 		
 		function updatetime(RemainDate){
-			RemainDate = RemainDate - 1000; // 남은시간 -1초
-			return RemainDate;
+			 if (RemainDate < 0) {      
+		          // 시간이 종료 되었으면..
+		          clearInterval(timer);   // 타이머 해제
+		          return 0;
+		        }else{
+		          RemainDate = RemainDate - 1000; // 남은시간 -1초
+		          return RemainDate;
+		      }
 		}
 		
 		//Run Interval
 		function RunInterval(list){
-		  var timers = $("div#dealing")
+		  var timers = $("div.dealing")
 		  var list2 = new Array();
-		  //var timers = $("div#dealing").children("span#timer");
-		  
+
 		  console.log("timers.length: "+timers.length);
 		  $.each(timers, function (i, it) {
 			  console.log("index: "+ i +"item: "+ it);
+			  
 			  var time = msg_time(list[i]);
 			  console.log("time: "+ time);
-			  //$(it).val().remove();
-			  //$(it).val(time);
-			  var $str= $('<span id="timer" style="font-size: 15px; color: red;">time</span>');
-			  $it.val(time);
+			  var tagid = '#timer'+i; 
+
+			  console.log("tagid: "+ tagid);
+			  
+			  $(tagid).text(time);
+			  
+			  console.log("tagid.val: "+ $(tagid).val());
 			  
 			  list2.push(updatetime(list[i]));
+			  //updatetime(list[i]);
 		  });
 		  console.log(list2);
-		  setTimeout(RunInterval(list2), 1000); 
+		 //setInterval(RunInterval(list2), 1000);
 
 		}
-
 		
 		$(function() {
 			//참고:$("div#dealing").children("input#enddate")[1]
-			var list = new Array();
-			var els = $("div#dealing").children("input#enddate")
+			var els = $("div.dealing").children("input#enddate")
 			$.each(els, function (index, item) {
 				console.log("index: "+ index +"item: "+ item);
 				console.log($(item).val());
@@ -227,19 +237,19 @@
 				var startDatetime = new Date();
 				console.log("startDatetime: ", startDatetime);
 	
-				var RemainDate = endDate - startDatetime;
-				console.log("RemainDate: ", RemainDate);
+				remainDate = endDate - startDatetime;
+				console.log("RemainDate: ", remainDate);
 				
 				//var time = msg_time(RemainDate);
-				list.push(RemainDate);
+				list.push(remainDate);
 				
-				//var timer = setInterval(RunInterval(list), 1000);
 
 			});
 			console.log("list: "+list);
-			RunInterval(list);
+			//RunInterval(list);
 		});
-
+		
+		var timer = setTimeout(RunInterval(list), 1000); 
 		/*]]>*/
 	</script>
 </th:block>
