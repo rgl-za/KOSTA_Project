@@ -126,5 +126,4 @@ public class PostController {
 		//logger.info("detail.do");
 		return "/detail";
 	}
-	
 }

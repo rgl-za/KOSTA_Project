@@ -91,8 +91,8 @@
                                     </div>
                                 </div>
                                 <!-- 찜 버튼 -->
-                                <button class="btn btn-primary btn-icon-split">
-                                    <a href="#"> <img style="width: 30px; height: 30px;" alt="찜" src="assets/heart.ico"></a>
+                                <button class="btn btn-primary btn-icon-split" th:onclick="insertHeart( [[${postList.pnum}]], [[${postList.title}]] )">
+                                    <a><img style="width: 30px; height: 30px;" alt="찜" src="assets/heart.ico"></a>
                                 </button>
                             </div>
 
@@ -107,6 +107,25 @@
         <!-- row -->
         <!-- /.container-fluid -->
 </th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
 
+        function insertHeart(pnum, title) {
+            if (confirm(title + "에 관심 있나요?")) {
+                var uri = /*[[ @{/heart.do} ]]*/null;
+                var html = "";
+
+                html += '<form name="dataForm" action="'+uri+'" method="post">';
+                html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+                html += '<input type="hidden" name="title" value="'+title+'">';
+                html += '</form>';
+
+                $("body").append(html);
+                document.dataForm.submit();
+            }
+        }
+        /*]]>*/
+    </script>
 
 </html>
