@@ -10,7 +10,7 @@
 		</div>
 		<div
 			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			<h1 class="m-0 font-weight-bold text-gray-900" th:value="*{title}">거래명</h1>
+			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${postDTO.title}">거래명</h1>
 			<div class="float-right">
 				<a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
 					class="text">수정</span>
@@ -267,6 +267,48 @@
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 												var map = new kakao.maps.Map(mapContainer, mapOption);
+												
+												/*근처 편의점 찾기 start
+												*/
+												
+												// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+												var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+												
+												// 장소 검색 객체를 생성합니다
+												var ps = new kakao.maps.services.Places(map); 
+
+												// 카테고리로 은행을 검색합니다
+												ps.categorySearch('CS2', placesSearchCB, {useMapCenter:true}); 
+
+												// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+												function placesSearchCB (data, status, pagination) {
+												    if (status === kakao.maps.services.Status.OK) {
+												        for (var i=0; i<data.length; i++) {
+												            displayMarker(data[i]); 
+												            console.log(">>>편의점>>>"+data[i]);
+												        }       
+												    }
+												}
+
+												// 지도에 마커를 표시하는 함수입니다
+												function displayMarker(place) {
+												    // 마커를 생성하고 지도에 표시합니다
+												    var marker = new kakao.maps.Marker({
+												        map: map,
+												        position: new kakao.maps.LatLng(place.y, place.x) 
+												    });
+
+												    // 마커에 클릭이벤트를 등록합니다
+												    kakao.maps.event.addListener(marker, 'click', function() {
+												        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+												        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+												        infowindow.open(map, marker);
+												    });
+												}
+												
+												/*근처 편의점 찾기 end
+												*/
+
 
 												// 주소-좌표 변환 객체를 생성합니다
 												var geocoder = new kakao.maps.services.Geocoder();
@@ -431,8 +473,7 @@
 													// 별도의 이벤트 메소드를 제공하지 않습니다 
 													var content = '<div class="overlay-wrap">' + 
 													            '    <div class="overlay_info" style="margin-top: 1px; background-color: #fff;">' + 
-													            '        <div class="overlay-title">' + 
-													            
+													            '        <div class="overlay-title">' +
 													            '            <div class="overlay-close" onclick="closeOverlay()" title="닫기"></div>' + 
 													            '        </div>' + 
 													            '        <div class="overlay-body">' + 
@@ -488,7 +529,7 @@
 													infowindow.open(map, marker);
 													
 													//마커가 지도 위에 표시되도록 설정합니다
-													marker.setMap(map);
+													//marker.setMap(map);
 												}
 												
 												
@@ -592,13 +633,13 @@
 <!--		</div>-->
 		<!-- 거래 정보 표시 end -->
 
-		<div class="container my-auto">
-			<div class="copyright text-center my-auto">
-				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>
-				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
-			</div>
+<!--		<div class="container my-auto">-->
+<!--			<div class="copyright text-center my-auto">-->
+<!--				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>-->
+<!--				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>-->
+<!--			</div>-->
 
-		</div>
+<!--		</div>-->
 		<!-- row -->
 	</div>
 	<!-- /.container-fluid -->
