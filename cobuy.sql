@@ -155,7 +155,6 @@ create table comments(
     comments varchar2(1000) not null,
     writer varchar2(50) not null,
     regDate date not null,
-    
     constraint pk_cnum primary key(cnum),
     constraint pnum_fk2 foreign key(pnum) references post(pnum)
 );
@@ -165,3 +164,13 @@ drop sequence seq_comments_no;
 create sequence seq_comments_no
 increment by 1
 start with 1;
+
+
+insert into comments
+values(1, 1, 'test', 'tester', sysdate);
+commit;
+
+delete 
+from comments
+where cnum = 1;
+commit;
