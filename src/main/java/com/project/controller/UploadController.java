@@ -21,12 +21,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.UploadResultDTO;
 
-import net.coobird.thumbnailator.Thumbnailator;
+//import net.coobird.thumbnailator.Thumbnailator;
 
-@RestController
+/*@RestController
 public class UploadController {
 
-	@PostMapping("/uploadAjax")
+	/*@PostMapping("/uploadAjax")
 	public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
 
 		List<UploadResultDTO> resultDTOList = new ArrayList<>();
@@ -46,12 +46,12 @@ public class UploadController {
 			String folderPath = makeFolder();
 
 			// UUID
-			String uuid = UUID.randomUUID().toString();
+			//String uuid = UUID.randomUUID().toString();
 
 			// 저장할 파일 이름
-			String saveName = uploadPath + File.separator + folderPath + File.separator + uuid + fileName;
+			//String saveName = uploadPath + File.separator + folderPath + File.separator + uuid + fileName;
 
-			Path savePath = Paths.get(saveName);
+			/*Path savePath = Paths.get(saveName);
 
 			try {
 				uploadFile.transferTo(savePath);
@@ -76,30 +76,30 @@ public class UploadController {
 			}
 		}
 		return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
-	}
+	}*/
 
-	private String makeFolder() {
+	/*private String makeFolder() {
 
 		String str = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
 
 		String folderPath = str.replace("/", File.separator);
 
 		// make folder----
-		File uploadPatheFolder = new File(uploadPath, folderPath);
+		/*File uploadPatheFolder = new File(uploadPath, folderPath);
 
 		if (uploadPatheFolder.exists() == false) {
 			uploadPatheFolder.mkdir();
 		}
 		return folderPath;
-	}
+	}*/
 
-	@PostMapping("/removeFile")
+	/*@PostMapping("/removeFile")
 	public ResponseEntity<Boolean> removeFile(String fileName) {
 		String srcFileName = null;
 
 		try {
 			srcFileName = URLDecoder.decode(fileName, "UTF-8");
-			File file = new File(uploadPath + File.separator + srcFileName);
+			/File file = new File(uploadPath + File.separator + srcFileName);
 
 			boolean result = file.delete();
 
@@ -112,6 +112,6 @@ public class UploadController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-}
+		}*/
+	//}
+//}
