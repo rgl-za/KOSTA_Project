@@ -48,7 +48,7 @@
 								<span>거래중</span>&emsp;&emsp; 
 								<img src="img/clock.png" style="width: 28px;"> 
 								<input type="hidden" id="enddate" th:value="${#temporals.format(deallist.enddate, 'yyyy-MM-dd HH:mm:ss')}">
-								<span class="timer" style="font-size: 15px; color: red;"></span>
+								<span id="timer" style="font-size: 15px; color: red;"></span>
 							</div>
 							<!-- <span style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">거래중</span> -->
 							<li class="list-group-item" id="cobuy_title"
@@ -181,53 +181,50 @@
 			var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))/ (1000 * 60));
 			var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 
-			//m = `${years>0 ? years+'년':''} ${months>0 ? months+'달':''} ${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
 			m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
-			const timerId = document.querySelector('#timer');
-			timerId.innerHTML = m;
-
-			
-			if (RemainDate < 0) {
-				// 시간이 종료 되었으면..
-				clearInterval(timer); // 타이머 해제
-			} else {
-				RemainDate = RemainDate - 1000; // 남은시간 -1초
-			}
+			return m
+			//const timerId = document.querySelector(name);
+			//timerId.innerHTML = m;
+		}
+		
+		//Run Interval
+		function RunInterval(list){
+		  var timers = $("div#dealing").children("span#timer")
+		  //console.log(timers);
+		  for(var i=0;i<timers.length;i++){
+			console.log("timers[i]:"+timers[i].document.getElementById("born"));
+		    $(timers[i]).innerHTML = list[i];
+		  }
+		  setTimeout(RunInterval(list), 1000);
 		}
 
+		
 		$(function() {
-
-			var values = $("#enddate")
-			console.log(values.length);
-			for(i=0;i<values.length;i++){
-				console.log(i);
-				console.log(values[i]);
-				
-			}
-			$('.timer').each(function(index, item){
-				$(this).addClass(index);
-				
-			});
 			
-			$('#enddate').each(function (index, item) {
+			//참고:$("div#dealing").children("input#enddate")[1]
+			var list = new Array();
+			var els = $("div#dealing").children("input#enddate")
+			$.each(els, function (index, item) {
+				console.log("index: "+ index +"item: "+ item);
+				console.log($(item).val());
 				
-				console.log(index + " : " + item);
-				var endDate = convertStringToDate($("#enddate").val());
-				
+				var endDate = convertStringToDate($(item).val());
 				console.log("endDate: ", endDate);
-
+	
 				var startDatetime = new Date();
 				console.log("startDatetime: ", startDatetime);
-
+	
 				var RemainDate = endDate - startDatetime;
 				console.log("RemainDate: ", RemainDate);
-
-				//var timer = setInterval(msg_time(RemainDate), 1000);
+				
+				var time = msg_time(RemainDate);
+				list.push(time);
+				
+				//var timer = setInterval(RunInterval(list), 1000);
 
 			});
-			//var endDate = convertStringToDate("2022-06-28 17:50:00");
-			
-
+			console.log("list: "+list);
+			RunInterval(list);
 		});
 
 		/*]]>*/

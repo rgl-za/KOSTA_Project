@@ -45,17 +45,49 @@
 								</a>
 							</div>
 							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<!--<a class="btn btn-outline-dark mt-auto" href="#" > 입장 하기 </a>-->
-								<!-- 찜 버튼 -->
-								<div style="text-align: right;">
-									<a href="#" class="btn btn-primary btn-icon-split"> <img
-										style="width: 30px; height: 30px;" alt="찜"
-										src="assets/heart.ico">
-									</a> 
-							
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+
+								<!-- 모달창 버튼 -->
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+									상세 보기
+								</button>
+								<!-- 모달창 -->
+								<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalCenterTitle" th:text="${postList.title}"></h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<h5>방장</h5>
+												<p th:text="${postList.leaderid}"></p>
+												<hr>
+												<h5>내용</h5>
+												<p th:text="${postList.content}"></p>
+												<hr>
+												<h5>모집 날짜</h5>
+												<p th:text="${postList.enddate}"></p>
+												<hr>
+												<h5>제품 정보</h5>
+												<p th:text="${postList.link}"></p>
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">나가기</button>
+												<a th:href="@{/detail.do( pnum=${postList.pnum} )}" class="btn btn-primary waves-effect waves-light">참여하기</a>
+											</div>
+										</div>
+									</div>
 								</div>
+								<!-- 찜 버튼 -->
+								<button class="btn btn-primary btn-icon-split">
+									<a href="#"> <img style="width: 30px; height: 30px;" alt="찜" src="assets/heart.ico"></a>
+								</button>
 							</div>
+
 						</div>
 
 					</div>
@@ -68,5 +100,6 @@
 		<!-- row -->
 		<!-- /.container-fluid -->
 </th:block>
+
 
 </html>
