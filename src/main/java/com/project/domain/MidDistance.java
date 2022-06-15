@@ -3,7 +3,7 @@ package com.project.domain;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealVector;
 
-RealVector a = MatrixUtils.createRealVector(new double [] {1, 2, 3, 4, 5});
+
 	
 public class MidDistance {
 	
@@ -21,6 +21,8 @@ public class MidDistance {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		RealVector a = MatrixUtils.createRealVector(new double [] {1, 2, 3, 4, 5});
 
 	}
 
