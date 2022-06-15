@@ -1,13 +1,13 @@
 package com.project.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
-import com.project.domain.CommentDTO;
-import com.project.service.CommentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
+import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.util.FileUtil;
 
@@ -26,6 +28,13 @@ public class PostController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime enddate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime finaldate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private LocalDateTime uploaddate;
+	
 	@Autowired
 	private PostService postService;
 
