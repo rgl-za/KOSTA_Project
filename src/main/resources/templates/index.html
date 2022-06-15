@@ -48,7 +48,7 @@
 								<span>거래중</span>&emsp;&emsp; 
 								<img src="img/clock.png" style="width: 28px;"> 
 								<input type="hidden" id="enddate" th:value="${#temporals.format(deallist.enddate, 'yyyy-MM-dd HH:mm:ss')}">
-								<span id="timer" style="font-size: 15px; color: red;"></span>
+								<span id="timer" style="font-size: 15px; color: red;">2020-01-01</span>
 							</div>
 							<!-- <span style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">거래중</span> -->
 							<li class="list-group-item" id="cobuy_title"
@@ -174,42 +174,46 @@
 		}
 
 		function msg_time(RemainDate) {
-			//var years = Math.floor(RemainDate/(1000*60*60*24*30*12));
-			//var months = Math.floor((RemainDate % ((1000*60*60*24*30*12)) / (1000*60*60*24*30)));
 			var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
 			var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60));
 			var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))/ (1000 * 60));
 			var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 
 			m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+			
 			return m
-			//const timerId = document.querySelector(name);
-			//timerId.innerHTML = m;
+		}
+		
+		function updatetime(RemainDate){
+			RemainDate = RemainDate - 1000; // 남은시간 -1초
+			return RemainDate;
 		}
 		
 		//Run Interval
 		function RunInterval(list){
-		  var timers = $("div#dealing").children("span#timer")
+		  var timers = $("div#dealing")
+		  var list2 = new Array();
+		  //var timers = $("div#dealing").children("span#timer");
+		  
 		  console.log("timers.length: "+timers.length);
 		  $.each(timers, function (i, it) {
 			  console.log("index: "+ i +"item: "+ it);
-			  $(this).innerHTML = list[i]
-
-			  //$(it).val();
-			  //$(it).innerHTML = list[i];
-			  //'<span id="timer" style="font-size: 15px; color: red;">'+list[i]+'</span>'
+			  var time = msg_time(list[i]);
+			  console.log("time: "+ time);
+			  //$(it).val().remove();
+			  //$(it).val(time);
+			  var $str= $('<span id="timer" style="font-size: 15px; color: red;">time</span>');
+			  $it.val(time);
 			  
+			  list2.push(updatetime(list[i]));
 		  });
-		  /* for(var i=0;i<timers.length;i++){
-			console.log("timers[i]:"+timers[i]);
-		    $(timers[i]).innerHTML = list[i];
-		  } */ 
-		  //setTimeout(RunInterval(list), 1000);
+		  console.log(list2);
+		  setTimeout(RunInterval(list2), 1000); 
+
 		}
 
 		
 		$(function() {
-			
 			//참고:$("div#dealing").children("input#enddate")[1]
 			var list = new Array();
 			var els = $("div#dealing").children("input#enddate")
@@ -226,8 +230,8 @@
 				var RemainDate = endDate - startDatetime;
 				console.log("RemainDate: ", RemainDate);
 				
-				var time = msg_time(RemainDate);
-				list.push(time);
+				//var time = msg_time(RemainDate);
+				list.push(RemainDate);
 				
 				//var timer = setInterval(RunInterval(list), 1000);
 

@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -21,11 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.UploadResultDTO;
 
-import net.coobird.thumbnailator.Thumbnailator;
+//import net.coobird.thumbnailator.Thumbnailator;
 
 @RestController
 public class UploadController {
-
+	/*
 	@PostMapping("/uploadAjax")
 	public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
 
@@ -92,7 +93,7 @@ public class UploadController {
 		}
 		return folderPath;
 	}
-
+	
 	@PostMapping("/removeFile")
 	public ResponseEntity<Boolean> removeFile(String fileName) {
 		String srcFileName = null;
@@ -114,4 +115,5 @@ public class UploadController {
 			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	*/
 }
