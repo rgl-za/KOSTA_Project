@@ -621,6 +621,7 @@
 													            const data = await addressSearch(addr);
 													            coords = new kakao.maps.LatLng(data.result[0].y, data.result[0].x);
 													            
+													            console.log(">>user coord>>"+coords);
 													            //getAddressByLatLng(coords);
 													            
 													            //마커 생성
@@ -676,6 +677,8 @@
 												
 												// 마커를 생성하고 지도위에 표시하는 함수입니다
 												function addMarker(position, title) {
+													
+													console.log(">>중심좌표>>"+position);
 									
 													// 마커를 생성합니다
 													var marker = new kakao.maps.Marker(
