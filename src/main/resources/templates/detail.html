@@ -10,10 +10,10 @@
 		</div>
 		<div
 			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			<h1 class="m-0 font-weight-bold text-gray-900" th:value="*{title}">거래명</h1>
+			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${postDTO.title}">거래명</h1>
 			<div class="float-right">
-				<a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
-					class="text">수정</span>
+				<a href="#" class="btn btn-secondary btn-icon-split"> </span> 
+				<span class="text">수정</span>
 				</a> <a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
 					class="text">삭제</span>
 				</a>
@@ -473,8 +473,7 @@
 													// 별도의 이벤트 메소드를 제공하지 않습니다 
 													var content = '<div class="overlay-wrap">' + 
 													            '    <div class="overlay_info" style="margin-top: 1px; background-color: #fff;">' + 
-													            '        <div class="overlay-title">' + 
-													            
+													            '        <div class="overlay-title">' +
 													            '            <div class="overlay-close" onclick="closeOverlay()" title="닫기"></div>' + 
 													            '        </div>' + 
 													            '        <div class="overlay-body">' + 
@@ -634,13 +633,13 @@
 <!--		</div>-->
 		<!-- 거래 정보 표시 end -->
 
-		<div class="container my-auto">
-			<div class="copyright text-center my-auto">
-				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>
-				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
-			</div>
+<!--		<div class="container my-auto">-->
+<!--			<div class="copyright text-center my-auto">-->
+<!--				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>-->
+<!--				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>-->
+<!--			</div>-->
 
-		</div>
+<!--		</div>-->
 		<!-- row -->
 	</div>
 	<!-- /.container-fluid -->
