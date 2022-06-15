@@ -372,6 +372,7 @@
 												function getAddressByLatLng(coord){
 													
 													const coord2Address = coord => {
+														//Promise반환
 													    return new Promise((resolve, reject) => {
 													        geocoder.coord2Address(coord.getLng(), coord.getLat(), function(result, status) {
 													            if (status === kakao.maps.services.Status.OK) {
@@ -385,7 +386,7 @@
 													
 													(async () => {
 													    try{
-													    	const data = await coord2Address(coord);
+													    	const data = await coord2Address(coord);//coord2Address가 이행될 때까지 await. async함수에서만 사용
 													   
 													    	//주소정보로 maker생성
 															centerMarker(coord,data.result[0].address.address_name);
