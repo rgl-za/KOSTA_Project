@@ -1,13 +1,27 @@
 package com.project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.domain.UserDTO;
+import com.project.mapper.UserMapper;
 
-public interface UserService {
+import lombok.RequiredArgsConstructor;
 
-	public void insertUser(UserDTO userDTO);
+@Service
+@RequiredArgsConstructor
+public class UserService {
 	
-	public void signUpUser(UserDTO userDTO);
-
+	@Autowired
+	UserMapper userMapper;
+	
+	@Transactional
+	public void joinUser(UserDTO userDTO) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+		userMapper.insertUser(userDTO);
+	}
 
 }

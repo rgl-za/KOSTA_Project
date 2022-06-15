@@ -1,8 +1,8 @@
 package com.project.mapper;
 
-import com.project.domain.CommentDTO;
-import com.project.domain.CommonDTO;
 import org.apache.ibatis.annotations.Mapper;
+
+import com.project.domain.CommentDTO;
 
 @Mapper
 public interface CommentMapper {

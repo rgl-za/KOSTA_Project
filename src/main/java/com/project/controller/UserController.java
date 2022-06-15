@@ -12,6 +12,7 @@ import com.project.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
+
 @Controller
 @RequiredArgsConstructor
 public class UserController {
@@ -21,22 +22,16 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@GetMapping("/test")
+	public String testForm() {
+		return "Test";
+	}
 	
-
-	
-
-
-	@PostMapping("test")
-	public String joinUser(UserDTO userDTO) {
-		
-		userService.insertUser(userDTO);
-		System.out.println("확인용 ");
-
+	@PostMapping("/test")
+	public String test(UserDTO userDTO) {
+		userService.joinUser(userDTO);
 		return "redirect:/Test";
 	}
 	
-	@PostMapping("ho")
-	public String write() {
-		return "hehe";
-	}
+
 }

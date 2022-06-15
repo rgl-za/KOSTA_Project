@@ -1,10 +1,7 @@
 package com.project.service;
 
-import java.util.List; 
+import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 
 public interface PostService {
