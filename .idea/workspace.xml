@@ -5,50 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/DealController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/DealHistoryDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/UserAccountDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/DealMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/DealService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/DealServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/mappers/DealMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/pens.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/rices.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/CommentDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/classes/com/project/mapper/CommentMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/DealHistoryDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/UserAccountDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/DealMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DealService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DealServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/DealMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/pens.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/rices.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/configuration/ChatConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/breakdown.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/breakdown.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/static/css/sb-admin-2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/test/com/project/ProjectApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/com/project/ProjectApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cobuy.sql" beforeDir="false" afterPath="$PROJECT_DIR$/cobuy.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/BoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/ChatMsgDTO$MessageType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/ChatMsgDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/ChatMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/ChatMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/breakdown.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/breakdown.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/breakdown.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/breakdown.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/sb-admin-2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/project/ProjectApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/project/ProjectApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +41,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -130,7 +91,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.Unnamed">
     <configuration name="ProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="project.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.ProjectApplication" />
@@ -140,6 +101,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="project.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.ProjectApplication" />
+      <option name="DEBUG_MODE" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Unnamed" />
+      <item itemvalue="Spring Boot.ProjectApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -173,7 +148,10 @@
       <workItem from="1654735534599" duration="35500000" />
       <workItem from="1654882328997" duration="1945000" />
       <workItem from="1654945944909" duration="600000" />
-      <workItem from="1655081878997" duration="5296000" />
+      <workItem from="1655081878997" duration="7255000" />
+      <workItem from="1655102316278" duration="6980000" />
+      <workItem from="1655125336676" duration="3763000" />
+      <workItem from="1655167151104" duration="14597000" />
     </task>
     <servers />
   </component>

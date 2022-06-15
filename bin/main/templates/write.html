@@ -9,7 +9,7 @@
 <th:block layout:fragment="content">
 	<div class="container mt-5">
 		<!-- 폼 시작 -->
-		<form class="form-horizontal" th:action="@{/register.do}" th:object="${post}" method="post">
+		<form class="form-horizontal" th:action="@{/register.do}" th:object="${post}" method="post" enctype="multipart/form-data">
 			
 			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
 			<input type="hidden" th:if="*{pnum != null and pnum > 0}" th:field="*{pnum}" />
@@ -24,41 +24,15 @@
 
 						</header>
 						<!-- Preview image figure-->
-													<!--/* 저장된 파일이 없는 파일 영역 */-->
-<div th:if="${#lists.isEmpty( fileList )}" data-name="fileDiv" class="form-group filebox bs3-primary">
-	<label for="file_0" class="col-sm-2 control-label">파일1</label>
-	<div class="col-sm-10">
-		<input type="text" class="upload-name" value="파일 찾기" readonly />
-		<label for="file_0" class="control-label">찾아보기</label>
-		<input type="file" name="files" id="file_0" class="upload-hidden" onchange="changeFilename(this)" />
-	
-		<button type="button" onclick="addFile()" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
-			<i class="fa fa-plus" aria-hidden="true"></i>
-		</button>
-		<button type="button" onclick="removeFile(this)" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
-			<i class="fa fa-minus" aria-hidden="true"></i>
-		</button>
-	</div>
-</div>
-
-<!--/* 저장된 파일이 있는 파일 영역 */-->
-<div th:unless="${#lists.isEmpty( fileList )}" th:each="row, status : ${fileList}" data-name="fileDiv" class="form-group filebox bs3-primary">
-	<label th:for="|file_${status.index}|" class="col-sm-2 control-label">[[ |파일${status.count}| ]]</label>
-	<div class="col-sm-10">
-		<input type="hidden" name="fileIdxs" th:value="${row.idx}" />
-		<input type="text" class="upload-name" th:value="${row.originalName}" readonly />
-		<label th:for="|file_${status.index}|" class="control-label">찾아보기</label>
-		<input type="file" name="files" th:id="|file_${status.index}|" class="upload-hidden" onchange="changeFilename(this)" />
-	
-		<button th:if="${status.first}" type="button" onclick="addFile()" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
-			<i class="fa fa-plus" aria-hidden="true"></i>
-		</button>
-		<button type="button" onclick="removeFile(this)" class="btn btn-bordered btn-xs visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline">
-			<i class="fa fa-minus" aria-hidden="true"></i>
-		</button>
-	</div>
-</div>	
-						
+						<!--/* 저장된 파일이 없는 파일 영역 */-->
+						<div data-name="fileDiv" class="form-group filebox bs3-primary">
+							<label for="file_0" class="col-sm-2 control-label">파일1</label>
+							<div class="col-sm-10">
+								<input type="text" class="upload-name" value="파일 찾기" readonly />
+								<label for="file_0" class="control-label">찾아보기</label>
+								<input type="file" name="file" id="file_0" class="upload-hidden" />
+							</div>
+						</div>						
 						<!-- Post content-->
 
 					</article>
@@ -111,6 +85,7 @@
 						</div>
 
 						<div class="input-group" style="padding-top: 10px; padding-bottom: 10px">
+						<h1>날짜 형식으로 써주세요! 날짜 형식이 아니면 오류가 떠요!</h1>
 							<input type="text" th:field="*{enddate}" class="form-control" placeholder="enddate"
 								aria-label="Enter search term..." aria-describedby="button-search" />
 						</div>

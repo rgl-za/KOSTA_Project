@@ -16,6 +16,9 @@ public class DealHistoryDTO{
 	private int postnum;
 	private String link;
 	private LocalDateTime finaldate;
+	private LocalDateTime enddate;
+	private LocalDateTime uploaddate;
+	private int membercount;
 	
 
 }

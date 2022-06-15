@@ -1,5 +1,6 @@
 package com.project.domain;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Data;
@@ -20,6 +21,9 @@ public class PostDTO {
 	
 	// 게시글 내용
 	private String content;
+	
+	// 사진 업로드
+	private String photo;
 	
 	// 제품 링크
 	private String link;
@@ -43,16 +47,16 @@ public class PostDTO {
 	private String accountpost;
 	
 	// 게시글 업로드 날짜
-	private String uploaddate;
+	private LocalDateTime uploaddate;
 	
 	// 게시글 거래 마감 날짜
-	private String enddate;
+	private LocalDateTime enddate;
 	
 	// 삭제 키
 	private String delete_yn;
 	
 	// finaldate
-	private String finaldate;
+	private LocalDateTime finaldate;
 	
 	
 }
