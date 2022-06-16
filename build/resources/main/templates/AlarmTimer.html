@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<meta charset='utf-8'>
+<html>
+<head>
+<title>Alarm</title>
+</head>
+<body>
+	<div id='DIValarmtable'></div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	crossorigin="anonymous"></script>
+
+<script type='text/javascript'>
+
+	var ALARM_NUMBER=5;
+	var ALARM_SOUND_PATH="house_lo.mp3";
+	var ALARM_MESSAGE="알람 시각입니다.";
+	
+	// 알람시계 테이블
+	function MakeTable(){
+	  var divspace=jQuery('#DIValarmtable')[0];
+	  var tcs="<table border=1>\
+	  <tr>";
+	  var tcs=tcs+"<td colspan=3><div id='DIVclock'></div></td>\
+	  </tr>";
+	  for(var i=0;i<ALARM_NUMBER;i++){
+	    var tcs=tcs+"<tr>\
+	    <td><div id='alarmlight"+i+"' align=center onClick='javascript:alarmclock["+i+"].toggle_enable()' style='color:#40FF40;'>●</div></td>\
+	    <td><audio id='alarmsound"+i+"' src='"+ALARM_SOUND_PATH+"'></audio>\
+	    <div id='DIValarm"+i+"'></div></td>\
+	    <td><div id='DIVremain"+i+"'></div></td>\
+	    </tr>";
+	  }
+	  var tcs=tcs+"</table>";
+	  divspace.innerHTML=tcs;
+	}
+	MakeTable(); //실행
+	
+	function Clock(){
+	  this.time=new Date();
+	  this.interface_div;
+	  this.runf=function(){
+	    this.time=new Date();
+	    jQuery('#DIVclock')[0].innerHTML=this.time;
+	  }//endof runf
+	} //endof function Clock
+	
+	function Alarm(){
+	  this.time=new Date(0);
+	  this.number;
+	  this.alarmsound;
+	  this.interface_divalarm;
+	  this.interface_divremain;
+	  this.alarm_enabled=true;
+	  //알람 울리기.
+	  this.ringalarm=function(){
+	      this.alarm_enabled=false;
+	      this.alarmsound.play();
+	      ALARM_MESSAGE=(this.number+1)+"번 알람입니다.";
+	      setTimeout(function(){alert(ALARM_MESSAGE);},1000);
+	  }
+	  //프레임마다 알람시계에서 작동되는 함수 runf
+	  this.runf= function(){
+	    //현재시간을 비교해서 알람을 울리도록 한다.
+	    var nowtime=new Date()
+	    if(this.time.getHours()==nowtime.getHours() &&
+	        this.time.getMinutes()==nowtime.getMinutes() &&
+	        this.time.getSeconds()==nowtime.getSeconds() &&
+	        this.alarm_enabled){
+	      this.ringalarm();
+	    }
+    var atime=this.time.getHours()*3600 + this.time.getMinutes()*60 + this.time.getSeconds();
+    var ctime=nowtime.getHours()*3600 + nowtime.getMinutes()*60 + nowtime.getSeconds();
+    if(atime<ctime)atime+=24*60*60;
+    //유효성 검사.
+    if(typeof($('#remaintime'+this.number)[0])=='object'){
+     $('#remaintime'+this.number)[0].innerHTML=parseInt((atime-ctime)/3600) + " : " + parseInt(((atime-ctime)%3600)/60) + " : " + (atime-ctime)%60 ;
+    }
+  }//endof runf
+  
+  //알람 설정
+  
+  this.submitalarm=function(){
+      var hhh=$("#hhh"+this.number)[0].value;
+      var mmm=$("#mmm"+this.number)[0].value;
+      var sss=$("#sss"+this.number)[0].value;
+      if(hhh<=0 || hhh>23 || isNaN(hhh)){hhh='00';}
+      if(mmm<=0 || mmm>59 || isNaN(mmm)){mmm='00';}
+      if(sss<=0 || sss>59 || isNaN(sss)){sss='00';}
+      this.time.setHours(hhh);
+      this.time.setMinutes(mmm);
+      this.time.setSeconds(sss);
+      this.interface_divalarm.innerHTML=hhh + " : " + mmm + " : " + sss;
+      this.alarm_enabled=true;
+      this.remaintimeform();
+  }//endof submitalarm
+  /*
+  this.inputform= function(){
+    var inputformstring="<form onsubmit='alarmclock["+this.number+"].submitalarm()'>\
+    <input id='hhh"+this.number+"' type='text' size='2' maxlength='2' value="+this.time.getHours()+"> : \
+    <input id='mmm"+this.number+"' type='text' size='2' maxlength='2' value="+this.time.getMinutes()+"> : \
+    <input id='sss"+this.number+"' type='text' size='2' maxlength='2' value="+this.time.getSeconds()+">\
+    <input id='setalarm' type='submit' value='OK' ></form>";
+    this.interface_divremain.innerHTML=inputformstring;
+  }//endof inputform
+  */
+  
+  this.submittimer=function(){
+      var hhh=$("#hhh"+this.number)[0].value;
+      var mmm=$("#mmm"+this.number)[0].value;
+      var sss=$("#sss"+this.number)[0].value;
+ 
+      if(hhh<=0 || hhh>23 || isNaN(hhh)){hhh='00';}
+      if(mmm<=0 || mmm>59 || isNaN(mmm)){mmm='00';}
+      if(sss<=0 || sss>59 || isNaN(sss)){sss='00';}
+ 
+      var thhh=(new Date().getHours()+(hhh/1));
+      var tmmm=(new Date().getMinutes()+(mmm/1));
+      var tsss=(new Date().getSeconds()+(sss/1));
+      if((tsss/1)>=60){
+        tsss=tsss%60;
+        tmmm++;
+      }
+      if((tmmm/1)>=60){
+        tmmm=tmmm%60;
+        thhh++;
+      }
+      if((thhh/1)>=24){
+        thhh=thhh%24;
+      }
+ 
+      this.time.setHours(thhh);
+      this.time.setMinutes(tmmm);
+      this.time.setSeconds(tsss);
+ 
+      this.interface_divalarm.innerHTML=thhh + " : " + tmmm + " : " + tsss;
+      this.alarm_enabled=true;
+      this.remaintimeform();
+  }//endof submittimer
+  
+  this.inputform= function(){
+    var inputformstring="<form>\
+    <input id='hhh"+this.number+"' type='text' size='2' maxlength='2' value="+this.time.getHours()+"> : \
+    <input id='mmm"+this.number+"' type='text' size='2' maxlength='2' value="+this.time.getMinutes()+"> : \
+    <input id='sss"+this.number+"' type='text' size='2' maxlength='2' value="+this.time.getSeconds()+">\
+    <input id='setalarm' type='button' value='에 알람' onclick='alarmclock["+this.number+"].submitalarm()' >\
+    <input id='settimer' type='button' value='후에 알람' onclick='alarmclock["+this.number+"].submittimer()'>";
+    this.interface_divremain.innerHTML=inputformstring;
+  }//endof inputform
+  this.remaintimeform= function(){
+    var remainformstring="<div id=remaintime"+this.number+"></div>\
+    <input type='button' value='알람설정' onclick='alarmclock["+this.number+"].inputform()'>";
+    this.interface_divremain.innerHTML=remainformstring;
+  }//endof remaintimeform
+  this.toggle_enable=function(){
+    if(this.alarm_enabled){
+      this.alarm_enabled=false;
+      $("#alarmlight"+this.number)[0].style.color="#FF0000";
+    }//endof if this.alarm_enabled is true
+    else{
+      this.alarm_enabled=true;
+      $("#alarmlight"+this.number)[0].style.color="#40FF40";
+    }//endof else
+  }//endof toggle_enable
+}//endof Alarm
+//초기화 함수
+
+var nowclock=new Clock();
+var alarmclock=new Array(ALARM_NUMBER);
+
+function Initialize(){
+  nowclock=new Clock();
+  nowclock.interface_div=jQuery('#DIVclock')[0];
+  for(var i=0;i<ALARM_NUMBER;i++){
+    alarmclock[i]=new Alarm();
+    alarmclock[i].number=i;
+    alarmclock[i].interface_divalarm=jQuery('#DIValarm'+i)[0];
+    alarmclock[i].interface_divremain=jQuery('#DIVremain'+i)[0];
+    alarmclock[i].alarmsound=jQuery('#alarmsound'+i)[0];
+    alarmclock[i].inputform();
+   alarmclock[i].submitalarm();
+  }
+}
+Initialize();
+
+//Run Interval
+function RunInterval(){
+  nowclock.runf();
+  for(var i=0;i<ALARM_NUMBER;i++){
+    alarmclock[i].runf();
+  }
+  setTimeout(RunInterval,50);
+}
+RunInterval();
+
+
+
+</script>

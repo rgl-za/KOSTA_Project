@@ -46,7 +46,6 @@
 		, #{finaldate}
 		)
 	</insert>
-
 	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
@@ -58,7 +57,7 @@
 		, content 	= #{content}
 		, price 	= #{price}
 		, maxpeople = #{maxpeople}
-		, minpeople = #{minpeople} <!-- 고정값 1로 -->
+		, minpeople = #{minpeople} 
 		, enddate 	= #{enddate}
 		WHERE
 		pnum = #{pnum}
@@ -82,7 +81,7 @@
 		<include refid="postColumns" />
 		FROM post
 		WHERE delete_yn = 'N'
-		ORDER BY pnum DESC, uploaddate DESC
+		ORDER BY uploaddate DESC
 	</select>
 
 	<select id="selectPostTotalCount" resultType="int">
