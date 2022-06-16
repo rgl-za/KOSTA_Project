@@ -90,6 +90,7 @@
 <!--                                                </button>-->
                                                 <a class="btn btn-primary waves-effect waves-light"
                                                    th:href="@{/detail.do( pnum=${postList.pnum} )}"
+
                                                    th:onclick="insertTeamMember( [[${postList.pnum}]] )"
                                                 >참여하기</a>
                                             </div>
@@ -134,18 +135,20 @@
 
         function insertTeamMember(pnum) {
                 console.log("tqtqtq");
+            if (confirm(pnum + "받아오나요")) {
                 var uri = /*[[ @{/team} ]]*/null;
                 var html = "";
 
-                html += '<form name="dataForm" action="' + uri + '" method="post">';
-                html += '<input type="hidden" name="pnum" value="' + pnum + '" />';
+                console.log(pnum);
+                html += '<form id="dataForm" name="dataForm" action="'+uri+'" method="post" onsubmit="alert(pnum)">';
+                html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
                 html += '</form>';
 
                 $("body").append(html);
-                // document.dataForm.submit();
                 $("#dataForm").submit();
+
                 console.log("찍혔나용");
-        }
+        }}
         /*]]>*/
     </script>
 
