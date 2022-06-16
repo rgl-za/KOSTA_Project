@@ -3,7 +3,9 @@ package com.project.controller;
 import java.util.List;
 
 import com.project.domain.CommentDTO;
+import com.project.domain.TeamMemberDTO;
 import com.project.service.CommentService;
+import com.project.service.TeamMemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class PostController {
 
 	@Autowired
 	private CommentService commentService;
+
+	@Autowired
+	private TeamMemberService teamMemberService;
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
@@ -109,12 +114,18 @@ public class PostController {
 	public String openPostDetail(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 //		long pnumex = 1;
-		PostDTO postDTO = postService.getPostDetail(pnum);//임의의 pnum
+		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
 		List<CommentDTO> commentList= commentService.getCommentList(pnum);
+		List<TeamMemberDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
 
 		model.addAttribute("postDTO", postDTO);
+
 		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
+
+		model.addAttribute("teamMemberList", teamMemberList);
+		model.addAttribute("teamMember", new TeamMemberDTO());
+
 		//PostDTO post = postService.getPostDetail(pnum);
 
 		System.out.println(commentList);
@@ -124,6 +135,9 @@ public class PostController {
 //		}
 		//model.addAttribute("post", post);
 		//logger.info("detail.do");
+
+
+
 		return "/detail";
 	}
 }

@@ -84,8 +84,10 @@
                                                     나가기
                                                 </button>
                                                 <!--로그인 정보를 넘겨줘야 함-->
+                                                <button th:onclick="insertTeamMember( [[${postList.pnum}]] )">
                                                 <a th:href="@{/detail.do( pnum=${postList.pnum} )}"
                                                    class="btn btn-primary waves-effect waves-light">참여하기</a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -124,6 +126,20 @@
                 $("body").append(html);
                 document.dataForm.submit();
             }
+        }
+
+        function insertTeamMember(pnum) {
+                console.log("tqtqtq");
+                var uri = /*[[ @{/team.do} ]]*/null;
+                var html = "";
+
+                html += '<form name="dataForm" action="' + uri + '" method="post">';
+                html += '<input type="hidden" name="pnum" value="' + pnum + '" />';
+                html += '</form>';
+
+                $("body").append(html);
+                document.dataForm.submit();
+
         }
         /*]]>*/
     </script>
