@@ -1,13 +1,11 @@
 package com.project.controller;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,79 +26,63 @@ public class PostController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-	private LocalDateTime enddate;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-	private LocalDateTime finaldate;
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-	private LocalDateTime uploaddate;
-	
 	@Autowired
 	private PostService postService;
 
 	@Autowired
 	private CommentService commentService;
 
-	// 게시글 작성 폼으로
+	// 게시글 작성 완료시
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
-		if (pnum == null) {
+	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+		logger.info("PostDTO" + params);
+		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			model.addAttribute("post", new PostDTO());
-			System.out.println();
-		} else {
+		} else { // pnum에서 받아온 경우
 			PostDTO post = postService.getPostDetail(pnum);
 			if (post == null) {
 				return "redirect:/main.do";
 			}
 			model.addAttribute("post", post);
 		}
-		System.out.println("logger");
-		logger.info("write.do");
+
+		/* logger.info("PostDTO" + params); */
 		return "/write";
 	}
 
 	// 게시글 등록, 수정
-	@PostMapping(value = "/register.do" )
+	@PostMapping(value = "/register.do")
 	public String registerPost(final PostDTO params, MultipartFile file) {
-	System.out.println("file!" + file);
-	System.out.println("register.do");
-	System.out.println(params);
-	System.out.println(params.getPhoto());
-		try {
-			// 파일업로드
-			if(!file.isEmpty()) {
-				
+		logger.info("" + params);
+		try { // 파일업로드
+			if (!file.isEmpty()) {
 				FileUtil fileUtil = new FileUtil();
 				FileDTO fileDTO = fileUtil.fileUpload(file);
-				System.out.println("저장된 filevo: "+ fileDTO.toString());
-				System.out.println("저장된 file이름: "+ fileDTO.getSaveName());
-				
-				//블로그 logo-name 설정
+				System.out.println("저장된 filevo: " + fileDTO.toString());
+				System.out.println("저장된 file이름: " + fileDTO.getSaveName());
+
+				// 블로그 logo-name 설정 
 				params.setPhoto(fileDTO.getSaveName());
-				
-				
+
 				boolean isRegistered = postService.registerPost(params);
 				System.out.println(isRegistered);
-				if (isRegistered == false) {
-					// TODO => 게시글 등록에 실패하였다는 메시지를 전달
-					System.out.println("등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!");
+				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
+					System.out.println("<-----게시글 등록 실패----->");
 				}
-			}else {
+			} else {
 				boolean isRegistered = postService.registerPost(params);
 				System.out.println(isRegistered);
-				if (isRegistered == false) {
-					// TODO => 게시글 등록에 실패하였다는 메시지를 전달
-					System.out.println("등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!등록!실패!");
+				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달 
+					System.out.println("<-----게시글 등록실패----->");
 				}
 			}
-		} catch (DataAccessException e) {
-			// TODO => 데이터베이스 처리 과정에 문제가 발생하였다는 메시지를 전달
-			System.out.println("처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!처리과정실패!");
-		} catch (Exception e) {
-			// TODO => 시스템에 문제가 발생하였다는 메시지를 전달
-			System.out.println("시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!시스템문제!");
+		} catch (DataAccessException e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는메시지를 전달
+			System.out.println("<-----데이터베이스 처리 과정 문제 발생----->");
+		} catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
+			System.out.println("<-----시스템에 문제 발생----->");
 		}
-		logger.info("write.do");
+		System.out.println("<--------------------------------메인-------------------------------->");
+		logger.info("PostDTO" + params);
 		return "redirect:/main.do";
 	}
 
@@ -118,22 +100,22 @@ public class PostController {
 	public String openPostDetail(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 //		long pnumex = 1;
-		PostDTO postDTO = postService.getPostDetail(pnum);//임의의 pnum
-		List<CommentDTO> commentList= commentService.getCommentList(pnum);
+		PostDTO postDTO = postService.getPostDetail(pnum);// 임의의 pnum
+		List<CommentDTO> commentList = commentService.getCommentList(pnum);
 
 		model.addAttribute("postDTO", postDTO);
 		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
-		//PostDTO post = postService.getPostDetail(pnum);
+		// PostDTO post = postService.getPostDetail(pnum);
 
 		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
 //		}
-		//model.addAttribute("post", post);
-		//logger.info("detail.do");
+		// model.addAttribute("post", post);
+		// logger.info("detail.do");
 		return "/detail";
 	}
-	
+
 }
