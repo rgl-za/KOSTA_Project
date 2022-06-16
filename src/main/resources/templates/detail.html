@@ -50,12 +50,15 @@
 										<h7 class="m-0 font-weight-bold text-gray-900">물품 개수 </h7>
 										15개입 &ensp;<br>
 									</p>
-									<p>
+									
 									<div class="margin-bottom">
-										<h7 class="m-0 font-weight-bold text-gray-900">링크주소:
-											<text th:text="${postDTO.getLink()}"></text></h7>
+										<p>
+										<h7 class="m-0 font-weight-bold text-gray-900">링크주소: </h7>
+										<a th:href="@{${postDTO.getLink()}}">바로가기</a>
+										<text th:text="${postDTO.getLink()}"></text>
+										</p>
 									</div>
-									</p>
+									
 
 									<span class="text-gray-900">작성 날짜 </span> 30분 전
 
