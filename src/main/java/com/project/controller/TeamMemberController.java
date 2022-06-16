@@ -13,7 +13,7 @@ public class TeamMemberController {
     @Autowired
     private TeamMemberService teamMemberService;
 
-    @PostMapping(value = "team.do")
+    @PostMapping(value = "/team")
     private String insertTeamMember(@RequestParam(value = "pnum", required = false) Long pnum, TeamMemberDTO params){
         teamMemberService.registerTeamMember(params);
         return "redirect:/detail.do?pnum="+ params.getPnum();

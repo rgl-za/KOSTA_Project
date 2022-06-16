@@ -6,7 +6,7 @@
 	<div class="container-fluid">
 		<!-- 내정보 들어갈 자리입니다. -->
 
-		<th:block th:each="deallist:${dealList}">
+		<th:block th:each="deallist,i:${dealList}">
 
 			<!-- 거래 내역 화면 입니다. -->
 			<div class="card shadow mb-4" style="width: 100%;">
@@ -44,11 +44,11 @@
 						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
 						<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
 						<ul class="list-group list-group-flush">
-							<div id="dealing" style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">
+							<div class="dealing" th:id="|deal*{i.index}|" style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">
 								<span>거래중</span>&emsp;&emsp; 
 								<img src="img/clock.png" style="width: 28px;"> 
 								<input type="hidden" id="enddate" th:value="${#temporals.format(deallist.enddate, 'yyyy-MM-dd HH:mm:ss')}">
-								<span id="timer" style="font-size: 15px; color: red;"></span>
+								<span th:id="|timer*{i.index}|" style="font-size: 15px; color: red;"></span>
 							</div>
 							<!-- <span style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">거래중</span> -->
 							<li class="list-group-item" id="cobuy_title"
@@ -164,6 +164,7 @@
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
 		/*<![CDATA[*/
+		
 		function convertStringToDate(endDate) {
 			console.log(enddate);
 			let dateComponents = endDate.split(' ');
@@ -172,61 +173,53 @@
 			return (new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
 					timePieces[0], timePieces[1], timePieces[2]))
 		}
-
-		function msg_time(RemainDate) {
-			//var years = Math.floor(RemainDate/(1000*60*60*24*30*12));
-			//var months = Math.floor((RemainDate % ((1000*60*60*24*30*12)) / (1000*60*60*24*30)));
-			var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
-			var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60));
-			var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))/ (1000 * 60));
-			var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
-
-			m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
-			return m
-			//const timerId = document.querySelector(name);
-			//timerId.innerHTML = m;
-		}
 		
-		//Run Interval
-		function RunInterval(list){
-		  var timers = $("div#dealing").children("span#timer")
-		  //console.log(timers);
-		  for(var i=0;i<timers.length;i++){
-			console.log("timers[i]:"+timers[i].document.getElementById("born"));
-		    $(timers[i]).innerHTML = list[i];
-		  }
-		  setTimeout(RunInterval(list), 1000);
-		}
-
-		
-		$(function() {
-			
-			//참고:$("div#dealing").children("input#enddate")[1]
-			var list = new Array();
-			var els = $("div#dealing").children("input#enddate")
-			$.each(els, function (index, item) {
-				console.log("index: "+ index +"item: "+ item);
-				console.log($(item).val());
-				
-				var endDate = convertStringToDate($(item).val());
+		function msg_time() {
+			var els = $("div.dealing").children("input#enddate");
+			console.log("els: " + els);
+			 for (var i=0; i<els.length; i++) {
+			 	var endDate = convertStringToDate($(els[i]).val());
 				console.log("endDate: ", endDate);
-	
+
 				var startDatetime = new Date();
 				console.log("startDatetime: ", startDatetime);
-	
+
 				var RemainDate = endDate - startDatetime;
 				console.log("RemainDate: ", RemainDate);
 				
-				var time = msg_time(RemainDate);
-				list.push(time);
+				var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))/ (1000 * 60 * 60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))/ (1000 * 60));
+				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 				
-				//var timer = setInterval(RunInterval(list), 1000);
+				if (RemainDate<0){
+					var tagid = '#timer'+i; 
+				  	console.log("tagid: "+ tagid);
+				  	$(tagid).text("EXPIRED");
 
-			});
-			console.log("list: "+list);
-			RunInterval(list);
-		});
+				}else{
+					m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+					console.log("m: "+ m);
+					
+					var tagid = '#timer'+i; 
+				  	console.log("tagid: "+ tagid);
+				  	$(tagid).text(m);
+					
+				}
+			 }		  	
+		}
 
+		function StartTimeRemaining(){
+			msg_time();
+			setInterval(function(){
+				msg_time();
+			}, 1000)
+		}
+		
+		StartTimeRemaining();
+
+		
+		
 		/*]]>*/
 	</script>
 </th:block>
