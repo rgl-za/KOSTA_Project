@@ -52,8 +52,13 @@
 									</p>
 									<p>
 									<div class="margin-bottom">
-										<h7 class="m-0 font-weight-bold text-gray-900">링크주소: <text
-											th:text="${postDTO.getLink()}"></text></h7>
+										<h7 class="m-0 font-weight-bold text-gray-900">링크주소: 
+											
+										<a th:href="@{${postDTO.getLink()}}">타임리프</a>
+										<a th:href="@{https://developer-rooney.tistory.com}">글 상세보기</a>
+										<!--<a href="${postDTO.getLink()}">바로가기</a>   -->
+										<!--  <text th:text="${postDTO.getLink()}"></text>-->
+										</h7>
 									</div>
 									</p>
 

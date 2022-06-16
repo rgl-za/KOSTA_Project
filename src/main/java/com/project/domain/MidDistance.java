@@ -19,11 +19,20 @@ public class MidDistance {
 	double cy=37.83846617;
 	double cx=128.8135441;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		RealVector a = MatrixUtils.createRealVector(new double [] {1, 2, 3, 4, 5});
+//	public static void printMat() {
+//		//System.out.println(mat);
+//	}
+	
+	
+	RealVector a = MatrixUtils.createRealVector(new double [] {ax,ay });
+	
+	
+	/*
+	 * public static void main(String[] args) { // TODO Auto-generated method stub
+	 * //printMat();
+	 * 
+	 * 
+	 * }
+	 */
 
-	}
-
-}
+}	
