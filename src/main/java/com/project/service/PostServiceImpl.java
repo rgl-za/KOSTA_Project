@@ -28,6 +28,18 @@ public class PostServiceImpl implements PostService {
 
 		return (queryResult == 1) ? true : false;
 	}
+	
+	@Override
+	public boolean updatePost(PostDTO params) {
+		int queryResult = 0;
+
+		if (params.getPnum() == null) {
+			queryResult = postMapper.updatePost(params);
+		}
+		// 난수 생길 예정 } else { queryResult = postMapper.updatePost(params); }
+
+		return (queryResult == 1) ? true : false;
+	}
 
 	// 상세내용에 불러올 글
 	@Override

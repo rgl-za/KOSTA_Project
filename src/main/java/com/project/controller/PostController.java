@@ -94,6 +94,11 @@ public class PostController {
 		logger.info("write.do");
 		return "redirect:/main.do";
 	}
+	
+	
+	
+	
+	
 
 	// 게시글을 올리고 main으로
 	@GetMapping(value = "/main.do")
