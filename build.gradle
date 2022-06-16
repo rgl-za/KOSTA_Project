@@ -42,6 +42,9 @@ dependencies {
 	implementation 'commons-fileupload:commons-fileupload:1.4'
 	
 	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.11'	
+	
+	compileOnly 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
+	runtimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {

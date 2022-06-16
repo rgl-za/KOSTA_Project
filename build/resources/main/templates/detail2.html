@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<th:block layout:fragment="content">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">거래 상세 페이지</h1>
+		</div>
+		<div
+			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<h6 class="m-0 font-weight-bold text-gray-900">글제목</h6>
+			<div class="float-right">
+				<a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
+					class="text">수정</span>
+				</a> <a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
+					class="text">삭제</span>
+				</a>
+			</div>
+
+
+		</div>
+		<div class="row">
+
+			<!-- 이미지와 링크 -->
+			<div class="col-xl-4 col-lg-5">
+				<div class="card-detail-top shadow mb-4">
+					<!-- Card Body -->
+					<div class="card-body">
+
+						<div class="represent_img">
+							<img class="img-item" src="img/휴ㅣㅈ.jpg">
+						</div>
+
+						<!-- 글 내용 -->
+						<div class="">
+							<div class="card-detail-top mb-4">
+								<!-- Card Body -->
+								<div class="card-body">
+									<p>
+										<h7 class="m-0 font-weight-bold text-gray-900">구매 동네 </h7>
+										---
+									</p>
+									<p>
+										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
+										8000원 &nbsp;<br>
+										<h7 class="m-0 font-weight-bold text-gray-900">물품 개수 </h7>
+										15개입 &ensp;<br>
+									</p>
+									<p>
+									<div class="margin-bottom">
+										<h7 class="m-0 font-weight-bold text-gray-900">링크주소:
+										http://~~</h7>
+
+
+									</div>
+									</p>
+									<span class="text-gray-900">작성 날짜 </span> 30분 전
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 거래 정보 -->
+			<div class="col-xl-8 col-lg-7">
+				<div class="card-detail-top shadow mb-4">
+					<!-- Card Body -->
+					<div class="card-body-nonauto">
+
+						<div class="horizon">
+							<div class="detail-top_info">
+								<p>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 최대 구매가 </h7>
+									--원&emsp;
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 최소 구매가 </h7>
+									--원<br>
+								</p>
+								<p>
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최소인원 </h7>
+									2명 &emsp;
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">최대인원 </h7>
+									5명
+								</p>
+								<p>
+
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 현재 인원수 </h7>
+									1명&emsp;
+									<h7 class="m-0 font-weight-bold text-primary bg-gray-100"> 현재 구매가 </h7>
+									---원<br>
+								</p>
+
+							</div>
+							<div class="detail-top_timer">
+								<h8>남은 시간</h8>
+								<p>
+								 <!-- <img src="img/clock.png" style="width:10vw; min-width: 30px;"> -->
+								 <span id="timer" style="font-size:-webkit-xxx-large; color:red;"></span>
+
+								</p>
+							</div>
+
+
+						</div>
+						<div class="vertical">
+							<!-- 참여자 ready 영역 -->
+							<div class="detail-ready">
+								<div class="user-ready-img">
+									<div
+										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg"> <a href="#"
+										class="btn btn-primary-cap btn-icon-split"> <span
+										class="icon text-white-50"> <i class="fas fa-flag"></i>
+									</span> <span class="text">방장</span>
+									</a>
+								</div>
+								<div class="user-ready-img">
+									<div
+										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg"> <a href="#"
+										class="btn btn-primary btn-icon-split"> <span
+										class="icon text-white-50"> <i class="fas fa-flag"></i>
+									</span> <span class="text">준비</span>
+									</a>
+								</div>
+								<div class="user-ready-img">
+									<div
+										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg"> <a href="#"
+										class="btn btn-primary btn-icon-split"> <span
+										class="icon text-white-50"> <i class="fas fa-flag"></i>
+									</span> <span class="text">준비</span>
+									</a>
+								</div>
+								<div class="user-ready-img">
+									<div
+										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg"> <a href="#"
+										class="btn btn-primary btn-icon-split"> <span
+										class="icon text-white-50"> <i class="fas fa-flag"></i>
+									</span> <span class="text">준비</span>
+									</a>
+								</div>
+								<div class="user-ready-img">
+									<div
+										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+									<img class="ready-img rounded-circle"
+										src="img/undraw_profile.svg"> <a href="#"
+										class="btn btn-primary btn-icon-split"> <span
+										class="icon text-white-50"> <i class="fas fa-flag"></i>
+									</span> <span class="text">준비</span>
+									</a>
+								</div>
+
+							</div>
+							<!-- buttons -->
+							<a href="#" class="btn btn-primary btn-icon-split">
+								<span class="icon text-white-50"><i class="fas fa-flag"></i></span>
+								<span class="text">시작하기!</span>
+							</a>
+
+							<button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target=".bd-example-modal-xl">
+								<span class="icon text-white-50">
+									<i class="fas fa-info-circle"></i>
+								</span>
+								중간 배송지 확인
+							</button>
+
+							<!--중간 배송지 모달창-->
+							<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-xl">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">중간 배송지 확인하기</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="닫기">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<!--카카오맵 api 적용-->
+											<!-- 지도를 표시할 div 입니다 -->
+											<div id="map" style="width:100%;height:350px;"></div>
+
+											<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c"></script>
+											
+											<script>
+												
+												var minLatLng = function( lat1 , lng1, lat2, lng2){
+													this.lat1=lat1;
+													this.lng1=lng1;
+													this.lat2=lat2;
+													this.lng2=lng2;
+													//this.minus = lat1 + ( (lat2-lat1)/2 );
+													this.midLat = this.lat1 + (this.lat2-this.lat1)/2;
+													this.midLng = this.lng1 + (this.lng2-this.lng1)/2;
+													
+													var LatLng= function(lat, lng){
+														this.lat=lat;
+														this.lng=lng;
+														this.getLat=function(){
+															return this.lat;
+														}
+													}
+										
+												}
+												//var latlngWow = new minLatLng(37.655804, 127.024276, 35.226257, 129.164313);
+												const points = [[150, 300], [400, 10], [450, 300], [400, 400], [250, 400], [200, 450], [100, 450], [50, 200]];
+												const path = [];
+												for(var i = 0; i < points.length; i ++) {
+												    path.push(i == 0 ? 'M' : 'L');
+												    path.push(points[i][0]);
+												    path.push(points[i][1]);
+												}
+												path.push('Z');
+												const center = getCentroid(points);
+												console.log(center);//로그
+												function getCentroid(points) {
+													  var area = 0,
+													      cx = 0,
+													      cy = 0;
+
+													  for(var i = 0; i < points.length; i++){
+													    var j = (i + 1) % points.length;
+
+													    var pt1 = points[i];
+													    var pt2 = points[j];
+
+													    var x1 = pt1[0];
+													    var x2 = pt2[0];
+													    var y1 = pt1[1];
+													    var y2 = pt2[1];
+
+													    area += x1 * y2;
+													    area -= y1 * x2;
+
+													    cx += ((x1 + x2) * ((x1 * y2) - (x2 * y1)));
+													    cy += ((y1 + y2) * ((x1 * y2) - (x2 * y1)));
+													  }
+
+													  area /= 2;
+													  area = Math.abs(area);
+
+													  cx = cx / (6.0 * area);
+													  cy = cy / (6.0 * area);
+
+													  return {
+													    x: Math.abs(cx),
+													    y: Math.abs(cy)
+													  };
+													}
+												
+												
+												var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+														mapOption = {
+															center: new kakao.maps.LatLng(latlngWow.midLat, latlngWow.midLng),
+															//center: new kakao.maps.LatLng(latlng.lat, latlng.lng),
+															//center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+															level: 9 // 지도의 확대 레벨
+														};
+
+												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+												var map = new kakao.maps.Map(mapContainer, mapOption);
+												// 마커가 표시될 위치입니다
+												var markerPosition = new kakao.maps.LatLng(latlngWow.midLat, latlngWow.midLng);
+												// 마커를 생성합니다
+												var marker = new kakao.maps.Marker({
+												    position: markerPosition
+												});
+												marker.setTitle('중간지점');
+												// 마커가 지도 위에 표시되도록 설정합니다
+												marker.setMap(map);
+												
+												// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+												var iwContent = '<div style="padding:5px;">중간지점입니다!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+												    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+												// 인포윈도우를 생성합니다
+												var infowindow = new kakao.maps.InfoWindow({
+												    content : iwContent,
+												    removable : iwRemoveable
+												});
+
+												// 마커에 클릭이벤트를 등록합니다
+												kakao.maps.event.addListener(marker, 'click', function() {
+												      // 마커 위에 인포윈도우를 표시합니다
+												      infowindow.open(map, marker);  
+												});
+
+												// 지도를 표시하는 div 크기를 변경하는 함수입니다
+												function resizeMap() {
+													var mapContainer = document.getElementById('map');
+													mapContainer.style.width = '1050px';
+													mapContainer.style.height = '650px';
+												}
+
+												function relayout() {
+
+													// 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+													// 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다
+													// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+													map.relayout();
+												}
+											</script>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+											<button type="button" class="btn btn-primary">카카오맵으로 확인하기</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- row -->
+
+
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="card-detail-chat shadow mb-4">
+					<div class="card-body">
+						<div class="col-6">
+							<label><b>채팅방</b></label>
+						</div>
+						<div>
+							<div id="msgArea" class="col-10"></div>
+							<div class="col-6">
+								<div class="input-group mb-3">
+									<input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<!-- 거래 정보 표시 -->
+		<div class="detail_top">
+			<div class="detail_top_top"></div>
+			<div class="detail_top_content">
+				<div class="detial_top_content_left"></div>
+				<div class="detial_top_content_right"></div>
+				<div class="detial_top_content_bottom"></div>
+			</div>
+		</div>
+		<!-- 거래 정보 표시 end -->
+
+		<div class="container my-auto">
+			<div class="copyright text-center my-auto">
+				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>
+				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>
+			</div>
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- /.container-fluid -->
+</th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      function convertStringToDate(endDate) {
+		    let dateComponents = endDate.split(' ');
+		    let datePieces = dateComponents[0].split("-");
+		    let timePieces = dateComponents[1].split(":");
+		    return(new Date(datePieces[2], (datePieces[1] - 1), datePieces[0],
+		                         timePieces[0], timePieces[1], timePieces[2]))
+	  }
+		
+	  var endDate = convertStringToDate("22-07-03 17:50:00");
+	  console.log(endDate);
+      var stDate = new Date();
+      console.log(stDate);
+      var RemainDate = stDate - endDate;
+      const timerId = document.querySelector('#timer');
+      
+      function msg_time() {
+        var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+        var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
+        var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+        
+        m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
+        
+       timerId.innerHTML =m;
+        
+        if (RemainDate < 0) {      
+          // 시간이 종료 되었으면..
+          clearInterval(tid);   // 타이머 해제
+        }else{
+          RemainDate = RemainDate - 1000; // 남은시간 -1초
+        }
+      }
+      
+      setInterval(function() {
+    	 msg_time();
+    	 
+    	}, 1000);
+      
+      
+      /*]]>*/
+    </script>
+  </th:block>
+</html>
