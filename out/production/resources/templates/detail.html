@@ -31,7 +31,7 @@
 
 						<div class="represent_img">
 							<img class="img-item" th:src="|@{/productImgs/}${postDTO.getPhoto()}|">
-							<!-- <text th:text="${postDTO.getPhoto()}"></text> -->
+							 <!-- <text th:text="${postDTO.getPhoto()}"></text> -->
 						</div>
 
 						<!-- 글 내용 -->
@@ -120,7 +120,7 @@
 								<p><span id="timer" style="font-size: -webkit-xxx-large; color: red;"></span></p>
 							</div>
 						</div>
-						<div class="vertical" th:each="teamMember: ${teamMemberList}">
+						<div class="vertical">
 							<!-- 참여자 ready 영역 -->
 							<div class="detail-ready">
 								<!-- 방장 영역 -->
@@ -137,7 +137,7 @@
 									</a>
 								</div>
 								<!-- 팀원 영역 -->
-								<div class="user-ready-img" th:if="${not #lists.isEmpty(teamMemberList)}">
+								<div class="user-ready-img" th:each="teamMember: ${teamMemberList}">
 									<div
 										class="text-gray-600 font-weight-bold bg-gray-100 align-center"
 										th:text="${teamMember.userId}"

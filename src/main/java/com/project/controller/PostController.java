@@ -60,6 +60,7 @@ public class PostController {
 	@PostMapping(value = "/register.do")
 	public String registerPost(final PostDTO params, MultipartFile file) {
 		logger.info("" + params);
+		System.out.println("도랏나");
 		try { // 파일업로드
 			if (!file.isEmpty()) {
 				FileUtil fileUtil = new FileUtil();
