@@ -2,9 +2,6 @@ package com.project.service;
 
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 
 public interface PostService {
@@ -23,7 +20,7 @@ public interface PostService {
 	public boolean deletePost(Long pnum);
 
 	// 게시글 메인에 불러오기
-	public List<PostDTO> getPostList();
+	public List<PostDTO> getPostList(PostDTO params);
 	
 	// 게시글 사진 불러오기
 	

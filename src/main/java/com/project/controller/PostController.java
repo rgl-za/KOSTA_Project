@@ -38,7 +38,7 @@ public class PostController {
 	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
-			model.addAttribute("post", new PostDTO());
+			 model.addAttribute("post", new PostDTO());
 		} else { // pnum에서 받아온 경우
 			PostDTO post = postService.getPostDetail(pnum);
 			if (post == null) {
@@ -47,7 +47,7 @@ public class PostController {
 			model.addAttribute("post", post);
 		}
 
-		/* logger.info("PostDTO" + params); */
+		logger.info("PostDTO" + params);
 		return "/write";
 	}
 	
@@ -148,8 +148,8 @@ public class PostController {
 
 	// 게시글을 올리고 main으로
 	@GetMapping(value = "/main.do")
-	public String openPostList(Model model) {
-		List<PostDTO> postList = postService.getPostList();
+	public String openPostList(@ModelAttribute("params") PostDTO params,Model model) {
+		List<PostDTO> postList = postService.getPostList(params);
 		model.addAttribute("postList", postList);
 		logger.info("main.do");
 		return "/main";
@@ -157,7 +157,7 @@ public class PostController {
 
 	// 게시글 상세내용 detail
 	@GetMapping(value = "/detail.do")
-	public String openPostDetail(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 //		long pnumex = 1;
 		PostDTO postDTO = postService.getPostDetail(pnum);// 임의의 pnum
@@ -167,7 +167,7 @@ public class PostController {
 		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
 		// PostDTO post = postService.getPostDetail(pnum);
-
+		
 		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
