@@ -40,7 +40,7 @@
 		, #{maxpeople}
 		, #{minpeople}
 		, 'NULL'
-		, SYSDATE
+		, SYSDATE <!-- uploadDate -->
 		, #{enddate}
 		, 'N'
 		, #{finaldate}
@@ -50,17 +50,17 @@
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
 		SET
-		uploaddate 	= SYSDATE
-		, title 	= #{title}
-		, photo 	= #{photo}
-		, link 		= #{link}
-		, content 	= #{content}
-		, price 	= #{price}
-		, maxpeople = #{maxpeople}
-		, minpeople = #{minpeople} 
-		, enddate 	= #{enddate}
+			uploaddate 	= SYSDATE
+			, title 	= #{title}
+			, photo 	= #{photo}
+			, link 		= #{link}
+			, content 	= #{content}
+			, price 	= #{price}
+			, maxpeople = #{maxpeople}
+			, minpeople = #{minpeople} 
+			, enddate 	= #{enddate}
 		WHERE
-		pnum = #{pnum}
+			pnum = #{pnum}
 	</update>
 
 	<!-- 포스트 상세내용 -->
@@ -68,11 +68,11 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM
-		post
+			post
 		WHERE
-		delete_yn = 'N'
+			delete_yn = 'N'
 		AND
-		pnum = #{pnum}
+			pnum = #{pnum}
 	</select>
 
 	<!-- main -->
