@@ -36,10 +36,10 @@
 		, #{link}
 		, #{price}
 		, #{postnum}
-		, 'NULL'
+		, NULL<!-- #{dealaddress} -->
 		, #{maxpeople}
 		, #{minpeople}
-		, 'NULL'
+		, NULL
 		, SYSDATE <!-- uploadDate -->
 		, #{enddate}
 		, 'N'
