@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center" >
 
                                 <!-- 모달창 버튼 -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -55,8 +55,8 @@
                                 <!-- 모달창 -->
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
+                                    <div class="modal-dialog modal-dialog-centered" role="document" >
+                                        <div class="modal-content" >
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalCenterTitle"
                                                     th:text="${postList.title}"></h5>
@@ -90,8 +90,6 @@
 <!--                                                </button>-->
                                                 <a class="btn btn-primary waves-effect waves-light"
                                                    th:href="@{/detail.do( pnum=${postList.pnum} )}"
-
-                                                   th:onclick="insertTeamMember( [[${postList.pnum}]] )"
                                                 >참여하기</a>
                                             </div>
                                         </div>
@@ -104,7 +102,6 @@
                             </div>
 
                         </div>
-
                     </div>
                 </div>
             </div>
