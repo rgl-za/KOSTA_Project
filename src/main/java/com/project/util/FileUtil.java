@@ -14,7 +14,7 @@ public class FileUtil {
 
 	public FileDTO fileUpload(MultipartFile file) {
 		
-	 
+	 //C:\Users\jiwon\github\KOSTA_Project\src\main\resources\static\productImgs
 	  String saveDir = "C:\\Users\\jiwon\\github\\KOSTA_Project\\src\\main\\resources\\static\\productImgs";
 	  //String saveDir = "D:/javastudy/workspace/jblog/src/main/resources/upload";
 
