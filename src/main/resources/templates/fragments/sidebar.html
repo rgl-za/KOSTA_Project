@@ -57,7 +57,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
-                <a class="nav-link" href="charts.html">
+           		<a class="nav-link" th:href="@{/write.do}">
                     <i class="fas fa-money-check-alt"></i>
                     <span>거래 만들기</span></a>
             </li>
@@ -67,7 +67,7 @@
 
             <!-- 찜 목록-->
             <li class="nav-item active">
-                <a class="nav-link" href="pick.html">
+                <a class="nav-link" th:href="@{/heart.do}">
                     <i class="fas fa-hand-holding-heart"></i>
                     <span>찜 목록</span></a>
             </li>
@@ -76,9 +76,9 @@
             
              <!-- 내가 참여하고 있는 거래 목록들 -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" th:href="@{/dealing}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>거래목록</span></a>
+                    <span>거래 중 목록</span></a>
             </li>
             
             <!-- Divider -->
