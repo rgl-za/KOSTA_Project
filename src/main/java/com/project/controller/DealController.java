@@ -24,7 +24,7 @@ public class DealController {
 	
 	
 	// 나의 거래완료 내역
-	@GetMapping(value = "/dealhistory")
+	@GetMapping(value = "/mydealhistory")
 	public String getEndDealList(Model model) {
 
 		String userId = "kmg";

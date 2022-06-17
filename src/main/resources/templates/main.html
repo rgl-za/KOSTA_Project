@@ -29,7 +29,7 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <div
                         class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5" th:each="postList : ${postList}">
+                    <div class="col mb-5" th:each="postList,i : ${postList}">
                         <div class="card h-100">
 
                             <!-- Product image-->
@@ -45,18 +45,18 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center" >
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
 
                                 <!-- 모달창 버튼 -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                <button type="button" class="btn btn-primary" th:id="|modal_btn*{i.index}|" data-toggle="modal"
                                         data-target="#exampleModalCenter">
                                     상세 보기
                                 </button>
                                 <!-- 모달창 -->
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                <div class="modal fade" th:id="|exampleModalCenter*{i.index}|" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document" >
-                                        <div class="modal-content" >
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalCenterTitle"
                                                     th:text="${postList.title}"></h5>
@@ -84,14 +84,8 @@
                                                     나가기
                                                 </button>
                                                 <!--로그인 정보를 넘겨줘야 함-->
-<!--                                                <button class="btn btn-primary waves-effect waves-light"-->
-<!--                                                        th:onclick="insertTeamMember( [[${postList.pnum}]] )">-->
-<!--                                                        <a th:href="@{/detail.do( pnum=${postList.pnum} )}">참여하기</a>-->
-<!--                                                </button>-->
-                                                <a class="btn btn-primary waves-effect waves-light"
-                                                   th:href="@{/detail.do( pnum=${postList.pnum} )}"
-                                                   th:onclick="insertTeamMember( [[${postList.pnum}]] )"
-                                                >참여하기</a>
+                                                <a th:href="@{/detail.do( pnum=${postList.pnum} )}"
+                                                   class="btn btn-primary waves-effect waves-light">참여하기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -103,6 +97,7 @@
                             </div>
 
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -115,7 +110,8 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
         /*<![CDATA[*/
-
+		
+        
         function insertHeart(pnum, title) {
             if (confirm(title + "에 관심 있나요?")) {
                 var uri = /*[[ @{/heart.do} ]]*/null;
@@ -130,23 +126,28 @@
                 document.dataForm.submit();
             }
         }
+        
+        // 각 게시물의 모달창 id 지정
+        $(function(){
+			var els = $("h5.fw-bolder");
+			console.log("els.length: "+els.length);
+			$.each(els, function(index, item) {
+				console.log("index: "+ index +"item: "+ item);
+				
+				var tagid = "#modal_btn" + index; 
+				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
+				
+				var value = "#exampleModalCenter"+index;
+				console.log("value:" + value); // data-target 속성값
+				
+				$(tagid).attr("data-target",value); // data-target 속성값
+				
+				//var els2 = $(tagid);
+				//console.log("els2: " + els2 + "length: " + els2.length);
 
-        function insertTeamMember(pnum) {
-                console.log("tqtqtq");
-            if (confirm(pnum + "받아오나요")) {
-                var uri = /*[[ @{/team} ]]*/null;
-                var html = "";
-
-                console.log(pnum);
-                html += '<form id="dataForm" name="dataForm" action="'+uri+'" method="post" onsubmit="alert(pnum)">';
-                html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-                html += '</form>';
-
-                $("body").append(html);
-                $("#dataForm").submit();
-
-                console.log("찍혔나용");
-        }}
+			});
+			console.log("success");
+		});
         /*]]>*/
     </script>
 
