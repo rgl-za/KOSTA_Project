@@ -5,12 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/16554292705125223599f-c33b-4e4c-a8ee-198da4ba7ae4.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/165542994820280fd4153-d3db-440f-a3ad-a2bb5a8184b6.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/16554342332714c91af7a-5eef-4d7f-992f-e11efa32d2dc.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/165543532358792b24a7f-7b51-4d70-a292-45b1cb35149a.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/165543598876105887057-2259-43d8-99e4-f2d5f0b308e0.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/16554292705125223599f-c33b-4e4c-a8ee-198da4ba7ae4.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/165542994820280fd4153-d3db-440f-a3ad-a2bb5a8184b6.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/16554342332714c91af7a-5eef-4d7f-992f-e11efa32d2dc.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/165543532358792b24a7f-7b51-4d70-a292-45b1cb35149a.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/165543598876105887057-2259-43d8-99e4-f2d5f0b308e0.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/BoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/domain/MidDistance.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/mapper/PostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/PostMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/breakdown.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/mypage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/MidDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/MidDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/breakdown.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mypage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +211,7 @@
       <workItem from="1655167151104" duration="21210000" />
       <workItem from="1655253603126" duration="17344000" />
       <workItem from="1655341010257" duration="19211000" />
-      <workItem from="1655431673206" duration="6290000" />
+      <workItem from="1655431673206" duration="6450000" />
     </task>
     <servers />
   </component>

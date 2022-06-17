@@ -21,10 +21,10 @@ public interface PostMapper {
 	public int deletePost(Long pnum);
 
 	// main에 보낸다
-	public List<PostDTO> selectPostList();
+	public List<PostDTO> selectPostList(PostDTO params);
 
 	// 글 총 개수
-	public int selectPostTotalCount();
+	public int selectPostTotalCount(PostDTO params);
 	
 	public PostDTO getPost(int pnum);
 }
