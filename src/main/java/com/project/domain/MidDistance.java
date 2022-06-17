@@ -1,7 +1,7 @@
 package com.project.domain;
 
-import org.apache.commons.math3.linear.MatrixUtils;
-import org.apache.commons.math3.linear.RealVector;
+//import org.apache.commons.math3.linear.MatrixUtils;
+//import org.apache.commons.math3.linear.RealVector;
 
 
 	
@@ -24,7 +24,7 @@ public class MidDistance {
 //	}
 	
 	
-	RealVector a = MatrixUtils.createRealVector(new double [] {ax,ay });
+	//RealVector a = MatrixUtils.createRealVector(new double [] {ax,ay });
 	
 	
 	/*

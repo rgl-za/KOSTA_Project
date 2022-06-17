@@ -50,6 +50,24 @@ public class PostController {
 		/* logger.info("PostDTO" + params); */
 		return "/write";
 	}
+	
+	@GetMapping(value = "/writeUpdate.do")
+	public String openPostWriteUpdate(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+		logger.info("PostDTO" + params);
+		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
+			model.addAttribute("post", new PostDTO());
+		} else { // pnum에서 받아온 경우
+			PostDTO post = postService.getPostDetail(pnum);
+			if (post == null) {
+				return "redirect:/main.do";
+			}
+			model.addAttribute("post", post);
+		}
+
+		/* logger.info("PostDTO" + params); */
+		return "/updatePost";
+	}
+	
 
 	// 게시글 등록, 수정
 	@PostMapping(value = "/register.do")
@@ -179,7 +197,7 @@ public class PostController {
 			return "시스템에 문제가 발생하였습니다.";
 		}
 
-		return "게시글 삭제가 완료되었습니다.";
+		return "redirect:/main.do";
 	}
 	
 	
