@@ -36,7 +36,7 @@ public class BoardController{
 	
 	@GetMapping(value = "/거래내역")
 	public String openBoardListIndex(Model model) {
-		return "/breakdown";
+		return "/mypage";
 	}
 	
 	@GetMapping(value = "/메인")
