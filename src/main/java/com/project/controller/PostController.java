@@ -87,7 +87,7 @@ public class PostController {
 		return "redirect:/main.do";
 	}
 	
-	// 게시글 등록, 수정
+	// 게시글 수정
 		@PostMapping(value = "/update.do")
 		public String updatePost(final PostDTO params, MultipartFile file) {
 			logger.info("" + params);

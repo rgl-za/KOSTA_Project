@@ -29,6 +29,7 @@ public class PostServiceImpl implements PostService {
 		return (queryResult == 1) ? true : false;
 	}
 	
+	// 게시글 수정
 	@Override
 	public boolean updatePost(PostDTO params) {
 		int queryResult = 0;
