@@ -40,7 +40,7 @@
 		, #{maxpeople}
 		, #{minpeople}
 		, 'NULL'
-		, SYSDATE
+		, SYSDATE <!-- uploadDate -->
 		, #{enddate}
 		, 'N'
 		, #{finaldate}

@@ -96,7 +96,7 @@ public class PostController {
 	}
 
 	// 게시글 상세내용 detail
-	@GetMapping(value = "/detail.do/")
+	@GetMapping(value = "/detail.do")
 	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 //		long pnumex = 1;
