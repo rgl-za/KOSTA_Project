@@ -124,6 +124,13 @@ public class PostController {
 
 		//PostDTO post = postService.getPostDetail(pnum);
 
+		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
+		model.addAttribute("countMember", countMember+1);
+		if (countMember >= postDTO.getMinpeople()){
+			model.addAttribute("minpeople", true);
+			System.out.println(countMember);
+		}
+
 		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
