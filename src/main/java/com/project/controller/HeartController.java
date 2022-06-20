@@ -15,7 +15,7 @@ import java.util.List;
 public class HeartController {
 
     @Autowired
-    HeartService heartService;
+    private HeartService heartService;
 
     @PostMapping("/heart.do")
     private String insertHeart(@RequestParam(value = "pnum", required = false) Long pnum, HeartDTO params){
@@ -27,7 +27,7 @@ public class HeartController {
     }
 
     @GetMapping("/pick")
-    // 유저 정보 수정 해야 함 @RequestParam(value = "userId", required = false) String userId,
+    // 유저 정보 수정 해야 함 @RequestParam(value = "userId", required = false) String userId, 같은...
     private String selectHeartList(HeartDTO params, Model model){
         String userid  = "test";
         params.setUserId(userid);

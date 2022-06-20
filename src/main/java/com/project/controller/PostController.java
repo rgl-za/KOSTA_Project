@@ -18,9 +18,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
+import com.project.domain.TeamMemberDTO;
+
 import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.util.FileUtil;
+import com.project.service.TeamMemberService;
 
 @Controller
 public class PostController {
@@ -33,7 +36,10 @@ public class PostController {
 	@Autowired
 	private CommentService commentService;
 
-	// 게시글 작성 완료시
+	@Autowired
+	private TeamMemberService teamMemberService;
+
+	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
 	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
@@ -73,6 +79,7 @@ public class PostController {
 	@PostMapping(value = "/register.do")
 	public String registerPost(final PostDTO params, MultipartFile file) {
 		logger.info("" + params);
+		System.out.println("도랏나");
 		try { // 파일업로드
 			if (!file.isEmpty()) {
 				FileUtil fileUtil = new FileUtil();
@@ -159,22 +166,32 @@ public class PostController {
 	@GetMapping(value = "/detail.do")
 	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
+		System.out.println("현재 pnum -->" + pnum);
 //		long pnumex = 1;
-		PostDTO postDTO = postService.getPostDetail(pnum);// 임의의 pnum
-		List<CommentDTO> commentList = commentService.getCommentList(pnum);
+
+		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
+		List<CommentDTO> commentList= commentService.getCommentList(pnum);
+		List<TeamMemberDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
+
 
 		model.addAttribute("postDTO", postDTO);
+
 		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
-		// PostDTO post = postService.getPostDetail(pnum);
-		
+
+		model.addAttribute("teamMemberList", teamMemberList);
+		model.addAttribute("teamMember", new TeamMemberDTO());
+
+		//PostDTO post = postService.getPostDetail(pnum);
+
 		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
 //		}
-		// model.addAttribute("post", post);
-		// logger.info("detail.do");
+		//model.addAttribute("post", post);
+		//logger.info("detail.do");
+
 		return "/detail";
 	}
 	

@@ -23,8 +23,8 @@ public class DealController {
 	private DealService dealService;
 	
 	
-	// 나의 거래완료 내역
-	@GetMapping(value = "/dealhistory")
+	// 나의 거래완료 내역(마이페이지)
+	@GetMapping(value = "/mydealhistory")
 	public String getEndDealList(Model model) {
 
 		String userId = "kmg";
@@ -33,10 +33,10 @@ public class DealController {
 		System.out.println("dealList" + dealList);
 		model.addAttribute("dealList", dealList);
 
-		return "/breakdown";
+		return "/mypage";
 	}
 	
-	// 나의 거래완료 내역
+	// 나의 거래중인 내역
 	@GetMapping(value = "/dealing")
 	public String getDealingList(Model model) {
 
