@@ -174,3 +174,47 @@ delete
 from comments
 where cnum = 1;
 commit;
+
+select count(*)
+from teammember
+where pnum = 2;
+
+
+
+insert into category values(1, '패션의류');
+insert into category values(2, '뷰티');
+insert into category values(3, '유아용품');
+insert into category values(4, '식품');
+insert into category values(5, '주방용품');
+insert into category values(6, '생활용품');
+insert into category values(7, '홈인테리어');
+insert into category values(8, '가전디지털');
+insert into category values(9, '스포츠/레저');
+insert into category values(10, '자동차용품');
+insert into category values(11, '완구/취미');
+insert into category values(12, '문구/오피스');
+insert into category values(13, '반려동물식품');
+insert into category values(14, '헬스/건강식품');
+insert into category values(15, '여행/티켓');
+insert into category values(16, '기타');insert into category values(1, '패션의류');
+insert into category values(2, '뷰티');
+insert into category values(3, '유아용품');
+insert into category values(4, '식품');
+insert into category values(5, '주방용품');
+insert into category values(6, '생활용품');
+insert into category values(7, '홈인테리어');
+insert into category values(8, '가전디지털');
+insert into category values(9, '스포츠/레저');
+insert into category values(10, '자동차용품');
+insert into category values(11, '완구/취미');
+insert into category values(12, '문구/오피스');
+insert into category values(13, '반려동물식품');
+insert into category values(14, '헬스/건강식품');
+insert into category values(15, '여행/티켓');
+insert into category values(16, '기타');
+
+delete
+from category
+where cnum = 1;
+
+alter table post add numbers number;

@@ -112,5 +112,15 @@
 			post
 		WHERE pnum = #{pnum}
 	</select>
+	
+	<!-- dealaddress 변경 -->
+	<update id="alterDealAdd" parameterType="PostDTO">
+		UPDATE post
+		SET
+		dealaddress = #{dealaddress}
+		
+		WHERE
+		pnum = #{pnum}
+	</update>
 
 </mapper>

@@ -25,4 +25,10 @@ public class TeamMemberServiceImpl implements TeamMemberService{
         teamMemberList = teamMemberMapper.selectTeamMemberList(pnum);
         return teamMemberList;
     }
+
+    @Override
+    public int selectTeamMemberTotalCount(Long pnum) {
+        int memberCount = teamMemberMapper.selectTeamMemberTotalCount(pnum);
+        return memberCount;
+    }
 }
