@@ -20,6 +20,7 @@
 		, enddate
 		, delete_yn
 		, finaldate
+		, numbers
 	</sql>
 
 	<!-- 수정 필요 (문정현) -->
@@ -28,40 +29,40 @@
 		<include refid="postColumns" />
 		) VALUES (
 		seq_post_no.nextval
-		, 1
-		, 'NULL'
+		, 1				<!-- #{catnum} -->
+		, 'NULL'		<!-- leaderid -->
 		, #{title}
 		, #{content}
-		, #{photo}
+		, #{photo}			<!-- #{photo} -->
 		, #{link}
 		, #{price}
-		, #{postnum}
-		, 'NULL'
+		, NULL 			<!-- #{postnum} -->
+		, NULL			<!-- #{dealaddress} -->
 		, #{maxpeople}
-		, #{minpeople}
-		, 'NULL'
-		, SYSDATE
+		, 2				<!-- #{minpeople} -->
+		, NULL			<!-- accountpost -->
+		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
-		, 'N'
-		, #{finaldate}
+		, 'N'			<!-- delete_yn  -->
+		, NULL			<!-- #{finaldate} --> 
+		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
-
 	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
 		SET
-		uploaddate 	= SYSDATE
-		, title 	= #{title}
-		, photo 	= #{photo}
-		, link 		= #{link}
-		, content 	= #{content}
-		, price 	= #{price}
-		, maxpeople = #{maxpeople}
-		, minpeople = #{minpeople} <!-- 고정값 1로 -->
-		, enddate 	= #{enddate}
+			uploaddate 	= SYSDATE
+			, title 	= #{title}
+			, photo 	= #{photo}
+			, link 		= #{link}
+			, content 	= #{content}
+			, price 	= #{price}
+			, maxpeople = #{maxpeople}
+			, minpeople = #{minpeople} 
+			, enddate 	= #{enddate}
 		WHERE
-		pnum = #{pnum}
+			pnum = #{pnum}
 	</update>
 
 	<!-- 포스트 상세내용 -->
@@ -69,11 +70,11 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM
-		post
+			post
 		WHERE
-		delete_yn = 'N'
+			delete_yn = 'N'
 		AND
-		pnum = #{pnum}
+			pnum = #{pnum}
 	</select>
 
 	<!-- main -->
@@ -82,7 +83,7 @@
 		<include refid="postColumns" />
 		FROM post
 		WHERE delete_yn = 'N'
-		ORDER BY pnum DESC, uploaddate DESC
+		ORDER BY uploaddate DESC
 	</select>
 
 	<select id="selectPostTotalCount" resultType="int">
@@ -111,5 +112,15 @@
 			post
 		WHERE pnum = #{pnum}
 	</select>
+	
+	<!-- dealaddress 변경 -->
+	<update id="alterDealAdd" parameterType="PostDTO">
+		UPDATE post
+		SET
+		dealaddress = #{dealaddress}
+		
+		WHERE
+		pnum = #{pnum}
+	</update>
 
 </mapper>

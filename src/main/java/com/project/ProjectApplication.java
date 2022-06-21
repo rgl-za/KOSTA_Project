@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfigura
 public class ProjectApplication {
 	
 	public static void main(String[] args) {
-		System.out.println("실행 하는가?");
+		System.out.println("런 실행 완료");
 		SpringApplication.run(ProjectApplication.class, args);
 		
 	}

@@ -50,16 +50,24 @@ public class PostServiceImpl implements PostService {
 	
 	// main에 불러올 글
 	@Override
-	public List<PostDTO> getPostList() {
+	public List<PostDTO> getPostList(PostDTO params) {
 		List<PostDTO> postList = Collections.emptyList();
 
-		int postTotalCount = postMapper.selectPostTotalCount();
+		int postTotalCount = postMapper.selectPostTotalCount(params);
 
 		if (postTotalCount > 0) {
-			postList = postMapper.selectPostList();
+			postList = postMapper.selectPostList(params);
 		}
 		return postList;
 	}
+
+	@Override
+	public boolean alterDealAdd(PostDTO params) {
+		
+		return postMapper.alterDealAdd(params);
+	}
+	
+	
 
 	/*
 	 * @Override public PostDTO getPost(int pnum) { PostDTO postDTO =

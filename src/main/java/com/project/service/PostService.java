@@ -18,13 +18,15 @@ public interface PostService {
 	public boolean deletePost(Long pnum);
 
 	// 게시글 메인에 불러오기
-	public List<PostDTO> getPostList();
+	public List<PostDTO> getPostList(PostDTO params);
+	
+	//게시글 dealaddress변경하기
+	public boolean alterDealAdd(PostDTO params);
 	
 	// 게시글 사진 불러오기
 	
 	/*
 	 * //게시글 1개 불러오기(detail.html에서 사용) public PostDTO getPost(int pnum);
 	 */
-
 
 }
