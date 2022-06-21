@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="" />
+    <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bin/main/static/img/sample.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/sample.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/16554371160175e1af154-7860-483e-9699-3431acbe7e71.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/mapper/PostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/PostMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/util/FileUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/util/FileUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cobuy.sql" beforeDir="false" afterPath="$PROJECT_DIR$/cobuy.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/MidDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/MidDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/write.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +204,10 @@
       <workItem from="1655167151104" duration="21210000" />
       <workItem from="1655253603126" duration="17344000" />
       <workItem from="1655341010257" duration="19211000" />
-      <workItem from="1655431673206" duration="8569000" />
+      <workItem from="1655431673206" duration="9027000" />
+      <workItem from="1655552643249" duration="2000" />
+      <workItem from="1655687203310" duration="14425000" />
+      <workItem from="1655788273402" duration="319000" />
     </task>
     <servers />
   </component>
