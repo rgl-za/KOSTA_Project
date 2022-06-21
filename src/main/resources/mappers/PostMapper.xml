@@ -91,6 +91,25 @@
 			post
 		WHERE delete_yn = 'N'
 	</select>
+	
+	
+	<!-- main  정렬기능 :민경 -->
+	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+
+	<select id="selectPostTotalCount" parameterType="String" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE delete_yn = 'N'
+		AND sortOption = #{sortOption}
+	</select>
 
 
 	<!-- 남혁이형 부분 -->

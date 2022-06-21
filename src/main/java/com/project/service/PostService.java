@@ -20,6 +20,9 @@ public interface PostService {
 	// 게시글 메인에 불러오기
 	public List<PostDTO> getPostList(PostDTO params);
 	
+	// 메인화면 정렬
+	public List<PostDTO> getPostSortList(String option);
+	
 	// 게시글 사진 불러오기
 	
 	/*
