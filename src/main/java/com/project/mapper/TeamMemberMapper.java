@@ -9,4 +9,5 @@ import java.util.List;
 public interface TeamMemberMapper {
     public List<TeamMemberDTO> selectTeamMemberList(Long pnum);
     public void insertTeamMember(TeamMemberDTO params);
+    public int selectTeamMemberTotalCount(Long pnum);
 }

@@ -13,9 +13,11 @@ import com.project.domain.FileDTO;
 public class FileUtil {
 
 	public FileDTO fileUpload(MultipartFile file) {
-		
+
 	  //String saveDir = "D:\\javaStudy\\upload";
+		// 각자의 외부 경로로 바꿔줘야 함
 	  String saveDir = "/Users/jihyeonjeong/KOSTA_Project/src/main/resources/static/productImgs";
+
 	  //String saveDir = "D:/javastudy/workspace/jblog/src/main/resources/upload";
 
 		// 원파일이름

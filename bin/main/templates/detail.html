@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
@@ -27,6 +28,10 @@
 
 						<div class="represent_img">
 							<img class="img-item" th:src="|@{/productImgs/}${postDTO.getPhoto()}|">
+<<<<<<< HEAD
+=======
+							 <text th:text="${postDTO.getPhoto()}"></text> 
+>>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
 						</div>
 
 						<!-- 글 내용 -->
@@ -210,8 +215,11 @@
 
 											<script type="text/javascript"
 												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c&libraries=services"></script>
-
-											<script>
+											
+											<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+											
+											<script th:inline="javascript">
+											/*<![CDATA[*/
 											
 											/*
 											점이 여러개 일 때
@@ -664,6 +672,8 @@
 													   
 													    	//주소정보로 maker생성
 													    	centerAdd=data.result[0].address.address_name;
+													    	
+													    	addMidAddressToDB(centerAdd);
 															centerMarker(coord,data.result[0].address.address_name);
 													    	
 													    } catch(e) {
@@ -848,6 +858,25 @@
 												
 												//console.log(">>>infowindows"+infowindows[0]);undefined
 												//console.log(">>>markers"+markers[0]);
+												
+											  var pnum="[[${postDTO.getPnum()}]]";
+											  alert(pnum);
+											  function addMidAddressToDB(address) {
+											     $.ajax({
+											         type : "GET",
+											         url : "/alterDealAdd.do?address="+address+"&pnum="+pnum,// "${pageContext.request.contextPath }/${blogUser.id}/main/addReply"
+											         contentType: "application/json",
+											         dataType: "json",
+											         success : function (data, status) {
+											            alert(status);
+											         },
+											         error : function (status) {
+											            //alert(status + "error!");
+											            //alert("pnum"+"${postDTO.getPnum()}");
+											         }
+											     });
+											  }
+											  /*]]>*/
 											</script>
 										</div>
 										<div class="modal-footer">
