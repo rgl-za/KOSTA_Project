@@ -103,7 +103,6 @@
                                    class="btn btn-primary waves-effect waves-light">
                                     상세보기
                                 </a>
-
                                 <!-- 찜 버튼 -->
                                 <button class="btn btn-primary btn-icon-split" th:onclick="insertHeart( [[${postList.pnum}]], [[${postList.title}]] )">
                                     <a><img style="width: 30px; height: 30px;" alt="찜" src="assets/heart.ico"></a>
@@ -125,20 +124,6 @@
     <script th:inline="javascript">
         /*<![CDATA[*/
 
-        function insertTeamMember(pnum) {
-            if (confirm(pnum + "에 참여하실건가요?")) {
-                var uri = /*[[ @{/team.do} ]]*/null;
-                var html = "";
-
-                html += '<form name="dataForm" action="'+uri+'" method="post">';
-                html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-                html += '</form>';
-
-                $("body").append(html);
-                document.dataForm.submit();
-            }
-        }
-
         function insertHeart(pnum, title) {
             if (confirm(title + "에 관심 있나요?")) {
                 var uri = /*[[ @{/heart.do} ]]*/null;
@@ -153,6 +138,7 @@
                 document.dataForm.submit();
             }
         }
+
         function convertStringToDate(endDate) {
 			//console.log(enddate);
 			let dateComponents = endDate.split(' ');
@@ -211,17 +197,17 @@
         $(function(){
 			var els = $("h5.fw-bolder");
 			console.log("els.length: "+els.length);
-			$.each(els, function(index, item, pnum) {
-				//console.log("index: "+ index +"item: "+ item);
+
+			$.each(els, function(index, item) {
+				console.log("index: "+ index +"item: "+ item);
 				
 				var tagid = "#modal_btn" + index; 
 				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
 				
 				var value = "#exampleModalCenter"+index;
 				console.log("value:" + value); // data-target 속성값
-				
-				//data-target 속성값 지정
-				$(tagid).attr("data-target",value); 
+
+				$(tagid).attr("data-target",value); // data-target 속성값
 				
 				//var els2 = $(tagid);
 				//console.log("els2: " + els2 + "length: " + els2.length);
@@ -229,7 +215,6 @@
 			});
 			console.log("success");
 			StartTimeRemaining();
-
 		});
         /*]]>*/
     </script>
