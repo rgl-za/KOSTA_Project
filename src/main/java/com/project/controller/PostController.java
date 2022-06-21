@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.CommentDTO;
@@ -40,7 +42,8 @@ public class PostController {
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("params") PostDTO params,
+			@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			 model.addAttribute("post", new PostDTO());
@@ -68,7 +71,7 @@ public class PostController {
 				System.out.println("저장된 filevo: " + fileDTO.toString());
 				System.out.println("저장된 file이름: " + fileDTO.getSaveName());
 
-				// 블로그 logo-name 설정 
+				// 블로그 logo-name 설정
 				params.setPhoto(fileDTO.getSaveName());
 
 				boolean isRegistered = postService.registerPost(params);
@@ -79,7 +82,7 @@ public class PostController {
 			} else {
 				boolean isRegistered = postService.registerPost(params);
 				System.out.println(isRegistered);
-				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달 
+				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
 					System.out.println("<-----게시글 등록실패----->");
 				}
 			}
@@ -136,10 +139,24 @@ public class PostController {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
 //		}
+
 		//model.addAttribute("post", post);
 		//logger.info("detail.do");
 
 		return "/detail";
+	}
+
+	// post의 dealaddress변경
+	@RequestMapping(value = "/alterDealAdd.do")
+	@ResponseBody
+	public String alterDealAdd(@RequestParam(value = "address", required = false) String address, @RequestParam(value = "pnum", required = false) long pnum) {
+		String add=address;
+		System.out.println(">>>>PostController>>alterDealAdd 로 들어옴"+add+"pnum>"+pnum+">>");
+		PostDTO params = new PostDTO();
+		params.setDealaddress(address);
+		params.setPnum(pnum);
+		boolean isAlterDealAdd = postService.alterDealAdd(params);
+		return "success";
 	}
 
 }

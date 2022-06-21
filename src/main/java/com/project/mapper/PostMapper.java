@@ -27,4 +27,7 @@ public interface PostMapper {
 	public int selectPostTotalCount(PostDTO params);
 	
 	public PostDTO getPost(int pnum);
+	
+	//dealaddress 변경
+	public boolean alterDealAdd(PostDTO params);
 }
