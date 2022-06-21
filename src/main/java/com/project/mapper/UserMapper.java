@@ -7,6 +7,6 @@ import com.project.domain.UserDTO;
 @Mapper
 public interface UserMapper {
 	
-	public void insertUser(UserDTO userDTO);
+	public void saveUser(UserDTO userDTO);
 
 }

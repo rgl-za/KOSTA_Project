@@ -12,9 +12,12 @@
 		, nickname
 		, gender
 		, birth
+		, realaddress
 	</sql>
 
-	<insert id="insertUser" parameterType="UserDTO">
+
+
+	 <insert id="saveUser" parameterType="UserDTO">
 		INSERT INTO User (
 		<include refid="userColumns" />
 		) VALUES 
@@ -28,7 +31,10 @@
 		, #{nickname}
 		, #{gender}
 		, #{birth}
+		, #{realaddress}
 		)
-	</insert>
+	</insert> 
 	
+	
+
 	</mapper>
