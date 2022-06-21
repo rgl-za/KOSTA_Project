@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.domain.CatDTO;
 import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 import com.project.domain.TeamMemberDTO;
-
+import com.project.service.CatService;
 import com.project.service.CommentService;
 import com.project.service.PostService;
-import com.project.util.FileUtil;
 import com.project.service.TeamMemberService;
+import com.project.util.FileUtil;
 
 @Controller
 public class PostController {
@@ -37,10 +38,13 @@ public class PostController {
 
 	@Autowired
 	private TeamMemberService teamMemberService;
+	
+	@Autowired
+	private CatService catService;
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("cat") CatDTO catDTO, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			 model.addAttribute("post", new PostDTO());
@@ -52,7 +56,7 @@ public class PostController {
 			model.addAttribute("post", post);
 		}
 
-		logger.info("PostDTO" + params);
+		logger.info("PostDTO-->" + params);
 		return "/write";
 	}
 
@@ -89,7 +93,7 @@ public class PostController {
 			System.out.println("<-----시스템에 문제 발생----->");
 		}
 		System.out.println("<--------------------------------메인-------------------------------->");
-		logger.info("PostDTO" + params);
+		logger.info("PostDTO-->" + params);
 		return "redirect:/main.do";
 	}
 

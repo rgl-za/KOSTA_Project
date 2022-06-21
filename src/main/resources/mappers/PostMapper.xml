@@ -20,6 +20,7 @@
 		, enddate
 		, delete_yn
 		, finaldate
+		, numbers
 	</sql>
 
 	<!-- 수정 필요 (문정현) -->
@@ -28,22 +29,23 @@
 		<include refid="postColumns" />
 		) VALUES (
 		seq_post_no.nextval
-		, 1
-		, 'NULL'
+		, 1				<!-- #{catnum} -->
+		, 'NULL'		<!-- leaderid -->
 		, #{title}
 		, #{content}
-		, #{photo}
+		, #{photo}			<!-- #{photo} -->
 		, #{link}
 		, #{price}
-		, #{postnum}
-		, NULL<!-- #{dealaddress} -->
+		, NULL 			<!-- #{postnum} -->
+		, NULL			<!-- #{dealaddress} -->
 		, #{maxpeople}
-		, #{minpeople}
-		, NULL
-		, SYSDATE <!-- uploadDate -->
+		, 2				<!-- #{minpeople} -->
+		, NULL			<!-- accountpost -->
+		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
-		, 'N'
-		, #{finaldate}
+		, 'N'			<!-- delete_yn  -->
+		, NULL			<!-- #{finaldate} --> 
+		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
 	<!-- 수정 필요 (문정현)-->
