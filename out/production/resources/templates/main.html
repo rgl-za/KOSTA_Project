@@ -184,29 +184,29 @@
 			}, 1000)
 		}
         // 모달창 관련 임시 주석처리
-        // 각 게시물의 모달창 id 지정
-        // $(function(){
-		// 	var els = $("h5.fw-bolder");
-		// 	console.log("els.length: "+els.length);
-		// 	$.each(els, function(index, item) {
-		// 		//console.log("index: "+ index +"item: "+ item);
-		//
-		// 		var tagid = "#modal_btn" + index;
-		// 		console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
-		//
-		// 		var value = "#exampleModalCenter"+index;
-		// 		console.log("value:" + value); // data-target 속성값
-		//
-		// 		//data-target 속성값 지정
-		// 		$(tagid).attr("data-target",value);
-		//
-		// 		//var els2 = $(tagid);
-		// 		//console.log("els2: " + els2 + "length: " + els2.length);
-        //
-		// 	});
-		// 	console.log("success");
-		// 	StartTimeRemaining();
-		// });
+        각 게시물의 모달창 id 지정
+        $(function(){
+			var els = $("h5.fw-bolder");
+			console.log("els.length: "+els.length);
+			$.each(els, function(index, item) {
+				//console.log("index: "+ index +"item: "+ item);
+
+				var tagid = "#modal_btn" + index;
+				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
+
+				var value = "#exampleModalCenter"+index;
+				console.log("value:" + value); // data-target 속성값
+
+				//data-target 속성값 지정
+				$(tagid).attr("data-target",value);
+
+				//var els2 = $(tagid);
+				//console.log("els2: " + els2 + "length: " + els2.length);
+
+			});
+			console.log("success");
+			StartTimeRemaining();
+		});
         /*]]>*/
     </script>
 
