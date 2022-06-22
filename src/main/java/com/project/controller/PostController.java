@@ -55,6 +55,7 @@ public class PostController extends UiUtils {
 			PostDTO post = postService.getPostDetail(pnum);
 			if (post == null) {
 				return "redirect:/main.do";
+				
 			}
 			//model.addAttribute("post", post);
 			//List<CatDTO> catlist = catService.selectCatList(catDTO);
