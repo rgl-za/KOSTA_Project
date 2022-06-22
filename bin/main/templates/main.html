@@ -15,13 +15,13 @@
                 <button
                         class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
                         type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">추천순
+                        aria-haspopup="true" aria-expanded="false">최신순
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                      aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">거리순</a>
-					<a class="dropdown-item" href="#">최신순</a>
-					<a class="dropdown-item" href="#">인기순</a>
+					<a class="dropdown-item" href="@{/sortMain?sortOption=latest}">최신순</a>
+					<a class="dropdown-item" href="@{/sortMain?sortOption=popular}">인기순</a>
+					<a class="dropdown-item" href="@{/sortMain}">거리순</a>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-                                th:src="|@{/productImgs/}${postList.getPhoto()}|">
+                                th:src="|@{/imagePath/}${postList.getPhoto()}|">
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -113,8 +113,6 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
         /*<![CDATA[*/
-		
-        
         function insertHeart(pnum, title) {
             if (confirm(title + "에 관심 있나요?")) {
                 var uri = /*[[ @{/heart.do} ]]*/null;
@@ -147,17 +145,14 @@
 				console.log("endDate: ", endDate);
 
 				var startDatetime = new Date();
-				console.log("startDatetime: ", startDatetime);
+				console.log("startDatetime: ", startDatetime); 
 
 				var RemainDate = endDate - startDatetime;
 				console.log("RemainDate: ", RemainDate);
 
-				var days = Math
-						.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
-				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))
-						/ (1000 * 60 * 60));
-				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))
-						/ (1000 * 60));
+				var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
 				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 
 				if (RemainDate < 0) {

@@ -20,6 +20,7 @@
 		, enddate
 		, delete_yn
 		, finaldate
+		, numbers
 	</sql>
 
 	<!-- 수정 필요 (문정현) -->
@@ -28,22 +29,23 @@
 		<include refid="postColumns" />
 		) VALUES (
 		seq_post_no.nextval
-		, 1
-		, 'NULL'
+		, 1				<!-- #{catnum} -->
+		, 'NULL'		<!-- leaderid -->
 		, #{title}
 		, #{content}
-		, #{photo}
+		, #{photo}			<!-- #{photo} -->
 		, #{link}
 		, #{price}
-		, #{postnum}
-		, 'NULL'
+		, NULL 			<!-- #{postnum} -->
+		, NULL			<!-- #{dealaddress} -->
 		, #{maxpeople}
-		, #{minpeople}
-		, 'NULL'
-		, SYSDATE <!-- uploadDate -->
+		, 2				<!-- #{minpeople} -->
+		, NULL			<!-- accountpost -->
+		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
-		, 'N'
-		, #{finaldate}
+		, 'N'			<!-- delete_yn  -->
+		, NULL			<!-- #{finaldate} --> 
+		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
 	<!-- 수정 필요 (문정현)-->
@@ -90,6 +92,25 @@
 		FROM
 			post
 		WHERE delete_yn = 'N'
+	</select>
+	
+	
+	<!-- main  정렬기능 :민경 -->
+	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+
+	<select id="selectPostTotalCount" parameterType="String" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE delete_yn = 'N'
+		AND sortOption = #{sortOption}
 	</select>
 
 

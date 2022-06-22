@@ -5,12 +5,84 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/configuration/WebConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/CatController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/TeamMemberController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/CatDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/TeamMemberDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/CatMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/TeamMemberMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/CatService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/CatServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/TeamMemberService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/TeamMemberServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/mappers/Cate.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/mappers/TeamMemberMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/165543262639682450ed4-11e2-43f3-86f9-ea21ee5aa87d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655436579823edec78f1-e740-418e-bd70-615ff36dc7c8.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655437034395fc86b5dd-5bc1-40bd-920f-6c97adc9e1c1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655437079475fef61bea-0756-4df0-a239-4ce28a61d09f.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655445313188706df004-7f4e-4cfa-a21c-5043e462a817.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655445924706534d3977-eac1-45f2-bda8-ca0ec074ce34.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655454230510a1cc0793-8e76-4d71-86c9-6f4c1acb47ec.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655707377947903dbb05-9e57-4b00-b1ec-03df1e96b2b0.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/static/productImgs/1655707563977981e6e6c-c4b5-4392-b561-775d9cbad468.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/templates/write2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/16554462171412a9c6585-9ad8-4a6e-854b-1731620716fe.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/16554496167950cc79a26-d9f1-4957-bd69-a493b384f2dc.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/1655449730683d2fa43e3-153a-43a5-a8e7-d4489cd4d2a3.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/1655449784403347f54ca-5631-4f13-8fe5-687965a84617.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/1655453273407cb610c93-5557-49db-9560-cdd73f4cd7ea.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/CatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/CatDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/CatMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/CatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/CatServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/Cate.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/1655445313188706df004-7f4e-4cfa-a21c-5043e462a817.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/1655445924706534d3977-eac1-45f2-bda8-ca0ec074ce34.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/1655454230510a1cc0793-8e76-4d71-86c9-6f4c1acb47ec.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/1655707377947903dbb05-9e57-4b00-b1ec-03df1e96b2b0.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/productImgs/1655707563977981e6e6c-c4b5-4392-b561-775d9cbad468.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/write2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/mapper/PostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/mapper/PostMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/DealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/DealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/HeartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/HeartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/domain/PostDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/util/FileUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/util/FileUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/fragments/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/fragments/body.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/fragments/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/fragments/topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/mypage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/PostDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/PostDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/body.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/mypage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/project/ProjectApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/project/ProjectApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +261,8 @@
       <workItem from="1655431673206" duration="9027000" />
       <workItem from="1655552643249" duration="2000" />
       <workItem from="1655687203310" duration="14425000" />
-      <workItem from="1655788273402" duration="4065000" />
+      <workItem from="1655788273402" duration="4930000" />
+      <workItem from="1655859407080" duration="1282000" />
     </task>
     <servers />
   </component>

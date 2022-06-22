@@ -11,20 +11,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.domain.CatDTO;
 import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 import com.project.domain.TeamMemberDTO;
-
+import com.project.service.CatService;
 import com.project.service.CommentService;
 import com.project.service.PostService;
-import com.project.util.FileUtil;
 import com.project.service.TeamMemberService;
+import com.project.util.FileUtil;
 
 @Controller
 public class PostController {
@@ -39,11 +38,13 @@ public class PostController {
 
 	@Autowired
 	private TeamMemberService teamMemberService;
+	
+	@Autowired
+	private CatService catService;
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("params") PostDTO params,
-			@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("cat") CatDTO catDTO, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			 model.addAttribute("post", new PostDTO());
@@ -55,7 +56,7 @@ public class PostController {
 			model.addAttribute("post", post);
 		}
 
-		logger.info("PostDTO" + params);
+		logger.info("PostDTO-->" + params);
 		return "/write";
 	}
 
@@ -71,7 +72,7 @@ public class PostController {
 				System.out.println("저장된 filevo: " + fileDTO.toString());
 				System.out.println("저장된 file이름: " + fileDTO.getSaveName());
 
-				// 블로그 logo-name 설정
+				// 블로그 logo-name 설정 
 				params.setPhoto(fileDTO.getSaveName());
 
 				boolean isRegistered = postService.registerPost(params);
@@ -82,7 +83,7 @@ public class PostController {
 			} else {
 				boolean isRegistered = postService.registerPost(params);
 				System.out.println(isRegistered);
-				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
+				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달 
 					System.out.println("<-----게시글 등록실패----->");
 				}
 			}
@@ -92,13 +93,13 @@ public class PostController {
 			System.out.println("<-----시스템에 문제 발생----->");
 		}
 		System.out.println("<--------------------------------메인-------------------------------->");
-		logger.info("PostDTO" + params);
+		logger.info("PostDTO-->" + params);
 		return "redirect:/main.do";
 	}
 
 	// 게시글을 올리고 main으로
 	@GetMapping(value = "/main.do")
-	public String openPostList(@ModelAttribute("params") PostDTO params,Model model) {
+	public String openPostList(@ModelAttribute("params") PostDTO params, Model model) {
 		List<PostDTO> postList = postService.getPostList(params);
 		model.addAttribute("postList", postList);
 		logger.info("main.do");
@@ -127,36 +128,15 @@ public class PostController {
 
 		//PostDTO post = postService.getPostDetail(pnum);
 
-		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
-		model.addAttribute("countMember", countMember+1);
-		if (countMember >= postDTO.getMinpeople()){
-			model.addAttribute("minpeople", true);
-			System.out.println(countMember);
-		}
-
 		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
 //		}
-
 		//model.addAttribute("post", post);
 		//logger.info("detail.do");
 
 		return "/detail";
-	}
-
-	// post의 dealaddress변경
-	@RequestMapping(value = "/alterDealAdd.do")
-	@ResponseBody
-	public String alterDealAdd(@RequestParam(value = "address", required = false) String address, @RequestParam(value = "pnum", required = false) long pnum) {
-		String add=address;
-		System.out.println(">>>>PostController>>alterDealAdd 로 들어옴"+add+"pnum>"+pnum+">>");
-		PostDTO params = new PostDTO();
-		params.setDealaddress(address);
-		params.setPnum(pnum);
-		boolean isAlterDealAdd = postService.alterDealAdd(params);
-		return "success";
 	}
 
 }
