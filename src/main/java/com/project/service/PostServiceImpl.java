@@ -72,13 +72,13 @@ public class PostServiceImpl implements PostService {
 		return postList;
 	}
 	
-	/*
+
     @Override
 	public boolean alterDealAdd(PostDTO params) {
 		
 		return postMapper.alterDealAdd(params);
 	}
-*/
+
 	
 
 	/*
