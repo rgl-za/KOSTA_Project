@@ -10,6 +10,8 @@ public interface PostService {
 	public boolean registerPost(PostDTO params); 
 
 	// 게시글 등록, 수정 사진
+	
+	public boolean updatePost(PostDTO params);
 
 	// 게시글 상세 내용 불러오기
 	public PostDTO getPostDetail(Long pnum);

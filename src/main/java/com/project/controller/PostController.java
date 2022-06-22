@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +60,24 @@ public class PostController {
 		logger.info("PostDTO-->" + params);
 		return "/write";
 	}
+	
+	/*@GetMapping(value = "/writeUpdate.do")
+	public String openPostWriteUpdate(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+		logger.info("PostDTO" + params);
+		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
+			model.addAttribute("post", new PostDTO());
+		} else { // pnum에서 받아온 경우
+			PostDTO post = postService.getPostDetail(pnum);
+			if (post == null) {
+				return "redirect:/main.do";
+			}
+			model.addAttribute("post", post);
+		}
+
+		/* logger.info("PostDTO" + params); */
+		//return "/updatePost";
+	//}
+	
 
 	// 게시글 등록, 수정
 	@PostMapping(value = "/register.do")
@@ -96,6 +115,47 @@ public class PostController {
 		logger.info("PostDTO-->" + params);
 		return "redirect:/main.do";
 	}
+	
+	// 게시글 수정
+		@PostMapping(value = "/update.do")
+		public String updatePost(final PostDTO params, MultipartFile file) {
+			logger.info("" + params);
+			try { // 파일업로드
+				if (!file.isEmpty()) {
+					FileUtil fileUtil = new FileUtil();
+					FileDTO fileDTO = fileUtil.fileUpload(file);
+					System.out.println("저장된 filevo: " + fileDTO.toString());
+					System.out.println("저장된 file이름: " + fileDTO.getSaveName());
+
+					// 블로그 logo-name 설정 
+					params.setPhoto(fileDTO.getSaveName());
+
+					boolean isUpdated = postService.updatePost(params);
+					System.out.println(isUpdated);
+					if (isUpdated == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
+						System.out.println("<-----게시글 등록 실패----->");
+					}
+				} else {
+					boolean isUpdated = postService.updatePost(params);
+					System.out.println(isUpdated);
+					if (isUpdated == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달 
+						System.out.println("<-----게시글 등록실패----->");
+					}
+				}
+			} catch (DataAccessException e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는메시지를 전달
+				System.out.println("<-----데이터베이스 처리 과정 문제 발생----->");
+			} catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
+				System.out.println("<-----시스템에 문제 발생----->");
+			}
+			System.out.println("<--------------------------------메인-------------------------------->");
+			logger.info("PostDTO" + params);
+			return "redirect:/main.do";
+		}
+	
+	
+	
+	
+	
 
 	// 게시글을 올리고 main으로
 	@GetMapping(value = "/main.do")
@@ -138,5 +198,29 @@ public class PostController {
 
 		return "/detail";
 	}
+	
+	@PostMapping(value = "/delete.do")
+	public String deletePost(@ModelAttribute("params") PostDTO params, Long pnum, Model model) {
+		if (pnum == null) {
+			return "올바르지 않은 접근입니다.";
+		}
+
+		//Map<String, Object> pagingParams = getPagingParams(params);
+		try {
+			boolean isDeleted = postService.deletePost(pnum);
+			if (isDeleted == false) {
+				return "게시글 삭제에 실패하였습니다.";
+			}
+		} catch (DataAccessException e) {
+			return "데이터베이스 처리 과정에 문제가 발생하였습니다.";
+
+		} catch (Exception e) {
+			return "시스템에 문제가 발생하였습니다.";
+		}
+
+		return "redirect:/main.do";
+	}
+	
+	
 
 }
