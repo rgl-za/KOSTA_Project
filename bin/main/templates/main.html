@@ -15,13 +15,13 @@
                 <button
                         class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
                         type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">추천순
+                        aria-haspopup="true" aria-expanded="false">최신순
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                      aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">거리순</a>
-					<a class="dropdown-item" href="#">최신순</a>
-					<a class="dropdown-item" href="#">인기순</a>
+					<a class="dropdown-item" href="@{/sortMain?sortOption=latest}">최신순</a>
+					<a class="dropdown-item" href="@{/sortMain?sortOption=popular}">인기순</a>
+					<a class="dropdown-item" href="@{/sortMain}">거리순</a>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-                                th:src="|@{/imagePath/}${postList.getPhoto()}|">
+                                th:src="|@{/productImgs/}${postList.getPhoto()}|">
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -50,59 +50,49 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
 
-
                                 <!-- 모달창 버튼 -->
-<!--                                <button type="button" class="btn btn-primary" th:id="|modal_btn*{i.index}|" data-toggle="modal"-->
-<!--                                        data-target="#exampleModalCenter">-->
-<!--                                    상세 보기-->
-<!--                                </button>-->
-
+                                <button type="button" class="btn btn-primary" th:id="|modal_btn*{i.index}|" data-toggle="modal"
+                                        data-target="#exampleModalCenter">
+                                    상세 보기
+                                </button>
                                 <!-- 모달창 -->
-<!--                                <div class="modal fade" th:id="|exampleModalCenter*{i.index}|" tabindex="-1" role="dialog"-->
-<!--                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
-<!--                                    <div class="modal-dialog modal-dialog-centered" role="document">-->
-<!--                                        <div class="modal-content">-->
-<!--                                            <div class="modal-header">-->
-<!--                                                <h5 class="modal-title" id="exampleModalCenterTitle"-->
-<!--                                                    th:text="${postList.title}"></h5>-->
-<!--                                                <button type="button" class="close" data-dismiss="modal"-->
-<!--                                                        aria-label="Close">-->
-<!--                                                    <span aria-hidden="true">&times;</span>-->
-<!--                                                </button>-->
-<!--                                            </div>-->
-<!--                                            <div class="modal-body">-->
-<!--                                                <h5>방장</h5>-->
-<!--                                                <p th:text="${postList.leaderid}"></p>-->
-<!--                                                <hr>-->
-<!--                                                <h5>내용</h5>-->
-<!--                                                <p th:text="${postList.content}"></p>-->
-<!--                                                <hr>-->
-<!--                                                <h5>모집 마감 날짜</h5>-->
-<!--                                                <p th:text="${postList.enddate}"></p>-->
-<!--                                                <hr>-->
-<!--                                                <h5>제품 정보</h5>-->
-<!--                                                <p th:text="${postList.link}"></p>-->
+                                <div class="modal fade" th:id="|exampleModalCenter*{i.index}|" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle"
+                                                    th:text="${postList.title}"></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>방장</h5>
+                                                <p th:text="${postList.leaderid}"></p>
+                                                <hr>
+                                                <h5>내용</h5>
+                                                <p th:text="${postList.content}"></p>
+                                                <hr>
+                                                <h5>모집 마감 날짜</h5>
+                                                <p th:text="${postList.enddate}"></p>
+                                                <hr>
+                                                <h5>제품 정보</h5>
+                                                <p th:text="${postList.link}"></p>
 
-<!--                                            </div>-->
-<!--                                            <div class="modal-footer">-->
-<!--                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">-->
-<!--                                                    나가기-->
-<!--                                                </button>-->
-
-<!--                                                &lt;!&ndash;로그인 정보를 넘겨줘야 함&ndash;&gt;-->
-<!--                                                <a th:href="@{/detail.do( pnum=${postList.pnum} )}"-->
-<!--                                                   class="btn btn-primary waves-effect waves-light">상세보기</a>-->
-
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-                                <!--onclick, href 동시에 사용 불가능... detail에서 공구 멤버들 넘겨주도록 구현해야 함...-->
-                                <a th:href="@{/detail.do( pnum=${postList.pnum} )}"
-                                   class="btn btn-primary waves-effect waves-light">
-                                    상세보기
-                                </a>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    나가기
+                                                </button>
+                                                <!--로그인 정보를 넘겨줘야 함-->
+                                                <a th:href="@{/detail.do( pnum=${postList.pnum} )}"
+                                                   class="btn btn-primary waves-effect waves-light">참여하기</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- 찜 버튼 -->
                                 <button class="btn btn-primary btn-icon-split" th:onclick="insertHeart( [[${postList.pnum}]], [[${postList.title}]] )">
                                     <a><img style="width: 30px; height: 30px;" alt="찜" src="assets/heart.ico"></a>
@@ -123,7 +113,6 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
         /*<![CDATA[*/
-
         function insertHeart(pnum, title) {
             if (confirm(title + "에 관심 있나요?")) {
                 var uri = /*[[ @{/heart.do} ]]*/null;
@@ -138,7 +127,6 @@
                 document.dataForm.submit();
             }
         }
-
         function convertStringToDate(endDate) {
 			//console.log(enddate);
 			let dateComponents = endDate.split(' ');
@@ -156,17 +144,14 @@
 				console.log("endDate: ", endDate);
 
 				var startDatetime = new Date();
-				console.log("startDatetime: ", startDatetime);
+				console.log("startDatetime: ", startDatetime); 
 
 				var RemainDate = endDate - startDatetime;
 				console.log("RemainDate: ", RemainDate);
 
-				var days = Math
-						.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
-				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))
-						/ (1000 * 60 * 60));
-				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))
-						/ (1000 * 60));
+				var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
 				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 
 				if (RemainDate < 0) {
@@ -192,22 +177,22 @@
 				msg_time();
 			}, 1000)
 		}
-
+        
         // 각 게시물의 모달창 id 지정
         $(function(){
 			var els = $("h5.fw-bolder");
 			console.log("els.length: "+els.length);
-
 			$.each(els, function(index, item) {
-				console.log("index: "+ index +"item: "+ item);
+				//console.log("index: "+ index +"item: "+ item);
 				
 				var tagid = "#modal_btn" + index; 
 				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
 				
 				var value = "#exampleModalCenter"+index;
 				console.log("value:" + value); // data-target 속성값
-
-				$(tagid).attr("data-target",value); // data-target 속성값
+				
+				//data-target 속성값 지정
+				$(tagid).attr("data-target",value); 
 				
 				//var els2 = $(tagid);
 				//console.log("els2: " + els2 + "length: " + els2.length);

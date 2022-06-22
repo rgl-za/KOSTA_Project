@@ -96,6 +96,35 @@
 			post
 		WHERE delete_yn = 'N'
 	</select>
+	
+	
+	<!-- main  정렬기능 :민경 -->
+	<select id="PostTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE delete_yn = 'N'
+	</select>
+	
+	<!-- 최신순으로 게시물 가져오기 -->
+	<select id="latestPostList" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+	
+	<!-- 인기순으로 게시물 가져오기 -->
+	<select id="popularPostList" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+
 
 
 	<!-- 삭제 -->

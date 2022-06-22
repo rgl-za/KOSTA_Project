@@ -30,4 +30,13 @@ public interface PostMapper {
 	
 	//dealaddress 변경
 	public boolean alterDealAdd(PostDTO params);
+	
+	// 최신순 main 정렬
+	public List<PostDTO> latestPostList();
+	
+	// 인기순 main 정렬
+	public List<PostDTO> popularPostList();
+
+	// post 개수
+	public int PostTotalCount();
 }
