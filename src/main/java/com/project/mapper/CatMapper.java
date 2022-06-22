@@ -10,6 +10,6 @@ import com.project.domain.CatDTO;
 public interface CatMapper {
 	
 	// 카테고리 index를 불러오기 
-	public List<CatDTO> getList(CatDTO params);
+	public List<CatDTO> selectCatList(CatDTO catDTO);
 	
 }

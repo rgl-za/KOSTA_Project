@@ -30,7 +30,6 @@ public class DealServiceImpl implements DealService {
 
 		List<DealHistoryDTO> dealingList = dealMapper.selectDealingList(userId);
 
-
 		return dealingList;
 	}
 
