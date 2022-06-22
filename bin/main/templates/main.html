@@ -33,7 +33,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-                                th:src="|@{/imagePath/}${postList.getPhoto()}|">
+                                th:src="|@{/productImgs/}${postList.getPhoto()}|">
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -127,7 +127,6 @@
                 document.dataForm.submit();
             }
         }
-<<<<<<< HEAD
         function convertStringToDate(endDate) {
 			//console.log(enddate);
 			let dateComponents = endDate.split(' ');
@@ -178,19 +177,13 @@
 				msg_time();
 			}, 1000)
 		}
-=======
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
         
         // 각 게시물의 모달창 id 지정
         $(function(){
 			var els = $("h5.fw-bolder");
 			console.log("els.length: "+els.length);
 			$.each(els, function(index, item) {
-<<<<<<< HEAD
 				//console.log("index: "+ index +"item: "+ item);
-=======
-				console.log("index: "+ index +"item: "+ item);
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
 				
 				var tagid = "#modal_btn" + index; 
 				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
@@ -198,22 +191,15 @@
 				var value = "#exampleModalCenter"+index;
 				console.log("value:" + value); // data-target 속성값
 				
-<<<<<<< HEAD
 				//data-target 속성값 지정
 				$(tagid).attr("data-target",value); 
-=======
-				$(tagid).attr("data-target",value); // data-target 속성값
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
 				
 				//var els2 = $(tagid);
 				//console.log("els2: " + els2 + "length: " + els2.length);
 
 			});
 			console.log("success");
-<<<<<<< HEAD
 			StartTimeRemaining();
-=======
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
 		});
         /*]]>*/
     </script>

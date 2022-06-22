@@ -60,7 +60,6 @@ public class PostServiceImpl implements PostService {
 		}
 		return postList;
 	}
-	
 	@Override
 	public List<PostDTO> getPostSortList(String option) {
 		List<PostDTO> postList = Collections.emptyList();
@@ -72,12 +71,14 @@ public class PostServiceImpl implements PostService {
 		 */
 		return postList;
 	}
-	@Override
+	
+	/*
+    @Override
 	public boolean alterDealAdd(PostDTO params) {
 		
 		return postMapper.alterDealAdd(params);
 	}
-	
+*/
 	
 
 	/*
