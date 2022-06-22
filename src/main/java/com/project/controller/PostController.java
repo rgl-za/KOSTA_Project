@@ -200,7 +200,7 @@ public class PostController {
 	}
 	
 	@PostMapping(value = "/delete.do")
-	public String deletePost(@ModelAttribute("params") PostDTO params, Long pnum, Model model) {
+	public String deletePost(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		if (pnum == null) {
 			return "올바르지 않은 접근입니다.";
 		}
