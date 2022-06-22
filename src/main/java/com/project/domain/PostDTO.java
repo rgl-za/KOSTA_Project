@@ -64,4 +64,5 @@ public class PostDTO {
 	
 	// 물품 개수
 	private Long numbers;
+
 }

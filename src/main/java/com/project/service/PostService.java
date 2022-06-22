@@ -23,6 +23,8 @@ public interface PostService {
 	// 메인화면 정렬
 	public List<PostDTO> getPostSortList(String option);
 	
+	
+	public boolean alterDealAdd(PostDTO params);
 	// 게시글 사진 불러오기
 	
 	/*

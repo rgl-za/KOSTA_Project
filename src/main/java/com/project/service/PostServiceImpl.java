@@ -63,22 +63,51 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostDTO> getPostSortList(String option) {
 		List<PostDTO> postList = Collections.emptyList();
+		System.out.println("option: " + option);
+		
+		// 최신순
+		if(option=="latest") {
+			
+			int postTotalCount = postMapper.PostTotalCount();
 
-		//int postTotalCount = postMapper.selectPostTotalCount(option);
+			if (postTotalCount > 0) { 
+				postList = postMapper.latestPostList(); 
+			}
+			
+			return postList;
+		
+		// 인기순
+		}else if (option=="popular"){
+			
+			int postTotalCount = postMapper.PostTotalCount();
 
-		/*
-		 * if (postTotalCount > 0) { postList = postMapper.selectPostList(option); }
-		 */
-		return postList;
+			
+			if (postTotalCount > 0) { 
+				postList = postMapper.popularPostList(); 
+			}
+			
+			return postList;	
+			
+		}else {
+			
+			int postTotalCount = postMapper.PostTotalCount();
+
+			if (postTotalCount > 0) { 
+				postList = postMapper.latestPostList(); 
+			}
+			
+			return postList;
+		}
+		
 	}
 	
-	/*
+	
     @Override
 	public boolean alterDealAdd(PostDTO params) {
 		
 		return postMapper.alterDealAdd(params);
 	}
-*/
+
 	
 
 	/*
