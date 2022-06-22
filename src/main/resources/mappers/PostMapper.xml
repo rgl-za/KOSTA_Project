@@ -77,22 +77,6 @@
 			pnum = #{pnum}
 	</select>
 
-	<!-- main -->
-	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
-		SELECT
-		<include refid="postColumns" />
-		FROM post
-		WHERE delete_yn = 'N'
-		ORDER BY uploaddate DESC
-	</select>
-
-	<select id="selectPostTotalCount" resultType="int">
-		SELECT
-			COUNT(*)
-		FROM
-			post
-		WHERE delete_yn = 'N'
-	</select>
 	
 	
 	<!-- main  정렬기능 :민경 -->

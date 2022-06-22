@@ -5,33 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/configuration/SecurityCinfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/UserDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/UserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/mappers/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/Test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/hehe.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityCinfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/hehe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/DealServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/DealServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/FileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/FileMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DealService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DealService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DealServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DealServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/ProjectApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/ProjectApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/CatController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/CatDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/mapper/CatMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/CatService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/CatServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/DealServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/DealServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/Cate.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityCinfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/CatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/CatDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/CatMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/CatService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/CatServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/Cate.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +218,7 @@
       <workItem from="1655552643249" duration="2000" />
       <workItem from="1655687203310" duration="14425000" />
       <workItem from="1655788273402" duration="4930000" />
-      <workItem from="1655859407080" duration="2659000" />
+      <workItem from="1655859407080" duration="4919000" />
     </task>
     <servers />
   </component>

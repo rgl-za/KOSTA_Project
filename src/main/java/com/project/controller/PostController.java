@@ -1,7 +1,6 @@
 package com.project.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,12 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.domain.CatDTO;
 import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 import com.project.domain.TeamMemberDTO;
-import com.project.service.CatService;
 import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.service.TeamMemberService;
@@ -39,13 +36,11 @@ public class PostController {
 
 	@Autowired
 	private TeamMemberService teamMemberService;
-	
-	@Autowired
-	private CatService catService;
+
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("cat") CatDTO catDTO, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			 model.addAttribute("post", new PostDTO());
