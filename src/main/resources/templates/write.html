@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
 
 <th:block layout:fragment="title">
@@ -33,13 +33,37 @@
                       	<div class="col-sm-6 col-md-6 col-xl-5">
                           <div class="input-group-icon">
                             <label class="form-label visually-hidden" for="inputCatNum">catNum</label>
+							<select class="form-select" th:field="*{catNum}" id="inputCatNum">
+								<option value="">-- 선택 --</option>
+							        <option th:each="catlist : ${catlist}" th:value="${catlist.catnum}" 
+							                th:utext="${catlist.catindex}">
+							        </option>
+							</select>
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
+                          </div>
+                        </div>
+<!--                      	<div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputCatNum">catNum</label>
+							<select class="form-select" th:field="*{catNum}" >
+								<option value="">-- 선택 --</option>
+							        <option th:each="catlist : ${catlist}" th:value="${catlist.catnum}" 
+							                th:utext="${catlist.catindex}">
+							        </option>
+							</select>
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
+                          </div>
+                        </div>-->
+<!--                      	<div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputCatNum">catNum</label>
                             <select class="form-select form-voyage-select input-box" id="inputCatNum"> 
                               <option selected="selected" disabled >카테고리</option>
                               <option >1</option>
                             </select>
                             <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
                           </div>
-                        </div>
+                        </div>-->
                         <!-- ===============================================-->
     					<!-- 	카테고리 정하는 부분 끝	-->
     					<!-- ===============================================-->

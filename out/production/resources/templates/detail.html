@@ -10,13 +10,12 @@
 		</div>
 		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${postDTO.title}">거래명</h1>
-			<!--방장이면 버튼이 보이도록 고쳐야 함-->
+
+			<!-- 수정, 삭제 -->
 			<div class="float-right">
-				<a href="#" class="btn btn-secondary btn-icon-split"> </span> 
-				<span class="text">수정</span>
-				</a> <a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
-					class="text">삭제</span>
-				</a>
+				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
 
 		</div>
@@ -28,7 +27,9 @@
 					<div class="card-body">
 
 						<div class="represent_img">
+
 							<img class="img-item" th:src="|@{/productImgs/}${postDTO.getPhoto()}|">
+
 						</div>
 
 						<!-- 글 내용 -->
@@ -38,7 +39,7 @@
 								<div class="card-body">
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">구매 동네 </h7>
-										---
+										
 									</p>
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
@@ -56,10 +57,12 @@
 										<text th:text="${postDTO.getLink()}"></text>
 										</p>
 									</div>
+									
 
 									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
 									<text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>
 									(가능하다면)30분 전
+
 								</div>
 
 							</div>
@@ -79,10 +82,11 @@
 								<p>
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 									최대 구매가 </h7>
-									<text th:text="${postDTO.getPrice()/postDTO.getMinpeople()}"></text>원&emsp;
+									<text th:text="${postDTO.getPrice()/postDTO.getMinpeople()}"></text>
+									원&emsp;
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 									최소 구매가 </h7>
-									<text th:text="${postDTO.getPrice()/postDTO.getMaxpeople()}"></text>원
+									<text th:text="${postDTO.getPrice()/postDTO.getMaxpeople()}"></text>
 									<br>
 								</p>
 								<p>
@@ -96,14 +100,15 @@
 								</p>
 								<p>
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
-									현재 인원수 </h7>
+										현재 인원수 </h7>
 									<text th:text="${countMember}"></text>
 									명
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
-									현재 예상 구매가 </h7>
+										현재 예상 구매가 </h7>
 									<text th:text="${postDTO.getPrice()/countMember}"></text>
 									원<br>
 								</p>
+
 							</div>
 							<div class="detail-top_timer">
 								<h8>마감일:&emsp;
@@ -120,8 +125,8 @@
 								<!-- 방장 영역 -->
 								<div class="user-ready-img">
 									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center"
-										th:text="${postDTO.getLeaderid()}"
+											class="text-gray-600 font-weight-bold bg-gray-100 align-center"
+											th:text="${postDTO.getLeaderid()}"
 									></div>
 									<img class="ready-img rounded-circle" src="img/undraw_profile.svg">
 									<a href="#" class="btn btn-primary-cap btn-icon-split" th:if="${minpeople == true}">
@@ -140,11 +145,11 @@
 								<!-- 팀원 영역 -->
 								<div class="user-ready-img" th:each="teamMember: ${teamMemberList}">
 									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center"
-										th:text="${teamMember.userId}"
+											class="text-gray-600 font-weight-bold bg-gray-100 align-center"
+											th:text="${teamMember.userId}"
 									></div>
 									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg">
+										 src="img/undraw_profile.svg">
 									<a href="#" class="btn btn-primary btn-icon-split" >
 										<span class="icon text-white-50">
 											<i class="fas fa-flag"></i>
@@ -155,8 +160,7 @@
 							</div>
 							<!-- buttons -->
 							<button href="#" class="btn btn-primary btn-icon-split"
-									th:onclick="insertTeamMember( [[${postDTO.getPnum()}]], [[${postDTO.getMinpeople()}]], [[${postDTO.getTitle()}]] )"
-							>
+									th:onclick="insertTeamMember( [[${postDTO.getPnum()}]], [[${postDTO.getMinpeople()}]], [[${postDTO.getTitle()}]] )">
 								<span class="icon text-white-50">
 									<i class="fas fa-flag"></i>
 								</span>
@@ -858,6 +862,8 @@
 							<div class="text-center" style="padding-top: 10px;">
 								<h3 th:text="${postDTO.getTitle()} + ' 공동구매 채팅방 입니다.'"></h3>
 							</div>
+
+
 							<div class="card-body p-4" style="height: 500px; overflow: scroll; ">
 								<div class="card mb-4" th:each="comment: ${commentList}">
 									<div class="card-body" th:if="${not #lists.isEmpty(commentList)}">
@@ -883,7 +889,10 @@
 						</div>
 					</div>
 				</div>
+
+
 			</div>
+
 		</div>
 		<!-- row -->
 	</div>
@@ -907,8 +916,6 @@
 			  document.dataForm.submit();
 		  }
 	  }
-
-
 
       function convertStringToDate(endDate) {
 		    let dateComponents = endDate.split(' ');
@@ -949,6 +956,26 @@
       
       var timer = setInterval(msg_time, 1000);      
       /*]]>*/
+      
+      // 삭제 버튼을 위해서 만들었습니다.
+      /*<![CDATA[*/
+
+      function deletePost(pnum) {
+        if (confirm(pnum + "번 게시글을 삭제할까요?")) {
+          var uri = /*[[ @{/delete.do} ]]*/null;
+          var html = "";
+
+          html += '<form name="dataForm" action="'+uri+'" method="post">';
+          html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+          html += '</form>';
+
+          $("body").append(html);
+          document.dataForm.submit();
+        }
+      }
+
+      /*]]>*/
+      
     </script>
   </th:block>
 </html>

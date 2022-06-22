@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.domain.FileDTO;
-import com.project.domain.PostDTO;
 
 @Mapper
 public interface FileMapper { 
