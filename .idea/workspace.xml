@@ -5,12 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/BoardController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/CatServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/CatServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/configuration/SecurityCinfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/UserDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/UserMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/mappers/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/templates/Test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/templates/hehe.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/SecurityCinfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/BoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/hehe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/DealServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/DealServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/ProjectApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/FileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/FileMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DealService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DealService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/DealServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/DealServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +211,7 @@
       <workItem from="1655552643249" duration="2000" />
       <workItem from="1655687203310" duration="14425000" />
       <workItem from="1655788273402" duration="4930000" />
-      <workItem from="1655859407080" duration="2086000" />
+      <workItem from="1655859407080" duration="2659000" />
     </task>
     <servers />
   </component>

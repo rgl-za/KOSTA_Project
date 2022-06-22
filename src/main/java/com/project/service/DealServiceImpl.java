@@ -1,15 +1,12 @@
 package com.project.service;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.DealHistoryDTO;
-import com.project.domain.PostDTO;
 import com.project.mapper.DealMapper;
-import com.project.mapper.PostMapper;
 
 @Service
 public class DealServiceImpl implements DealService {
