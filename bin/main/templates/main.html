@@ -15,13 +15,13 @@
                 <button
                         class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
                         type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">추천순
+                        aria-haspopup="true" aria-expanded="false">최신순
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                      aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">거리순</a>
-					<a class="dropdown-item" href="#">최신순</a>
-					<a class="dropdown-item" href="#">인기순</a>
+					<a class="dropdown-item" href="@{/sortMain?sortOption=latest}">최신순</a>
+					<a class="dropdown-item" href="@{/sortMain?sortOption=popular}">인기순</a>
+					<a class="dropdown-item" href="@{/sortMain}">거리순</a>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-                                th:src="|@{/imagePath/}${postList.getPhoto()}|">
+                                th:src="|@{/productImgs/}${postList.getPhoto()}|">
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -113,8 +113,6 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
         /*<![CDATA[*/
-		
-        
         function insertHeart(pnum, title) {
             if (confirm(title + "에 관심 있나요?")) {
                 var uri = /*[[ @{/heart.do} ]]*/null;
@@ -129,7 +127,6 @@
                 document.dataForm.submit();
             }
         }
-<<<<<<< HEAD
         function convertStringToDate(endDate) {
 			//console.log(enddate);
 			let dateComponents = endDate.split(' ');
@@ -147,17 +144,14 @@
 				console.log("endDate: ", endDate);
 
 				var startDatetime = new Date();
-				console.log("startDatetime: ", startDatetime);
+				console.log("startDatetime: ", startDatetime); 
 
 				var RemainDate = endDate - startDatetime;
 				console.log("RemainDate: ", RemainDate);
 
-				var days = Math
-						.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
-				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))
-						/ (1000 * 60 * 60));
-				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))
-						/ (1000 * 60));
+				var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
 				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 
 				if (RemainDate < 0) {
@@ -183,19 +177,13 @@
 				msg_time();
 			}, 1000)
 		}
-=======
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
         
         // 각 게시물의 모달창 id 지정
         $(function(){
 			var els = $("h5.fw-bolder");
 			console.log("els.length: "+els.length);
 			$.each(els, function(index, item) {
-<<<<<<< HEAD
 				//console.log("index: "+ index +"item: "+ item);
-=======
-				console.log("index: "+ index +"item: "+ item);
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
 				
 				var tagid = "#modal_btn" + index; 
 				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
@@ -203,22 +191,15 @@
 				var value = "#exampleModalCenter"+index;
 				console.log("value:" + value); // data-target 속성값
 				
-<<<<<<< HEAD
 				//data-target 속성값 지정
 				$(tagid).attr("data-target",value); 
-=======
-				$(tagid).attr("data-target",value); // data-target 속성값
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
 				
 				//var els2 = $(tagid);
 				//console.log("els2: " + els2 + "length: " + els2.length);
 
 			});
 			console.log("success");
-<<<<<<< HEAD
 			StartTimeRemaining();
-=======
->>>>>>> d0cff875e852e3c9e65e0d2bb9daadca5328c4f4
 		});
         /*]]>*/
     </script>

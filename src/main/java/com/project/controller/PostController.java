@@ -99,7 +99,7 @@ public class PostController {
 
 	// 게시글을 올리고 main으로
 	@GetMapping(value = "/main.do")
-	public String openPostList(@ModelAttribute("params") PostDTO params,Model model) {
+	public String openPostList(@ModelAttribute("params") PostDTO params, Model model) {
 		List<PostDTO> postList = postService.getPostList(params);
 		model.addAttribute("postList", postList);
 		logger.info("main.do");
