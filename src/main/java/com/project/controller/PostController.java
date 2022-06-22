@@ -57,7 +57,7 @@ public class PostController {
 		return "/write";
 	}
 	
-	@GetMapping(value = "/writeUpdate.do")
+	/*@GetMapping(value = "/writeUpdate.do")
 	public String openPostWriteUpdate(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
@@ -71,8 +71,8 @@ public class PostController {
 		}
 
 		/* logger.info("PostDTO" + params); */
-		return "/updatePost";
-	}
+		//return "/updatePost";
+	//}
 	
 
 	// 게시글 등록, 수정

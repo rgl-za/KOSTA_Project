@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
 <th:block layout:fragment="content" th:object="${postDTO}">
@@ -11,9 +11,9 @@
 		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${postDTO.title}">거래명</h1>
 			<div class="float-right">
-				<a href="@{/write.do}" class="btn btn-secondary btn-icon-split"> </span> 
+				<a th:href="@{/write.do}" class="btn btn-secondary btn-icon-split"> </span> 
 				<span class="text">수정</span>
-				</a> <a href="@{/delete.do}" class="btn btn-secondary btn-icon-split"> </span> <span
+				</a> <a th:action="@{/delete.do(pnum=${isDeleted.pnum})}" th:object="${get}" method="get" class="btn btn-secondary btn-icon-split" enctype="multipart/form-data"> </span> <span
 					class="text">삭제</span>
 				</a>
 			</div>
@@ -118,9 +118,12 @@
 						<div class="vertical">
 							<!-- 참여자 ready 영역 -->
 							<div class="detail-ready">
+								<!-- 방장 영역 -->
 								<div class="user-ready-img">
 									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+										class="text-gray-600 font-weight-bold bg-gray-100 align-center"
+										th:text="${postDTO.getLeaderid()}"
+									></div>
 									<img class="ready-img rounded-circle"
 										src="img/undraw_profile.svg"> <a href="#"
 										class="btn btn-primary-cap btn-icon-split"> <span
@@ -128,59 +131,27 @@
 									</span> <span class="text">방장</span>
 									</a>
 								</div>
-								<div class="user-ready-img">
+								<!-- 팀원 영역 -->
+								<div class="user-ready-img" th:each="teamMember: ${teamMemberList}">
 									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+										class="text-gray-600 font-weight-bold bg-gray-100 align-center"
+										th:text="${teamMember.userId}"
+									></div>
 									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
+										src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary btn-icon-split">
+										<span class="icon text-white-50">
+											<i class="fas fa-flag"></i>
+										</span>
+										<span class="text">준비</span>
 									</a>
 								</div>
-								<div class="user-ready-img">
-									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
-									</a>
-								</div>
-								<div class="user-ready-img">
-									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
-									</a>
-								</div>
-								<div class="user-ready-img">
-									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
-									</a>
-								</div>
-
 							</div>
 							<!-- buttons -->
 							<a href="#" class="btn btn-primary btn-icon-split"> <span
 								class="icon text-white-50"><i class="fas fa-flag"></i></span> <span
 								class="text">시작하기!</span>
 							</a>
-
-							<!--							<button type="button" class="btn btn-info btn-icon-split" th:action="@{/chat/room}">-->
-							<!--								<span class="icon text-white-50"> <i-->
-							<!--										class="fas fa-comment-dots"></i>-->
-							<!--								</span> 채팅방 개설하기-->
-							<!--							</button>-->
 
 							<button type="button" class="btn btn-info btn-icon-split"
 								data-toggle="modal" data-target=".bd-example-modal-xl">
@@ -909,26 +880,6 @@
 			</div>
 
 		</div>
-
-
-		<!-- 거래 정보 표시 -->
-<!--		<div class="detail_top">-->
-<!--			<div class="detail_top_top"></div>-->
-<!--			<div class="detail_top_content">-->
-<!--				<div class="detial_top_content_left"></div>-->
-<!--				<div class="detial_top_content_right"></div>-->
-<!--				<div class="detial_top_content_bottom"></div>-->
-<!--			</div>-->
-<!--		</div>-->
-		<!-- 거래 정보 표시 end -->
-
-<!--		<div class="container my-auto">-->
-<!--			<div class="copyright text-center my-auto">-->
-<!--				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>-->
-<!--				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>-->
-<!--			</div>-->
-
-<!--		</div>-->
 		<!-- row -->
 	</div>
 	<!-- /.container-fluid -->

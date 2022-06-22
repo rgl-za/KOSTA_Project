@@ -95,12 +95,8 @@
 
 	<!-- 남혁이형 부분 -->
 	<update id="deletePost" parameterType="long">
-		UPDATE post
-		SET
-		delete_yn = 'Y'
-		, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요  -->
-		WHERE
-		pnum = #{pnum}
+		delete from post
+        where pnum= #{pnum};
 	</update>
 
 	<select id="getPost" parameterType="int" resultType="PostDTO">
