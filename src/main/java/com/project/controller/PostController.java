@@ -236,6 +236,7 @@ public class PostController extends UiUtils {
 
 		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
 		model.addAttribute("countMember", countMember+1);
+
 		if (countMember >= postDTO.getMinpeople()){
 			model.addAttribute("minpeople", true);
 			System.out.println(countMember);
