@@ -74,6 +74,14 @@ public class PostServiceImpl implements PostService {
 		return postList;
 	}
 
+	@Override
+	public boolean alterDealAdd(PostDTO params) {
+		
+		return postMapper.alterDealAdd(params);
+	}
+	
+	
+
 	/*
 	 * @Override public PostDTO getPost(int pnum) { PostDTO postDTO =
 	 * postMapper.getPost(pnum);

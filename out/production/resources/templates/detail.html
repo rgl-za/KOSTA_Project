@@ -10,6 +10,7 @@
 		</div>
 		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${postDTO.title}">거래명</h1>
+			<!--방장이면 버튼이 보이도록 고쳐야 함-->
 			<div class="float-right">
 				<a href="#" class="btn btn-secondary btn-icon-split"> </span> 
 				<span class="text">수정</span>
@@ -17,6 +18,7 @@
 					class="text">삭제</span>
 				</a>
 			</div>
+
 		</div>
 		<div class="row">
 			<!-- 이미지와 링크 -->
@@ -54,12 +56,10 @@
 										<text th:text="${postDTO.getLink()}"></text>
 										</p>
 									</div>
-									
 
-									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span> <text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>(가능하다면)30분 전
-
-
-
+									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
+									<text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>
+									(가능하다면)30분 전
 								</div>
 
 							</div>
@@ -79,11 +79,10 @@
 								<p>
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 									최대 구매가 </h7>
-									<text th:text="${postDTO.getPrice()/postDTO.getMinpeople()}"></text>
-									원&emsp;
+									<text th:text="${postDTO.getPrice()/postDTO.getMinpeople()}"></text>원&emsp;
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 									최소 구매가 </h7>
-									<text th:text="${postDTO.getPrice()/postDTO.getMaxpeople()}"></text>
+									<text th:text="${postDTO.getPrice()/postDTO.getMaxpeople()}"></text>원
 									<br>
 								</p>
 								<p>
@@ -96,15 +95,15 @@
 									명
 								</p>
 								<p>
-
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 									현재 인원수 </h7>
-									1명&emsp;
+									<text th:text="${countMember}"></text>
+									명
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
-									현재 구매가 </h7>
-									---원<br>
+									현재 예상 구매가 </h7>
+									<text th:text="${postDTO.getPrice()/countMember}"></text>
+									원<br>
 								</p>
-
 							</div>
 							<div class="detail-top_timer">
 								<h8>마감일:&emsp;
@@ -124,11 +123,18 @@
 										class="text-gray-600 font-weight-bold bg-gray-100 align-center"
 										th:text="${postDTO.getLeaderid()}"
 									></div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary-cap btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">방장</span>
+									<img class="ready-img rounded-circle" src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary-cap btn-icon-split" th:if="${minpeople == true}">
+											<span class="icon text-white-50">
+												<i class="fas fa-flag"></i>
+											</span>
+										<span class="text">거래 진행하기</span>
+									</a>
+									<a href="#" class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
+											<span class="icon text-white-50">
+												<i class="fas fa-flag"></i>
+											</span>
+										<span class="text">방장</span>
 									</a>
 								</div>
 								<!-- 팀원 영역 -->
@@ -139,19 +145,23 @@
 									></div>
 									<img class="ready-img rounded-circle"
 										src="img/undraw_profile.svg">
-									<a href="#" class="btn btn-primary btn-icon-split">
+									<a href="#" class="btn btn-primary btn-icon-split" >
 										<span class="icon text-white-50">
 											<i class="fas fa-flag"></i>
 										</span>
-										<span class="text">준비</span>
+										<span class="text">참여중</span>
 									</a>
 								</div>
 							</div>
 							<!-- buttons -->
-							<a href="#" class="btn btn-primary btn-icon-split"> <span
-								class="icon text-white-50"><i class="fas fa-flag"></i></span> <span
-								class="text">시작하기!</span>
-							</a>
+							<button href="#" class="btn btn-primary btn-icon-split"
+									th:onclick="insertTeamMember( [[${postDTO.getPnum()}]], [[${postDTO.getMinpeople()}]], [[${postDTO.getTitle()}]] )"
+							>
+								<span class="icon text-white-50">
+									<i class="fas fa-flag"></i>
+								</span>
+								<span class="text">참여하기</span>
+							</button>
 
 							<button type="button" class="btn btn-info btn-icon-split"
 								data-toggle="modal" data-target=".bd-example-modal-xl">
@@ -848,8 +858,6 @@
 							<div class="text-center" style="padding-top: 10px;">
 								<h3 th:text="${postDTO.getTitle()} + ' 공동구매 채팅방 입니다.'"></h3>
 							</div>
-
-
 							<div class="card-body p-4" style="height: 500px; overflow: scroll; ">
 								<div class="card mb-4" th:each="comment: ${commentList}">
 									<div class="card-body" th:if="${not #lists.isEmpty(commentList)}">
@@ -875,10 +883,7 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
-
 		</div>
 		<!-- row -->
 	</div>
@@ -887,6 +892,24 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
       /*<![CDATA[*/
+
+	  function insertTeamMember(pnum, minpeople, title) {
+		  if (confirm(title + " 공동구매에 참여하실건가요?")) {
+			  var uri = /*[[ @{/team.do} ]]*/null;
+			  var html = "";
+
+			  html += '<form name="dataForm" action="'+uri+'" method="post">';
+			  html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+			  html += '<input type="hidden" name="minpeople" value="'+minpeople+'">';
+			  html += '</form>';
+
+			  $("body").append(html);
+			  document.dataForm.submit();
+		  }
+	  }
+
+
+
       function convertStringToDate(endDate) {
 		    let dateComponents = endDate.split(' ');
 		    let datePieces = dateComponents[0].split("-");
