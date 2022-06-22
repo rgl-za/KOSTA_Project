@@ -10,8 +10,6 @@ public interface PostService {
 	public boolean registerPost(PostDTO params); 
 
 	// 게시글 등록, 수정 사진
-	
-	public boolean updatePost(PostDTO params);
 
 	// 게시글 상세 내용 불러오기
 	public PostDTO getPostDetail(Long pnum);
@@ -24,10 +22,9 @@ public interface PostService {
 	
 	// 메인화면 정렬
 	public List<PostDTO> getPostSortList(String option);
-
-	//게시글 dealaddress변경하기
+	
+	
 	public boolean alterDealAdd(PostDTO params);
-
 	// 게시글 사진 불러오기
 	
 	/*

@@ -28,19 +28,6 @@ public class PostServiceImpl implements PostService {
 
 		return (queryResult == 1) ? true : false;
 	}
-	
-	// 게시글 수정
-	@Override
-	public boolean updatePost(PostDTO params) {
-		int queryResult = 0;
-
-		if (params.getPnum() == null) {
-			queryResult = postMapper.updatePost(params);
-		}
-		// 난수 생길 예정 } else { queryResult = postMapper.updatePost(params); }
-
-		return (queryResult == 1) ? true : false;
-	}
 
 	// 상세내용에 불러올 글
 	@Override
@@ -76,16 +63,45 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostDTO> getPostSortList(String option) {
 		List<PostDTO> postList = Collections.emptyList();
+		System.out.println("option: " + option);
+		
+		// 최신순
+		if(option=="latest") {
+			
+			int postTotalCount = postMapper.PostTotalCount();
 
-		//int postTotalCount = postMapper.selectPostTotalCount(option);
+			if (postTotalCount > 0) { 
+				postList = postMapper.latestPostList(); 
+			}
+			
+			return postList;
+		
+		// 인기순
+		}else if (option=="popular"){
+			
+			int postTotalCount = postMapper.PostTotalCount();
 
-		/*
-		 * if (postTotalCount > 0) { postList = postMapper.selectPostList(option); }
-		 */
-		return postList;
+			
+			if (postTotalCount > 0) { 
+				postList = postMapper.popularPostList(); 
+			}
+			
+			return postList;	
+			
+		}else {
+			
+			int postTotalCount = postMapper.PostTotalCount();
+
+			if (postTotalCount > 0) { 
+				postList = postMapper.latestPostList(); 
+			}
+			
+			return postList;
+		}
+		
 	}
 	
-
+	
     @Override
 	public boolean alterDealAdd(PostDTO params) {
 		
