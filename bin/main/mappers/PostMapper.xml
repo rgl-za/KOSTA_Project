@@ -43,9 +43,10 @@
 		, 2				<!-- #{minpeople} -->
 		, NULL			<!-- accountpost -->
 		, SYSDATE 		<!-- uploadDate -->
-		, #{enddate}
+		, #{enddate}	<!-- 마감일 -->
 		, 'N'			<!-- delete_yn  -->
 		, NULL			<!-- delete_time  -->
+		, NULL			
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)

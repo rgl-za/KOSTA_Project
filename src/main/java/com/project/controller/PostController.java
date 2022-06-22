@@ -50,16 +50,15 @@ public class PostController extends UiUtils {
 	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
-			 model.addAttribute("post", new PostDTO());
+			model.addAttribute("post", new PostDTO());
 		} else { // pnum에서 받아온 경우
 			PostDTO post = postService.getPostDetail(pnum);
 			if (post == null) {
 				return "redirect:/main.do";
-				
 			}
 			//model.addAttribute("post", post);
 			//List<CatDTO> catlist = catService.selectCatList(catDTO);
-
+			
 			model.addAttribute("post", post);
 			//logger.info(""+catDTO);
 			logger.info(""+post);
@@ -67,32 +66,32 @@ public class PostController extends UiUtils {
 		logger.info("PostDTO-->" + params);
 		return "/write";
 	}
-//	// 게시글 작성 폼으로
-//	@GetMapping(value = "/write.do")
-//	public String openPostWrite(@ModelAttribute("catDTO") CatDTO catDTO,@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
-//		logger.info("PostDTO" + params);
-//		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
-//			model.addAttribute("post", new PostDTO());
-//			List<CatDTO> catlist = catService.selectCatList(catDTO);
-//			model.addAttribute("catlist", catlist);
-//		} else { // pnum에서 받아온 경우
-//			List<CatDTO> catlist = catService.selectCatList(catDTO);
-//			PostDTO post = postService.getPostDetail(pnum);
-//			if (post == null) {
-//				return "redirect:/main.do";
-//			}
-//			//model.addAttribute("post", post);
-//			//List<CatDTO> catlist = catService.selectCatList(catDTO);
-//			
-//			model.addAttribute("catlist", catlist);
-//			logger.info(""+catlist);
-//			model.addAttribute("post", post);
-//			//logger.info(""+catDTO);
-//			logger.info(""+post);
-//		}
-//		logger.info("PostDTO-->" + params);
-//		return "/write";
-//	}
+	// 게시글 작성 폼으로
+	@GetMapping(value = "/write.do")
+	public String openPostWrite(@ModelAttribute("catDTO") CatDTO catDTO,@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+		logger.info("PostDTO" + params);
+		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
+			model.addAttribute("post", new PostDTO());
+			List<CatDTO> catlist = catService.selectCatList(catDTO);
+			model.addAttribute("catlist", catlist);
+		} else { // pnum에서 받아온 경우
+			List<CatDTO> catlist = catService.selectCatList(catDTO);
+			PostDTO post = postService.getPostDetail(pnum);
+			if (post == null) {
+				return "redirect:/main.do";
+			}
+			//model.addAttribute("post", post);
+			//List<CatDTO> catlist = catService.selectCatList(catDTO);
+			
+			model.addAttribute("catlist", catlist);
+			logger.info(""+catlist);
+			model.addAttribute("post", post);
+			//logger.info(""+catDTO);
+			logger.info(""+post);
+		}
+		logger.info("PostDTO-->" + params);
+		return "/write";
+	}
 
 	// 게시글 등록, 수정
 	@PostMapping(value = "/register.do")
@@ -164,6 +163,13 @@ public class PostController extends UiUtils {
 
 		model.addAttribute("teamMemberList", teamMemberList);
 		model.addAttribute("teamMember", new TeamMemberDTO());
+		
+		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
+		model.addAttribute("countMember", countMember+1);
+		if (countMember >= postDTO.getMinpeople()){
+			model.addAttribute("minpeople", true);
+			System.out.println(countMember);
+		}
 
 		//PostDTO post = postService.getPostDetail(pnum);
 
