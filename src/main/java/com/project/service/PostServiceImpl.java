@@ -60,25 +60,25 @@ public class PostServiceImpl implements PostService {
 		}
 		return postList;
 	}
-	
 	@Override
 	public List<PostDTO> getPostSortList(String option) {
 		List<PostDTO> postList = Collections.emptyList();
 
-		int postTotalCount = postMapper.selectPostTotalCount(option);
+		//int postTotalCount = postMapper.selectPostTotalCount(option);
 
 		/*
 		 * if (postTotalCount > 0) { postList = postMapper.selectPostList(option); }
 		 */
 		return postList;
 	}
-
-	@Override
+	
+	/*
+    @Override
 	public boolean alterDealAdd(PostDTO params) {
 		
 		return postMapper.alterDealAdd(params);
 	}
-	
+*/
 	
 
 	/*
