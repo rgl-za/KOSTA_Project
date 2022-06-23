@@ -33,7 +33,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-                                th:src="|@{/imagePath/}${postList.getPhoto()}|">
+                                th:src="|@{/productImgs/}${postList.getPhoto()}|">
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -134,79 +134,80 @@
             }
         }
         function convertStringToDate(endDate) {
-            //console.log(enddate);
-            let dateComponents = endDate.split(' ');
-            let datePieces = dateComponents[0].split("-");
-            let timePieces = dateComponents[1].split(":");
-            return (new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
-                timePieces[0], timePieces[1], timePieces[2]))
-        }
+			//console.log(enddate);
+			let dateComponents = endDate.split(' ');
+			let datePieces = dateComponents[0].split("-");
+			let timePieces = dateComponents[1].split(":");
+			return (new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
+					timePieces[0], timePieces[1], timePieces[2]))
+		}
 
-        function msg_time() {
-            var els = $("div.dealing").children("input#enddate");
-            //console.log("els: " + els);
-            for (var i = 0; i < els.length; i++) {
-                var endDate = convertStringToDate($(els[i]).val());
-                console.log("endDate: ", endDate);
+		function msg_time() {
+			var els = $("div.dealing").children("input#enddate");
+			//console.log("els: " + els);
+			for (var i = 0; i < els.length; i++) {
+				var endDate = convertStringToDate($(els[i]).val());
+				console.log("endDate: ", endDate);
 
-                var startDatetime = new Date();
-                console.log("startDatetime: ", startDatetime);
+				var startDatetime = new Date();
+				console.log("startDatetime: ", startDatetime); 
 
-                var RemainDate = endDate - startDatetime;
-                console.log("RemainDate: ", RemainDate);
+				var RemainDate = endDate - startDatetime;
+				console.log("RemainDate: ", RemainDate);
 
-                var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
-                var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+				var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 
-                if (RemainDate < 0) {
-                    var tagid = '#timer' + i;
-                    //console.log("tagid: " + tagid);
-                    $(tagid).text("EXPIRED");
+				if (RemainDate < 0) {
+					var tagid = '#timer' + i;
+					//console.log("tagid: " + tagid);
+					$(tagid).text("EXPIRED");
 
-                } else {
-                    m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
-                    //console.log("m: " + m);
+				} else {
+					m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+					//console.log("m: " + m);
 
-                    var tagid = '#timer' + i;
-                    //console.log("tagid: " + tagid);
-                    $(tagid).text(m);
+					var tagid = '#timer' + i;
+					//console.log("tagid: " + tagid);
+					$(tagid).text(m);
 
-                }
-            }
-        }
+				}
+			}
+		}
 
-        function StartTimeRemaining() {
-            msg_time();
-            setInterval(function() {
-                msg_time();
-            }, 1000)
-        }
-
-        // 각 게시물의 모달창 id 지정
+		function StartTimeRemaining() {
+			msg_time();
+			setInterval(function() {
+				msg_time();
+			}, 1000)
+		}
+        // 모달창 관련 임시 주석처리
+        각 게시물의 모달창 id 지정
         $(function(){
-            var els = $("h5.fw-bolder");
-            console.log("els.length: "+els.length);
-            $.each(els, function(index, item) {
-                //console.log("index: "+ index +"item: "+ item);
+			var els = $("h5.fw-bolder");
+			console.log("els.length: "+els.length);
+			$.each(els, function(index, item) {
+				//console.log("index: "+ index +"item: "+ item);
 
-                var tagid = "#modal_btn" + index;
-                console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
+				var tagid = "#modal_btn" + index;
+				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
 
-                var value = "#exampleModalCenter"+index;
-                console.log("value:" + value); // data-target 속성값
+				var value = "#exampleModalCenter"+index;
+				console.log("value:" + value); // data-target 속성값
 
-                //data-target 속성값 지정
-                $(tagid).attr("data-target",value);
+				//data-target 속성값 지정
+				$(tagid).attr("data-target",value);
 
-                //var els2 = $(tagid);
-                //console.log("els2: " + els2 + "length: " + els2.length);
+				//var els2 = $(tagid);
+				//console.log("els2: " + els2 + "length: " + els2.length);
 
-            });
-            console.log("success");
-            StartTimeRemaining();
-        });
+			});
+			console.log("success");
+			StartTimeRemaining();
+		});
         /*]]>*/
     </script>
+
 </html>

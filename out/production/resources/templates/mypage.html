@@ -32,7 +32,7 @@
 
 				<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
 				<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
-				<div class="cobuy-box"
+				<div class="cobuy-box" th:each="dealList : ${deaList}"
 					style="display: flex; width: 100%; justify-content: center;">
 					<div class="one"
 						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 33%;">
@@ -46,8 +46,8 @@
 						<div class="input-group">
 							<div class="col-sm-6" style="">
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item" id="cobuy_Name">이름 : 문정현</li>
-									<li class="list-group-item" id="cobuy_Id">아이디 : id</li>
+									<li class="list-group-item" id="cobuy_Name">이름 :</li> <p th:text="${dealList.userId}"></p>
+									<li class="list-group-item" id="cobuy_Id">아이디 : id</li> <p th:text="${dealList.userId}"></p>
 								</ul>
 							</div>
 							<div class="col-sm-6" style="">
