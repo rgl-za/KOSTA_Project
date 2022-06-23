@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -200,7 +201,9 @@ public class PostController {
 	}
 	
 	@PostMapping(value = "/delete.do")
-	public String deletePost(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String deletePost(@RequestParam(value = "pnum", required = false)Long pnum, Model model) {
+		System.out.println("pnum"+pnum);
+		
 		if (pnum == null) {
 			return "올바르지 않은 접근입니다.";
 		}
@@ -209,7 +212,8 @@ public class PostController {
 		try {
 			boolean isDeleted = postService.deletePost(pnum);
 			if (isDeleted == false) {
-				return "게시글 삭제에 실패하였습니다.";
+				System.out.println("잘못된 접근입니다.");
+				return "redirect:/main.do";
 			}
 		} catch (DataAccessException e) {
 			return "데이터베이스 처리 과정에 문제가 발생하였습니다.";

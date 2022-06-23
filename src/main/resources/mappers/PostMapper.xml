@@ -98,12 +98,11 @@
 	<!-- 남혁이형 부분 -->
 	<update id="deletePost" parameterType="long">
 		delete from post
-        where pnum= #{pnum};
+        where pnum= #{pnum}
 	</update>
 
 	<select id="getPost" parameterType="int" resultType="PostDTO">
-		SELECT
-			*
+		SELECT *
 		FROM
 			post
 		WHERE pnum = #{pnum}
