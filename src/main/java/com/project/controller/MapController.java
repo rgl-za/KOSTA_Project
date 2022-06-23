@@ -36,7 +36,7 @@ public class MapController {
 	private CommentService commentService;
 
 	// getMidPointByList
-	@RequestMapping(path = "/mypage/insertMemberInfo")
+	@RequestMapping(path = "/getMidPoint")
 	@ResponseBody
 	public Map<String, Object> insertMemberInfo(@RequestParam String data) throws ParseException, JSONException{
 		

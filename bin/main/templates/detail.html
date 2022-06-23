@@ -240,9 +240,6 @@
 											var midLat = sumLat/latLngList.length;
 											var midLng = sumLng/latLngList.length;
 											
-											
-											//alert("midLat"+midLat);
-											//alert("midLng"+midLng);
 											var minLatLng = function(lat1, lng1, lat2, lng2) {
 												this.lat1 = lat1;
 												this.lng1 = lng1;
@@ -264,14 +261,10 @@
 											</script>
 											
 											<script>
-											//var userPointList=[];
-											var userPointList= new Array();
-											//userPointList[0]=213.234;
-											var userPointListIdx=0;
-											//alert("test: userPointListIdx"+userPointListIdx);
-											//alert("userPointList:"+userPointList);
 											
+											var userPointList= new Array();	//var userPointList=[];
 											
+											//thymeleaf class 접근 예제
 											var test = "[[ ${ @point.getX() } ]]";
 												//var test = "${ @point.getX() }";
 												//var pnum="[[${postDTO.getPnum()}]]";
@@ -617,6 +610,9 @@
 												var markers = [];
 												var infowindows = [];
 
+												/*
+													user의 데이터 -> 처리 필요
+												*/
 												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755','상중리 경기도 안성시 금광면'];
 												var nameList = ['jiwon1','jiwon2','jiwon3','jiwon4'];
 												
@@ -624,7 +620,7 @@
 												
 												//users 마커 : 주소 -> 위경도
 												function usersMarkers(addressList, nameList){
-													//console.log("addressList"+addressList);
+													
 													//let maps = [];
 													let position = [];
 													const geocoder = new kakao.maps.services.Geocoder();
@@ -644,15 +640,13 @@
 													(async () => {
 													    try{
 													        for(const [i,addr] of addressList.entries()) {
-													       		console.log("usersMarkers() 내부: addresList.length "+addressList.length);
-													       		console.log("usersMarkers() 내부 i "+i);
+													       		
 													            const data = await addressSearch(addr);
 													            coords = new kakao.maps.LatLng(data.result[0].y, data.result[0].x);
 													            
 													            console.log(">>user coord>>"+coords);
 													            //getAddressByLatLng(coords);
-													           
-													            
+													       
 													            var userP= {
 													            		
 													            		idx: i,
@@ -663,43 +657,11 @@
 													            
 													            userPointList.push(userP);
 													            
-													            console.log("*******[userPointListIdx]"+userPointListIdx+', '+userPointList[0][0]);
+													            if(i === addressList.length-1){	//만약 현재 index i가 배열의 크기보다 작다면,
 													            
-													            if(i === addressList.length-1){
-													            	
-													            	getMidPointByList(userPointList);
+													            	getMidPointByList(userPointList);	//그때 ajax 통신으로 user의 좌표리스트를 넘겨준다.
 													            	
 													            }
-													            
-													          
-													            /*
-													            userPointList[userPointListIdx]=new Array(2);//배열의 열, 2개의 열 생성
-													            userPointList[userPointListIdx][0]= data.result[0].x;//x좌표, 경도, Lng
-													            userPointList[userPointListIdx][1]= data.result[0].y;//y좌표, 위도, Lat
-													            userPointListIdx++;
-													            console.log("*******[userPointListIdx]"+userPointListIdx+', '+userPointList[0][0]);
-													            if(i === addressList.length-1){
-													            	
-													            	getMidPointByList(userPointList);
-													            	
-													            }
-													            */
-													            
-													            
-													            
-													            
-													            //userPointList[userPointListIdx]=new Array(2);
-													            //var test = "[[ ${ @point.getX() } ]]";
-													           
-													            
-													            //2차원 배열에 넣기
-													            //var userPointList= new Array();
-													            //var userPointListIdx=0;
-													            
-													            
-													           // alert("[userPointListIdx][0]"+userPointList[userPointListIdx][0]);
-													            
-													            
 													            
 													            //getAddressByLatLng(coords);
 													            
@@ -708,7 +670,6 @@
 													            
 													            //주소 좌표와 생성한 지도 객체를 배열에 담아줍니다.
 													            position.push(coords);
-													            //maps.push(map);
 													            
 													            //map.relayout();
 													           
@@ -724,18 +685,17 @@
 												중심으로 선정된 위도 경도로 => 도로명 주소
 												*/
 												function getAddressByLatLng(coord){
-													alert("getAddressByLatLng에 들어옴.");
 													
 													const coord2Address = coord => {
 														//Promise반환
 													    return new Promise((resolve, reject) => {
 													        geocoder.coord2Address(coord.getLng(), coord.getLat(), function(result, status) {
-													        	alert("status"+status);//Zero result: 정상적으로 응답을 받았으나 결과가 없음.
+													        	//alert("status"+status);//if Zero result: 정상적으로 응답을 받았으나 결과가 없음.
 													            if (status === kakao.maps.services.Status.OK) {
-													            	alert("promise함수 실행");
+													       
 													                resolve({result});
 													            } else {
-													            	alert("promise함수 실행 안됨");//실행이 안됐다.
+													            	alert("promise함수 실행 안됨");
 													                reject(status);
 													            }
 													        });
@@ -750,9 +710,9 @@
 													    	//주소정보로 maker생성
 													    	centerAdd=data.result[0].address.address_name;
 													    	
+													    	//중심 좌표로 db업데이트
 													    	addMidAddressToDB(centerAdd);
 													    	
-													    	alert("getAddressByLatLng> async 함수 내부 "+centerAdd);//여기로 안넘어옴.
 															centerMarker(coord,data.result[0].address.address_name);
 													    	
 													    } catch(e) {
@@ -912,19 +872,13 @@
 												   
 												}
 												
-
 												// 마커가 표시될 위치입니다
 												var markerPosition;
-												//= new kakao.maps.LatLng(
+												/*산술 평균으로 계산 시*/
+												//var markerPosition= new kakao.maps.LatLng(
 														//midLat, midLng);
 												
-												alert("markerPosition"+markerPosition);
-												
-												
-												
-												
-												//getAddressByLatLng(new kakao.maps.LatLng(
-														//36.94726125, 128.08362825));
+												//alert("markerPosition"+markerPosition);
 												
 												
 												// 지도를 표시하는 div 크기를 변경하는 함수입니다
@@ -966,28 +920,27 @@
 											  
 											  function getMidPointByList(plist) {//plist는 2차원 배열
 												  //plist->json 변환
-												  const JsonArray = JSON.stringify(plist);//문자 2차원배열
-													console.log(">>>>>JsonArray>>>>>"+JsonArray);
-												  
+												  //const JsonArray = JSON.stringify(plist);//문자 2차원배열
+												  //console.log(">>>>>JsonArray>>>>>"+JsonArray);
 												  
 													 $.ajax({
 													     method: 'post',
-													     url: '/mypage/insertMemberInfo',
+													     url: '/getMidPoint', //controller url
 													     traditional: true,
 													     data: {
 													       data: JSON.stringify(plist)
 													     },
 													     dataType: 'json',
 													     success: function (args) {
+													    	 
 													    	 var r= args.res;//Object
-													    	 
-													    	 markerPosition=new kakao.maps.LatLng( r.y, r.x);
-													    	 
-													    	//중심 마커 생성 => getAddressByLatLng 호출
-																getAddressByLatLng(markerPosition);
-													    	 //getAddressByLatLng( new kakao.maps.LatLng( r.y, r.x) );
 													    	 //alert("res.x"+res.x);
 													    	 //alert("res.y"+res.y);
+													    	 
+													    	//중심 마커 생성 => getAddressByLatLng 호출
+													    	markerPosition=new kakao.maps.LatLng( r.y, r.x);
+															getAddressByLatLng(markerPosition);
+													    	
 													        if (args.res) {
 													          //alert("완료 되었습니다");
 													        }
