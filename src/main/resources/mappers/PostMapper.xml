@@ -19,6 +19,7 @@
 		, uploaddate
 		, enddate
 		, delete_yn
+		, delete_time
 		, finaldate
 		, numbers
 	</sql>
@@ -29,7 +30,7 @@
 		<include refid="postColumns" />
 		) VALUES (
 		seq_post_no.nextval
-		, 1				<!-- #{catnum} -->
+		, #{catnum}
 		, 'NULL'		<!-- leaderid -->
 		, #{title}
 		, #{content}
@@ -44,23 +45,25 @@
 		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
 		, 'N'			<!-- delete_yn  -->
+		, NULL			<!-- delete_time  -->
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
-	<!-- 수정 필요 (문정현)-->
+	
+	<!-- 수정 -->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
 		SET
 			uploaddate 	= SYSDATE
 			, title 	= #{title}
 			, photo 	= #{photo}
-			, link 		= #{link}
 			, content 	= #{content}
+			, link 		= #{link}
+			, numbers	= #{numbers}
 			, price 	= #{price}
-			, maxpeople = #{maxpeople}
-			, minpeople = #{minpeople} 
 			, enddate 	= #{enddate}
+			, maxpeople = #{maxpeople}
 		WHERE
 			pnum = #{pnum}
 	</update>
@@ -95,14 +98,19 @@
 	</select>
 
 
-	<!-- 남혁이형 부분 -->
+	<!-- 삭제 -->
 	<update id="deletePost" parameterType="long">
-		delete from post
-        where pnum= #{pnum}
+		UPDATE post
+		SET
+			delete_yn = 'Y'
+			delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+		WHERE
+		pnum = #{pnum}
 	</update>
 
 	<select id="getPost" parameterType="int" resultType="PostDTO">
-		SELECT *
+		SELECT
+			*
 		FROM
 			post
 		WHERE pnum = #{pnum}

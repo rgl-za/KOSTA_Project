@@ -19,7 +19,9 @@
 		, uploaddate
 		, enddate
 		, delete_yn
+		, delete_time
 		, finaldate
+		, numbers
 	</sql>
 
 	<!-- 수정 필요 (문정현) -->
@@ -28,37 +30,40 @@
 		<include refid="postColumns" />
 		) VALUES (
 		seq_post_no.nextval
-		, 1
-		, 'NULL'
+		, #{catnum}
+		, 'NULL'		<!-- leaderid -->
 		, #{title}
 		, #{content}
-		, #{photo}
+		, #{photo}			<!-- #{photo} -->
 		, #{link}
 		, #{price}
-		, #{postnum}
-		, 'NULL'
+		, NULL 			<!-- #{postnum} -->
+		, NULL			<!-- #{dealaddress} -->
 		, #{maxpeople}
-		, #{minpeople}
-		, 'NULL'
-		, SYSDATE <!-- uploadDate -->
+		, 2				<!-- #{minpeople} -->
+		, NULL			<!-- accountpost -->
+		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
-		, 'N'
-		, #{finaldate}
+		, 'N'			<!-- delete_yn  -->
+		, NULL			<!-- delete_time  -->
+		, NULL			<!-- #{finaldate} --> 
+		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
-	<!-- 수정 필요 (문정현)-->
+	
+	<!-- 수정 -->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
 		SET
 			uploaddate 	= SYSDATE
 			, title 	= #{title}
 			, photo 	= #{photo}
-			, link 		= #{link}
 			, content 	= #{content}
+			, link 		= #{link}
+			, numbers	= #{numbers}
 			, price 	= #{price}
-			, maxpeople = #{maxpeople}
-			, minpeople = #{minpeople} 
 			, enddate 	= #{enddate}
+			, maxpeople = #{maxpeople}
 		WHERE
 			pnum = #{pnum}
 	</update>
@@ -93,12 +98,12 @@
 	</select>
 
 
-	<!-- 남혁이형 부분 -->
+	<!-- 삭제 -->
 	<update id="deletePost" parameterType="long">
 		UPDATE post
 		SET
-		delete_yn = 'Y'
-		, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요  -->
+			delete_yn = 'Y'
+			delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
 		WHERE
 		pnum = #{pnum}
 	</update>
@@ -110,5 +115,15 @@
 			post
 		WHERE pnum = #{pnum}
 	</select>
+	
+	<!-- dealaddress 변경 -->
+	<update id="alterDealAdd" parameterType="PostDTO">
+		UPDATE post
+		SET
+		dealaddress = #{dealaddress}
+		
+		WHERE
+		pnum = #{pnum}
+	</update>
 
 </mapper>

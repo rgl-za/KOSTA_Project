@@ -23,21 +23,9 @@ public class PostServiceImpl implements PostService {
 
 		if (params.getPnum() == null) {
 			queryResult = postMapper.insertPost(params);
+		} else { 
+			queryResult = postMapper.updatePost(params); 
 		}
-		// 난수 생길 예정 } else { queryResult = postMapper.updatePost(params); }
-
-		return (queryResult == 1) ? true : false;
-	}
-	
-	// 게시글 수정
-	@Override
-	public boolean updatePost(PostDTO params) {
-		int queryResult = 0;
-
-		if (params.getPnum() == null) {
-			queryResult = postMapper.updatePost(params);
-		}
-		// 난수 생길 예정 } else { queryResult = postMapper.updatePost(params); }
 
 		return (queryResult == 1) ? true : false;
 	}
@@ -73,13 +61,54 @@ public class PostServiceImpl implements PostService {
 		}
 		return postList;
 	}
-
 	@Override
+	public List<PostDTO> getPostSortList(String option) {
+		List<PostDTO> postList = Collections.emptyList();
+		System.out.println("option: " + option);
+		
+		// 최신순
+		if(option=="latest") {
+			
+			int postTotalCount = postMapper.PostTotalCount();
+
+			if (postTotalCount > 0) { 
+				postList = postMapper.latestPostList(); 
+			}
+			
+			return postList;
+		
+		// 인기순
+		}else if (option=="popular"){
+			
+			int postTotalCount = postMapper.PostTotalCount();
+
+			
+			if (postTotalCount > 0) { 
+				postList = postMapper.popularPostList(); 
+			}
+			
+			return postList;	
+			
+		}else {
+			
+			int postTotalCount = postMapper.PostTotalCount();
+
+			if (postTotalCount > 0) { 
+				postList = postMapper.latestPostList(); 
+			}
+			
+			return postList;
+		}
+		
+	}
+	
+	
+    @Override
 	public boolean alterDealAdd(PostDTO params) {
 		
 		return postMapper.alterDealAdd(params);
 	}
-	
+
 	
 
 	/*
