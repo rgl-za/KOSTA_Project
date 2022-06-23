@@ -35,19 +35,23 @@ public class PostServiceImpl implements PostService {
 	public PostDTO getPostDetail(Long pnum) {
 		return postMapper.selectPostDetail(pnum);
 	}
-
+	
+	// 게시글 삭제입니당
 	@Override
 	public boolean deletePost(Long pnum) {
-		int queryResult = 0;
+//		int queryResult = 0;
 
 		PostDTO post = postMapper.selectPostDetail(pnum);
-
+		
+		// 조회한 게시글이 null이 아니고, 삭제된 상태가 아닐 때 실행.
 		if (post != null && "N".equals(post.getDelete_yn())) {
-			queryResult = postMapper.deletePost(pnum);
+			postMapper.deletePost(pnum);
 		}
-
-		return (queryResult == 1) ? true : false;
-	}
+		
+		// 1이면 정상적으로 쿼리가 실행되었다는 뜻이기 때문에, true 반환.
+//		System.out.println("1이면 정상적으로 쿼리 실행--------------------->"+queryResult);
+		return true;
+	} 
 	
 	// main에 불러올 글
 	@Override

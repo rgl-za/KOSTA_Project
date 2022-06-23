@@ -13,6 +13,8 @@ public interface PostMapper {
 
 	// detail 상세내용
 	public PostDTO selectPostDetail(Long pnum);
+
+	public PostDTO selectPostDetailforDelete(Long pnum);
 	
 	// 수정
 	public int updatePost(PostDTO params);

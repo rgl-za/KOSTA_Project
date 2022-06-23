@@ -47,35 +47,14 @@ public class PostController extends UiUtils {
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum,@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			model.addAttribute("post", new PostDTO());
-		} else { // pnum에서 받아온 경우
-			PostDTO post = postService.getPostDetail(pnum);
-			if (post == null) {
-				return "redirect:/main.do";
-			}
-			//model.addAttribute("post", post);
-			//List<CatDTO> catlist = catService.selectCatList(catDTO);
-			
-			model.addAttribute("post", post);
-			//logger.info(""+catDTO);
-			logger.info(""+post);
-		}
-		logger.info("PostDTO-->" + params);
-		return "/write";
-	}
-	// 게시글 작성 폼으로
-	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("catDTO") CatDTO catDTO,@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
-		logger.info("PostDTO" + params);
-		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
-			model.addAttribute("post", new PostDTO());
-			List<CatDTO> catlist = catService.selectCatList(catDTO);
+			List<CatDTO> catlist = catService.selectCatList(catnum);
 			model.addAttribute("catlist", catlist);
 		} else { // pnum에서 받아온 경우
-			List<CatDTO> catlist = catService.selectCatList(catDTO);
+			List<CatDTO> catlist = catService.selectCatList(catnum);
 			PostDTO post = postService.getPostDetail(pnum);
 			if (post == null) {
 				return "redirect:/main.do";
@@ -114,13 +93,13 @@ public class PostController extends UiUtils {
 				}
 			}
 		} catch (DataAccessException e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는메시지를 전달
-			System.out.println("<-----데이터베이스 처리 과정 문제 발생----->");
+			System.out.println("<---------------------데이터베이스 처리 과정 문제 발생--------------------->");
 		} catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
 			System.out.println("<-----시스템에 문제 발생----->");
 		}
 		System.out.println("<--------------------------------메인-------------------------------->");
 		logger.info("PostDTO-->" + params);
-		return "/main";
+		return "redirect:/main.do";
 //		return "redirect:/main.do";
 	}
 
@@ -145,9 +124,6 @@ public class PostController extends UiUtils {
 			return "redirect:/main.do";
 		}
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
-//		List<CommentDTO> commentList= commentService.getCommentList(pnum);
-//		List<TeamMemberDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
-		
 
 		if (postDTO == null || "Y".equals(postDTO.getDelete_yn())) {
 			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
@@ -171,27 +147,25 @@ public class PostController extends UiUtils {
 			System.out.println(countMember);
 		}
 
-		//PostDTO post = postService.getPostDetail(pnum);
-
 		System.out.println(commentList);
-//		if (post == null || "Y".equals(post.getDelete_yn())) {
-//			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
-//			return "redirect:/main.do";
-//		}
-		//model.addAttribute("post", post);
-		//logger.info("detail.do");
 
 		return "/detail";
 	}
 	
 	@PostMapping(value = "/delete.do")
 	public String deletePost(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+		System.out.println("/delete.do 접근 --->"+pnum);
+		// 올바르지 않은 접근 시
 		if (pnum == null) {
 			return showMessageWithRedirect("올바르지 않은 접근입니다.", "/main.do", Method.GET, null, model);
 		}
 
 		try {
+			System.out.println("try 접근. pnum = " + pnum);
 			boolean isDeleted = postService.deletePost(pnum);
+			System.out.println("deletePost 실행 후. isDeleted = "+isDeleted);
+			
+			// false면 이미 게시글이 삭제된 상태
 			if (isDeleted == false) {
 				return showMessageWithRedirect("게시글 삭제에 실패하였습니다.", "/main.do", Method.GET, null, model);
 			}

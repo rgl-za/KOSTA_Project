@@ -31,7 +31,7 @@
 		) VALUES (
 		seq_post_no.nextval
 		, #{catnum}
-		, 'NULL'		<!-- leaderid -->
+		, 'leaderid'		<!-- leaderid -->
 		, #{title}
 		, #{content}
 		, #{photo}			<!-- #{photo} -->
@@ -46,11 +46,22 @@
 		, #{enddate}	<!-- 마감일 -->
 		, 'N'			<!-- delete_yn  -->
 		, NULL			<!-- delete_time  -->
-		, NULL			
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
+	
+	<!-- 삭제 -->
+	<!-- 실제 삭제가 아니라 delete_yn을 'Y'로 바꾸어 화면으론 삭제된 것처럼... db에는 남아있어요 -->
+	<update id="deletePost" parameterType="long">
+		UPDATE 
+			post
+		SET
+			delete_yn = 'Y'
+		   ,delete_time = SYSDATE
+		WHERE
+			pnum = #{pnum}
+	</update>
 	
 	<!-- 수정 -->
 	<update id="updatePost" parameterType="PostDTO">
@@ -68,7 +79,7 @@
 		WHERE
 			pnum = #{pnum}
 	</update>
-
+	
 	<!-- 포스트 상세내용 -->
 	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
 		SELECT
@@ -125,18 +136,6 @@
 		WHERE delete_yn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
-
-
-
-	<!-- 삭제 -->
-	<update id="deletePost" parameterType="long">
-		UPDATE post
-		SET
-			delete_yn = 'Y'
-			delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
-		WHERE
-		pnum = #{pnum}
-	</update>
 
 	<select id="getPost" parameterType="int" resultType="PostDTO">
 		SELECT

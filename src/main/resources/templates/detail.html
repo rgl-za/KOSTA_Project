@@ -14,10 +14,13 @@
 			<!-- 수정, 삭제 -->
 			<div class="float-right">
 				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
-				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
-				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
+				
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" 
+					class="btn btn-primary waves-effect waves-light">수정하기</a>
+					
+				<button class="btn btn-danger waves-effect waves-light" 
+						th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
-
 		</div>
 		<div class="row">
 			<!-- 이미지와 링크 -->
@@ -28,7 +31,7 @@
 
 						<div class="represent_img">
 
-							<img class="img-item" th:src="|@{/productImgs/}${postDTO.getPhoto()}|">
+							<img class="img-item" th:src="|@{/imagePath/}${postDTO.getPhoto()}|">
 
 						</div>
 
@@ -916,6 +919,28 @@
 			  document.dataForm.submit();
 		  }
 	  }
+	  
+	  // 삭제 버튼을 위해서 만들었습니다.
+      /*<![CDATA[*/
+      // body.html 안에 script 영역에 있어야해요
+      function deletePost(pnum) {
+        if (confirm(pnum + "번 게시글을 삭제할까요?")) {
+          var uri = /*[[ @{/delete.do} ]]*/null;
+          var html = "";
+			
+			console.log("dd");
+          html += '<form name="dataForm" action="'+uri+'" method="post">';
+          html += '<input type="hidden" name="pnum" value="'+pnum+'" >';
+          html += '</form>';
+
+			console.log("tqtqt");
+          $("body").append(html);
+          document.dataForm.submit();
+          console.log("ytq");
+        }
+      }
+
+      /*]]>*/
 
       function convertStringToDate(endDate) {
 		    let dateComponents = endDate.split(' ');
@@ -957,24 +982,7 @@
       var timer = setInterval(msg_time, 1000);      
       /*]]>*/
       
-      // 삭제 버튼을 위해서 만들었습니다.
-      /*<![CDATA[*/
-
-      function deletePost(pnum) {
-        if (confirm(pnum + "번 게시글을 삭제할까요?")) {
-          var uri = /*[[ @{/delete.do} ]]*/null;
-          var html = "";
-
-          html += '<form name="dataForm" action="'+uri+'" method="post">';
-          html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-          html += '</form>';
-
-          $("body").append(html);
-          document.dataForm.submit();
-        }
-      }
-
-      /*]]>*/
+      
       
     </script>
   </th:block>

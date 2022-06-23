@@ -33,7 +33,8 @@
                       	<div class="col-sm-6 col-md-6 col-xl-5">
                           <div class="input-group-icon">
                             <label class="form-label visually-hidden" for="inputCatNum">catNum</label>
-							<select class="form-select" th:field="*{catNum}" id="inputCatNum">
+                             <!--id="inputCatNum" name="inputCatNum"-->
+							<select class="form-select" th:field="*{catnum}">
 								<option value="">-- 선택 --</option>
 							        <option th:each="catlist : ${catlist}" th:value="${catlist.catnum}" 
 							                th:utext="${catlist.catindex}">

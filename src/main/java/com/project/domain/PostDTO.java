@@ -1,7 +1,6 @@
 package com.project.domain;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,7 +12,7 @@ public class PostDTO {
 	private Long pnum;
 
 	// 카테고리 고유 번호
-	private Long catNum;
+	private Long catnum;
 
 	// 방장 아이디
 	private String leaderid;
