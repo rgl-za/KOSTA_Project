@@ -135,6 +135,12 @@ public class PostController {
 //		long pnumex = 1;
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
+
+		if (postDTO == null || "Y".equals(postDTO.getDeleteyn())) {
+			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
+			return "redirect:/main.do";
+		}
+
 		List<CommentDTO> commentList= commentService.getCommentList(pnum);
 		List<TeamMemberDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
 
@@ -156,6 +162,14 @@ public class PostController {
 //		}
 		//model.addAttribute("post", post);
 		//logger.info("detail.do");
+
+		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
+		model.addAttribute("countMember", countMember+1);
+
+		if (countMember >= postDTO.getMinpeople()){
+			model.addAttribute("minpeople", true);
+			System.out.println(countMember);
+		}
 
 		return "/detail";
 	}

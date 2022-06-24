@@ -43,8 +43,13 @@ public class PostServiceImpl implements PostService {
 		int queryResult = 0;
 
 		PostDTO post = postMapper.selectPostDetail(pnum);
-		System.out.println("post.getDelete_yn(): " + post.getDelete_yn());
-		if (post != null && "N".equals(post.getDelete_yn())) {
+
+		System.out.println("!!!!!"+post.getDeleteyn());
+		System.out.println("ㅡㅡ"+pnum);
+		System.out.println("@@@@"+post.getTitle());
+
+		if (post != null && "N".equals(post.getDeleteyn())) {
+
 			queryResult = postMapper.deletePost(pnum);
 		}
 
