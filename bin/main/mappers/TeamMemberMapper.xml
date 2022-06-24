@@ -10,9 +10,9 @@
 
 	<insert id="insertTeamMember" parameterType="TeamMemberDTO">
 		INSERT INTO teammember(memberNum, pnum, userId)
-		VALUES ( seq_member_no.nextval
-			   , #{pnum}
-			   , 'test')
+			VALUES ( seq_member_no.nextval
+			   		, #{pnum}
+			   		, 'test')
 	</insert>
 
 	<select id="selectTeamMemberTotalCount" parameterType="Long" resultType="int">

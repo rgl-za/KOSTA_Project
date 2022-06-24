@@ -18,7 +18,8 @@
 		, accountpost
 		, uploaddate
 		, enddate
-		, delete_yn
+		, deleteyn
+		, deletetime
 		, finaldate
 		, numbers
 	</sql>
@@ -72,7 +73,7 @@
 		FROM
 			post
 		WHERE
-			delete_yn = 'N'
+			deleteyn = 'N'
 		AND
 			pnum = #{pnum}
 	</select>
@@ -82,7 +83,7 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 
@@ -91,7 +92,7 @@
 			COUNT(*)
 		FROM
 			post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 	</select>
 	
 	
@@ -150,8 +151,9 @@
 	<update id="deletePost" parameterType="long">
 		UPDATE post
 		SET
-		delete_yn = 'Y'
-		, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요  -->
+			deleteyn = 'Y'
+			, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+
 		WHERE
 		pnum = #{pnum}
 	</update>

@@ -19,7 +19,7 @@
 		, uploaddate
 		, enddate
 		, deleteyn
-		, delete_time
+		, deletetime
 		, finaldate
 		, numbers
 	</sql>
