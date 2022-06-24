@@ -30,7 +30,7 @@
 		<include refid="postColumns" />
 		) VALUES (
 		seq_post_no.nextval
-		, #{catnum}
+		, 1				<!-- #{catnum} -->
 		, 'NULL'		<!-- leaderid -->
 		, #{title}
 		, #{content}
@@ -45,25 +45,23 @@
 		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
 		, 'N'			<!-- delete_yn  -->
-		, NULL			<!-- delete_time  -->
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
-	
-	<!-- 수정 -->
+	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
 		SET
 			uploaddate 	= SYSDATE
 			, title 	= #{title}
 			, photo 	= #{photo}
-			, content 	= #{content}
 			, link 		= #{link}
-			, numbers	= #{numbers}
+			, content 	= #{content}
 			, price 	= #{price}
-			, enddate 	= #{enddate}
 			, maxpeople = #{maxpeople}
+			, minpeople = #{minpeople} 
+			, enddate 	= #{enddate}
 		WHERE
 			pnum = #{pnum}
 	</update>
@@ -96,14 +94,66 @@
 			post
 		WHERE deleteyn = 'N'
 	</select>
+	
+	
+	<!-- main  정렬기능 :민경 -->
+	<select id="PostTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE delete_yn = 'N'
+	</select>
+	
+	<!-- 최신순으로 게시물 가져오기 -->
+	<select id="latestPostList" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+	
+	<!-- 인기순으로 게시물 가져오기 -->
+	<select id="popularPostList" resultType="PostDTO">
+		select p.*, NVL(hc.HEARTCOUNT,0)
+		from (
+		    select p.pnum, count(*) heartcount
+		    from post p, heart h
+		    where p.pnum = h.pnum
+		    group by p.pnum ) hc RIGHT OUTER JOIN post p
+		on hc.pnum = p.pnum
+		order by heartcount desc, uploaddate desc
+	</select>
+	
+	<!-- 검색한 게시물 가져오기 -->
+	<!-- <select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where title like '%' || #{keyword} || '%'
+		order by uploaddate desc
+	</select> -->
+	
+	<select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where 
+		<if test="keyword !=null and catenum != 0"> catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
+		<if test="keyword ==null and catenum != 0"> catnum = #{catenum} </if>
+		<if test="keyword !=null and catenum == 0"> title like '%' || #{keyword} || '%' </if>
+		order by uploaddate desc
+	</select>
 
 
-	<!-- 삭제 -->
+	<!-- 남혁이형 부분 -->
 	<update id="deletePost" parameterType="long">
 		UPDATE post
 		SET
 			deleteyn = 'Y'
 			, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+
 		WHERE
 		pnum = #{pnum}
 	</update>

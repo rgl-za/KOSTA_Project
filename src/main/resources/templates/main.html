@@ -19,9 +19,9 @@
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                      aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" th:href="@{/sortMain?sortOption=latest}">최신순</a>
-					<a class="dropdown-item" th:href="@{/sortMain?sortOption=popular}">인기순</a>
-					<a class="dropdown-item" th:href="@{/sortMain}">거리순</a>
+					<a class="dropdown-item" href="/sortMain/latest">최신순</a>
+					<a class="dropdown-item" th:href="|@{/sortMain/}popular|">인기순</a>
+					<a class="dropdown-item" th:href="|@{/sortMain/}latest|">거리순</a>
                 </div>
             </div>
         </div>
@@ -209,4 +209,6 @@
         });
         /*]]>*/
     </script>
+
+</th:block>
 </html>
