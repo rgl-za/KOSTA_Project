@@ -19,7 +19,7 @@
 		, uploaddate
 		, enddate
 		, deleteyn
-		, deletetime
+		, delete_time
 		, finaldate
 		, numbers
 	</sql>
@@ -30,8 +30,8 @@
 		<include refid="postColumns" />
 		) VALUES (
 		seq_post_no.nextval
-		, #{catnum}
-		, 'leaderid'		<!-- leaderid -->
+		, 1				<!-- #{catnum} -->
+		, 'NULL'		<!-- leaderid -->
 		, #{title}
 		, #{content}
 		, #{photo}			<!-- #{photo} -->
@@ -43,47 +43,33 @@
 		, 2				<!-- #{minpeople} -->
 		, NULL			<!-- accountpost -->
 		, SYSDATE 		<!-- uploadDate -->
-		, #{enddate}	<!-- 마감일 -->
-		, 'N'			<!-- deleteyn  -->
-		, NULL			<!-- deletetime  -->
+		, #{enddate}
+		, 'N'			<!-- delete_yn  -->
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)
 	</insert>
-	
-	<!-- 삭제 -->
-	<!-- 실제 삭제가 아니라 delete_yn을 'Y'로 바꾸어 화면으론 삭제된 것처럼... db에는 남아있어요 -->
-	<update id="deletePost" parameterType="long">
-		UPDATE 
-			post
-		SET
-			deleteyn = 'Y'
-		   ,deletetime = SYSDATE
-		WHERE
-			pnum = #{pnum}
-	</update>
-	
-	<!-- 수정 -->
+	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post
 		SET
 			uploaddate 	= SYSDATE
 			, title 	= #{title}
 			, photo 	= #{photo}
-			, content 	= #{content}
 			, link 		= #{link}
-			, numbers	= #{numbers}
+			, content 	= #{content}
 			, price 	= #{price}
-			, enddate 	= #{enddate}
 			, maxpeople = #{maxpeople}
+			, minpeople = #{minpeople} 
+			, enddate 	= #{enddate}
 		WHERE
 			pnum = #{pnum}
 	</update>
-	
+
 	<!-- 포스트 상세내용 -->
 	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
 		SELECT
-		<include refid="postColumns"/>
+		<include refid="postColumns" />
 		FROM
 			post
 		WHERE
@@ -116,7 +102,7 @@
 			COUNT(*)
 		FROM
 			post
-		WHERE deleteyn = 'N'
+		WHERE delete_yn = 'N'
 	</select>
 	
 	<!-- 최신순으로 게시물 가져오기 -->
@@ -124,18 +110,53 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE deleteyn = 'N'
+		WHERE delete_yn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 	
 	<!-- 인기순으로 게시물 가져오기 -->
 	<select id="popularPostList" resultType="PostDTO">
-		SELECT
-		<include refid="postColumns" />
-		FROM post
-		WHERE deleteyn = 'N'
-		ORDER BY uploaddate DESC
+		select p.*, NVL(hc.HEARTCOUNT,0)
+		from (
+		    select p.pnum, count(*) heartcount
+		    from post p, heart h
+		    where p.pnum = h.pnum
+		    group by p.pnum ) hc RIGHT OUTER JOIN post p
+		on hc.pnum = p.pnum
+		order by heartcount desc, uploaddate desc
 	</select>
+	
+	<!-- 검색한 게시물 가져오기 -->
+	<!-- <select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where title like '%' || #{keyword} || '%'
+		order by uploaddate desc
+	</select> -->
+	
+	<select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where 
+		<if test="keyword !=null and catenum != 0"> catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
+		<if test="keyword ==null and catenum != 0"> catnum = #{catenum} </if>
+		<if test="keyword !=null and catenum == 0"> title like '%' || #{keyword} || '%' </if>
+		order by uploaddate desc
+	</select>
+
+
+	<!-- 남혁이형 부분 -->
+	<update id="deletePost" parameterType="long">
+		UPDATE post
+		SET
+			deleteyn = 'Y'
+			, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+
+		WHERE
+		pnum = #{pnum}
+	</update>
 
 	<select id="getPost" parameterType="int" resultType="PostDTO">
 		SELECT

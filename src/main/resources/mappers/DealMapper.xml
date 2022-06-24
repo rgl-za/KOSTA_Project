@@ -61,4 +61,5 @@
 		group by d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate
 		order by d.enddate desc
 	</select>
+
 </mapper>

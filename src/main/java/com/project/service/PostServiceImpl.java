@@ -2,13 +2,14 @@
 package com.project.service;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.PostDTO;
-import com.project.domain.PostFileDTO;
 import com.project.mapper.PostMapper;
 
 @Service
@@ -36,38 +37,38 @@ public class PostServiceImpl implements PostService {
 	public PostDTO getPostDetail(Long pnum) {
 		return postMapper.selectPostDetail(pnum);
 	}
-	
-	// 게시글 삭제입니당
+
 	@Override
 	public boolean deletePost(Long pnum) {
-//		int queryResult = 0;
+		int queryResult = 0;
 
 		PostDTO post = postMapper.selectPostDetail(pnum);
-		
-		// 조회한 게시글이 null이 아니고, 삭제된 상태가 아닐 때 실행.
+
+		System.out.println("!!!!!"+post.getDeleteyn());
+		System.out.println("ㅡㅡ"+pnum);
+		System.out.println("@@@@"+post.getTitle());
+
 		if (post != null && "N".equals(post.getDeleteyn())) {
-			postMapper.deletePost(pnum);
-//			queryResult = postMapper.deletePost(pnum);
+
+			queryResult = postMapper.deletePost(pnum);
 		}
-		
-		// 1이면 정상적으로 쿼리가 실행되었다는 뜻이기 때문에, true 반환.
-//		System.out.println("1이면 정상적으로 쿼리 실행--------------------->"+queryResult);
-		return true;
-//		return (queryResult == 1) ? true : false;
-	} 
+
+		return (queryResult == 1) ? true : false;
+	}
 	
 	// main에 불러올 글
 	@Override
-	public List<PostDTO> getPostList(PostDTO params) {
+	public List<PostDTO> getPostList() {
 		List<PostDTO> postList = Collections.emptyList();
 
-		int postTotalCount = postMapper.selectPostTotalCount(params);
+		int postTotalCount = postMapper.selectPostTotalCount();
 
 		if (postTotalCount > 0) {
-			postList = postMapper.selectPostList(params);
+			postList = postMapper.selectPostList();
 		}
 		return postList;
 	}
+	
 	@Override
 	public List<PostDTO> getPostSortList(String option) {
 		List<PostDTO> postList = Collections.emptyList();
@@ -108,6 +109,32 @@ public class PostServiceImpl implements PostService {
 		}
 		
 	}
+	@Override
+	public List<PostDTO> getSearchPostList(String keyword, String category) {
+
+		int cateNum;
+		HashMap<String, Object> map = new HashMap();
+		List<PostDTO> postList = Collections.emptyList();
+
+		if (category == null) {
+			cateNum = 0;
+			map.put("keyword", keyword);
+			map.put("catenum", cateNum);
+		} else {
+			cateNum = Integer.parseInt(category);
+			map.put("keyword", keyword);
+			map.put("catenum", cateNum);
+		}
+
+		try {
+			postList = postMapper.getSearchPostList(map);
+
+		} catch (Exception e) {
+			System.out.println("예외발생");
+		}
+
+		return postList;
+	}
 	
 	
     @Override
@@ -116,11 +143,6 @@ public class PostServiceImpl implements PostService {
 		return postMapper.alterDealAdd(params);
 	}
 
-    public void insertPostFileList(List<PostFileDTO> fileList) {
-    	for(PostFileDTO dto : fileList) {
-    		postMapper.insertPostFileList(fileList);
-    	}
-    }
 	
 
 	/*
