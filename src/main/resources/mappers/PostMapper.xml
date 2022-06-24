@@ -61,7 +61,7 @@
 			, content 	= #{content}
 			, price 	= #{price}
 			, maxpeople = #{maxpeople}
-			, minpeople = #{minpeople} 
+			, minpeople = 2
 			, enddate 	= #{enddate}
 		WHERE
 			pnum = #{pnum}
