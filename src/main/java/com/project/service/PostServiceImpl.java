@@ -38,15 +38,17 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public boolean deletePost(Long pnum) {
-		int queryResult = 0;
+//		int queryResult = 0;
 
 		PostDTO post = postMapper.selectPostDetail(pnum);
 
-		if (post != null && "N".equals(post.getDelete_yn())) {
-			queryResult = postMapper.deletePost(pnum);
+		if (post != null && "N".equals(post.getDeleteyn())) {
+			postMapper.deletePost(pnum);
+//			queryResult = postMapper.deletePost(pnum);
 		}
 
-		return (queryResult == 1) ? true : false;
+		return  true;
+//		return (queryResult == 1) ? true : false;
 	}
 	
 	// main에 불러올 글
