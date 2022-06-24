@@ -274,10 +274,14 @@
 
 											<script>
 												
-											
+												// 중간 지점 마커가 표시될 위치입니다
+												var markerPosition;
+												
 												var mapContainer = document
 														.getElementById('map'), // 지도를 표시할 div
 												mapOption = {
+														//center:markerPosition,
+														/*산술평균*/
 													center : new kakao.maps.LatLng(
 															midLat, midLng),
 
@@ -288,6 +292,13 @@
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 												var map = new kakao.maps.Map(mapContainer, mapOption);
+												
+												/*
+												산술평균의 마커를 생성합니다.
+												
+												*/
+												addMarker(new kakao.maps.LatLng(
+														midLat, midLng), '산술 평균');
 												
 												/*근처 편의점 찾기 start
 												*/
@@ -739,25 +750,19 @@
 													// 인포윈도우로 장소에 대한 설명을 표시합니다
 													
 										            var infowindow = new kakao.maps.InfoWindow({
-										            	disableAutoPan: true,
-										                position: coords,
+										            	disableAutoPan: true,//지도가 이동되지 않도록 설정
+										                position: position,
 										                content: '<div style="width:150px;text-align:center;padding:5px;font-size:12px;">'+title+'</div>'
 										                
 										            });
 													
-										
-										            infowindows.push(infowindow);
 										            infowindow.open(map, marker);
-										            //여기서 뭔가 center이동이 된 것.
-
+										            
 													// 마커가 지도 위에 표시되도록 설정합니다
 													marker.setMap(map);
 													
-													
 													//map.setCenter(markerposition);
 
-													// 생성된 마커를 배열에 추가합니다
-													markers.push(marker);
 													
 												}//addMarker
 												
@@ -813,7 +818,7 @@
 													var content = '<div class="wrap">' + 
 													            '    <div class="info" style="margin-top: 1px; background-color: #fff;">' + 
 													            '        <div class="title">' + 
-													            '            중간지점' + 
+													            '            알고리즘 중간지점' + 
 													            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
 													            '        </div>' + 
 													            '        <div class="body">' + 
@@ -845,7 +850,7 @@
 													   
 													});
 													
-													marker.setTitle('산술평균 중간지점');
+													//marker.setTitle('산술평균 중간지점');
 													
 													// 마커가 지도 위에 표시되도록 설정합니다
 													marker.setMap(map);
@@ -872,8 +877,7 @@
 												   
 												}
 												
-												// 마커가 표시될 위치입니다
-												var markerPosition;
+												
 												/*산술 평균으로 계산 시*/
 												//var markerPosition= new kakao.maps.LatLng(
 														//midLat, midLng);
@@ -945,7 +949,16 @@
 													          //alert("완료 되었습니다");
 													        }
 													     }
-													   });
+													   });//ajax
+													   /*
+													   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+													    mapOption = { 
+													        center: markerPosition, // 지도의 중심좌표
+													        level: 3 // 지도의 확대 레벨
+													    };
+													   map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+														*/
+													 //map.setCenter(markerPosition);
 												  
 												  }//function
 											  /*]]>*/

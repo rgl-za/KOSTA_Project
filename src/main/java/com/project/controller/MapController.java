@@ -35,14 +35,13 @@ public class MapController {
 	@Autowired
 	private CommentService commentService;
 
-	// getMidPointByList
+	
 	@RequestMapping(path = "/getMidPoint")
 	@ResponseBody
 	public Map<String, Object> insertMemberInfo(@RequestParam String data) throws ParseException, JSONException{
 		
 		Map<String, Object> returnToAjax = new HashMap<String, Object>();
 		
-		System.out.println("ajax 통신 성공????");
 		
 		List<Point> pointList= new ArrayList<>();
 		/**** JSONArray 받는 방법 ****/

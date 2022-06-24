@@ -13,7 +13,7 @@ public class PostDTO {
 	private Long pnum;
 
 	// 카테고리 고유 번호
-	private Long catNum;
+	private Long catnum;
 
 	// 방장 아이디
 	private String leaderid;
@@ -52,7 +52,7 @@ public class PostDTO {
 	private LocalDateTime uploaddate;
 
 	// 삭제 키
-	private String delete_yn;
+	private String deleteyn;
 
 	// 게시글 거래 마감 날짜
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") 

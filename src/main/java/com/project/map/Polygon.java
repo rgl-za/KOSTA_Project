@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class Polygon {
 
@@ -340,6 +341,85 @@ public class Polygon {
 		System.out.println("마지막 최종 중간 점"+tri.getOnePoint());
     	
     	return tri.getOnePoint();
+    	
+    }
+  //새로운 알고리즘
+    public Point getPolyMid2(List<Point> pointList){
+    	//int number =8;//총 숫자의 갯수
+    	int number =pointList.size();//총 숫자의 갯수
+        System.out.println("number:"+number);
+
+        double x, y;
+
+        //시작 index 찾기
+        double minX = 999 , minY = 999 ;
+        int minIndex = 0;
+        for (int i = 0; i < number; i++){
+            x = pointList.get(i).x;
+            y = pointList.get(i).y;
+            if((minY > y)||(minY == y && minX > x)){
+                minIndex = i;
+                minX =  x;
+                minY =  y;
+            }
+        }
+
+        for (int i = 0; i < number; i ++){
+            pointList.get(i).tangent = ComputeAngle(pointList.get(minIndex).x,pointList.get(minIndex).y,pointList.get(i).x,pointList.get(i).y);
+        }
+
+        Collections.sort(pointList); //다각형 정보 리스트
+        
+        //List<Point> basketList = new ArrayList<>();
+        List<Point> resultList = new ArrayList<>();
+        resultList=pointList;//초기화
+        
+        System.out.println("resultList.size()"+resultList.size());//8
+        
+        Loop1: while(true) {
+        	
+        	System.out.println("중간지점 계산 반복");
+        	
+        	double dist=disPointToPoint( resultList.get(0),resultList.get(1) );
+        	
+        	if (dist  <0.0001) {
+        		break Loop1;
+        	}
+        	
+        	List<Point> basketList = new ArrayList<>();
+        	
+        	Loop2: for(int i=0; i<resultList.size(); i++) {
+        		
+            	if(i==resultList.size()-1) {
+            		//마지막 요소는 첫번째 요소와 계산
+            		double midx =( resultList.get(0).x+resultList.get(i).x )/2;
+                	double midy =( resultList.get(0).y+resultList.get(i).y )/2;
+                	basketList.add(new Point(midx, midy));
+                	//resultList=basketList;
+                	System.out.println("resultList"+resultList);
+                	//basketList.clear();
+                	System.out.println("resultList"+resultList);
+                	System.out.println("마지막 요소 계산"+i);
+                	
+                	break Loop2;//마지막까지 계산 되었다면 반복문 탈출
+                	
+            	}
+            	double midx =( resultList.get(i+1).x+resultList.get(i).x )/2;
+            	double midy =( resultList.get(i+1).y+resultList.get(i).y )/2;
+            	basketList.add(new Point(midx, midy));
+            	
+            	System.out.println("i번째 반복 중"+i);
+            }//Loop2
+        	resultList=basketList;
+            
+            System.out.println("마지막resultList"+resultList);
+            
+        }//Loop1
+        return new Point(resultList.get(0).x, resultList.get(0).y);
+        
+    }//
+    public double disPointToPoint(Point a, Point b) {
+    	return Math.pow( (b.x-a.x) , 2 ) + Math.pow(b.y-a.y, 2);
     	
     }
 
