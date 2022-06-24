@@ -18,8 +18,8 @@
 		, accountpost
 		, uploaddate
 		, enddate
-		, delete_yn
-		, delete_time
+		, deleteyn
+		, deletetime
 		, finaldate
 		, numbers
 	</sql>
@@ -44,8 +44,8 @@
 		, NULL			<!-- accountpost -->
 		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}	<!-- 마감일 -->
-		, 'N'			<!-- delete_yn  -->
-		, NULL			<!-- delete_time  -->
+		, 'N'			<!-- deleteyn  -->
+		, NULL			<!-- deletetime  -->
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)
@@ -57,8 +57,8 @@
 		UPDATE 
 			post
 		SET
-			delete_yn = 'Y'
-		   ,delete_time = SYSDATE
+			deleteyn = 'Y'
+		   ,deletetime = SYSDATE
 		WHERE
 			pnum = #{pnum}
 	</update>
@@ -83,11 +83,11 @@
 	<!-- 포스트 상세내용 -->
 	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
 		SELECT
-		<include refid="postColumns" />
+		<include refid="postColumns"/>
 		FROM
 			post
 		WHERE
-			delete_yn = 'N'
+			deleteyn = 'N'
 		AND
 			pnum = #{pnum}
 	</select>
@@ -97,7 +97,7 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 
@@ -106,7 +106,7 @@
 			COUNT(*)
 		FROM
 			post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 	</select>
 	
 	
@@ -116,7 +116,7 @@
 			COUNT(*)
 		FROM
 			post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 	</select>
 	
 	<!-- 최신순으로 게시물 가져오기 -->
@@ -124,7 +124,7 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 	
@@ -133,7 +133,7 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 

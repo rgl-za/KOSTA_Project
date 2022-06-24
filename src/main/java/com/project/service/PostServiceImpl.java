@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.domain.PostDTO;
+import com.project.domain.PostFileDTO;
 import com.project.mapper.PostMapper;
 
 @Service
@@ -44,13 +45,15 @@ public class PostServiceImpl implements PostService {
 		PostDTO post = postMapper.selectPostDetail(pnum);
 		
 		// 조회한 게시글이 null이 아니고, 삭제된 상태가 아닐 때 실행.
-		if (post != null && "N".equals(post.getDelete_yn())) {
+		if (post != null && "N".equals(post.getDeleteyn())) {
 			postMapper.deletePost(pnum);
+//			queryResult = postMapper.deletePost(pnum);
 		}
 		
 		// 1이면 정상적으로 쿼리가 실행되었다는 뜻이기 때문에, true 반환.
 //		System.out.println("1이면 정상적으로 쿼리 실행--------------------->"+queryResult);
 		return true;
+//		return (queryResult == 1) ? true : false;
 	} 
 	
 	// main에 불러올 글
@@ -113,6 +116,11 @@ public class PostServiceImpl implements PostService {
 		return postMapper.alterDealAdd(params);
 	}
 
+    public void insertPostFileList(List<PostFileDTO> fileList) {
+    	for(PostFileDTO dto : fileList) {
+    		postMapper.insertPostFileList(fileList);
+    	}
+    }
 	
 
 	/*

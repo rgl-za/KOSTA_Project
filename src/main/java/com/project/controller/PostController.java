@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.constant.Method;
 import com.project.domain.CatDTO;
 import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
@@ -24,9 +25,7 @@ import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.service.TeamMemberService;
 import com.project.util.FileUtil;
-
 import com.project.util.UiUtils;
-import com.project.constant.Method;
 
 @Controller
 public class PostController extends UiUtils {
@@ -47,7 +46,7 @@ public class PostController extends UiUtils {
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum,@ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum , @ModelAttribute("params") PostDTO params , @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			model.addAttribute("post", new PostDTO());
@@ -59,13 +58,10 @@ public class PostController extends UiUtils {
 			if (post == null) {
 				return "redirect:/main.do";
 			}
-			//model.addAttribute("post", post);
-			//List<CatDTO> catlist = catService.selectCatList(catDTO);
 			
 			model.addAttribute("catlist", catlist);
 			logger.info(""+catlist);
 			model.addAttribute("post", post);
-			//logger.info(""+catDTO);
 			logger.info(""+post);
 		}
 		logger.info("PostDTO-->" + params);
@@ -75,7 +71,7 @@ public class PostController extends UiUtils {
 	// 게시글 등록, 수정
 	@PostMapping(value = "/register.do")
 	public String registerPost(final PostDTO params, MultipartFile file, Model model) {
-		logger.info("" + params);
+		logger.info("register" + params);
 		try { // 파일업로드
 			if (!file.isEmpty()) {
 				FileUtil fileUtil = new FileUtil();
@@ -125,7 +121,7 @@ public class PostController extends UiUtils {
 		}
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
 
-		if (postDTO == null || "Y".equals(postDTO.getDelete_yn())) {
+		if (postDTO == null || "Y".equals(postDTO.getDeleteyn())) {
 			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 			return "redirect:/main.do";
 		}

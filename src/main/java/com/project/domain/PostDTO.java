@@ -51,10 +51,10 @@ public class PostDTO {
 	private LocalDateTime uploaddate;
 
 	// 삭제 키
-	private String delete_yn;
+	private String deleteyn;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") 
-	private LocalDateTime delete_time;
+	private LocalDateTime deletetime;
 
 	// 게시글 거래 마감 날짜
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") 
@@ -66,7 +66,5 @@ public class PostDTO {
 	
 	// 물품 개수
 	private Long numbers;
-
-	private LocalDateTime delete_time;
 
 }

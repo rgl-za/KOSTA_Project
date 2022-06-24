@@ -33,7 +33,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-                                th:src="|@{/productImgs/}${postList.getPhoto()}|">
+                                th:src="|@{/imagePath/}${postList.getPhoto()}|">
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -183,8 +183,7 @@
 				msg_time();
 			}, 1000)
 		}
-        // 모달창 관련 임시 주석처리
-        각 게시물의 모달창 id 지정
+        // 모달창 관련 임시 주석처리각 게시물의 모달창 id 지정
         $(function(){
 			var els = $("h5.fw-bolder");
 			console.log("els.length: "+els.length);
