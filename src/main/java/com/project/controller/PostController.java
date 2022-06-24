@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+
+import com.project.constant.Method;
+import com.project.util.UiUtils;
 import com.project.domain.CatDTO;
 import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
@@ -27,8 +29,9 @@ import com.project.service.PostService;
 import com.project.service.TeamMemberService;
 import com.project.util.FileUtil;
 
+
 @Controller
-public class PostController {
+public class PostController extends UiUtils {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -46,16 +49,23 @@ public class PostController {
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("cat") CatDTO catDTO, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
 			 model.addAttribute("post", new PostDTO());
+			 List<CatDTO> catlist = catService.selectCatList(catnum);
+			 model.addAttribute("catlist", catlist);
 		} else { // pnum에서 받아온 경우
+			List<CatDTO> catlist = catService.selectCatList(catnum);
 			PostDTO post = postService.getPostDetail(pnum);
+			
 			if (post == null) {
 				return "redirect:/main.do";
 			}
+			model.addAttribute("catlist", catlist);
+			logger.info(""+catlist);
 			model.addAttribute("post", post);
+			logger.info(""+post);
 		}
 
 		logger.info("PostDTO-->" + params);
@@ -172,6 +182,33 @@ public class PostController {
 		}
 
 		return "/detail";
+	}
+	
+	@PostMapping(value = "/delete.do")
+	public String deletePost(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+		System.out.println("/delete.do 접근 --->"+pnum);
+		// 올바르지 않은 접근 시
+		if (pnum == null) {
+			return showMessageWithRedirect("올바르지 않은 접근입니다.", "/main.do", Method.GET, null, model);
+		}
+
+		try {
+			System.out.println("try 접근. pnum = " + pnum);
+			boolean isDeleted = postService.deletePost(pnum);
+			System.out.println("deletePost 실행 후. isDeleted = "+isDeleted);
+			
+			// false면 이미 게시글이 삭제된 상태
+			if (isDeleted == false) {
+				return showMessageWithRedirect("게시글 삭제에 실패하였습니다.", "/main.do", Method.GET, null, model);
+			}
+		} catch (DataAccessException e) {
+			return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
+
+		} catch (Exception e) {
+			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
+		}
+		logger.info("pnum"+pnum);
+		return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/main.do", Method.GET, null, model);
 	}
 	
 	@GetMapping(value = "/sortMain/{sortOption}")
