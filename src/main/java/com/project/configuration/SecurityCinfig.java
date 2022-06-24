@@ -1,27 +1,20 @@
-package com.project.configuration;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
-
-import lombok.RequiredArgsConstructor;
-
-@Configuration(proxyBeanMethods = false)
-@EnableWebSecurity
+//package com.project.configuration;
+//
+//import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+//import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
+//import org.springframework.boot.autoconfigure.security.SecurityProperties;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.core.annotation.Order;
+//
+//import lombok.RequiredArgsConstructor;
+//
+//@Configuration(proxyBeanMethods = false)
 //@RequiredArgsConstructor
-@ConditionalOnDefaultWebSecurity
-@ConditionalOnWebApplication(type=ConditionalOnWebApplication.Type.SERVLET)
-
-public class SecurityCinfig {
+//@ConditionalOnDefaultWebSecurity
+//@ConditionalOnWebApplication(type=ConditionalOnWebApplication.Type.SERVLET)
+//
+//public class SecurityCinfig {
 //	
 //	@Bean
 //	@Order(SecurityProperties.BASIC_AUTH_ORDER)
@@ -54,4 +47,5 @@ public class SecurityCinfig {
 //    }
 //	
 //
-}
+//	
+//}

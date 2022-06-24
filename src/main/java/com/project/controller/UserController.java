@@ -1,20 +1,33 @@
 package com.project.controller;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.domain.UserDTO;
 import com.project.service.UserService;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@AllArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -22,26 +35,41 @@ public class UserController {
 	@Autowired
     UserService userService;
 
-    /**
-     * 회원가입 폼
-     * @return
-     */
     @GetMapping("/register")
     public String signUpForm() {
-        return "register";
+        return "/register";
     }
+    
+    @ResponseBody
+    @PostMapping("/idCheck")
+	public int overlappedID(@RequestParam (value="userid" ,required=false) String userid) {
+		int result = userService.overlappedID(userid);
+		
+		logger.info("*********************************" +result);
+		return result;
+	}
 
-    /**
-     * 회원가입 진행
-     * @param user
-     * @return
-     */
     @PostMapping("/register")
-    public String signUp(UserDTO userDTO) {
-    	logger.info("___________+++++++++++++++++++++++++++++++++++" + userDTO);
+    public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model){
+    	model.addAttribute("userDTO", userDTO);
+        
+        if(errors.hasErrors()) {
+        	Map<String, String> validatorResult = userService.validateHandling(errors);
+        	 for (String key : validatorResult.keySet()) {
+                 model.addAttribute(key, validatorResult.get(key));
+        	}
+        	 return "/register";
+        }
+        
         userService.joinUser(userDTO);
-        return "redirect:/register"; //로그인 구현 예정
-    }
+        return "/redirect:/register";
 
+ }
+    
 
+    
 }
+   
+    
+    
+

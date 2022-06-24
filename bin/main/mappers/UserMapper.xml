@@ -18,7 +18,7 @@
 
 
 	 <insert id="saveUser" parameterType="UserDTO">
-		INSERT INTO User (
+		INSERT INTO USERS (
 		<include refid="userColumns" />
 		) VALUES 
 		(
@@ -34,6 +34,13 @@
 		, #{realaddress}
 		)
 	</insert> 
+	
+	<select id = "overlappedID" parameterType= "String" resultType="int">
+	select count(userid)
+	from users
+	where userid = #{userid}
+	</select>
+	
 	
 	
 
