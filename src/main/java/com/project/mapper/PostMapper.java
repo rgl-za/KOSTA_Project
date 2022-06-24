@@ -1,5 +1,6 @@
 package com.project.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -21,10 +22,10 @@ public interface PostMapper {
 	public int deletePost(Long pnum);
 
 	// main에 보낸다
-	public List<PostDTO> selectPostList(PostDTO params);
+	public List<PostDTO> selectPostList();
 
 	// 글 총 개수
-	public int selectPostTotalCount(PostDTO params);
+	public int selectPostTotalCount();
 	
 	public PostDTO getPost(int pnum);
 	
@@ -36,6 +37,9 @@ public interface PostMapper {
 	
 	// 인기순 main 정렬
 	public List<PostDTO> popularPostList();
+	
+	// 게시물 검색
+	public List<PostDTO> getSearchPostList(HashMap<String, Object> map);
 
 	// post 개수
 	public int PostTotalCount();

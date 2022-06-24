@@ -919,6 +919,7 @@
         if (RemainDate < 0) {      
           // 시간이 종료 되었으면..
           clearInterval(timer);   // 타이머 해제
+          timerId.innerHTML = "EXPIRED";
         }else{
           RemainDate = RemainDate - 1000; // 남은시간 -1초
         }

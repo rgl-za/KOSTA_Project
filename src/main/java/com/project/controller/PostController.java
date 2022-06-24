@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.domain.CatDTO;
@@ -98,6 +100,7 @@ public class PostController {
 	}
 
 	// 게시글을 올리고 main으로
+	/*
 	@GetMapping(value = "/main.do")
 	public String openPostList(@ModelAttribute("params") PostDTO params, Model model) {
 		List<PostDTO> postList = postService.getPostList(params);
@@ -105,7 +108,25 @@ public class PostController {
 		logger.info("main.do");
 		return "/main";
 	}
-
+	*/
+	
+	@GetMapping(value = "/main.do")
+	public String openPostList(@RequestParam(value="keyword", required=false) String keyword,
+							@RequestParam(value="category", required=false) String category, Model model) {
+		System.out.println("keyword: " + keyword + " category: " + category);
+		
+		
+		if(keyword != null || category != null) {
+			List<PostDTO> postList = postService.getSearchPostList(keyword, category);
+			model.addAttribute("postList", postList);
+			model.addAttribute("cateNum", category);
+		}else {
+			List<PostDTO> postList = postService.getPostList();
+			model.addAttribute("postList", postList);
+		}
+		return "/main";
+	}
+	
 	// 게시글 상세내용 detail
 	@GetMapping(value = "/detail.do")
 	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
@@ -138,5 +159,32 @@ public class PostController {
 
 		return "/detail";
 	}
+	
+	@GetMapping(value = "/sortMain/{sortOption}")
+	public String MainPostList(@ModelAttribute("params") PostDTO params, @PathVariable("sortOption") String sortOption, Model model) {
+		System.out.println("sortOption:" + sortOption);
+		
+		
+		if(sortOption.equals("latest")) {
+			System.out.println("sortOption:" + sortOption);
+			List<PostDTO> postList = postService.getPostSortList(sortOption);
+			model.addAttribute("postList", postList);
+			
+		}else if(sortOption.equals("popular")) {
+			
+			List<PostDTO> postList = postService.getPostSortList(sortOption);
+			model.addAttribute("postList", postList);
+			
+		}else {
+			
+			List<PostDTO> postList = postService.getPostSortList(sortOption);
+			model.addAttribute("postList", postList);
+			
+		}
+		
+		return "redirect:/main";
+	}
+	
+
 
 }
