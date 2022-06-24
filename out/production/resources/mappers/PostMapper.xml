@@ -102,7 +102,7 @@
 			COUNT(*)
 		FROM
 			post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 	</select>
 	
 	<!-- 최신순으로 게시물 가져오기 -->
@@ -110,7 +110,7 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 	
