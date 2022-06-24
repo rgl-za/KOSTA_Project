@@ -300,17 +300,21 @@
 												addMarker(new kakao.maps.LatLng(
 														midLat, midLng), '산술 평균');
 												
-												/*근처 편의점 찾기 start
-												*/
-												
 												// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 												var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 												
-												// 장소 검색 객체를 생성합니다
-												var ps = new kakao.maps.services.Places(map); 
+												/*근처 편의점 찾기 start
+												*/
+												function getNearStore(){
+													
+													
+													// 장소 검색 객체를 생성합니다
+													var ps = new kakao.maps.services.Places(map); 
 
-												// 카테고리로 은행을 검색합니다
-												ps.categorySearch('CS2', placesSearchCB, {useMapCenter:true}); 
+													// 카테고리로 은행을 검색합니다
+													ps.categorySearch('CS2', placesSearchCB, {useMapCenter:true}); 
+												}
+												
 
 												// 키워드 검색 완료 시 호출되는 콜백함수 입니다
 												function placesSearchCB (data, status, pagination) {
@@ -949,7 +953,9 @@
 													    	markerPosition=new kakao.maps.LatLng( r.y, r.x);
 															getAddressByLatLng(markerPosition);
 															
-															alterMapCenter(markerPosition);
+															alterMapCenter(markerPosition);//계산된 중심 좌표로 map Center변경
+															getNearStore();//센터 중심으로 근처 편의점 마커들 띄우기
+															
 													        if (args.res) {
 													          //alert("완료 되었습니다");
 													        }
