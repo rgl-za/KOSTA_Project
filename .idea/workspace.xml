@@ -5,20 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/HeartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/HeartDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/HeartMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/HeartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/HeartServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/HeartMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/DealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/DealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/mapper/PostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/PostMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/fragments/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/fragments/topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/DealController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/topbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pick.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pick.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +58,22 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -101,7 +116,23 @@
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Unnamed">
+  <component name="RunManager" selected="Spring Boot.ProjectApplication">
+    <configuration name="ProjectApplicationTests.ModelAttribute의_LocalDate는_변환된다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.project" />
+      <option name="MAIN_CLASS_NAME" value="com.project.ProjectApplicationTests" />
+      <option name="METHOD_NAME" value="ModelAttribute의_LocalDate는_변환된다" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="project.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.ProjectApplication" />
@@ -122,9 +153,15 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.ProjectApplicationTests.ModelAttribute의_LocalDate는_변환된다" />
       <item itemvalue="Spring Boot.Unnamed" />
       <item itemvalue="Spring Boot.ProjectApplication" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ProjectApplicationTests.ModelAttribute의_LocalDate는_변환된다" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -162,7 +199,20 @@
       <workItem from="1655102316278" duration="6980000" />
       <workItem from="1655125336676" duration="3763000" />
       <workItem from="1655167151104" duration="21210000" />
-      <workItem from="1655253603126" duration="13265000" />
+      <workItem from="1655253603126" duration="17344000" />
+      <workItem from="1655341010257" duration="19211000" />
+      <workItem from="1655431673206" duration="9027000" />
+      <workItem from="1655552643249" duration="2000" />
+      <workItem from="1655687203310" duration="14425000" />
+      <workItem from="1655788273402" duration="4930000" />
+      <workItem from="1655859407080" duration="8461000" />
+      <workItem from="1655873814025" duration="12441000" />
+      <workItem from="1655894220148" duration="17000" />
+      <workItem from="1655946226800" duration="199000" />
+      <workItem from="1655947261755" duration="477000" />
+      <workItem from="1655954558236" duration="13646000" />
+      <workItem from="1656033247764" duration="9136000" />
+      <workItem from="1656051825512" duration="324000" />
     </task>
     <servers />
   </component>

@@ -54,11 +54,20 @@ public class PostDTO {
 	// 삭제 키
 	private String deleteyn;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") 
+	private LocalDateTime deletetime;
+	
 	// 게시글 거래 마감 날짜
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") 
 	private LocalDateTime enddate;
 	
-	// finaldate
+	// 거래가 끝난후 방장이 end버튼을 눌렀을때 입력되는 날짜 데이터
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") 
 	private LocalDateTime finaldate;
+	
+	// 물품 개수
+	private Long numbers;
+
+
+
 }

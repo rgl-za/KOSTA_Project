@@ -12,17 +12,34 @@
 		</button>
 
 		<!-- Topbar Search -->
-		<form
-			class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+		<form th:action="@{/main.do}" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 			<div class="input-group">
-				<input type="text" class="form-control bg-light border-0 small"
-					placeholder="Search for..." aria-label="Search"
-					aria-describedby="basic-addon2">
+				<input type="text" name="keyword" class="form-control bg-light border-0 small"
+					placeholder="Title..." aria-label="Search" aria-describedby="basic-addon2">
 				<div class="input-group-append">
-					<button class="btn btn-primary" type="button">
+					<button class="btn btn-primary">
 						<i class="fas fa-search fa-sm"></i>
 					</button>
 				</div>
+				<select name="category">
+					<option disabled selected>카테고리</option>
+					<option value="1" th:selected="${cateNum=='1'}">패션의류</option>
+					<option value="2" th:selected="${cateNum=='2'}">뷰티</option>
+					<option value="3" th:selected="${cateNum=='3'}">유아용품</option>
+					<option value="4" th:selected="${cateNum=='4'}">식품</option>
+					<option value="5" th:selected="${cateNum=='5'}">생활용품</option>
+					<option value="6" th:selected="${cateNum=='6'}">주방용품</option>
+					<option value="7" th:selected="${cateNum=='7'}">홈인테리어</option>
+					<option value="8" th:selected="${cateNum=='8'}">가전디지털</option>
+					<option value="9" th:selected="${cateNum=='9'}">스포츠/레저</option>
+					<option value="10" th:selected="${cateNum=='10'}">자동차용품</option>
+					<option value="11" th:selected="${cateNum=='11'}">완구/취미</option>
+					<option value="12" th:selected="${cateNum=='12'}">문구/오피스</option>
+					<option value="13" th:selected="${cateNum=='13'}">반려동물용품</option>
+					<option value="14" th:selected="${cateNum=='14'}">헬스/건강식품</option>
+					<option value="15" th:selected="${cateNum=='15'}">여행/티켓</option>
+					<option value="16" th:selected="${cateNum=='16'}">기타</option>
+				</select>
 			</div>
 		</form>
 

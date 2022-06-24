@@ -1,5 +1,12 @@
 package com.project.domain;
 
-public class PostFileDTO {
+import lombok.Data;
 
+@Data
+public class PostFileDTO {
+	private int pnum;
+	private int fnum;
+	private String originalFileName;
+	private String filePath;
+	private long fileSize;
 }

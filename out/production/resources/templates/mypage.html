@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<th:block layout:fragment="content">
+	<div class="container-fluid">
+		<!-- 내정보 들어갈 자리입니다. -->
+		<!-- 내정보 끝. -->
+		<div>
+			<div class="card shadow mb-4" style="width: 65%;">
+				<!-- Card Header - Dropdown -->
+				<div
+					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+					<h6 class="m-0 font-weight-bold text-primary">내 정보</h6>
+					<div class="dropdown no-arrow">
+						<a class="dropdown-toggle" href="#" role="button"
+							id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i
+							class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+							aria-labelledby="dropdownMenuLink">
+							<div class="dropdown-header">더보기</div>
+							<a class="dropdown-item" href="#">수정하기</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">도움말</a>
+						</div>
+					</div>
+				</div>
+				<!-- Card Body -->
+
+				<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
+				<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
+				<div class="cobuy-box" th:each="dealList : ${deaList}"
+					style="display: flex; width: 100%; justify-content: center;">
+					<div class="one"
+						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 33%;">
+						<a href="#!"><img class="card-img-top"
+							src="img/undraw_profile_1.svg" alt="..."
+							style="width: 200px; height: auto; margin: 10px;" /></a>
+					</div>
+					<div class="two"
+						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
+						<br>
+						<div class="input-group">
+							<div class="col-sm-6" style="">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item" id="cobuy_Name">이름 :</li> <p th:text="${dealList.userId}"></p>
+									<li class="list-group-item" id="cobuy_Id">아이디 : id</li> <p th:text="${dealList.userId}"></p>
+								</ul>
+							</div>
+							<div class="col-sm-6" style="">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item" id="cobuy_Nickname">별명 : 문정현</li>
+									<li class="list-group-item" id="cobuy_Password">비밀번호 :
+										******</li>
+								</ul>
+							</div>
+							<div class="col-sm-6" style="">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item" id="cobuy_PhoneNum">폰번호 :
+										010-1234-1234</li>
+									<li class="list-group-item" id="cobuy_PhoneNum">생년월일 :</li>
+								</ul>
+							</div>
+							<div class="col-sm-6" style="">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item" id="cobuy_PhoneNum">성별 : 남/여</li>
+									<li class="list-group-item" id="cobuy_PhoneNum">주소 : ㅇㅇ시
+										ㅇㅇ구 ㅇㅇ동</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- class=two -->
+				</div>
+			</div>
+
+		</div>
+
+		<!-- 거래 내역 화면 입니다. -->
+		<!-- 첫 번째 목록 시작 -->
+		<!-- html (Thymeleaf) -->
+		<th:block th:each="deallist:${dealList}">
+			<div>
+				<div class="card shadow mb-4" style="width: 70%;">
+					<!-- Card Header - Dropdown -->
+					<div
+						class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+						<h6 class="m-0 font-weight-bold text-primary">나의 거래 내역</h6>
+						<div class="dropdown no-arrow">
+							<a class="dropdown-toggle" href="#" role="button"
+								id="dropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> <i
+								class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+							</a>
+							<div
+								class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+								aria-labelledby="dropdownMenuLink">
+								<div class="dropdown-header">더보기</div>
+								<a class="dropdown-item" href="#">상세보기</a> <a
+									class="dropdown-item" href="#">미 정</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">도움말</a>
+							</div>
+						</div>
+					</div>
+					<!-- Card Body -->
+
+					<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
+					<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
+
+					<div class="cobuy-box" style="display: flex; width: 100%;">
+						<div class="one"
+							style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 33%;">
+							<div class="small text-muted" style="margin-left: 10px;"
+								th:text="${#temporals.format(deallist.finaldate, 'yyyy-MM-dd')}"></div>
+							<br> <a href="#!"><img class="card-img-top"
+								th:src="|@{/productImgs/}${deallist.photo}|" /></a>
+						</div>
+
+						<div class="two"
+							style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
+							<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
+							<ul class="list-group list-group-flush">
+								<!--<li class="list-group-item" id="cobuy_uploadDate">날짜 : </li>-->
+								<p
+									style="margin-left: 19px; margin-top: 20px; margin-bottom: 4px; color: red;">거래완료</p>
+								<li class="list-group-item" id="cobuy_title"
+									th:text="'제목:&emsp;' + ${deallist.title}"></li>
+								<li class="list-group-item" id="cobuy_deliveryAddress"
+									th:text="'배송지:&emsp;' + ${deallist.dealaddress} +' ('+${deallist.postnum}+ ')'"></li>
+								<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
+								<li class="list-group-item" id="cobuy_price"
+									th:text="'구매가격:&emsp;' + ${deallist.money} + '원&emsp;&emsp;&emsp;'
+																				+ '거래인원수:&emsp;' + ${deallist.membercount} + '명&emsp;'"></li>
+								<li class="list-group-item"><a id="cobuy_price"
+									target="_blank" th:href="${deallist.link}">거래 상품 상세정보 >> </a></li>
+								<br>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</th:block>
+
+		<!-- Card Header - Dropdown -->
+
+		<!-- Card Body -->
+		<!-- 거래 내역 화면 끝. -->
+		<!-- Content Row -->
+		<div class="row">
+
+			<!-- Content Column -->
+			<div class="col-lg-6 mb-4">
+
+
+				<div class="col-lg-6 mb-4">
+
+					<!-- Illustrations -->
+					<!--<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+						</div>
+						<div class="card-body">
+							<div class="text-center">
+								<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+									src="img/undraw_posting_photo.svg" alt="...">
+							</div>
+							<p>
+								Add some quality, svg illustrations to your project courtesy of <a target="_blank"
+									rel="nofollow" href="https://undraw.co/">unDraw</a>,
+								a constantly updated collection of beautiful svg images that you
+								can use completely free and without attribution!
+							</p>
+							<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
+								Illustrations on unDraw &rarr;</a>
+						</div>
+					</div>-->
+
+
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+</th:block>
+
+</html>

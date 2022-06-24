@@ -2,9 +2,6 @@ package com.project.service;
 
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 
 public interface PostService {
@@ -12,7 +9,7 @@ public interface PostService {
 	// 게시글 등록, 수정
 	public boolean registerPost(PostDTO params); 
 
-	// 게시글 등록, 수정 사진
+	
 
 	// 게시글 상세 내용 불러오기
 	public PostDTO getPostDetail(Long pnum);
@@ -23,10 +20,17 @@ public interface PostService {
 	// 게시글 메인에 불러오기
 	public List<PostDTO> getPostList();
 	
-	//게시글 dealaddress변경하기
+	// 메인화면 정렬
+	public List<PostDTO> getPostSortList(String option);
+	
+	// 게시물 검색
+    public List<PostDTO> getSearchPostList(String keyword, String category);
+	
+	
 	public boolean alterDealAdd(PostDTO params);
 	
 	// 게시글 사진 불러오기
+
 	
 	/*
 	 * //게시글 1개 불러오기(detail.html에서 사용) public PostDTO getPost(int pnum);
