@@ -32,7 +32,7 @@
 					<div class="card-body">
 
 						<div class="represent_img">
-							<img class="img-item" th:src="|@{/productImgs/}${postDTO.getPhoto()}|">
+							<img class="img-item" th:src="|@{/imagePath/}${postDTO.getPhoto()}|">
 							 <text th:text="${postDTO.getPhoto()}"></text> 
 						</div>
 
@@ -715,7 +715,7 @@
 													
 													(async () => {
 													    try{
-													    	alert("getAddressByLatLng> async 함수 내부coord;"+coord);//ok
+													    	//alert("getAddressByLatLng> async 함수 내부coord;"+coord);//ok
 													    	const data = await coord2Address(coord);//coord2Address가 이행될 때까지 await. async함수에서만 사용
 													   
 													    	//주소정보로 maker생성
@@ -797,8 +797,8 @@
 												var overlay; 
 												//중심마커를 생성하고 인포윈도우를 설정하는 함수입니다
 												function centerMarker(coord,text){
-													alert('centerMarker');
-													alert("centerMarker에 들어옴"+coord);
+													
+													//alert("centerMarker에 들어옴"+coord);
 													
 													// 마커를 생성합니다
 													var marker = new kakao.maps.Marker(
@@ -922,6 +922,10 @@
 											     });
 											  }
 											  
+											  function alterMapCenter(latlng){
+												  map.setCenter(latlng);
+											  }
+											  
 											  function getMidPointByList(plist) {//plist는 2차원 배열
 												  //plist->json 변환
 												  //const JsonArray = JSON.stringify(plist);//문자 2차원배열
@@ -944,7 +948,8 @@
 													    	//중심 마커 생성 => getAddressByLatLng 호출
 													    	markerPosition=new kakao.maps.LatLng( r.y, r.x);
 															getAddressByLatLng(markerPosition);
-													    	
+															
+															alterMapCenter(markerPosition);
 													        if (args.res) {
 													          //alert("완료 되었습니다");
 													        }
