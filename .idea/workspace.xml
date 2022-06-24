@@ -5,10 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserAccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/UserAccountMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserAccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserAccountServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserAccountMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/UserAccountDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/UserAccountDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/DealMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/DealMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/TeamMemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/TeamMemberMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/PostDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/PostDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/UserAccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/UserAccountDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/DealMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/DealMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/DealMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/DealMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/TeamMemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/TeamMemberMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
     </list>
@@ -101,7 +120,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Unnamed">
+  <component name="RunManager" selected="Spring Boot.ProjectApplication">
     <configuration name="ProjectApplicationTests.ModelAttribute의_LocalDate는_변환된다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project.test" />
       <extension name="coverage">
@@ -191,7 +210,12 @@
       <workItem from="1655687203310" duration="14425000" />
       <workItem from="1655788273402" duration="4930000" />
       <workItem from="1655859407080" duration="8461000" />
-      <workItem from="1655873814025" duration="8178000" />
+      <workItem from="1655873814025" duration="12441000" />
+      <workItem from="1655894220148" duration="17000" />
+      <workItem from="1655946226800" duration="199000" />
+      <workItem from="1655947261755" duration="477000" />
+      <workItem from="1655954558236" duration="13646000" />
+      <workItem from="1656033247764" duration="7517000" />
     </task>
     <servers />
   </component>
