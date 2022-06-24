@@ -10,7 +10,6 @@ import com.project.domain.DealHistoryDTO;
 public interface DealMapper {
 	
 	public List<DealHistoryDTO> selectEndDealList(String userId); // 나의 거래완료 내역
-	
 	public List<DealHistoryDTO> selectDealingList(String userId); // 나의 거래중인 내역
 
 }

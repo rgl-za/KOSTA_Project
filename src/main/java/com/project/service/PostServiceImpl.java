@@ -2,7 +2,9 @@
 package com.project.service;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +44,12 @@ public class PostServiceImpl implements PostService {
 
 		PostDTO post = postMapper.selectPostDetail(pnum);
 
-		if (post != null && "N".equals(post.getDelete_yn())) {
+		System.out.println("!!!!!"+post.getDeleteyn());
+		System.out.println("ㅡㅡ"+pnum);
+		System.out.println("@@@@"+post.getTitle());
+
+		if (post != null && "N".equals(post.getDeleteyn())) {
+
 			queryResult = postMapper.deletePost(pnum);
 		}
 
@@ -51,16 +58,17 @@ public class PostServiceImpl implements PostService {
 	
 	// main에 불러올 글
 	@Override
-	public List<PostDTO> getPostList(PostDTO params) {
+	public List<PostDTO> getPostList() {
 		List<PostDTO> postList = Collections.emptyList();
 
-		int postTotalCount = postMapper.selectPostTotalCount(params);
+		int postTotalCount = postMapper.selectPostTotalCount();
 
 		if (postTotalCount > 0) {
-			postList = postMapper.selectPostList(params);
+			postList = postMapper.selectPostList();
 		}
 		return postList;
 	}
+	
 	@Override
 	public List<PostDTO> getPostSortList(String option) {
 		List<PostDTO> postList = Collections.emptyList();
@@ -100,6 +108,32 @@ public class PostServiceImpl implements PostService {
 			return postList;
 		}
 		
+	}
+	@Override
+	public List<PostDTO> getSearchPostList(String keyword, String category) {
+
+		int cateNum;
+		HashMap<String, Object> map = new HashMap();
+		List<PostDTO> postList = Collections.emptyList();
+
+		if (category == null) {
+			cateNum = 0;
+			map.put("keyword", keyword);
+			map.put("catenum", cateNum);
+		} else {
+			cateNum = Integer.parseInt(category);
+			map.put("keyword", keyword);
+			map.put("catenum", cateNum);
+		}
+
+		try {
+			postList = postMapper.getSearchPostList(map);
+
+		} catch (Exception e) {
+			System.out.println("예외발생");
+		}
+
+		return postList;
 	}
 	
 	
