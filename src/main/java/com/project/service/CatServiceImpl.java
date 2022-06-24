@@ -14,9 +14,9 @@ public class CatServiceImpl implements CatService{
 	@Autowired
 	private CatMapper catMapper;
 	
-	public List<CatDTO> selectCatList(CatDTO catDTO){
+	public List<CatDTO> selectCatList(CatDTO catnum){
 		
-		List<CatDTO> catList = catMapper.selectCatList(catDTO);
+		List<CatDTO> catList = catMapper.selectCatList(catnum);
 		
 		return catList;
 	}

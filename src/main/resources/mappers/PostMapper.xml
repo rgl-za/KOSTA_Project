@@ -19,7 +19,7 @@
 		, uploaddate
 		, enddate
 		, deleteyn
-		, delete_time
+		, deletetime
 		, finaldate
 		, numbers
 	</sql>
@@ -45,6 +45,7 @@
 		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
 		, 'N'			<!-- delete_yn  -->
+		, NULL
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)
@@ -152,7 +153,7 @@
 		UPDATE post
 		SET
 			deleteyn = 'Y'
-			, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+			, deletetime = SYSDATE 	<!-- delete_time 컬럼 필요 -->
 
 		WHERE
 		pnum = #{pnum}
