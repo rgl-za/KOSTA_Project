@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.domain.PostDTO;
+import com.project.domain.PostFileDTO;
 
 @Mapper
 public interface PostMapper {
@@ -43,4 +44,6 @@ public interface PostMapper {
 
 	// post 개수
 	public int PostTotalCount();
+
+	public void insertPostFileList(List<PostFileDTO> fileList);
 }

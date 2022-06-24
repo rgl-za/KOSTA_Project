@@ -28,6 +28,7 @@ public interface PostService {
 	
 	
 	public boolean alterDealAdd(PostDTO params);
+	
 	// 게시글 사진 불러오기
 
 	

@@ -45,6 +45,7 @@
 		, SYSDATE 		<!-- uploadDate -->
 		, #{enddate}
 		, 'N'			<!-- delete_yn  -->
+		, NULL
 		, NULL			<!-- #{finaldate} --> 
 		, #{numbers}	<!-- 물품 개수 -->
 		)
@@ -102,7 +103,7 @@
 			COUNT(*)
 		FROM
 			post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 	</select>
 	
 	<!-- 최신순으로 게시물 가져오기 -->
@@ -110,7 +111,7 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE delete_yn = 'N'
+		WHERE deleteyn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 	
@@ -152,7 +153,7 @@
 		UPDATE post
 		SET
 			deleteyn = 'Y'
-			, delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+			, deletetime = SYSDATE 	<!-- delete_time 컬럼 필요 -->
 
 		WHERE
 		pnum = #{pnum}
