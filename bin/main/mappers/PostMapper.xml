@@ -18,8 +18,8 @@
 		, accountpost
 		, uploaddate
 		, enddate
-		, deleteyn
-		, deletetime
+		, delete_yn
+		, delete_time
 		, finaldate
 		, numbers
 	</sql>
@@ -75,7 +75,7 @@
 		FROM
 			post
 		WHERE
-			deleteyn = 'N'
+			delete_yn = 'N'
 		AND
 			pnum = #{pnum}
 	</select>
@@ -85,7 +85,7 @@
 		SELECT
 		<include refid="postColumns" />
 		FROM post
-		WHERE deleteyn = 'N'
+		WHERE delete_yn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 
@@ -94,18 +94,74 @@
 			COUNT(*)
 		FROM
 			post
-		WHERE deleteyn = 'N'
+		WHERE delete_yn = 'N'
+	</select>
+	
+	
+	<!-- main  정렬기능 :민경 -->
+	<select id="PostTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE delete_yn = 'N'
+	</select>
+	
+	<!-- 최신순으로 게시물 가져오기 -->
+	<select id="latestPostList" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE delete_yn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+	
+	<!-- 인기순으로 게시물 가져오기 -->
+	<select id="popularPostList" resultType="PostDTO">
+		select p.*, NVL(hc.HEARTCOUNT,0)
+		from (
+		    select p.pnum, count(*) heartcount
+		    from post p, heart h
+		    where p.pnum = h.pnum
+		    group by p.pnum ) hc RIGHT OUTER JOIN post p
+		on hc.pnum = p.pnum
+		order by heartcount desc, uploaddate desc
+	</select>
+	
+	<!-- 검색한 게시물 가져오기 -->
+	<!-- <select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where title like '%' || #{keyword} || '%'
+		order by uploaddate desc
+	</select> -->
+	
+	<select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where 
+		<if test="keyword !=null and catenum != 0"> catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
+		<if test="keyword ==null and catenum != 0"> catnum = #{catenum} </if>
+		<if test="keyword !=null and catenum == 0"> title like '%' || #{keyword} || '%' </if>
+		order by uploaddate desc
 	</select>
 
 
 	<!-- 삭제 -->
 	<update id="deletePost" parameterType="long">
+<<<<<<< HEAD
+		delete from post
+        where pnum= #{pnum};
+=======
 		UPDATE post
 		SET
-			deleteyn = 'Y'
-			deletetime = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+			delete_yn = 'Y'
+			delete_time = SYSDATE 	<!-- delete_time 컬럼 필요 -->
 		WHERE
 		pnum = #{pnum}
+>>>>>>> 7306b113768f6aa7d9f1b72a836a4138e1b20a3f
 	</update>
 
 	<select id="getPost" parameterType="int" resultType="PostDTO">
