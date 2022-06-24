@@ -25,8 +25,9 @@ public class PostServiceImpl implements PostService {
 
 		if (params.getPnum() == null) {
 			queryResult = postMapper.insertPost(params);
+		} else { 
+			queryResult = postMapper.updatePost(params); 
 		}
-		// 난수 생길 예정 } else { queryResult = postMapper.updatePost(params); }
 
 		return (queryResult == 1) ? true : false;
 	}
