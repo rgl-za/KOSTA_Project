@@ -25,6 +25,21 @@ dependencies {
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect' /* Thymeleaf Layout */
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16' /* Log4JDBC */
 	implementation 'com.google.code.gson:gson:2.8.6' /* Gson */
+	
+	//json
+	implementation group: 'org.json', name: 'json', version: '20090211'
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	// https://mvnrepository.com/artifact/net.sf.json-lib/json-lib
+	//implementation group: 'net.sf.json-lib', name: 'json-lib', version: '2.2'
+
+
+
+
+	
+	
+	
+	
 	implementation 'org.apache.commons:commons-math3:3.0' /*math3*/
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	
@@ -41,14 +56,12 @@ dependencies {
 	implementation 'org.webjars:sockjs-client:1.1.2'
 	implementation 'org.webjars:stomp-websocket:2.3.3-1'
 	
-	implementation 'commons-io:commons-io:2.8.0'
+	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'commons-fileupload:commons-fileupload:1.4'
 	
 	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'	
 	
 	compileOnly 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
-	runtimeOnly 'com.h2database:h2'
-	
 	
 }
 

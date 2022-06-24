@@ -1,19 +1,16 @@
 package com.project.domain;
-
-
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 public class UserAccountDTO {
 	private Long historyNum;
 	private String userId;
 	private Long pnum;
-	private String dealname;
-	private int money;
+	private String dealName;
+	private float money;
 	private String content;
-	private int totalpoint;
-	private String regDate;
-	
-	
-
+	private int totalPoint;
+	private LocalDateTime regDate;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
 
 <th:block layout:fragment="title">
@@ -20,23 +20,16 @@
                       	<!-- ===============================================-->
     					<!-- 카테고리 정하는 부분 시작	-->
     					<!-- ===============================================-->
-                      	<!--<div class="col-sm-6 col-md-6 col-xl-5">
-                          <div class="input-group-icon">
-                            <label th:field="*{catnum}" th:value="*{catnum}" class="form-label visually-hidden" for="inputCatNum">catNum</label>
-                            <select class="form-select form-voyage-select input-box" id="inputCatNum"> 
-                              <option selected="selected" disabled >카테고리</option>
-                              <option th:value="${category.catnum}" th:text="${category.catindex}"></option>
-                            </select>
-                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
-                          </div>
-                        </div>-->
                       	<div class="col-sm-6 col-md-6 col-xl-5">
                           <div class="input-group-icon">
                             <label class="form-label visually-hidden" for="inputCatNum">catNum</label>
-                            <select class="form-select form-voyage-select input-box" id="inputCatNum"> 
-                              <option selected="selected" disabled >카테고리</option>
-                              <option >1</option>
-                            </select>
+                             <!--id="inputCatNum" name="inputCatNum"-->
+							<select class="form-select" th:field="*{catnum}">
+								<option value="">-- 선택 --</option>
+							        <option th:each="catlist : ${catlist}" th:value="${catlist.catnum}" 
+							                th:utext="${catlist.catindex}">
+							        </option>
+							</select>
                             <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
                           </div>
                         </div>
@@ -67,8 +60,10 @@
     					<!-- 	사진 정하는 부분 시작	-->
     					<!-- ===============================================-->
     					<!-- 썸네일 부분-->
+    					<th:if>
     					<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
                           <div class="text-center">
+                          
                           </div>
                         </div>
                         
