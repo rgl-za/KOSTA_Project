@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
 <th:block layout:fragment="content" th:object="${postDTO}">
-	<div th:text="${ @point.getX() }"></div>
+	<!--  <div th:text="${ @point.getX() }"></div>-->
 	<div class="container-fluid">
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -213,7 +213,7 @@
 										<div class="modal-body">
 											<!--카카오맵 api 적용-->
 											<!-- 지도를 표시할 div 입니다 -->
-											<div id="map" style="width: 100%; height: 350px;"></div>
+											<div id="map" style="width: 100%; height: 400px;"></div>
 
 											<script type="text/javascript"
 												src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a87e58c3986f19fb7967a5efe62a5c7c&libraries=services"></script>
@@ -756,7 +756,7 @@
 										            var infowindow = new kakao.maps.InfoWindow({
 										            	disableAutoPan: true,//지도가 이동되지 않도록 설정
 										                position: position,
-										                content: '<div style="width:150px;text-align:center;padding:5px;font-size:12px;">'+title+'</div>'
+										                content: '<div style="width:80px;text-align:center;padding:5px;font-size:12px;">'+title+'</div>'
 										                
 										            });
 													
@@ -801,9 +801,7 @@
 												var overlay; 
 												//중심마커를 생성하고 인포윈도우를 설정하는 함수입니다
 												function centerMarker(coord,text){
-													
-													//alert("centerMarker에 들어옴"+coord);
-													
+												
 													// 마커를 생성합니다
 													var marker = new kakao.maps.Marker(
 															{
@@ -886,8 +884,7 @@
 												//var markerPosition= new kakao.maps.LatLng(
 														//midLat, midLng);
 												
-												//alert("markerPosition"+markerPosition);
-												
+										
 												
 												// 지도를 표시하는 div 크기를 변경하는 함수입니다
 												function resizeMap() {
@@ -904,9 +901,6 @@
 													// window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
 													map.relayout();
 												}
-												
-												//console.log(">>>infowindows"+infowindows[0]);undefined
-												//console.log(">>>markers"+markers[0]);
 												
 											  var pnum="[[${postDTO.getPnum()}]]";
 											  //alert(pnum);
@@ -955,6 +949,11 @@
 															
 															alterMapCenter(markerPosition);//계산된 중심 좌표로 map Center변경
 															getNearStore();//센터 중심으로 근처 편의점 마커들 띄우기
+															
+															var two=args.two;//Point object
+															
+															addMarker(new kakao.maps.LatLng(
+																	two.y, two.x), '알고리즘2');
 															
 													        if (args.res) {
 													          //alert("완료 되었습니다");
