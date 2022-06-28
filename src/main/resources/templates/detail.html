@@ -349,7 +349,7 @@
 												        var result=getNearest(nearCS2List);
 												        console.log(result.place_name+","+result.address_name+","+result.x+","+result.y);
 												        addMarker(new kakao.maps.LatLng(
-												        		result.y, result.x), '가장 가까운 편의점');
+												        		result.y, result.x), '가장 가까운 '+result.place_name);
 												        //var getCenter = map.getCenter();
 												        //getNearCS2(map.getCenter(),nearCS2List);
 												    }
@@ -805,7 +805,7 @@
 										            var infowindow = new kakao.maps.InfoWindow({
 										            	disableAutoPan: true,//지도가 이동되지 않도록 설정
 										                position: position,
-										                content: '<div style="width:80px;text-align:center;padding:5px;font-size:12px;">'+title+'</div>'
+										                content: '<div style="width:150px;text-align:center;padding:5px;font-size:12px;color:blue;">'+title+'</div>'
 										                
 										            });
 													
@@ -940,7 +940,7 @@
 													var mapContainer = document
 															.getElementById('map');
 													mapContainer.style.width = '1050px';
-													mapContainer.style.height = '650px';
+													mapContainer.style.height = '680px';
 												}
 										
 												function relayout() {
