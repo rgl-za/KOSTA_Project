@@ -264,6 +264,8 @@
 											
 											var userPointList= new Array();	//var userPointList=[];
 											
+											var nearCS2List = new Array(); //근처 편의점 객체들을 받을 리스트
+											
 											//thymeleaf class 접근 예제
 											var test = "[[ ${ @point.getX() } ]]";
 												//var test = "${ @point.getX() }";
@@ -293,6 +295,12 @@
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 												var map = new kakao.maps.Map(mapContainer, mapOption);
 												
+												function getInfo() {
+												    // 지도의 현재 중심좌표를 얻어옵니다 
+												    var center = map.getCenter();
+												    return center;
+												}
+												
 												/*
 												산술평균의 마커를 생성합니다.
 												
@@ -307,12 +315,16 @@
 												*/
 												function getNearStore(){
 													
-													
 													// 장소 검색 객체를 생성합니다
 													var ps = new kakao.maps.services.Places(map); 
 
 													// 카테고리로 은행을 검색합니다
-													ps.categorySearch('CS2', placesSearchCB, {useMapCenter:true}); 
+													ps.categorySearch('CS2', placesSearchCB, {
+														
+														x:map.getCenter().getLat(),
+														y:map.getCenter().getLng(),
+														useMapCenter:true
+													}); 
 												}
 												
 
@@ -321,8 +333,20 @@
 												    if (status === kakao.maps.services.Status.OK) {
 												        for (var i=0; i<data.length; i++) {
 												            displayMarker(data[i]); 
-												            console.log(">>>편의점>>>"+data[i]);
-												        }       
+												            console.log(">>>편의점>>"+i+">"+data[i]);
+												            console.log(">>>편의점>>"+i+">"+data[i].x);
+												            console.log(">>>편의점>>"+i+">"+data[i].y);
+												            var cs2P={
+												            		idx : i,
+												            		x : data[i].x,
+												            		y : data[i].y
+												            };
+												            nearCS2List.push(data[i]);
+												            
+												        }//for
+												        console.log("편의점 검색 완료"+nearCS2List[0].distance+">");//ok
+												        var getCenter = map.getCenter();
+												        getNearCS2(map.getCenter(),nearCS2List);
 												    }
 												}
 
@@ -971,6 +995,42 @@
 													 //map.setCenter(markerPosition);
 												  
 												  }//function
+												  
+												  /*
+												  중심좌표를 기준으로 가장 가까운 편의점의 좌표를 찾는 함수
+												  */
+												  function getNearCS2(cs2List, centerP) {//plist는 2차원 배열
+													  
+													  alert("function");
+													  alert(cs2List);//중심좌표 (36.75311796728473, 128.09079297772118)
+												  	  alert(centerP);//object배열 [object Object],[object Object],[object Object],
+													  //plist->json 변환
+													  //const JsonArray = JSON.stringify(plist);//문자 2차원배열
+													  //console.log(">>>>>JsonArray>>>>>"+JsonArray);
+													  
+														 $.ajax({
+														     method: 'post',
+														     url: '/getNearCS2', //controller url
+														     traditional: true,
+														     data: {
+														       data: JSON.stringify(cs2List),
+														       center: centerP
+														     },
+														     dataType: 'json',
+														     success: function (args) {
+														    	 alert("ajax통신 완료");
+														    	 //var r= args.res;//Object
+													
+														    	//중심 마커 생성 => getAddressByLatLng 호출
+														    	//markerPosition=new kakao.maps.LatLng( r.y, r.x);
+																//getAddressByLatLng(markerPosition);
+																
+																//alterMapCenter(markerPosition);//계산된 중심 좌표로 map Center변경
+																
+																
+														     }
+														   });//ajax
+													  }//function
 											  /*]]>*/
 											</script>
 										</div>
