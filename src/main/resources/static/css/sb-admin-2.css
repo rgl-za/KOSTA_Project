@@ -49,6 +49,9 @@
 	text-align: center;
 }
 
+.olmessagef {color: red; font-style: Italic;}
+.olmessaget {color: blue; font-style: Italic;}
+
   .ready-img{
   margin-left: auto;/*중앙정렬*/
   margin-right: auto;/*중앙정렬*/
