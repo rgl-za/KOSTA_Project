@@ -327,6 +327,7 @@
 													}); 
 												}
 												
+												var nearest;
 
 												// 키워드 검색 완료 시 호출되는 콜백함수 입니다
 												function placesSearchCB (data, status, pagination) {
@@ -344,10 +345,28 @@
 												            nearCS2List.push(data[i]);
 												            
 												        }//for
-												        console.log("편의점 검색 완료"+nearCS2List[0].distance+">");//ok
-												        var getCenter = map.getCenter();
-												        getNearCS2(map.getCenter(),nearCS2List);
+												        console.log("편의점 검색 완료"+nearCS2List[0].distance+"m");//1470m
+												        var result=getNearest(nearCS2List);
+												        console.log(result.place_name+","+result.address_name+","+result.x+","+result.y);
+												       
+												        //var getCenter = map.getCenter();
+												        //getNearCS2(map.getCenter(),nearCS2List);
 												    }
+												}
+												function getNearest(nearCS2List){
+													
+													//distance가 가장 가까운 편의점 객체 반환
+													
+													var nearest=10000000000000;//초기화
+													
+													var i;
+													
+													for(i=0; i< nearCS2List.length; i++){
+														nearest = (nearCS2List[i].distance < nearest)? nearCS2List[i]:nearest;
+														console.log("현재 nearest ="+nearest);
+													}
+												
+													return nearest;
 												}
 
 												// 지도에 마커를 표시하는 함수입니다
