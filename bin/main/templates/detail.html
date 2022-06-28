@@ -334,9 +334,9 @@
 												    if (status === kakao.maps.services.Status.OK) {
 												        for (var i=0; i<data.length; i++) {
 												            displayMarker(data[i]); 
-												            console.log(">>>편의점>>"+i+">"+data[i]);
-												            console.log(">>>편의점>>"+i+">"+data[i].x);
-												            console.log(">>>편의점>>"+i+">"+data[i].y);
+												            //console.log(">>>편의점>>"+i+">"+data[i]);
+												            //console.log(">>>편의점>>"+i+">"+data[i].x);
+												            //console.log(">>>편의점>>"+i+">"+data[i].y);
 												            var cs2P={
 												            		idx : i,
 												            		x : data[i].x,
@@ -348,7 +348,8 @@
 												        console.log("편의점 검색 완료"+nearCS2List[0].distance+"m");//1470m
 												        var result=getNearest(nearCS2List);
 												        console.log(result.place_name+","+result.address_name+","+result.x+","+result.y);
-												       
+												        addMarker(new kakao.maps.LatLng(
+												        		result.y, result.x), '가장 가까운 편의점');
 												        //var getCenter = map.getCenter();
 												        //getNearCS2(map.getCenter(),nearCS2List);
 												    }
@@ -356,14 +357,19 @@
 												function getNearest(nearCS2List){
 													
 													//distance가 가장 가까운 편의점 객체 반환
-													
-													var nearest=10000000000000;//초기화
+													var nearNum=10000000000000;//초기화
+													var nearest;
 													
 													var i;
 													
 													for(i=0; i< nearCS2List.length; i++){
-														nearest = (nearCS2List[i].distance < nearest)? nearCS2List[i]:nearest;
-														console.log("현재 nearest ="+nearest);
+														if(nearCS2List[i].distance < nearNum){
+															nearNum=nearCS2List[i].distance;
+															nearest=nearCS2List[i];
+														}
+														
+														//nearest = (nearCS2List[i].distance < nearest)? nearCS2List[i].distance:nearest;
+														console.log("현재 nearest ="+nearest.distance);
 													}
 												
 													return nearest;
