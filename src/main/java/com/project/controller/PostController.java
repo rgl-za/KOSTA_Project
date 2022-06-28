@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import com.project.constant.Method;
-import com.project.util.UiUtils;
 import com.project.domain.CatDTO;
 import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
@@ -25,9 +23,11 @@ import com.project.domain.PostDTO;
 import com.project.domain.TeamMemberDTO;
 import com.project.service.CatService;
 import com.project.service.CommentService;
+import com.project.service.FileService;
 import com.project.service.PostService;
 import com.project.service.TeamMemberService;
 import com.project.util.FileUtil;
+import com.project.util.UiUtils;
 
 
 @Controller
@@ -47,49 +47,85 @@ public class PostController extends UiUtils {
 	@Autowired
 	private CatService catService;
 
+	@Autowired
+	private FileService fileService;
+
+	
 	// 게시글 작성 폼으로
-	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
-		logger.info("PostDTO" + params);
-		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
-			 model.addAttribute("post", new PostDTO());
-			 List<CatDTO> catlist = catService.selectCatList(catnum);
-			 model.addAttribute("catlist", catlist);
-		} else { // pnum에서 받아온 경우
-			List<CatDTO> catlist = catService.selectCatList(catnum);
-			PostDTO post = postService.getPostDetail(pnum);
-			
-			if (post == null) {
-				return "redirect:/main.do";
+		@GetMapping(value = "/write.do")
+		public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+			logger.info("PostDTO" + params);
+			if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
+				 model.addAttribute("post", new PostDTO());
+				 List<CatDTO> catlist = catService.selectCatList(catnum);
+				 model.addAttribute("catlist", catlist);
+			} else { // pnum에서 받아온 경우
+				List<CatDTO> catlist = catService.selectCatList(catnum);
+				PostDTO post = postService.getPostDetail(pnum);
+				
+				if (post == null) {
+					return "redirect:/main.do";
+				}
+				model.addAttribute("catlist", catlist);
+				logger.info(""+catlist);
+				model.addAttribute("post", post);
+				logger.info(""+post);
 			}
-			model.addAttribute("catlist", catlist);
-			logger.info(""+catlist);
-			model.addAttribute("post", post);
-			logger.info(""+post);
+
+			logger.info("PostDTO-->" + params);
+			return "/write";
 		}
+		
+		
+	// 게시글 작성 폼으로
+//	@GetMapping(value = "/write.do")
+//	public String openPostWrite(@ModelAttribute("fnum") FileDTO fnum, @ModelAttribute("catnum") CatDTO catnum, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+//		logger.info("PostDTO" + params);
+//		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
+//			 model.addAttribute("post", new PostDTO());
+//			 List<CatDTO> catlist = catService.selectCatList(catnum);
+//			 model.addAttribute("catlist", catlist);
+//		} else { // pnum에서 받아온 경우
+//			// 카테고리 가져온다
+//			List<CatDTO> catlist = catService.selectCatList(catnum);
+//			// 작성했던 내용들을 가져온다.
+//			PostDTO post = postService.getPostDetail(pnum);
+//			
+//			List<FileDTO> filelist = fileService.selectFileList(fnum);
+//			model.addAttribute("filelist", filelist);
+//			
+//			if (post == null) {
+//				return "redirect:/main.do";
+//			}
+//			model.addAttribute("filelist", filelist);
+//			logger.info(""+filelist);
+//			model.addAttribute("catlist", catlist);
+//			logger.info(""+catlist);
+//			model.addAttribute("post", post);
+//			logger.info(""+post);
+//		}
+//
+//		logger.info("PostDTO-->" + params);
+//		return "/write";
+//	}
 
-		logger.info("PostDTO-->" + params);
-		return "/write";
-	}
-
-	// 게시글 등록, 수정
+//	
 	@PostMapping(value = "/register.do")
 	public String registerPost(final PostDTO params, MultipartFile file) {
-		logger.info("" + params);
-		System.out.println("도랏나");
+		logger.info("register.do" + params);
 		try { // 파일업로드
 			if (!file.isEmpty()) {
 				FileUtil fileUtil = new FileUtil();
 				FileDTO fileDTO = fileUtil.fileUpload(file);
 				System.out.println("저장된 filevo: " + fileDTO.toString());
 				System.out.println("저장된 file이름: " + fileDTO.getSaveName());
-
+				
 				// 블로그 logo-name 설정 
 				params.setPhoto(fileDTO.getSaveName());
-
+				
 				boolean isRegistered = postService.registerPost(params);
 				System.out.println(isRegistered);
-				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
+				if (isRegistered == true) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
 					System.out.println("<-----게시글 등록 실패----->");
 				}
 			} else {
@@ -108,17 +144,43 @@ public class PostController extends UiUtils {
 		logger.info("PostDTO-->" + params);
 		return "redirect:/main.do";
 	}
+//	
+	
+	// 게시글 등록, 수정
+//	@PostMapping(value = "/register.do")
+//	public String registerPost(final PostDTO params, Model model, MultipartFile file ) {
+//		logger.info("register.do" + params);
+//		try {
+//			if (!file.isEmpty()) {
+//			FileUtil fileUtil = new FileUtil();
+//			FileDTO fileDTO = fileUtil.fileUpload(file);
+//			System.out.println("저장된 filevo: " + fileDTO.toString());
+//			System.out.println("저장된 file이름: " + fileDTO.getSaveName());
+//			
+//			// 블로그 logo-name 설정 
+//			params.setPhoto(fileDTO.getSaveName());
+//			
+//			boolean isRegistered = postService.registerPost(params);
+//			System.out.println(isRegistered);
+//			if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
+//				System.out.println("<-----게시글 등록 실패----->");
+//			}
+//		}
+//			boolean isRegistered = postService.registerPost(params);
+//			if (isRegistered == false) {
+//				return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/main.do", Method.GET, null, model);
+//			}
+//		} catch (DataAccessException e) {
+//			return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
+//
+//		} catch (Exception e) {
+//			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
+//		}
+//
+//		return showMessageWithRedirect("게시글 등록이 완료되었습니다.", "/main.do", Method.GET, null, model);
+//	}
+	
 
-	// 게시글을 올리고 main으로
-	/*
-	@GetMapping(value = "/main.do")
-	public String openPostList(@ModelAttribute("params") PostDTO params, Model model) {
-		List<PostDTO> postList = postService.getPostList(params);
-		model.addAttribute("postList", postList);
-		logger.info("main.do");
-		return "/main";
-	}
-	*/
 	
 	@GetMapping(value = "/main.do")
 	public String openPostList(@RequestParam(value="keyword", required=false) String keyword,
