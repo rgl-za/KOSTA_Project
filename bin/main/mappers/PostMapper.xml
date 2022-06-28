@@ -14,7 +14,7 @@
 		, postnum
 		, dealaddress
 		, maxpeople
-		, minpeople <!-- 2로 고정!! -->
+		, minpeople
 		, accountpost
 		, uploaddate
 		, enddate
@@ -61,7 +61,7 @@
 			, content 	= #{content}
 			, price 	= #{price}
 			, maxpeople = #{maxpeople}
-			, minpeople = 2 
+			, minpeople = 2
 			, enddate 	= #{enddate}
 		WHERE
 			pnum = #{pnum}
@@ -70,7 +70,7 @@
 	<!-- 포스트 상세내용 -->
 	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
 		SELECT
-		<include refid="postColumns"/>
+		<include refid="postColumns" />
 		FROM
 			post
 		WHERE
