@@ -91,12 +91,12 @@
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user" th:value="${userDTO?.password}"
-											id="password1" name="password" placeholder="비밀번호">
+											id="password1" name="password" placeholder="영문자, 숫자, 특수기호가 적어도 1개 이상 포함된 6자~12자의 비밀번호여야 합니다">
 											<span th:text ="${valid_password}"></span>
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"  th:value="${userDTO?.password}"
-											id="password2" name="password"
+											id="password2" name="password2"
 											placeholder="비밀번호 확인">
 											<span th:text ="${valid_password}"></span>
 									</div>
@@ -113,7 +113,7 @@
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
 									<input class="form-control form-control-user" th:value="${userDTO?.birth}"
-										type="text" name ="birth" placeholder="생년-월-일"
+										type="date" name ="birth" placeholder="생년-월-일"
 										aria-label="Enter search term..."
 										aria-describedby="button-search" />
 										<span th:text ="${valid_birth}"></span>
