@@ -157,7 +157,12 @@ public class PostController extends UiUtils {
 
 		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
-		model.addAttribute("commentId", ((UserDTO) session.getAttribute("userDTO")).getUserid());
+
+		if(((UserDTO) session.getAttribute("userDTO")).getUserid() != null){
+			model.addAttribute("commentId", ((UserDTO) session.getAttribute("userDTO")).getUserid());
+		} else {
+			// 흠...
+		}
 
 		model.addAttribute("teamMemberList", teamMemberList);
 		model.addAttribute("teamMember", new TeamMemberDTO());
