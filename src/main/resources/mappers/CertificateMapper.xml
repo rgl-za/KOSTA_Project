@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.CertificateMapper">
+
+	<sql id="certificateColumns">
+		cernum
+		, pnum
+		, file
+		, regdate
+		, userid
+		, content
+	</sql>
+	
+	<!-- 구매한 상품 인증 작성 --> <!-- 테스트 성공 -->
+	<insert id="registerCheck">
+		INSERT INTO certificate (
+			<include refid="certificateColumns"/>
+		) VALUES (
+			seq_certificate_no.nextval
+			, #{pnum}
+			, #{cfile}
+			, #{regdate}
+			, #{userid}
+			, #{content}
+		)
+	</insert>
+	
+	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
+	<select id="selectCheckList" parameterType="Long" resultType="int">
+		SELECT
+			<include refid="certificateColumns"/>
+		FROM 
+			certificate
+		WHERE
+			1=1
+		ORDER BY regdate DESC
+	
+	</select>
+	
+	
+</mapper>

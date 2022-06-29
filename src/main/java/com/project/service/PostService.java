@@ -17,7 +17,10 @@ public interface PostService {
 	// 게시글 삭제----------------------------
 	public boolean deletePost(Long pnum);
 
-	// 게시글 메인에 불러오기
+	// 사진 불러오기
+	/* public List<PostDTO> getPostFile(); */
+
+	// 게시글 메인에 불러오기	
 	public List<PostDTO> getPostList();
 	
 	// 메인화면 정렬

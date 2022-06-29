@@ -10,6 +10,8 @@ import com.project.domain.PostFileDTO;
 
 @Mapper
 public interface PostMapper {
+	/* public List<PostDTO> getPostFile(); */
+
 	// 등록
 	public int insertPost(PostDTO params);
 
