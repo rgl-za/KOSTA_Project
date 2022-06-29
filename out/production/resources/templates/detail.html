@@ -983,7 +983,12 @@
 											<div class="d-flex flex-row align-items-center">
 												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
 													 height="25" />
-												<p class="small mb-0 ms-2" th:text="${comment.writer}" style="padding-left: 3px;"></p> <!--th:text="${comment.writer}"-->
+												<p class="small mb-0 ms-2"
+                                                   th:if="${comment.writer} == ${commentId}"
+                                                   th:text="${comment.writer}" style="padding-left: 3px; font-weight: bold;"></p> <!--th:text="${comment.writer}"-->
+                                                <p class="small mb-0 ms-2"
+                                                   th:unless="${comment.writer} == ${commentId}"
+                                                   th:text="${comment.writer}" style="padding-left: 3px;"></p>
 											</div>
 											<div class="d-flex flex-row align-items-center">
 												<p class="small text-muted mb-0" th:text="${#temporals.format(comment.regDate, 'yyyy-MM-dd:HH:mm')}"></p> <!--th:text="${comment.regDate}"-->

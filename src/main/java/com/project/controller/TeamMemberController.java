@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import com.project.domain.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class TeamMemberController {
 
@@ -21,9 +24,10 @@ public class TeamMemberController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @PostMapping(value = "/team.do")
-    private String insertTeamMember(@RequestParam(value = "pnum", required = false) Long pnum, TeamMemberDTO params) {
+    private String insertTeamMember(@RequestParam(value = "pnum", required = false) Long pnum, TeamMemberDTO params, HttpSession session) {
         logger.info("" + params);
         System.out.println("참가하기: " + pnum);
+        params.setUserId(((UserDTO) session.getAttribute("userDTO")).getUserid());
         try{
             System.out.println("ㅗㅗㅗㅗㅗㅗㅗ");
             teamMemberService.registerTeamMember(params);
