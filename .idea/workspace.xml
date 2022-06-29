@@ -5,187 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/CertificateController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/CertificateDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/domain/UploadResultDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/mapper/CertificateMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/CertificateService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/CertificateServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/FileService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/service/FileServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/mappers/CertificateMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/hotdeal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/product09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/shop01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/shop02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/img/shop03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/css/nouislider.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/css/slick-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/css/slick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/slick.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/slick.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/slick.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/fonts/slick.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/hotdeal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/product09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/shop01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/shop02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/img/shop03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/js/jquery.zoom.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/js/nouislider.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/static/store/js/slick.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/checkout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/fragments/abody_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/fragments/aheader_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/fragments/asidebar_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/fragments/atopbar_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/layouts/basic_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/maintest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/store.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/templates/uploadEx.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/CertificateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/CertificateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/UploadResultDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/CertificateMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/CertificateService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/CertificateServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/FileService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/service/FileServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/CertificateMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/hotdeal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/shop01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/shop02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/shop03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/css/nouislider.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/css/slick-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/css/slick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/slick.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/slick.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/slick.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/fonts/slick.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/hotdeal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/product09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/shop01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/shop02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/img/shop03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/js/jquery.zoom.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/js/nouislider.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/store/js/slick.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/checkout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/abody_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/aheader_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/asidebar_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/atopbar_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layouts/basic_write.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/maintest.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/store.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/uploadEx.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/convert/DataConvert.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/com/project/recommend/ItemRecommend.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/CommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/HeartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/HeartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/MapController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/MapController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/domain/FileDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/domain/FileDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/CommentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/HeartServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/HeartServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/UserAccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/UserAccountServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/mappers/FileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/FileMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/TeamMemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/TeamMemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/UserAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/UserAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/TeamMemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/TeamMemberServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/HeartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/HeartMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/static/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/static/vendor/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/fragments/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/fragments/body.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/TeamMemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/TeamMemberMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/UserAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/UserAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/TeamMemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/TeamMemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/domain/FileDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/domain/FileDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/FileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/FileMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/PostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/HeartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/HeartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/HeartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/HeartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserAccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/FileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/FileMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/vendor/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/body.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/write.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -379,7 +220,7 @@
       <workItem from="1656312477619" duration="3015000" />
       <workItem from="1656331576706" duration="12000" />
       <workItem from="1656379307830" duration="10028000" />
-      <workItem from="1656465561745" duration="7617000" />
+      <workItem from="1656465561745" duration="8108000" />
     </task>
     <servers />
   </component>
