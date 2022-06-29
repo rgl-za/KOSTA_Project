@@ -78,12 +78,12 @@ public class UserController {
     	logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     	if(userDTO != null) {
     		session.setAttribute("userDTO", userDTO);
-    		logger.info("성공ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ" + session);
+    		logger.info("성공ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ" + session.getAttribute("userDTO"));
     		return "redirect:/main.do";
     	}else {
     		
     		logger.info("실패ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
-    	return "redirect:/login";
+    	return "redirect:/user/login";
     }
     
 
