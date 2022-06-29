@@ -17,6 +17,17 @@ public class Triangle {
 	public Point A;// = new LatLng(0.0, 0.0);
 	public Point C;// =new LatLng(9.0, 0.0);
 	public Point B;// = new LatLng(4.0, 8.0);
+	
+	public Triangle() {
+		super();
+	}
+
+	public Triangle(Point a, Point c, Point b) {
+		super();
+		A = a;
+		C = c;
+		B = b;
+	}
 
 	// 높이 = y = 위도 = lat
 	public double getHigh() {
@@ -61,16 +72,7 @@ public class Triangle {
 	public Point getOnePoint() {
 		return this.A;
 	}
-	// public double x= A.lat + (C.lat-A.lat)/2;
-	// public double y= A.lng + (B.lng-A.lng)/2;
-	// public double sArea = x*y/2;
 
-//	public Area(LatLng a, LatLng c, LatLng b) {
-//		super();
-//		A = a;
-//		C = c;
-//		B = b;
-//	}
 	// 각 빗변의 중점으로 만들어진 작은 삼각형의 두 점의 거리
 	// 루트( (x2-x1)^2 + (y2-y1)^2 )<0.000001
 	// ( (x2-x1)^2 + (y2-y1)^2 )<0.001
@@ -78,18 +80,6 @@ public class Triangle {
 		double front = (B.x + C.x) / 2 - (A.x + B.x) / 2;// x2 - x1
 		double back = (B.y + C.y) / 2 - (A.y + B.y) / 2;// y2 - y1
 		return Math.pow(front, 2) + Math.pow(back, 2);
-	}
-
-	// 생성자
-	public Triangle() {
-		super();
-	}
-
-	public Triangle(Point a, Point c, Point b) {
-		super();
-		A = a;
-		C = c;
-		B = b;
 	}
 
 }
