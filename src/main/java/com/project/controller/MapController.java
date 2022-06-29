@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,6 @@ public class MapController {
 	@Autowired
 	private CommentService commentService;
 
-	
 	@RequestMapping(path = "/getMidPoint")
 	@ResponseBody
 	public Map<String, Object> insertMemberInfo(@RequestParam String data) throws ParseException, JSONException{
@@ -91,7 +91,7 @@ public class MapController {
 	    System.out.println("컨트롤러에서 ajax반환"+returnToAjax);
 
 		return returnToAjax;
-
+		
 //	  Map<String, Object> result = new HashMap<>();
 //	  try {
 //	    /*JSONArray jsonArray = JSONArray.fromObject(paramData);*/
@@ -107,6 +107,7 @@ public class MapController {
 //	  }
 //	  return result;
 
+	//}
 	}
 	
 }

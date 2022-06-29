@@ -136,17 +136,33 @@
 		order by uploaddate desc
 	</select> -->
 	
-	<select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+	<select id="getSearchPostListLatest" parameterType="String" resultType="PostDTO">
 		select 
 			<include refid="postColumns" />
 		from post
 		where 
-		<if test="keyword !=null and catenum != 0"> catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
-		<if test="keyword ==null and catenum != 0"> catnum = #{catenum} </if>
-		<if test="keyword !=null and catenum == 0"> title like '%' || #{keyword} || '%' </if>
+		<if test="keyword !='' and catenum != 0"> catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum != 0"> catnum = #{catenum} </if>
+		<if test="keyword !='' and catenum == 0"> title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum == 0"> 1=1 </if>
 		order by uploaddate desc
 	</select>
-
+	
+	<select id="getSearchPostListPopular" parameterType="String" resultType="PostDTO">
+		select p.*, NVL(hc.HEARTCOUNT,0)
+		from (
+		    select p.pnum, count(*) heartcount
+		    from post p, heart h
+		    where p.pnum = h.pnum
+		    group by p.pnum ) hc RIGHT OUTER JOIN post p
+		on hc.pnum = p.pnum
+		where
+		<if test="keyword !='' and catenum != 0"> p.catnum = #{catenum} and p.title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum != 0"> p.catnum = #{catenum} </if>
+		<if test="keyword !='' and catenum == 0"> p.title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum == 0"> 1=1 </if>
+		order by heartcount desc, uploaddate desc
+	</select>
 
 	<!-- 남혁이형 부분 -->
 	<update id="deletePost" parameterType="long">
