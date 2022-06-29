@@ -8,15 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.constant.Method;
 import com.project.domain.CertificateDTO;
 import com.project.domain.FileDTO;
-import com.project.domain.PostDTO;
-import com.project.domain.TeamMemberDTO;
 import com.project.domain.UserDTO;
 import com.project.service.CertificateService;
 import com.project.util.FileUtil;
@@ -84,5 +81,7 @@ public class CertificateController extends UiUtils {
 		
 		return "/checkout";
 	}
+	
+	
 
 }
