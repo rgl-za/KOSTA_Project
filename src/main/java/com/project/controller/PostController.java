@@ -2,6 +2,7 @@ package com.project.controller;
 
 import java.util.List;
 
+import com.project.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.constant.Method;
 import com.project.util.UiUtils;
-import com.project.domain.CatDTO;
-import com.project.domain.CommentDTO;
-import com.project.domain.FileDTO;
-import com.project.domain.PostDTO;
-import com.project.domain.TeamMemberDTO;
 import com.project.service.CatService;
 import com.project.service.CommentService;
 import com.project.service.PostService;
 import com.project.service.TeamMemberService;
 import com.project.util.FileUtil;
+
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -139,7 +137,7 @@ public class PostController extends UiUtils {
 	
 	// 게시글 상세내용 detail
 	@GetMapping(value = "/detail.do")
-	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model, HttpSession session) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		System.out.println("현재 pnum -->" + pnum);
 //		long pnumex = 1;
@@ -159,6 +157,7 @@ public class PostController extends UiUtils {
 
 		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
+		model.addAttribute("commentId", ((UserDTO) session.getAttribute("userDTO")).getUserid());
 
 		model.addAttribute("teamMemberList", teamMemberList);
 		model.addAttribute("teamMember", new TeamMemberDTO());

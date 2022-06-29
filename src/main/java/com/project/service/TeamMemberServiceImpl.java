@@ -18,7 +18,8 @@ public class TeamMemberServiceImpl implements TeamMemberService{
     public void registerTeamMember (TeamMemberDTO params){
         teamMemberMapper.insertTeamMember(params);
     }
-
+    
+    //팀멤버 리스트
     @Override
     public List<TeamMemberDTO> getTeamMembertList (Long pnum) {
         List<TeamMemberDTO> teamMemberList = Collections.emptyList();
