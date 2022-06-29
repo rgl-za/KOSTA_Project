@@ -1,8 +1,8 @@
 package com.project.service;
 
-import com.project.domain.CommentDTO;
-
 import java.util.List;
+
+import com.project.domain.CommentDTO;
 
 public interface CommentService {
     public List<CommentDTO> getCommentList(Long pnum);

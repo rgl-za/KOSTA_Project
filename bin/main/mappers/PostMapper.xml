@@ -56,7 +56,7 @@
 		SET
 			uploaddate 	= SYSDATE
 			, title 	= #{title}
-			, photo 	= #{photo}
+			<!-- , photo 	= #{photo} -->
 			, link 		= #{link}
 			, content 	= #{content}
 			, price 	= #{price}

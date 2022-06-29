@@ -4,7 +4,6 @@ package com.project.service;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +31,11 @@ public class PostServiceImpl implements PostService {
 
 		return (queryResult == 1) ? true : false;
 	}
-
+	// 사진 가져오기
+	/*
+	 * public List<PostDTO> getPostFile(){ return postMapper.getPostFile(); }
+	 */
+	
 	// 상세내용에 불러올 글
 	@Override
 	public PostDTO getPostDetail(Long pnum) {
@@ -144,6 +147,7 @@ public class PostServiceImpl implements PostService {
 		return postMapper.alterDealAdd(params);
 	}
 
+    
 	
 
 	/*
