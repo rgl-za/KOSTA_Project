@@ -218,3 +218,5 @@ from category
 where cnum = 1;
 
 alter table post add numbers number;
+
+ALTER TABLE USERS  ADD realaddress varchar(100);
