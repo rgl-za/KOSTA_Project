@@ -25,7 +25,7 @@ public class TeamMemberController {
         logger.info("" + params);
         System.out.println("참가하기: " + pnum);
         try{
-            System.out.println("ㅗㅗㅗㅗㅗㅗㅗ");
+        	
             teamMemberService.registerTeamMember(params);
 
         } catch(Exception e){

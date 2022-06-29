@@ -2,6 +2,9 @@ package com.project.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ import com.project.domain.CommentDTO;
 import com.project.domain.FileDTO;
 import com.project.domain.PostDTO;
 import com.project.domain.TeamMemberDTO;
+import com.project.domain.UserDTO;
 import com.project.service.CatService;
 import com.project.service.CommentService;
 import com.project.service.PostService;
@@ -73,8 +77,9 @@ public class PostController extends UiUtils {
 	}
 
 	// 게시글 등록, 수정
+	@Test
 	@PostMapping(value = "/register.do")
-	public String registerPost(final PostDTO params, MultipartFile file) {
+	public String registerPost(final PostDTO params, MultipartFile file, HttpSession session)throws Exception {
 		logger.info("" + params);
 		System.out.println("도랏나");
 		try { // 파일업로드
@@ -88,6 +93,17 @@ public class PostController extends UiUtils {
 				params.setPhoto(fileDTO.getSaveName());
 
 				boolean isRegistered = postService.registerPost(params);
+				
+				//방장의 정보 teammember테이블에 등록
+				
+				System.out.println("포스트 등록시 sesstion");
+				UserDTO user = ( (UserDTO)session.getAttribute("userDTO") );
+				System.out.println("포스트 등록시 sesstion"+user);
+				
+				
+				//teamMemberService.registerTeamMember(params);
+				
+				
 				System.out.println(isRegistered);
 				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
 					System.out.println("<-----게시글 등록 실패----->");
