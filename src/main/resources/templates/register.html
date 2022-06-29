@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 <meta charset="utf-8">
@@ -12,7 +12,7 @@
 <title>SB Admin 2 - Register</title>
 
 <!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -21,12 +21,23 @@
 <!-- Custom styles for this template-->
 
 <link href="/css/sb-admin-2.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<style>
+.id_ok {
+	color: #008000;
+	display: none;
+}
+
+.id_already {
+	color: #6A82FB;
+	display: none;
+}
+</style>
 
 
 </head>
 
 <body class="bg-gradient-primary">
-
 	<div class="container">
 
 
@@ -39,59 +50,79 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">임시 회원가입 FORM</h1>
 							</div>
-							<form class="user" action="/register" method="post">
+							<form class="user" action="/user/register" method="post">
 
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
-									<input class="form-control form-control-user" type="text"
-										placeholder="아이디" aria-label="Enter search term..."
-										aria-describedby="id-check" />
-									<button class="btn btn-primary" id="id-check" type="button"
-										style="padding-right: 5px">아이디 중복 체크</button>
+									<input class="form-control form-control-user" 
+										type="text" 
+										id = "userid"
+										name ="userid" 
+										onchange = "checkId()"
+										th:value="${userDTO?.userid}"
+										placeholder="아이디는 영어,숫자 4~15자리로 입력해주세요"
+										aria-label="Enter search term..."/>
+									
+										<span id = "checkid-msg" th:text="${valid_userid}"></span>
+										<span id = "olmessage"></span>
+										
+										<span class = "id_ok">사용 가능한 아이디입니다</span>
+										<span class = "id_already">이미 사용중인 아이디 입니다</span>
 								</div>
-								<p style="color: red;" id="checkid-msg" class="form-error">중복확인완료&nbsp;</p>
+								
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user"
+										<input type="text" class="form-control form-control-user" th:value="${userDto?.username}" 
 											id="username" name="username" placeholder="이름">
+											<span th:text="${valid_username}"></span>
 									</div>
 
 
 									<div class="col-sm-6 ">
-										<input type="text" class="form-control form-control-user"
+										<input type="text" class="form-control form-control-user" th:value="${userDto?.nickname}"
 											id="nickname" name="nickname" placeholder="별명">
+											<span th:text="${valid_nickname}"></span>
 									</div>
 								</div>
+								
+								
+								
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" name="password" placeholder="비밀번호">
+										<input type="password" class="form-control form-control-user" th:value="${userDTO?.password}"
+											id="password1" name="password" placeholder="영문자, 숫자, 특수기호가 적어도 1개 이상 포함된 6자~12자의 비밀번호여야 합니다">
+											<span th:text ="${valid_password}"></span>
 									</div>
 									<div class="col-sm-6">
-										<input type="password" class="form-control form-control-user"
-											id="exampleRepeatPassword" name="password"
+										<input type="password" class="form-control form-control-user"  th:value="${userDTO?.password}"
+											id="password2" name="password2"
 											placeholder="비밀번호 확인">
+											<span th:text ="${valid_password}"></span>
 									</div>
 								</div>
+								
+								
 
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="phoneNumber" name="phonenuber" placeholder="Phone Number">
+									<input type="text" class="form-control form-control-user" th:value="${userDTO?.phone}"
+										id="phoneNumber" name="phone" placeholder="'-'을 제외한 전화번호 11자리를 입력해주세요">
+										<span th:text ="${valid_phone}"></span>
 								</div>
 
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
-									<input class="form-control form-control-user"
-										type="date" placeholder="생년-월-일"
+									<input class="form-control form-control-user" th:value="${userDTO?.birth}"
+										type="date" name ="birth" placeholder="생년-월-일"
 										aria-label="Enter search term..."
 										aria-describedby="button-search" />
+										<span th:text ="${valid_birth}"></span>
 								</div>
 
 
 								<div>
 									<input type="radio" id="contactChoice1" name="gender"
-										value="man"> <label for="contactChoice1">남자</label> 
+										value="man" checked> <label for="contactChoice1">남자</label> 
 										<input type="radio" id="contactChoice2" name="gender" 
 										value="woman"> <label for="contactChoice2">여자</label>
 								</div>
@@ -99,17 +130,34 @@
 
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
-									<input type="text" id="sample6_postcode" name ="postnum" readonly="readonly" placeholder="우편번호">
+									<input type="text" class="form-control form-control-user" th:value="${userDTO?.postnum}" id="sample6_postcode" name ="postnum" readonly="readonly" placeholder="우편번호">
 									
 									<input type="button" onclick="sample6_execDaumPostcode()"
 										value="우편번호 찾기">
-										<br> 
-									<input type="text" id="sample6_address" name="address" readonly="readonly" placeholder="주소">
-									<br> 
-									<input type="text" id="sample6_detailAddress" name="realaddress" placeholder="상세주소">
-									<input type="text" id="sample6_extraAddress"  placeholder="참고사항">
+										<span th:text ="${valid_postnum}"></span>
+										</div>
+								<div>
+									<input type="text" id="sample6_address"
+										class="form-control form-control-user" name="address"
+										readonly="readonly" placeholder="주소">
+										<br>
 
-									<script
+									<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="text" id="sample6_detailAddress"
+											class="form-control form-control-user" name="realaddress" th:value="${userDTO?.realaddress}"
+											placeholder="상세주소">
+											<span th:text="${valid_realaddress}"></span> 
+									</div>
+										<div class="col-sm-6 ">
+											<input type="text"
+											id="sample6_extraAddress"
+											class="form-control form-control-user" placeholder="참고사항">
+										</div>
+									</div>
+								</div>
+
+								<script
 										src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 									<script>
 										function sample6_execDaumPostcode() {
@@ -176,20 +224,21 @@
 													}).open();
 										}
 									</script>
-								</div>
-								<button type="submit" class="btn btn-primary btn-user btn-block">
-									회원가입 버튼</button>
-								<hr>
-								<!--<a href="index.html" class="btn btn-google btn-user btn-block">
+
+								<button type="submit" id ="signUp" onclick="test()" class="btn btn-primary btn-user btn-block">
+										회원가입 버튼
+										</button>
+										<hr>
+										<!--<a href="index.html" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
                                 </a>
                                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                                 </a>-->
-								<a href="" class=" btn btn-kakao btn-block "> <img
-									th:src="@{img/kakao_startLogin_medium_narrow.png}"
-									text-align="center" />
-								</a>
+										<!-- <a href="" class=" btn btn-kakao btn-block "> <img
+											th:src="@{img/kakao_startLogin_medium_narrow.png}"
+											text-align="center" />
+										</a> -->
 							</form>
 							<hr>
 							<div class="text-center">
@@ -203,6 +252,51 @@
 		</div>
 
 	</div>
+	
+	
 
 </body>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	/*<![CDATA[*/
+	    function checkId(){
+	    	console.log("check");
+	        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
+	        console.log(id);
+	        $.ajax({
+	            url:'/user/idCheck', //Controller에서 요청 받을 주소
+	            type:'post', //POST 방식으로 전달
+	            data:{userid:id},
+	            success:function(result){ //컨트롤러에서 넘어온 cnt값을 받는다 
+	                if(result == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+	                    $('.id_ok').css("display","inline-block"); 
+	                    $('.id_already').css("display", "none");
+	                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+	                    $('.id_already').css("display","inline-block");
+	                    $('.id_ok').css("display", "none");
+	                    $('#userid').val('');
+	                }
+	            },
+	            error:function(){
+	                alert("에러입니다");
+	            }
+	        });
+	        };
+	        /*]]>*/
+			</script>
+</th:block>
+
+<script type = "text/javascript">
+	function test(){
+		var p1 = document.getElementById('password1').value;
+		var p2 = document.getElementById('password2').value;
+		
+		if(p1.length <8){
+			alert("비밀번호 불일치");
+			return false;
+		}else{
+			alert("비밀번호가 일치 합니다");
+			return true;
+		}
+	}</script>
 </html>

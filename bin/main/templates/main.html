@@ -4,9 +4,10 @@
       layout:decorate="layouts/basic">
 
 <th:block layout:fragment="content">
+<link rel="stylesheet"
+             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="container-fluid">
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">진행 중인 거래 목록</h1>
@@ -115,6 +116,7 @@
 
         <!-- row -->
         <!-- /.container-fluid -->
+        </div>
 </th:block>
 <th:block layout:fragment="script">
     <script th:inline="javascript">
