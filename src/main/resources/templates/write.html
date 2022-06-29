@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layouts/basic">
-
-<!--<th:block layout:fragment="title">
-	<title>write page</title>
-</th:block>-->
+	layout:decorate="layouts/basic_write">
+<!--	layout:decorate="layouts/basic">-->
 
 <th:block layout:fragment="content">
 	<div class="container-fluid">
-		<!-- 폼 시작 -->
 		<!-- ===============================================-->
 		<!-- form 시작	-->
 		<!-- ===============================================-->
-		<form class="container px-4 px-lg-5 mt-5" th:action="@{/register.do}" 
-			th:object="${post}" method="post"
+		<form class="container px-4 px-lg-5 mt-5" th:action="@{/register.do}" th:object="${post}" method="post"
 			enctype="multipart/form-data" onsubmit="return registerPost(this)">
 			<!--                      <form class="row g-4 mt-5" th:action="@{/register.do}" th:object="${post}" method="post" enctype="multipart/form-data">-->
 
 			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
 			<input type="hidden" th:if="*{pnum != null and pnum > 0}" th:field="*{pnum}" />
-			
+
 
 			<!-- ===============================================-->
 			<!-- 카테고리 정하는 부분 시작	-->
@@ -69,7 +64,8 @@
 			<th:if>
 				<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
 					<div class="text-center">
-						<img class="card-img-top" th:if="*{pnum != null and pnum > 0}" th:src="|@{/imagePath/}${post.getPhoto()}|">
+						<img class="card-img-top" th:if="*{pnum != null and pnum > 0}"
+							th:src="|@{/imagePath/}${post.getPhoto()}|">
 					</div>
 				</div>
 
@@ -246,4 +242,5 @@
 		}
 	</script>
 </th:block>
+
 </html>

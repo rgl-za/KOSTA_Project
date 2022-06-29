@@ -1,11 +1,8 @@
 package com.project.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.domain.FileDTO;
 import com.project.mapper.FileMapper;
 
 @Service

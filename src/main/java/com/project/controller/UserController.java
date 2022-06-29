@@ -88,7 +88,7 @@ public class UserController {
     	}else {
     		
     		logger.info("실패ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
-    	return "redirect:/login";
+    	return "redirect:/user/login";
     }
     
 
