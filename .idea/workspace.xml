@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/convert/DataConvert.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/TeamMemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/TeamMemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/TeamMemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/TeamMemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/project/recommend/ItemRecommend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/recommend/ItemRecommend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +212,7 @@
       <workItem from="1656331576706" duration="12000" />
       <workItem from="1656379307830" duration="10028000" />
       <workItem from="1656465561745" duration="9474000" />
-      <workItem from="1656558681177" duration="2789000" />
+      <workItem from="1656558681177" duration="2921000" />
     </task>
     <servers />
   </component>

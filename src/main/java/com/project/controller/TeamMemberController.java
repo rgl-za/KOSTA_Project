@@ -29,7 +29,7 @@ public class TeamMemberController {
         System.out.println("참가하기: " + pnum);
         params.setUserId(((UserDTO) session.getAttribute("userDTO")).getUserid());
         try{
-            System.out.println("ㅗㅗㅗㅗㅗㅗㅗ");
+        	
             teamMemberService.registerTeamMember(params);
 
         } catch(Exception e){
