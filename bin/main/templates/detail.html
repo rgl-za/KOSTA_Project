@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
 <th:block layout:fragment="content" th:object="${postDTO}">
@@ -8,34 +8,25 @@
 	<div class="container-fluid">
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
-
 		</div>
-		<div
-			class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${postDTO.title}">거래명</h1>
+			<!-- 수정, 삭제 -->
 			<div class="float-right">
-				<a href="#" class="btn btn-secondary btn-icon-split"> </span> 
-				<span class="text">수정</span>
-				</a> <a href="#" class="btn btn-secondary btn-icon-split"> </span> <span
-					class="text">삭제</span>
-				</a>
+				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
-
-
 		</div>
 		<div class="row">
-
 			<!-- 이미지와 링크 -->
 			<div class="col-xl-4 col-lg-5">
 				<div class="card-detail-top shadow mb-4">
 					<!-- Card Body -->
 					<div class="card-body">
-
 						<div class="represent_img">
 							<img class="img-item" th:src="|@{/imagePath/}${postDTO.getPhoto()}|">
-							 <text th:text="${postDTO.getPhoto()}"></text> 
 						</div>
-
 						<!-- 글 내용 -->
 						<div class="">
 							<div class="card-detail-top mb-4">
@@ -43,54 +34,45 @@
 								<div class="card-body">
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">구매 동네 </h7>
-										---
 									</p>
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
 										<text th:text="${postDTO.getPrice()}"></text>
 										원 &nbsp;<br>
-
 										<h7 class="m-0 font-weight-bold text-gray-900">물품 개수 </h7>
 										15개입 &ensp;<br>
 									</p>
-									
 									<div class="margin-bottom">
 										<p>
-										<h7 class="m-0 font-weight-bold text-gray-900">링크주소: </h7>
-										<a th:href="@{${postDTO.getLink()}}">바로가기</a>
-										<text th:text="${postDTO.getLink()}"></text>
+											<h7 class="m-0 font-weight-bold text-gray-900">링크주소: </h7>
+											<a th:href="@{${postDTO.getLink()}}">바로가기</a>
+											<text th:text="${postDTO.getLink()}"></text>
 										</p>
 									</div>
-									
-
-									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span> <text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>(가능하다면)30분 전
-
-
-
+									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
+									<text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>
+									(가능하다면)30분 전
 								</div>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<!-- 거래 정보 -->
 			<div class="col-xl-8 col-lg-7">
 				<div class="card-detail-top shadow mb-4">
 					<!-- Card Body -->
 					<div class="card-body-nonauto">
-
 						<div class="horizon">
 							<div class="detail-top_info">
 								<p>
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
-									최대 구매가 </h7>
-									<text th:text="${postDTO.getPrice()/postDTO.getMinpeople()}"></text>
+										최대 구매가 </h7>
+									<text th:text="${postDTO.getPrice()}/${postDTO.getMinpeople()}"></text>
 									원&emsp;
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
-									최소 구매가 </h7>
-									<text th:text="${postDTO.getPrice()/postDTO.getMaxpeople()}"></text>
+										최소 구매가 </h7>
+									<text th:text="${postDTO.getPrice()}/${postDTO.getMaxpeople()}"></text>
 									<br>
 								</p>
 								<p>
@@ -103,19 +85,19 @@
 									명
 								</p>
 								<p>
-
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
-									현재 인원수 </h7>
-									1명&emsp;
+										현재 인원수 </h7>
+									<text th:text="${countMember}"></text>
+									명
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
-									현재 구매가 </h7>
-									---원<br>
+										현재 예상 구매가 </h7>
+									<text th:text="${postDTO.getPrice()}/${countMember}"></text>
+									원<br>
 								</p>
-
 							</div>
 							<div class="detail-top_timer">
 								<h8>마감일:&emsp;
-								<span  th:text="${#temporals.format(postDTO.getEnddate(), 'yyyy-MM-dd')}"></span>
+									<span  th:text="${#temporals.format(postDTO.getEnddate(), 'yyyy-MM-dd')}"></span>
 								</h8><br><br>
 								<input type="hidden" id="enddate" th:value="${#temporals.format(postDTO.getEnddate(), 'yyyy-MM-dd HH:mm:ss')}">
 								<h9>남은 시간</h9>
@@ -125,72 +107,53 @@
 						<div class="vertical">
 							<!-- 참여자 ready 영역 -->
 							<div class="detail-ready">
+								<!-- 방장 영역 -->
 								<div class="user-ready-img">
 									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary-cap btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">방장</span>
+											class="text-gray-600 font-weight-bold bg-gray-100 align-center"
+											th:text="${postDTO.getLeaderid()}"
+									></div>
+									<img class="ready-img rounded-circle" src="img/undraw_profile.svg">
+									<a href="#" class="btn btn-primary-cap btn-icon-split" th:if="${minpeople == true}">
+											<span class="icon text-white-50">
+												<i class="fas fa-flag"></i>
+											</span>
+										<span class="text">거래 진행하기</span>
+									</a>
+									<a th:href="@{/dealing}" class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
+											<span class="icon text-white-50">
+												<i class="fas fa-flag"></i>
+											</span>
+										<span class="text">방장</span>
 									</a>
 								</div>
-								<div class="user-ready-img">
+								<!-- 팀원 영역 -->
+								<div class="user-ready-img" th:each="teamMember: ${teamMemberList}">
 									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
+											class="text-gray-600 font-weight-bold bg-gray-100 align-center"
+											th:text="${teamMember.userId}"
+									></div>
 									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
+										 src="img/undraw_profile.svg">
+									<a th:href="@{/dealing}" class="btn btn-primary btn-icon-split" >
+										<span class="icon text-white-50">
+											<i class="fas fa-flag"></i>
+										</span>
+										<span class="text">참여중</span>
 									</a>
 								</div>
-								<div class="user-ready-img">
-									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
-									</a>
-								</div>
-								<div class="user-ready-img">
-									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
-									</a>
-								</div>
-								<div class="user-ready-img">
-									<div
-										class="text-gray-600 font-weight-bold bg-gray-100 align-center">user명</div>
-									<img class="ready-img rounded-circle"
-										src="img/undraw_profile.svg"> <a href="#"
-										class="btn btn-primary btn-icon-split"> <span
-										class="icon text-white-50"> <i class="fas fa-flag"></i>
-									</span> <span class="text">준비</span>
-									</a>
-								</div>
-
 							</div>
 							<!-- buttons -->
-							<a href="#" class="btn btn-primary btn-icon-split"> <span
-								class="icon text-white-50"><i class="fas fa-flag"></i></span> <span
-								class="text">시작하기!</span>
-							</a>
-
-							<!--							<button type="button" class="btn btn-info btn-icon-split" th:action="@{/chat/room}">-->
-							<!--								<span class="icon text-white-50"> <i-->
-							<!--										class="fas fa-comment-dots"></i>-->
-							<!--								</span> 채팅방 개설하기-->
-							<!--							</button>-->
+							<button href="#" class="btn btn-primary btn-icon-split"
+									th:onclick="insertTeamMember( [[${postDTO.getPnum()}]], [[${postDTO.getMinpeople()}]], [[${postDTO.title}]], [[${postDTO.getPrice()}/${countMember}]] );">
+								<span class="icon text-white-50">
+									<i class="fas fa-flag"></i>
+								</span>
+								<span class="text">참여하기</span>
+							</button>
 
 							<button type="button" class="btn btn-info btn-icon-split"
-								data-toggle="modal" data-target=".bd-example-modal-xl">
+									data-toggle="modal" data-target=".bd-example-modal-xl">
 								<span class="icon text-white-50"> <i
 									class="fas fa-info-circle"></i>
 								</span> 중간 배송지 확인
@@ -1105,7 +1068,12 @@
 											<div class="d-flex flex-row align-items-center">
 												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
 													 height="25" />
-												<p class="small mb-0 ms-2" th:text="${comment.writer}" style="padding-left: 3px;"></p> <!--th:text="${comment.writer}"-->
+												<p class="small mb-0 ms-2"
+                                                   th:if="${comment.writer} == ${commentId}"
+                                                   th:text="${comment.writer}" style="padding-left: 3px; font-weight: bold;"></p> <!--th:text="${comment.writer}"-->
+                                                <p class="small mb-0 ms-2"
+                                                   th:unless="${comment.writer} == ${commentId}"
+                                                   th:text="${comment.writer}" style="padding-left: 3px;"></p>
 											</div>
 											<div class="d-flex flex-row align-items-center">
 												<p class="small text-muted mb-0" th:text="${#temporals.format(comment.regDate, 'yyyy-MM-dd:HH:mm')}"></p> <!--th:text="${comment.regDate}"-->
@@ -1151,48 +1119,105 @@
 	<!-- /.container-fluid -->
 </th:block>
 <th:block layout:fragment="script">
-    <script th:inline="javascript">
-      /*<![CDATA[*/
-      function convertStringToDate(endDate) {
-		    let dateComponents = endDate.split(' ');
-		    let datePieces = dateComponents[0].split("-");
-		    let timePieces = dateComponents[1].split(":");
-		    return(new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
-		                         timePieces[0], timePieces[1], timePieces[2]))
-	  }
-		
-	  //var endDate = $("#enddate").text();
-	  var endDate = convertStringToDate($("#enddate").val());
-	  console.log("endDate: ", endDate);
-      
-      var startDatetime = new Date();
-      console.log("startDatetime: ", startDatetime);
-      
-      var RemainDate = endDate - startDatetime;
-      console.log("RemainDate: ",RemainDate);
-      const timerId = document.querySelector('#timer');
-      
-      function msg_time() {
-    	var days = Math.floor((RemainDate / (1000 * 60 * 60 * 24)));
-        var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
-        var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
-        var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
-        
-        
-        m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
-        timerId.innerHTML =m;
-        
-        if (RemainDate < 0) {      
-          // 시간이 종료 되었으면..
-          clearInterval(timer);   // 타이머 해제
-        }else{
-          RemainDate = RemainDate - 1000; // 남은시간 -1초
-        }
-      }
-      
-      var timer = setInterval(msg_time, 1000);      
-      /*]]>*/
-    </script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		function insertTeamMember(pnum, minpeople, dealName, money) {
+			if (confirm(dealName + " 공동구매에 참여하실건가요?")) {
+				var uri1 = /*[[ @{/team.do} ]]*/null;
+				var html = "";
+				html += '<form name="dataForm1" id="a" action="'+uri1+'" method="post">';
+				html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+				html += '<input type="hidden" name="minpeople" value="'+minpeople+'">';
+				html += '</form>';
+				var uri2 =  /*[[ @{/account.do} ]]*/null;
+				html += '<form name="dataForm2" id="b" action="'+uri2+'" method="post">';
+				html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+				html += '<input type="hidden" name="dealName" value="'+dealName+'" />';
+				html += '<input type="hidden" name="money" value="'+money+'" >';
+				html += '</form>';
+				$("body").append(html);
+				var formData = $("#a, #b").serializeArray();
+				console.log(formData);
+				$.ajax({
+					type: 'POST',
+					url: '/team.do',
+					data: {
+						pnum: formData[0]["value"],
+						minpeople: formData[1]["value"]
+					},
+					success: function (result){
+						console.log("ㅇㅇ");
+						document.location.href = document.location.href;
+					},
+					error: function (result){
+						console.log("ㅡㅡ");
+					}
+				});
+				$.ajax({
+					type: 'POST',
+					url: '/account.do',
+					data: {
+						pnum: formData[2]["value"],
+						dealName: formData[3]["value"],
+						money: formData[4]["value"]
+					},
+					success: function (result){
+						console.log("ㅇㅇ2");
+						document.location.href = document.location.href;
+					},
+					error: function (result){
+						console.log("ㅡㅡ2");
+					}
+				})
+			}
+		}
+		function convertStringToDate(endDate) {
+			let dateComponents = endDate.split(' ');
+			let datePieces = dateComponents[0].split("-");
+			let timePieces = dateComponents[1].split(":");
+			return(new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
+					timePieces[0], timePieces[1], timePieces[2]))
+		}
+		//var endDate = $("#enddate").text();
+		var endDate = convertStringToDate($("#enddate").val());
+		console.log("endDate: ", endDate);
+		var startDatetime = new Date();
+		console.log("startDatetime: ", startDatetime);
+		var RemainDate = endDate - startDatetime;
+		console.log("RemainDate: ",RemainDate);
+		const timerId = document.querySelector('#timer');
+		function msg_time() {
+			var days = Math.floor((RemainDate / (1000 * 60 * 60 * 24)));
+			var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+			var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
+			var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+			m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+			timerId.innerHTML =m;
+			if (RemainDate < 0) {
+				// 시간이 종료 되었으면..
+				clearInterval(timer);   // 타이머 해제
+			}else{
+				RemainDate = RemainDate - 1000; // 남은시간 -1초
+			}
+		}
+		var timer = setInterval(msg_time, 1000);
+		/*]]>*/
+		// 삭제 버튼을 위해서 만들었습니다.
+		/*<![CDATA[*/
+		function deletePost(pnum) {
+			if (confirm(pnum + "번 게시글을 삭제할까요?")) {
+				var uri = /*[[ @{/delete.do} ]]*/null;
+				var html = "";
+				html += '<form name="dataForm" action="'+uri+'" method="post">';
+				html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+				html += '</form>';
+				$("body").append(html);
+				document.dataForm.submit();
+			}
+		}
+		/*]]>*/
+
+	</script>
   </th:block>
   
 </html>

@@ -23,33 +23,66 @@
 		, finaldate
 		, numbers
 	</sql>
+	<sql id="postColumns2">
+		
+		 catnum
+		, leaderid
+		, title
+		, content
+		, photo
+		, link
+		, price
+		, postnum
+		, dealaddress
+		, maxpeople
+		, minpeople
+		, accountpost
+		, uploaddate
+		, enddate
+		, deleteyn
+		, deletetime
+		, finaldate
+		, numbers
+	</sql>
+	
+	
 
 	<!-- 수정 필요 (문정현) -->
 	<insert id="insertPost" parameterType="PostDTO">
-		INSERT INTO post (
+		<![CDATA[
+			insert into post (
+		]]>
 		<include refid="postColumns" />
+		<![CDATA[
 		) VALUES (
-		seq_post_no.nextval
-		, 1				<!-- #{catnum} -->
-		, 'NULL'		<!-- leaderid -->
+		#{pnum}
+		, 1				
+		, 'NULL'		
 		, #{title}
 		, #{content}
-		, #{photo}			<!-- #{photo} -->
+		, #{photo}			
 		, #{link}
 		, #{price}
-		, NULL 			<!-- #{postnum} -->
-		, NULL			<!-- #{dealaddress} -->
+		, NULL 			
+		, NULL			
 		, #{maxpeople}
-		, 2				<!-- #{minpeople} -->
-		, NULL			<!-- accountpost -->
-		, SYSDATE 		<!-- uploadDate -->
+		, 2				
+		, NULL			
+		, SYSDATE 		
 		, #{enddate}
-		, 'N'			<!-- delete_yn  -->
+		, 'N'			
 		, NULL
-		, NULL			<!-- #{finaldate} --> 
-		, #{numbers}	<!-- 물품 개수 -->
+		, NULL			
+		, #{numbers}	
 		)
+		]]>
+		<selectKey keyProperty="pnum" resultType="long" order="BEFORE"><!-- 본 쿼리가 먼저 실행  -->
+		<![CDATA[
+			 SELECT seq_post_no.nextval from dual
+		]]>
+	  </selectKey>
 	</insert>
+	
 	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
 		UPDATE post

@@ -23,7 +23,7 @@
 			seq_comments_no.nextval
 			, #{pnum}
 			, #{comments}
-			, 'test'
+			, #{writer}
 			,sysdate
 		)
 	</insert>

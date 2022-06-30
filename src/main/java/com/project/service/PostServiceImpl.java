@@ -20,17 +20,30 @@ public class PostServiceImpl implements PostService {
 
 	// 게시글 등록, 수정
 	@Override
-	public boolean registerPost(PostDTO params) {
-		int queryResult = 0;
+	public int registerPost(PostDTO params) {
+		//int queryResult = 0;
+		
+		int pnum=0;
+		System.out.println("registerPost 에 들어옴");
 
 		if (params.getPnum() == null) {
-			queryResult = postMapper.insertPost(params);
+			//queryResult = postMapper.insertPost(params);
+			pnum = postMapper.insertPost(params);
+			long pnum2 = params.getPnum();
+			
+			System.out.println("registerPost 에 들어옴"+pnum2);
+			
+			return (int) pnum2;
+			
+			
+			
 		} else {
 			System.out.println("수정");
-			queryResult = postMapper.updatePost(params); 
+			//수정이면 return 1
+			pnum = postMapper.updatePost(params); 
 		}
-
-		return (queryResult == 1) ? true : false;
+		return pnum;
+		//return (queryResult == 1) ? true : false;
 	}
 
 	// 상세내용에 불러올 글
