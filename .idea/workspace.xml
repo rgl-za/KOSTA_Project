@@ -5,28 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/convert/DataConvert.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/recommend/ItemRecommend.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/CommentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/HeartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/HeartController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/MapController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/MapController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/TeamMemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/TeamMemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/UserAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/UserAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/TeamMemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/TeamMemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/mappers/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/CommentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/mappers/HeartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/HeartMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/PostMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/mappers/TeamMemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/TeamMemberMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/mappers/UserAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/mappers/UserAccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/convert/DataConvert.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/recommend/ItemRecommend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/recommend/ItemRecommend.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +203,8 @@
       <workItem from="1656312477619" duration="3015000" />
       <workItem from="1656331576706" duration="12000" />
       <workItem from="1656379307830" duration="10028000" />
-      <workItem from="1656465561745" duration="8108000" />
+      <workItem from="1656465561745" duration="9474000" />
+      <workItem from="1656558681177" duration="2789000" />
     </task>
     <servers />
   </component>
