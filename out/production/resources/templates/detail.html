@@ -296,26 +296,18 @@
 												function placesSearchCB (data, status, pagination) {
 												    if (status === kakao.maps.services.Status.OK) {
 												        for (var i=0; i<data.length; i++) {
-												            //displayMarker(data[i]); 
-												            //console.log(">>>편의점>>"+i+">"+data[i]);
-												            //console.log(">>>편의점>>"+i+">"+data[i].x);
-												            //console.log(">>>편의점>>"+i+">"+data[i].y);
-												            var cs2P={
-												            		idx : i,
-												            		x : data[i].x,
-												            		y : data[i].y
-												            };
+												    
 												            nearCS2List.push(data[i]);
 												            
 												        }//for
-												        console.log("편의점 검색 완료"+nearCS2List[0].distance+"m");//1470m
+												        //console.log("편의점 검색 완료"+nearCS2List[0].distance+"m");//1470m
 												        var result=getNearest(nearCS2List);
 												        console.log(result.place_name+","+result.address_name+","+result.x+","+result.y);
 												        console.log("result.place_url"+result.place_url);
 												        addCS2Marker(new kakao.maps.LatLng(
 												        		result.y, result.x), result.place_name, result.place_url);
-												        //var getCenter = map.getCenter();
-												        //getNearCS2(map.getCenter(),nearCS2List);
+												        
+												        
 												    }
 												}
 												function getNearest(nearCS2List){
