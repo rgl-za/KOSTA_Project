@@ -35,8 +35,6 @@ public class PostServiceImpl implements PostService {
 			
 			return (int) pnum2;
 			
-			
-			
 		} else {
 			System.out.println("수정");
 			//수정이면 return 1
