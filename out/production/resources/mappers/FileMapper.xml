@@ -40,10 +40,18 @@
 		fnum = #{fnum}
 	</update>
 	
-	<select id="selectFileList" parameterType="Long" resultType="FileDTO">
+<!-- 	<select id="selectFileList" parameterType="Long" resultType="FileDTO">
 		SELECT
 		<include refid="fileColumns" />
 		FROM post
+		where pnum = #{pnum}
+	</select> -->
+	
+	<select id="selectFileList" parameterType="FileDTO" resultType="FileDTO">
+		SELECT
+			photo
+		FROM
+			post
 		where pnum = #{pnum}
 	</select>
 </mapper>

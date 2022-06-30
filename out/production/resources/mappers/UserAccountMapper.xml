@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.UserAccountMapper">
+
+	<sql id="userAccountColumns">
+		historyNum
+		, userId
+		, pnum
+		, dealName
+		, money
+		, content
+		, totalPoint
+		, regDate
+	</sql>
+
+	<insert id="insertUserAccount" parameterType="UserAccountDTO">
+		INSERT INTO useraccount(
+			<include refid="userAccountColumns" />
+		    )
+			VALUES ( seq_history_no.nextval
+					, #{userId}
+			   		, #{pnum}
+			   		, #{dealName}
+			   		, #{money}
+			   		,'temp'
+			   		, 0
+			   		, sysdate
+			)
+	</insert>
+
+
+	
+</mapper>

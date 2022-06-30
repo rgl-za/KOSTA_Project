@@ -16,13 +16,13 @@
                 <button
                         class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
                         type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">최신순
+                        aria-haspopup="true" aria-expanded="false" th:text="${(sortoption == null || sortoption == '') ? '최신순':'인기순'}">
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                      aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="/sortMain/latest">최신순</a>
-					<a class="dropdown-item" th:href="|@{/sortMain/}popular|">인기순</a>
-					<a class="dropdown-item" th:href="|@{/sortMain/}latest|">거리순</a>
+					<a class="dropdown-item" onclick="setSortoption('latest')">최신순</a>
+					<a class="dropdown-item" onclick="setSortoption('popular')">인기순</a>
+					<!-- <a class="dropdown-item" onclick="setSortoption('popular')">거리순</a> -->
                 </div>
             </div>
         </div>
@@ -209,6 +209,22 @@
             console.log("success");
             StartTimeRemaining();
         });
+        
+        function setSortoption(option){
+        	var sortopt = option;
+        	console.log("sortopt: " + sortopt);
+        	
+        	document.getElementById("sortoption").value = sortopt;
+        	document.getElementById("searchForm").submit();
+        	
+        	//var sortNameId = document.getElementById("cate");
+        	
+        	//var sortName = sortNameId.options[sortNameId.selectedIndex].value;
+        	//console.log("sortName: " + sortName);
+        	
+        	//var cateName = cateSelect.options[cateSelect.selectedIndex].text;
+        	//console.log("itemName: " + itemName);
+        }
         /*]]>*/
     </script>
 
