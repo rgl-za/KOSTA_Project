@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -15,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -75,7 +73,7 @@ public class MapController {
 			pointList.add(userP);
 
 		}
-	
+
 //		for (int i = 0; i < pointList.size(); i++) {
 //
 //			System.out.print(pointList.get(i).getX() + " / ");
@@ -84,22 +82,22 @@ public class MapController {
 
 		Polygon poly = new Polygon();
 		// System.out.println("test출력결과"+poly.getPolygonMidPoint(pointList));
-		
+
 		long beforeTime1 = System.currentTimeMillis();
-		
+
 		returnToAjax.put("res", poly.getPolygonMidPoint(pointList));// point객체임
-		
+
 		long afterTime1 = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-		long secDiffTime1 = (afterTime1 - beforeTime1); //두 시간에 차 계산
-		System.out.println("3번 알고리즘 소요시간(m) : "+secDiffTime1);
-		
-		//알고리즘2 적용
+		long secDiffTime1 = (afterTime1 - beforeTime1); // 두 시간에 차 계산
+		System.out.println("3번 알고리즘 소요시간(m) : " + secDiffTime1);
+
+		// 알고리즘2 적용
 		long beforeTime2 = System.currentTimeMillis();
 		returnToAjax.put("two", poly.getPolyMid2(pointList));
-		
+
 		long afterTime2 = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-		long secDiffTime2 = (afterTime2 - beforeTime2); //두 시간에 차 계산
-		System.out.println("2번 알고리즘 소요시간(m) : "+secDiffTime2);
+		long secDiffTime2 = (afterTime2 - beforeTime2); // 두 시간에 차 계산
+		System.out.println("2번 알고리즘 소요시간(m) : " + secDiffTime2);
 
 		System.out.println("컨트롤러에서 ajax반환" + returnToAjax);
 
@@ -146,31 +144,30 @@ public class MapController {
 
 		}
 
-
 		Polygon poly = new Polygon();
 		// System.out.println("test출력결과"+poly.getPolygonMidPoint(pointList));
-		
+
 		long beforeTime1 = System.currentTimeMillis();
-		
+
 		returnToAjax.put("res", poly.getPolygonMidPoint(pointList));// point객체임
-		
+
 		long afterTime1 = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-		long secDiffTime1 = (afterTime1 - beforeTime1); //두 시간에 차 계산
-		System.out.println("3번 알고리즘 소요시간(m) : "+secDiffTime1);
-		
-		//알고리즘2 적용
+		long secDiffTime1 = (afterTime1 - beforeTime1); // 두 시간에 차 계산
+		System.out.println("3번 알고리즘 소요시간(m) : " + secDiffTime1);
+
+		// 알고리즘2 적용
 		long beforeTime2 = System.currentTimeMillis();
 		returnToAjax.put("two", poly.getPolyMid2(pointList));
-		
+
 		long afterTime2 = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
-		long secDiffTime2 = (afterTime2 - beforeTime2); //두 시간에 차 계산
-		System.out.println("2번 알고리즘 소요시간(m) : "+secDiffTime2);
+		long secDiffTime2 = (afterTime2 - beforeTime2); // 두 시간에 차 계산
+		System.out.println("2번 알고리즘 소요시간(m) : " + secDiffTime2);
 
 		System.out.println("컨트롤러에서 ajax반환" + returnToAjax);
 
 		return returnToAjax;
 	}
-	
+
 	// post의 dealaddress변경
 	@RequestMapping(value = "/alterDealAdd.do")
 	@ResponseBody
