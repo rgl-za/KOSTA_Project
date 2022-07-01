@@ -51,7 +51,8 @@ public class UserController {
     @PostMapping("/register")
     public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model){
     	model.addAttribute("userDTO", userDTO);
-        
+        System.out.println("zxc"+userDTO.getBirth());
+    	
         if(errors.hasErrors()) {
         	Map<String, String> validatorResult = userService.validateHandling(errors);
         	 for (String key : validatorResult.keySet()) {

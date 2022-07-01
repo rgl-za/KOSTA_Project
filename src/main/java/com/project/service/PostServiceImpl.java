@@ -19,17 +19,28 @@ public class PostServiceImpl implements PostService {
 
 	// 게시글 등록, 수정
 	@Override
-	public boolean registerPost(PostDTO params) {
-		int queryResult = 0;
+	public int registerPost(PostDTO params) {
+		//int queryResult = 0;
+		
+		int pnum=0;
+		System.out.println("registerPost 에 들어옴");
 
 		if (params.getPnum() == null) {
-			queryResult = postMapper.insertPost(params);
+			//queryResult = postMapper.insertPost(params);
+			pnum = postMapper.insertPost(params);
+			long pnum2 = params.getPnum();
+			
+			System.out.println("registerPost 에 들어옴"+pnum2);
+			
+			return (int) pnum2;
+			
 		} else {
 			System.out.println("수정");
-			queryResult = postMapper.updatePost(params); 
+			//수정이면 return 1
+			pnum = postMapper.updatePost(params); 
 		}
-
-		return (queryResult == 1) ? true : false;
+		return pnum;
+		//return (queryResult == 1) ? true : false;
 	}
 	// 사진 가져오기
 	/*
@@ -74,64 +85,43 @@ public class PostServiceImpl implements PostService {
 	}
 	
 	@Override
-	public List<PostDTO> getPostSortList(String option) {
-		List<PostDTO> postList = Collections.emptyList();
-		System.out.println("option: " + option);
+	public List<PostDTO> getSearchPostList(String keyword, String category, String sortopt) {
 		
-		// 최신순
-		if(option=="latest") {
-			
-			int postTotalCount = postMapper.PostTotalCount();
-
-			if (postTotalCount > 0) { 
-				postList = postMapper.latestPostList(); 
-			}
-			
-			return postList;
-		
-		// 인기순
-		}else if (option=="popular"){
-			
-			int postTotalCount = postMapper.PostTotalCount();
-
-			
-			if (postTotalCount > 0) { 
-				postList = postMapper.popularPostList(); 
-			}
-			
-			return postList;	
-			
-		}else {
-			
-			int postTotalCount = postMapper.PostTotalCount();
-
-			if (postTotalCount > 0) { 
-				postList = postMapper.latestPostList(); 
-			}
-			
-			return postList;
-		}
-		
-	}
-	@Override
-	public List<PostDTO> getSearchPostList(String keyword, String category) {
-
+		System.out.println("sortopt: " + sortopt);
 		int cateNum;
+		String keywords;
 		HashMap<String, Object> map = new HashMap();
 		List<PostDTO> postList = Collections.emptyList();
-
-		if (category == null) {
-			cateNum = 0;
-			map.put("keyword", keyword);
-			map.put("catenum", cateNum);
-		} else {
+		
+		if (keyword == null) {
+			keywords = "";
 			cateNum = Integer.parseInt(category);
-			map.put("keyword", keyword);
+			map.put("keyword", keywords);
+			map.put("catenum", cateNum);
+		}else {
+			keywords = keyword;
+			cateNum = Integer.parseInt(category);
+			map.put("keyword", keywords);
 			map.put("catenum", cateNum);
 		}
+		
+		/*
+		 * if (category == null) { cateNum = 0; map.put("keyword", keyword);
+		 * map.put("catenum", cateNum); } else { cateNum = Integer.parseInt(category);
+		 * map.put("keyword", keyword); map.put("catenum", cateNum); }
+		 */
 
 		try {
-			postList = postMapper.getSearchPostList(map);
+			System.out.println("popular! " + sortopt);
+			
+			// string 객체검색 할때는 equals 사용!!
+			if("popular".equals(sortopt)) {
+				System.out.println("popular");
+				postList = postMapper.getSearchPostListPopular(map);
+			}else {
+				System.out.println("Latest");
+				postList = postMapper.getSearchPostListLatest(map);
+			}
 
 		} catch (Exception e) {
 			System.out.println("예외발생");
