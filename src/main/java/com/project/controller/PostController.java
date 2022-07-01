@@ -128,7 +128,8 @@ public class PostController extends UiUtils {
 			List<PostDTO> postList = postService.getPostList();
 			model.addAttribute("postList", postList);
 		}
-		return "/main";
+		return "/store";
+//		return "/main";
 	}
 
 	// 게시글 상세내용 detail
