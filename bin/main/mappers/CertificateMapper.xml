@@ -5,25 +5,65 @@
 	<sql id="certificateColumns">
 		cernum
 		, pnum
-		, file
+		, cfile
 		, regdate
 		, userid
 		, content
+		, deleteyn
+		, deletetime
 	</sql>
 	
 	<!-- 구매한 상품 인증 작성 --> <!-- 테스트 성공 -->
-	<insert id="registerCheck">
+	<insert id="insertCer">
 		INSERT INTO certificate (
 			<include refid="certificateColumns"/>
 		) VALUES (
 			seq_certificate_no.nextval
 			, #{pnum}
 			, #{cfile}
-			, #{regdate}
+			, sysdate
 			, #{userid}
 			, #{content}
+			, 'N'			<!-- #{deleteyn} -->
+			, NULL			<!-- #{deletetime} -->
 		)
 	</insert>
+	
+	<!-- 글 상세 내용 -->
+	<select id="selectCerDetail" parameterType="long" resultType="CertificateDTO">
+		SELECT
+			<include refid="certificateColumns"/>
+		FROM
+			certificate
+		WHERE
+			deleteyn = 'N'
+		AND
+			cernum = #{cernum}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="updateCer" parameterType="CertificateDTO">
+		UPDATE post
+		SET
+			regdate 	= SYSDATE
+			, cfile 	= #{cfile}
+			, content 	= #{content}
+		WHERE
+			pnum = #{pnum}
+	</update>
+	
+	<!-- 삭제 -->
+	<update id="deleteCer" parameterType="long">
+		UPDATE certificate
+		SET
+			deleteyn = 'Y'
+			, deletetime = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+		WHERE
+		cernum = #{cernum}
+	</update>
+	
+	<!-- /인증서 작성 -->
+	
 	
 	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
 	<select id="selectCheckList" parameterType="Long" resultType="int">
@@ -32,9 +72,8 @@
 		FROM 
 			certificate
 		WHERE
-			1=1
+			deleteyn = 'N'
 		ORDER BY regdate DESC
-	
 	</select>
 	
 	
