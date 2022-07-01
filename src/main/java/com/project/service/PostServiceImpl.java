@@ -11,12 +11,15 @@ import org.springframework.stereotype.Service;
 
 import com.project.domain.PostDTO;
 import com.project.mapper.PostMapper;
+import com.project.mapper.TeamMemberMapper;
 
 @Service
 public class PostServiceImpl implements PostService {
 
 	@Autowired
 	private PostMapper postMapper;
+	
+	private TeamMemberMapper teamMemberMapper;
 
 	// 게시글 등록, 수정
 	@Override
