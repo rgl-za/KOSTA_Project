@@ -10,6 +10,8 @@ import com.project.domain.PostFileDTO;
 
 @Mapper
 public interface PostMapper {
+	/* public List<PostDTO> getPostFile(); */
+
 	// 등록
 	public int insertPost(PostDTO params);
 
@@ -39,8 +41,11 @@ public interface PostMapper {
 	// 인기순 main 정렬
 	public List<PostDTO> popularPostList();
 	
-	// 게시물 검색
-	public List<PostDTO> getSearchPostList(HashMap<String, Object> map);
+	// 게시물 검색 (인기순)
+	public List<PostDTO> getSearchPostListPopular(HashMap<String, Object> map);
+	
+	// 게시물 검색 (최신순)
+	public List<PostDTO> getSearchPostListLatest(HashMap<String, Object> map);
 
 	// post 개수
 	public int PostTotalCount();

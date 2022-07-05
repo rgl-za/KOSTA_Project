@@ -141,17 +141,22 @@ public class PostController extends UiUtils {
 	
 	@GetMapping(value = "/main.do")
 	public String openPostList(@RequestParam(value="keyword", required=false) String keyword,
-							@RequestParam(value="category", required=false) String category, Model model) {
-		System.out.println("keyword: " + keyword + " category: " + category);
+							@RequestParam(value="category", required=false, defaultValue="0") String category,
+							@RequestParam(value="sortoption", required=false) String sortopt, Model model) {
 		
+		System.out.println("keyword: " + keyword + " category: " + category + " sortoption: " + sortopt);
 		
-		if(keyword != null || category != null) {
-			List<PostDTO> postList = postService.getSearchPostList(keyword, category);
-			model.addAttribute("postList", postList);
-			model.addAttribute("cateNum", category);
-		}else {
+		if(keyword==null && category=="0" && sortopt ==null) {
 			List<PostDTO> postList = postService.getPostList();
 			model.addAttribute("postList", postList);
+			
+		}else {
+			String optionName;
+			List<PostDTO> postList = postService.getSearchPostList(keyword, category, sortopt);
+			model.addAttribute("postList", postList);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("cateNum", category);
+			model.addAttribute("sortoption", sortopt);
 		}
 		return "/main";
 	}
@@ -228,32 +233,6 @@ public class PostController extends UiUtils {
 		logger.info("pnum"+pnum);
 		return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/main.do", Method.GET, null, model);
 	}
-	
-	@GetMapping(value = "/sortMain/{sortOption}")
-	public String MainPostList(@ModelAttribute("params") PostDTO params, @PathVariable("sortOption") String sortOption, Model model) {
-		System.out.println("sortOption:" + sortOption);
-		
-		
-		if(sortOption.equals("latest")) {
-			System.out.println("sortOption:" + sortOption);
-			List<PostDTO> postList = postService.getPostSortList(sortOption);
-			model.addAttribute("postList", postList);
-			
-		}else if(sortOption.equals("popular")) {
-			
-			List<PostDTO> postList = postService.getPostSortList(sortOption);
-			model.addAttribute("postList", postList);
-			
-		}else {
-			
-			List<PostDTO> postList = postService.getPostSortList(sortOption);
-			model.addAttribute("postList", postList);
-			
-		}
-		
-		return "redirect:/main";
-	}
-	
 
 
 }

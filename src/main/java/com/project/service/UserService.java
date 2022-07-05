@@ -3,7 +3,6 @@ package com.project.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,6 +39,7 @@ public class UserService {
 	
 	//회원가입
 	public void joinUser(UserDTO userDTO) {
+		System.out.println("ddd???/");
         userMapper.saveUser(userDTO);
 	}
 	

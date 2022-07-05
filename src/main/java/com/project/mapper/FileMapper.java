@@ -16,4 +16,6 @@ public interface FileMapper {
 	
 	public List<FileDTO> selectFileList(Long pnum);
 
+//	public List<FileDTO> selectFileList(FileDTO fnum);
+
 }

@@ -16,14 +16,14 @@ public interface PostService {
 	// 게시글 삭제----------------------------
 	public boolean deletePost(Long pnum);
 
-	// 게시글 메인에 불러오기
+	// 사진 불러오기
+	/* public List<PostDTO> getPostFile(); */
+
+	// 게시글 메인에 불러오기	
 	public List<PostDTO> getPostList();
 	
-	// 메인화면 정렬
-	public List<PostDTO> getPostSortList(String option);
-	
-	// 게시물 검색
-    public List<PostDTO> getSearchPostList(String keyword, String category);
+	// 게시물 검색, 정렬
+    public List<PostDTO> getSearchPostList(String keyword, String category, String sortopt);
 	
 	
 	public boolean alterDealAdd(PostDTO params);
