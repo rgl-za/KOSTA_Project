@@ -17,8 +17,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.constant.Method;
 import com.project.domain.CertificateDTO;
 import com.project.domain.FileDTO;
-import com.project.domain.PostDTO;
-import com.project.domain.UserDTO;
 import com.project.service.CertificateService;
 import com.project.util.FileUtil;
 import com.project.util.UiUtils;
@@ -31,88 +29,27 @@ public class CertificateController extends UiUtils {
 	@Autowired
 	private CertificateService certificateService;
 
-	@GetMapping(value = "/productcheck.do")
-	public String openProductCheck(@ModelAttribute("userId") UserDTO userId,
-			@RequestParam(value = "cernum", required = false) Long cernum,
-			@RequestParam(value = "pnum", required = false) Long pnum, CertificateDTO params, Model model) {
-
-		logger.info("" + params);
-		logger.info("" + pnum);
-		logger.info("" + userId);
-		if (pnum == null || userId == null) {
-			return showMessageWithRedirect("올바르지 않은 접근입니다.", "/main.do", Method.GET, null, model);
-		}
-		if (cernum == null) {
-			model.addAttribute("certificate", new CertificateDTO());
-		}
-
-//		try {
-//			System.out.println("registerCheckService");
-//			certificateService.registerCheck(params);
-//
-//		} catch (DataAccessException e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는메시지를 전달
-//			System.out.println("<-----데이터베이스 처리 과정 문제 발생----->");
-//		} catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
-//			System.out.println("<-----시스템에 문제 발생----->");
-//		}
-
-		return "/checkout";
-//		return "redirect:/registercheck.do?userId=" + userId;
-	}
-
-	@GetMapping("/registercheck.do")
-	public String openCheckRegister(final CertificateDTO params, MultipartFile file) {
-		try { // 파일업로드
-			if (!file.isEmpty()) {
-				FileUtil fileUtil = new FileUtil();
-				FileDTO fileDTO = fileUtil.fileUpload(file);
-				System.out.println("저장된 filevo: " + fileDTO.toString());
-				System.out.println("저장된 file이름: " + fileDTO.getSaveName());
-
-				// 블로그 logo-name 설정
-				params.setCfile(fileDTO.getSaveName());
-
-				System.out.println("registerCerService");
-				certificateService.registerCer(params);
-			}
-		} catch (DataAccessException e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는메시지를 전달
-			System.out.println("<-----데이터베이스 처리 과정 문제 발생----->");
-		} catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
-			System.out.println("<-----시스템에 문제 발생----->");
-		}
-
-		return "/checkout";
-	}
-
-	/*
-	 * @GetMapping("/store.do") public String opencCheckRegister() {
-	 * 
-	 * return "/store"; }
-	 */
-
-	@GetMapping(value = "/list.do")
-	public String openBoardList() {
-
-		return "/certificatelist";
-	}
-
-	@GetMapping(value = "/cer/write.do")
+	@GetMapping(value = "/cerwrite.do")
 	public String openCerWrite(@ModelAttribute("params") CertificateDTO params,
 			@RequestParam(value = "cernum", required = false) Long cernum, Model model) {
 		if (cernum == null) {
 			model.addAttribute("cer", new CertificateDTO());
+			
 		} else {
 			CertificateDTO cer = certificateService.getCerDetail(cernum);
 
 			if (cer == null) {
 				return "redirect:/cerwrite";
 			}
+			
+			model.addAttribute("cer", cer);
+			logger.info(""+cer);
 		}
 		// list로
-		return "cerwrite";
+		return "/cerwrite";
 	}
 	
-	@PostMapping(value = "/cer/register.do")
+	@PostMapping(value = "/cerregister.do")
 	public String registerPost(final CertificateDTO params, MultipartFile file) {
 		logger.info("" + params);
 		try { // 파일업로드
@@ -144,21 +81,62 @@ public class CertificateController extends UiUtils {
 		}
 		logger.info("PostDTO-->" + params);
 		
-		return "redirect:/main.do";
+		return "redirect:/cermain.do";
 	}
 	
-	@GetMapping(value = "/cer/main.do")
-	public String openPostList(@RequestParam(value = "keyword", required = false) String keyword,
-			Model model) {
-		if (keyword != null) {
-			List<CertificateDTO> cer = certificateService.getSearchCerList(keyword);
-			model.addAttribute("cer", cer);
-		} else {
+	@GetMapping(value = "/cermain.do")
+	public String openPostList(Model model) {
+		
 			List<CertificateDTO> cer = certificateService.getCerList();
 			model.addAttribute("cer", cer);
-		}
-		return "/store";
+		
+		return "/cermain";
 //		return "/main";
 	}
+	
+	@GetMapping(value = "/cerdetail.do")
+	public String openPostDetail(@ModelAttribute("params") CertificateDTO params, @RequestParam(value = "cernum", required = false) Long cernum, Model model) {
+		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
+		System.out.println("현재 pnum -->" + cernum);
+//		long pnumex = 1;
+
+		CertificateDTO cerDTO = certificateService.getCerDetail(cernum); // 임의의 pnum
+
+		if (cerDTO == null || "Y".equals(cerDTO.getDeleteyn())) {
+			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
+			return "redirect:/cermain.do";
+		}
+		model.addAttribute("cerDTO", cerDTO);
+
+		return "/cerdetail";
+	}
+	
+	@PostMapping(value = "/cerdelete.do")
+	public String deletePost(@RequestParam(value = "cernum", required = false) Long cernum, Model model) {
+		System.out.println("/cerdelete.do 접근 --->"+cernum);
+		// 올바르지 않은 접근 시
+		if (cernum == null) {
+			return showMessageWithRedirect("올바르지 않은 접근입니다.", "/cermain.do", Method.GET, null, model);
+		}
+
+		try {
+			System.out.println("try 접근. cernum = " + cernum);
+			boolean isDeleted = certificateService.deleteCer(cernum);
+			System.out.println("deleteCer 실행 후. isDeleted = "+isDeleted);
+			
+			// false면 이미 게시글이 삭제된 상태
+			if (isDeleted == false) {
+				return showMessageWithRedirect("게시글 삭제에 실패하였습니다.", "/cermain.do", Method.GET, null, model);
+			}
+		} catch (DataAccessException e) {
+			return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/cermain.do", Method.GET, null, model);
+
+		} catch (Exception e) {
+			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/cermain.do", Method.GET, null, model);
+		}
+		logger.info("cernum"+cernum);
+		return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/cermain.do", Method.GET, null, model);
+	}
+
 
 }

@@ -9,8 +9,7 @@
 		<!-- form 시작	-->
 		<!-- ===============================================-->
 		<form class="container px-4 px-lg-5 mt-5" th:action="@{/register.do}" th:object="${post}" method="post"
-			enctype="multipart/form-data" onsubmit="return registerPost(this)">
-			<!--                      <form class="row g-4 mt-5" th:action="@{/register.do}" th:object="${post}" method="post" enctype="multipart/form-data">-->
+			enctype="multipart/form-data" onsubmit="return registerCer(this)">
 
 			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
 			<input type="hidden" th:if="*{pnum != null and pnum > 0}" th:field="*{pnum}" />
@@ -46,7 +45,6 @@
 					<label class="form-label visually-hidden" for="inputTitle">title</label>
 					<input th:field="*{title}" class="form-control input-box form-voyage-control" id="inputTitle"
 						type="text" placeholder="제목" />
-					<!-- th:field="*{title}" -->
 					<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
 							class="fas fa-map-marker-alt"></i></span>
 				</div>
@@ -88,9 +86,6 @@
 					<div class="input-group-icon">
 						<label class="form-label visually-hidden" for="inputContent">content</label>
 						<textarea th:field="*{content}" class="form-control" placeholder="내용을 입력해 주세요."></textarea>
-						<!--th:field="*{content}"-->
-						<!-- textarea 옆에 붙여야해용 -->
-						<!--<span class="nav-link-icon text-800 fs1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>-->
 					</div>
 				</div>
 				<!-- ===============================================-->
@@ -107,7 +102,6 @@
 						<label class="form-label visually-hidden" for="inputLink">link</label>
 						<input th:field="*{link}" class="form-control input-box form-voyage-control" id="inputLink"
 							type="text" placeholder="제품 링크" />
-						<!-- th:field="*{link}" -->
 						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
 								class="fas fa-map-marker-alt"></i></span>
 					</div>
@@ -126,7 +120,6 @@
 						<label class="form-label visually-hidden" for="inputPrice">price</label>
 						<input th:field="*{price}" class="form-control input-box form-voyage-control" id="inputPrice"
 							type="text" placeholder="제품 원가" />
-						<!-- th:field="*{price}" -->
 						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
 								class="fas fa-map-marker-alt"></i></span>
 					</div>
