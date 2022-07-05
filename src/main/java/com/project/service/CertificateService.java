@@ -22,6 +22,4 @@ public interface CertificateService {
 	// 게시글 리스트
 	public List<CertificateDTO> getCerList();
 	
-	// 게시물 검색
-    public List<CertificateDTO> getSearchCerList(String keyword);
 }
