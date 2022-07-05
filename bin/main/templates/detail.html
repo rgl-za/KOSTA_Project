@@ -225,7 +225,7 @@
 											/*]]>*/
 											</script>
 											
-											<script>
+											<script th:inline="javascript">
 											/*<![CDATA[*/
 											
 											
@@ -242,7 +242,7 @@
 											
 											</script>
 
-											<script>
+											<script th:inline="javascript">
 												
 												// 중간 지점 마커가 표시될 위치입니다
 												var markerPosition;
@@ -641,11 +641,19 @@
 													user의 주소데이터 받기
 												
 												*/
+									
+												var arr= new Array();
 												
-												
-																							
-												
-												
+											    /*[# th:each="page : ${teamMemberList}"]*/
+											     
+											        var l =  "[( ${page.getAddress()} )]" ;
+											        var id = /*[[${page.getUserid()}]]*/;
+											        arr.push(l);
+											    /*[/]*/
+											    
+											    console.log("arr"+arr);
+			                                 
+			                              
 											
 												
 												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755','상중리 경기도 안성시 금광면'];
