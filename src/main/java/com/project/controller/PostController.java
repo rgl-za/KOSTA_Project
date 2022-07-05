@@ -161,7 +161,7 @@ public class PostController extends UiUtils {
 	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		System.out.println("현재 pnum -->" + pnum);
-//		long pnumex = 1;
+
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
 

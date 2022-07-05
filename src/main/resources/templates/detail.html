@@ -186,6 +186,7 @@
 											<script th:inline="javascript">
 											/*<![CDATA[*/
 											
+												
 											/*
 											점이 여러개 일 때
 											*/
@@ -221,9 +222,12 @@
 												}
 
 											}
+											/*]]>*/
 											</script>
 											
 											<script>
+											/*<![CDATA[*/
+											
 											
 											var userPointList= new Array();	//var userPointList=[];
 											
@@ -234,6 +238,7 @@
 												//var test = "${ @point.getX() }";
 												//var pnum="[[${postDTO.getPnum()}]]";
 												//alert("test:"+test);
+											
 											
 											</script>
 
@@ -632,7 +637,17 @@
 
 												/*
 													user의 데이터 -> 처리 필요
+													var pnum="[[${postDTO.getPnum()}]]";
+													user의 주소데이터 받기
+												
 												*/
+												
+												
+																							
+												
+												
+											
+												
 												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755','상중리 경기도 안성시 금광면'];
 												var nameList = ['jiwon1','jiwon2','jiwon3','jiwon4'];
 												
