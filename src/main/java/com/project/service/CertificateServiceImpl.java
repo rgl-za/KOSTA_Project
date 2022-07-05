@@ -1,7 +1,6 @@
 package com.project.service;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,25 +57,8 @@ public class CertificateServiceImpl implements CertificateService {
 	public List<CertificateDTO> getCerList() {
 		List<CertificateDTO> cerList = Collections.emptyList();
 		
-		cerList = certificateMapper.selectCerList();
+		cerList = certificateMapper.getCerList();
 		
-		return cerList;
-	}
-
-	// 검색
-	@Override
-	public List<CertificateDTO> getSearchCerList(String keyword) {
-		HashMap<String, Object> map = new HashMap();
-		List<CertificateDTO> cerList = Collections.emptyList();
-
-		map.put("keyword", keyword);
-
-		try {
-			cerList = certificateMapper.getSearchCerList(map);
-
-		} catch (Exception e) {
-			System.out.println("예외발생");
-		}
 		return cerList;
 	}
 

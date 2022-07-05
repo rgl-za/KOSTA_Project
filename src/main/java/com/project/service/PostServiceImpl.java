@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.project.domain.PostDTO;
 import com.project.mapper.PostMapper;
-import com.project.util.FileUtils;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -19,9 +18,6 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	private PostMapper postMapper;
 	
-	@Autowired
-	private FileUtils fileUtil;
-
 	// 게시글 등록, 수정
 	/*
 	 * @Override public boolean registerPost(PostDTO params) { //int queryResult =

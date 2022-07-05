@@ -25,7 +25,7 @@
 					<!-- Card Body -->
 					<div class="card-body">
 						<div class="represent_img">
-							<img class="img-item" th:src="|@{/imagePath/}${cerDTO.getPhoto()}|">
+							<img class="img-item" th:src="|@{/imagePath/}${cerDTO.getCfile()}|">
 						</div>
 						<!-- 글 내용 -->
 						<div class="">
@@ -34,13 +34,14 @@
 								<div class="card-body">
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">
-										<br><p th:text="${cer.content}"></p></h7>
+										<br><p th:text="${cerDTO.content}"></p></h7>
 										<br>
 									</p>
 									<div class="margin-bottom">
 									</div>
 									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
-									<text th:text="${#temporals.format(cerDTO.getRegdate(), 'yyyy-MM-dd HH:mm')}"></text>
+									<text th:text="${cerDTO.regdate}"}></text>
+<!--									<text th:text="${#temporals.format(cerDTO.getRegdate(), 'yyyy-MM-dd HH:mm')}"></text>-->
 									
 								</div>
 							</div>

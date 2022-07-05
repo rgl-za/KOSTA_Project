@@ -34,12 +34,14 @@ public class CertificateController extends UiUtils {
 			@RequestParam(value = "cernum", required = false) Long cernum, Model model) {
 		if (cernum == null) {
 			model.addAttribute("cer", new CertificateDTO());
+			
 		} else {
 			CertificateDTO cer = certificateService.getCerDetail(cernum);
 
 			if (cer == null) {
 				return "redirect:/cerwrite";
 			}
+			
 			model.addAttribute("cer", cer);
 			logger.info(""+cer);
 		}

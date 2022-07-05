@@ -23,15 +23,13 @@
 			<!-- 썸네일 부분-->
 				<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
 					<div class="text-center">
-						<img class="card-img-top" th:if="*{cernum != null and cernum > 0}"
-							th:src="|@{/imagePath/}${cer.getPhoto()}|">
+						<img class="card-img-top" th:if="*{cernum != null and cernum > 0}" th:src="|@{/imagePath/}${cer.getCfile()}|">
 					</div>
 				</div>
 
 				<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
 					<div class="input-group-icon">
-						<input class="form-control form-control-user" type="file" multiple="multiple" name="file"
-							id="file_0" onchange="setDetailImage(event);">
+						<input class="form-control form-control-user" type="file" multiple="multiple" name="file" id="file_0" onchange="setDetailImage(event);">
 					</div>
 				</div>
 				<!-- ===============================================-->

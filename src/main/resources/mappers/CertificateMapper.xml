@@ -5,7 +5,7 @@
 	<sql id="certificateColumns">
 		cernum
 		, pnum
-		, photo
+		, cfile
 		, regdate
 		, userid
 		, title
@@ -21,7 +21,7 @@
 		) VALUES (
 			seq_cernum_no.nextval
 			, 61			<!-- #{pnum} -->
-			, #{photo}
+			, #{cfile}
 			, sysdate
 			, 'munwjdgus1'	<!-- #{userid} -->
 			, #{title}
@@ -32,7 +32,7 @@
 	</insert>
 	
 	<!-- 글 상세 내용 -->
-	<select id="selectCerDetail" parameterType="long" resultType="CertificateDTO">
+	<select id="selectCerDetail" parameterType="CertificateDTO" resultType="CertificateDTO">
 		SELECT
 			<include refid="certificateColumns"/>
 		FROM
@@ -48,7 +48,7 @@
 		UPDATE post
 		SET
 			regdate 	= SYSDATE
-			, cfile 	= #{photo}
+			, cfile 	= #{cfile}
 			, title 	= #{title}
 			, content 	= #{content}
 		WHERE
@@ -69,7 +69,7 @@
 	
 	
 	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
-	<select id="selectCerList" parameterType="Long" resultType="int">
+	<select id="getCerList" parameterType="CertificateDTO" resultType="CertificateDTO">
 		SELECT
 			<include refid="certificateColumns"/>
 		FROM 
