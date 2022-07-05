@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/basic">
+
+<th:block layout:fragment="content">
+<link rel="stylesheet"
+             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="container-fluid">
+        
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">진행 중인 거래 목록</h1>
+
+            <div class="dropdown mb-4">
+                <button
+                        class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
+                        type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" th:text="${(sortoption == null || sortoption == '') ? '최신순':'인기순'}">
+                </button>
+                <div class="dropdown-menu animated--fade-in"
+                     aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" onclick="setSortoption('latest')">최신순</a>
+					<a class="dropdown-item" onclick="setSortoption('popular')">인기순</a>
+					<!-- <a class="dropdown-item" onclick="setSortoption('popular')">거리순</a> -->
+                </div>
+            </div>
+        </div>
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div
+                        class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <div class="col mb-5" th:each="cer : ${cer}">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" id="cfile" name="cfile" style="width: 225px; height:200px;"
+                                th:src="|@{/imagePath/}${cer.getPhoto()}|">
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder" th:text="${cer.content}"></h5>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+
+                                <a th:href="@{/cerdetail.do( cernum=${cer.cernum} )}"
+                                   class="btn btn-primary waves-effect waves-light">
+                                    상세보기
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- row -->
+        <!-- /.container-fluid -->
+        </div>
+</th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function insertHeart(pnum, title) {
+            if (confirm(title + "에 관심 있나요?")) {
+                var uri = /*[[ @{/heart.do} ]]*/null;
+                var html = "";
+
+                html += '<form name="dataForm" action="'+uri+'" method="post">';
+                html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+                html += '<input type="hidden" name="title" value="'+title+'">';
+                html += '</form>';
+
+                $("body").append(html);
+                document.dataForm.submit();
+            }
+        }
+        function convertStringToDate(endDate) {
+            //console.log(enddate);
+            let dateComponents = endDate.split(' ');
+            let datePieces = dateComponents[0].split("-");
+            let timePieces = dateComponents[1].split(":");
+            return (new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
+                timePieces[0], timePieces[1], timePieces[2]))
+        }
+
+        function msg_time() {
+            var els = $("div.dealing").children("input#enddate");
+            //console.log("els: " + els);
+            for (var i = 0; i < els.length; i++) {
+                var endDate = convertStringToDate($(els[i]).val());
+                console.log("endDate: ", endDate);
+
+                var startDatetime = new Date();
+                console.log("startDatetime: ", startDatetime);
+
+                var RemainDate = endDate - startDatetime;
+                console.log("RemainDate: ", RemainDate);
+
+                var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+                var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+
+                if (RemainDate < 0) {
+                    var tagid = '#timer' + i;
+                    //console.log("tagid: " + tagid);
+                    $(tagid).text("EXPIRED");
+
+                } else {
+                    m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+                    //console.log("m: " + m);
+
+                    var tagid = '#timer' + i;
+                    //console.log("tagid: " + tagid);
+                    $(tagid).text(m);
+
+                }
+            }
+        }
+
+        function StartTimeRemaining() {
+            msg_time();
+            setInterval(function() {
+                msg_time();
+            }, 1000)
+        }
+
+        // 각 게시물의 모달창 id 지정
+        $(function(){
+            var els = $("h5.fw-bolder");
+            console.log("els.length: "+els.length);
+            $.each(els, function(index, item) {
+                //console.log("index: "+ index +"item: "+ item);
+
+                var tagid = "#modal_btn" + index;
+                console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
+
+                var value = "#exampleModalCenter"+index;
+                console.log("value:" + value); // data-target 속성값
+
+                //data-target 속성값 지정
+                $(tagid).attr("data-target",value);
+
+                //var els2 = $(tagid);
+                //console.log("els2: " + els2 + "length: " + els2.length);
+
+            });
+            console.log("success");
+            StartTimeRemaining();
+        });
+        
+        function setSortoption(option){
+        	var sortopt = option;
+        	console.log("sortopt: " + sortopt);
+        	
+        	document.getElementById("sortoption").value = sortopt;
+        	document.getElementById("searchForm").submit();
+        	
+        	//var sortNameId = document.getElementById("cate");
+        	
+        	//var sortName = sortNameId.options[sortNameId.selectedIndex].value;
+        	//console.log("sortName: " + sortName);
+        	
+        	//var cateName = cateSelect.options[cateSelect.selectedIndex].text;
+        	//console.log("itemName: " + itemName);
+        }
+        /*]]>*/
+    </script>
+
+</th:block>
+</html>

@@ -5,24 +5,26 @@
 	<sql id="certificateColumns">
 		cernum
 		, pnum
-		, cfile
+		, photo
 		, regdate
 		, userid
+		, title
 		, content
 		, deleteyn
 		, deletetime
 	</sql>
 	
 	<!-- 구매한 상품 인증 작성 --> <!-- 테스트 성공 -->
-	<insert id="insertCer">
+	<insert id="insertCer" parameterType="CertificateDTO">
 		INSERT INTO certificate (
 			<include refid="certificateColumns"/>
 		) VALUES (
-			seq_certificate_no.nextval
-			, #{pnum}
-			, #{cfile}
+			seq_cernum_no.nextval
+			, 61			<!-- #{pnum} -->
+			, #{photo}
 			, sysdate
-			, #{userid}
+			, 'munwjdgus1'	<!-- #{userid} -->
+			, #{title}
 			, #{content}
 			, 'N'			<!-- #{deleteyn} -->
 			, NULL			<!-- #{deletetime} -->
@@ -46,10 +48,11 @@
 		UPDATE post
 		SET
 			regdate 	= SYSDATE
-			, cfile 	= #{cfile}
+			, cfile 	= #{photo}
+			, title 	= #{title}
 			, content 	= #{content}
 		WHERE
-			pnum = #{pnum}
+			cernum = #{cernum}
 	</update>
 	
 	<!-- 삭제 -->
@@ -66,7 +69,7 @@
 	
 	
 	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
-	<select id="selectCheckList" parameterType="Long" resultType="int">
+	<select id="selectCerList" parameterType="Long" resultType="int">
 		SELECT
 			<include refid="certificateColumns"/>
 		FROM 

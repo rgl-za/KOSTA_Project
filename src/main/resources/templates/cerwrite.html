@@ -8,7 +8,7 @@
 		<!-- ===============================================-->
 		<!-- form 시작	-->
 		<!-- ===============================================-->
-		<form class="container px-4 px-lg-5 mt-5" th:action="@{/cer/register.do}" th:object="${cer}" method="post"
+		<form class="container px-4 px-lg-5 mt-5" th:action="@{/cerregister.do}" th:object="${cer}" method="post"
 			enctype="multipart/form-data" onsubmit="return registerCer(this)">
 			<!--                      <form class="row g-4 mt-5" th:action="@{/register.do}" th:object="${post}" method="post" enctype="multipart/form-data">-->
 
@@ -16,11 +16,11 @@
 			<input type="hidden" th:if="*{cernum != null and cernum > 0}" th:field="*{cernum}" />
 
 
+
 			<!-- ===============================================-->
 			<!-- 	사진 정하는 부분 시작	-->
 			<!-- ===============================================-->
 			<!-- 썸네일 부분-->
-			<th:if>
 				<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
 					<div class="text-center">
 						<img class="card-img-top" th:if="*{cernum != null and cernum > 0}"
@@ -41,7 +41,25 @@
 
 
 				<!-- ===============================================-->
-				<!-- 	글 내용 정하는 부분 시작	-->
+				<!-- 	글 제목 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputTitle">title</label>
+						<input th:field="*{title}" class="form-control input-box form-voyage-control" id="inputTitle"
+							type="text" placeholder="제목"/>
+						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+								class="fas fa-map-marker-alt"></i></span>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	글 제목 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	글 내용	-->
 				<!-- ===============================================-->
 				<div class="col-sm-6 col-md-6 col-xl-5" style="width: 83%;">
 					<div class="input-group-icon">
@@ -53,8 +71,9 @@
 					</div>
 				</div>
 				<!-- ===============================================-->
-				<!-- 	글 내용 정하는 부분 끝	-->
+				<!-- 	/글 내용	-->
 				<!-- ===============================================-->
+
 
 
 				<!-- ===============================================-->
@@ -65,7 +84,7 @@
 				</div>
 				<div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
 					<button class="btn btn-secondary">
-						<a th:href="@{/cer/main.do}">메인으로 가기</a>
+						<a th:href="@{/cermain.do}">메인으로 가기</a>
 					</button>
 				</div>
 				<!-- ===============================================-->

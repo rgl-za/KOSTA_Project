@@ -25,6 +25,9 @@ public class CertificateDTO {
     /* 유저 아이디 */
     private String userId;
     
+    /* 인증 제목 */
+    private String title;
+    
     /* 인증 내용 */
     private String content;
     
