@@ -79,5 +79,54 @@
 		ORDER BY regdate DESC
 	</select>
 	
+	<insert id="insertCerFileList" parameterType="CerFileDTO">
+			INSERT INTO t_file
+			(
+				cernum,
+				originalfilename,
+				storedfilepath,
+				filesize,
+				creatorid,
+				createddatetime
+			)
+			VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.cernum},
+				#{item.originalFileName},
+				#{item.storedFilePath},
+				#{item.fileSize},
+				'admin',
+				SYSDATE
+			)
+		</foreach>
+	</insert>
+	
+	<select id="selectCerFileList" parameterType="int" resultType="CerDTO">
+			SELECT
+				fidx,
+				cernum,
+				originalfilename,
+				FORMAT(ROUND(file_size / 1024), 0) AS filesize
+			FROM
+				t_file
+			WHERE
+				cernum = #{cernum}
+				AND deletedyn = 'N'
+	</select>
+	
+	<select id="selectCerFileInformation" parameterType="map" resultType="CerDTO">
+			SELECT
+				originalfilename,
+				storedfilepath,
+				filesize
+			FROM
+				t_file
+			WHERE
+				fidx = #{fidx}
+				AND cernum = #{cernum}
+				AND deletedyn = 'N'
+	</select>
+	
 	
 </mapper>
