@@ -642,24 +642,29 @@
 												
 												*/
 									
-												var arr= new Array();
+												var arrAdd= new Array();
+												var arrId= new Array();
 												
 											    /*[# th:each="page : ${teamMemberList}"]*/
 											     
-											        var l =  "[( ${page.getAddress()} )]" ;
+											        var ad =  "[( ${page.getAddress()} )]" ;
 											        var id = /*[[${page.getUserid()}]]*/;
-											        arr.push(l);
+											        arrAdd.push(ad);
+											        arrId.push(id);
+											        
 											    /*[/]*/
 											    
-											    console.log("arr"+arr);
+											    console.log("arr"+arrAdd);
+											    console.log("arr"+arrId);
 			                                 
-			                              
-											
 												
 												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755','상중리 경기도 안성시 금광면'];
 												var nameList = ['jiwon1','jiwon2','jiwon3','jiwon4'];
 												
-												usersMarkers(addList,nameList);
+												console.log("addList"+addList);
+												
+												//usersMarkers(addList,nameList);
+												usersMarkers(arrAdd,arrId);
 												
 												//users 마커 : 주소 -> 위경도
 												function usersMarkers(addressList, nameList){
@@ -687,7 +692,7 @@
 													            const data = await addressSearch(addr);
 													            coords = new kakao.maps.LatLng(data.result[0].y, data.result[0].x);
 													            
-													            console.log(">>user coord>>"+coords);
+													            console.log(">>user coord>>"+coords);//여기까지는 들어옴
 													            //getAddressByLatLng(coords);
 													       
 													            var userP= {
@@ -980,6 +985,8 @@
 													    	 
 													    	//중심 마커 생성 => getAddressByLatLng 호출
 													    	markerPosition=new kakao.maps.LatLng( r.y, r.x);
+													    	
+													    	console.log("getMidPointByList>markerPosition: "+markerPosition);
 															getAddressByLatLng(markerPosition);
 															
 															alterMapCenter(markerPosition);//계산된 중심 좌표로 map Center변경

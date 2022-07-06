@@ -87,6 +87,9 @@ public class Polygon {
 		System.out.println(">>points>" + points);
 
 		while (true) {
+			
+			rsSize = points.size();
+			
 			if (rsSize <= 2) {
 				// 종료
 
