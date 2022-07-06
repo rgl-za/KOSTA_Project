@@ -9,7 +9,6 @@ public interface PostService {
 	// 게시글 등록, 수정
 	public boolean registerPost(PostDTO params); 
 
-	
 
 	// 게시글 상세 내용 불러오기
 	public PostDTO getPostDetail(Long pnum);
@@ -30,7 +29,6 @@ public interface PostService {
 	public boolean alterDealAdd(PostDTO params);
 	
 	// 게시글 사진 불러오기
-
 	
 	/*
 	 * //게시글 1개 불러오기(detail.html에서 사용) public PostDTO getPost(int pnum);
