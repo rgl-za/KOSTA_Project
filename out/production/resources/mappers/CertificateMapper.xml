@@ -8,21 +8,23 @@
 		, cfile
 		, regdate
 		, userid
+		, title
 		, content
 		, deleteyn
 		, deletetime
 	</sql>
 	
 	<!-- 구매한 상품 인증 작성 --> <!-- 테스트 성공 -->
-	<insert id="insertCer">
+	<insert id="insertCer" parameterType="CertificateDTO">
 		INSERT INTO certificate (
 			<include refid="certificateColumns"/>
 		) VALUES (
-			seq_certificate_no.nextval
-			, #{pnum}
+			seq_cernum_no.nextval
+			, 61			<!-- #{pnum} -->
 			, #{cfile}
 			, sysdate
-			, #{userid}
+			, 'munwjdgus1'	<!-- #{userid} -->
+			, #{title}
 			, #{content}
 			, 'N'			<!-- #{deleteyn} -->
 			, NULL			<!-- #{deletetime} -->
@@ -30,7 +32,7 @@
 	</insert>
 	
 	<!-- 글 상세 내용 -->
-	<select id="selectCerDetail" parameterType="long" resultType="CertificateDTO">
+	<select id="selectCerDetail" parameterType="CertificateDTO" resultType="CertificateDTO">
 		SELECT
 			<include refid="certificateColumns"/>
 		FROM
@@ -47,9 +49,10 @@
 		SET
 			regdate 	= SYSDATE
 			, cfile 	= #{cfile}
+			, title 	= #{title}
 			, content 	= #{content}
 		WHERE
-			pnum = #{pnum}
+			cernum = #{cernum}
 	</update>
 	
 	<!-- 삭제 -->
@@ -66,7 +69,7 @@
 	
 	
 	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
-	<select id="selectCheckList" parameterType="Long" resultType="int">
+	<select id="getCerList" parameterType="CertificateDTO" resultType="CertificateDTO">
 		SELECT
 			<include refid="certificateColumns"/>
 		FROM 

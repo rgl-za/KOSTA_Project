@@ -9,4 +9,5 @@ import java.util.List;
 public interface HeartMapper {
     public List<HeartDTO> selectHeartList(HeartDTO params);
     public void insertHeart(HeartDTO params);
+    public int checkHeart(int pnum);
 }
