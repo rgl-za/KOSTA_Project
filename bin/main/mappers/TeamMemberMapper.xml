@@ -25,5 +25,11 @@
 		FROM teammember
 		WHERE pnum = #{pnum}
 	</select>
+
+	<select id="checkTeamMember" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+		FROM teammember
+		WHERE userId = #{userId} AND pnum = #{pnum}
+	</select>
 	
 </mapper>
