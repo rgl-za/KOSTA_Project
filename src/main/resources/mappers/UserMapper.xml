@@ -13,6 +13,7 @@
 		, gender
 		, birth
 		, realaddress
+		, userno
 	</sql>
 
 
@@ -32,6 +33,7 @@
 		, #{gender}
 		, #{birth}
 		, #{realaddress}
+		, seq_users_no.nextval
 		)
 	</insert>
 

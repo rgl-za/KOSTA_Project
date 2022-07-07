@@ -33,4 +33,11 @@ public class TeamMemberServiceImpl implements TeamMemberService{
         int memberCount = teamMemberMapper.selectTeamMemberTotalCount(pnum);
         return memberCount;
     }
+
+    @Override
+    public int checkTeamMember(String userId, Long pnum){
+        int result = teamMemberMapper.checkTeamMember(userId, pnum);
+        System.out.println("result: " + result);
+        return result;
+    }
 }
