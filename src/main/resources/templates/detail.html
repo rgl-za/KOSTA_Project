@@ -1144,54 +1144,128 @@
 	<script th:inline="javascript">
 		/*<![CDATA[*/
 		function insertTeamMember(pnum, minpeople, dealName, money) {
-			if (confirm(dealName + " 공동구매에 참여하실건가요?")) {
-				var uri1 = /*[[ @{/team.do} ]]*/null;
-				var html = "";
-				html += '<form name="dataForm1" id="a" action="'+uri1+'" method="post">';
-				html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-				html += '<input type="hidden" name="minpeople" value="'+minpeople+'">';
-				html += '</form>';
-				var uri2 =  /*[[ @{/account.do} ]]*/null;
-				html += '<form name="dataForm2" id="b" action="'+uri2+'" method="post">';
-				html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-				html += '<input type="hidden" name="dealName" value="'+dealName+'" />';
-				html += '<input type="hidden" name="money" value="'+money+'" >';
-				html += '</form>';
-				$("body").append(html);
-				var formData = $("#a, #b").serializeArray();
-				console.log(formData);
-				$.ajax({
-					type: 'POST',
-					url: '/team.do',
-					data: {
-						pnum: formData[0]["value"],
-						minpeople: formData[1]["value"]
-					},
-					success: function (result){
-						console.log("ㅇㅇ");
-						document.location.href = document.location.href;
-					},
-					error: function (result){
-						console.log("ㅡㅡ");
+			confirm(dealName+ "공동구매에 참여하실건가요?");
+			// var userId = session.getAttribute("userDTO");
+			// var userId= sessionStroage.getItem('userId');
+			// var userId = "[[${session.userDTO}]]";
+			var userId = /*[[ ${session.userDTO.userid} ]]*/null;
+			console.log(userId);
+			$.ajax({
+				type: 'POST',
+				url: '/checkTeamMember',
+				dataType: 'json',
+				data: {
+					userId: userId,
+					pnum: pnum
+				},
+				success: function (result){
+					if(result >= 1){
+						alert("이미 참가하신 공동구매 입니다!");
+					} else {
+						var uri1 = /*[[ @{/team.do} ]]*/null;
+						var html = "";
+						html += '<form name="dataForm1" id="a" action="'+uri1+'" method="post">';
+						html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+						html += '<input type="hidden" name="minpeople" value="'+minpeople+'">';
+						html += '</form>';
+						var uri2 =  /*[[ @{/account.do} ]]*/null;
+						html += '<form name="dataForm2" id="b" action="'+uri2+'" method="post">';
+						html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+						html += '<input type="hidden" name="dealName" value="'+dealName+'" />';
+						html += '<input type="hidden" name="money" value="'+money+'" >';
+						html += '</form>';
+						$("body").append(html);
+						var formData = $("#a, #b").serializeArray();
+						console.log(formData);
+						$.ajax({
+							type: 'POST',
+							url: '/team.do',
+							data: {
+								pnum: formData[0]["value"],
+								minpeople: formData[1]["value"]
+							},
+							success: function (result){
+								console.log("ㅇㅇ");
+								// console.log(formData);
+								document.location.href = document.location.href;
+								console.log
+							},
+							error: function (result){
+								console.log("ㅡㅡ");
+							}
+						});
+						$.ajax({
+							type: 'POST',
+							url: '/account.do',
+							data: {
+								pnum: formData[2]["value"],
+								dealName: formData[3]["value"],
+								money: formData[4]["value"]
+							},
+							success: function (result){
+								console.log("ㅇㅇ2");
+								// console.log(formData);
+								document.location.href = document.location.href;
+							},
+							error: function (result){
+								console.log("ㅡㅡ2");
+							}
+						})
 					}
-				});
-				$.ajax({
-					type: 'POST',
-					url: '/account.do',
-					data: {
-						pnum: formData[2]["value"],
-						dealName: formData[3]["value"],
-						money: formData[4]["value"]
-					},
-					success: function (result){
-						console.log("ㅇㅇ2");
-						document.location.href = document.location.href;
-					},
-					error: function (result){
-						console.log("ㅡㅡ2");
-					}
-				})
-			}
+				}
+			})
+
+			// if (confirm(dealName + " 공동구매에 참여하실건가요?")) {
+			// 	var uri1 = /*[[ @{/team.do} ]]*/null;
+			// 	var html = "";
+			// 	html += '<form name="dataForm1" id="a" action="'+uri1+'" method="post">';
+			// 	html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+			// 	html += '<input type="hidden" name="minpeople" value="'+minpeople+'">';
+			// 	html += '</form>';
+			// 	var uri2 =  /*[[ @{/account.do} ]]*/null;
+			// 	html += '<form name="dataForm2" id="b" action="'+uri2+'" method="post">';
+			// 	html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+			// 	html += '<input type="hidden" name="dealName" value="'+dealName+'" />';
+			// 	html += '<input type="hidden" name="money" value="'+money+'" >';
+			// 	html += '</form>';
+			// 	$("body").append(html);
+			// 	var formData = $("#a, #b").serializeArray();
+			// 	console.log(formData);
+			// 	$.ajax({
+			// 		type: 'POST',
+			// 		url: '/team.do',
+			// 		data: {
+			// 			pnum: formData[0]["value"],
+			// 			minpeople: formData[1]["value"]
+			// 		},
+			// 		success: function (result){
+			// 			console.log("ㅇㅇ");
+			// 			// console.log(formData);
+			// 			document.location.href = document.location.href;
+			// 			console.log
+			// 		},
+			// 		error: function (result){
+			// 			console.log("ㅡㅡ");
+			// 		}
+			// 	});
+			// 	$.ajax({
+			// 		type: 'POST',
+			// 		url: '/account.do',
+			// 		data: {
+			// 			pnum: formData[2]["value"],
+			// 			dealName: formData[3]["value"],
+			// 			money: formData[4]["value"]
+			// 		},
+			// 		success: function (result){
+			// 			console.log("ㅇㅇ2");
+			// 			// console.log(formData);
+			// 			document.location.href = document.location.href;
+			// 		},
+			// 		error: function (result){
+			// 			console.log("ㅡㅡ2");
+			// 		}
+			// 	})
+			// }
 		}
 		function convertStringToDate(endDate) {
 			let dateComponents = endDate.split(' ');

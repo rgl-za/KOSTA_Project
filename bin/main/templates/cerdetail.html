@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<th:block layout:fragment="content" th:object="${postDTO}">
+	<!--  <div th:text="${ @point.getX() }"></div>-->
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		</div>
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<h1 class="m-0 font-weight-bold text-gray-900" th:text="${cerDTO.title}">거래명</h1>
+			<!-- 수정, 삭제 -->
+			<div class="float-right">
+				<a th:href="@{/cermain.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
+				<a th:href="@{/cerwrite.do( pnum=${cerDTO.cernum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deleteCer([[ ${cerDTO.cernum} ]])">삭제하기</button>
+			</div>
+		</div>
+		<div class="row">
+			<!-- 이미지와 링크 -->
+			<div class="col-xl-4 col-lg-5">
+				<div class="card-detail-top shadow mb-4">
+					<!-- Card Body -->
+					<div class="card-body">
+						<div class="represent_img">
+							<img class="img-item" th:src="|@{/imagePath/}${cerDTO.getCfile()}|">
+						</div>
+						<!-- 글 내용 -->
+						<div class="">
+							<div class="card-detail-top mb-4">
+								<!-- Card Body -->
+								<div class="card-body">
+									<p>
+										<h7 class="m-0 font-weight-bold text-gray-900">
+										<br><p th:text="${cerDTO.content}"></p></h7>
+										<br>
+									</p>
+									<div class="margin-bottom">
+									</div>
+									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
+									<text th:text="${cerDTO.regdate}"}></text>
+<!--									<text th:text="${#temporals.format(cerDTO.getRegdate(), 'yyyy-MM-dd HH:mm')}"></text>-->
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 거래 정보 -->
+		</div>
+	</div>
+	<!-- /.container-fluid -->
+</th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		// 삭제 버튼을 위해서 만들었습니다.
+		/*<![CDATA[*/
+		
+		function deleteCer(cernum) {
+			if (confirm(cernum + "번 게시글을 삭제할까요?")) {
+				var uri = /*[[ @{/cerdelete.do} ]]*/null;
+				var html = "";
+				html += '<form name="dataForm" action="'+uri+'" method="post">';
+				html += '<input type="hidden" name="pnum" value="'+cernum+'" />';
+				html += '</form>';
+				$("body").append(html);
+				document.dataForm.submit();
+			}
+		}
+		/*]]>*/
+
+	</script>
+  </th:block>
+  
+</html>
