@@ -39,6 +39,7 @@ public class UserService {
 	
 	//회원가입
 	public void joinUser(UserDTO userDTO) {
+		System.out.println("ddd???/");
         userMapper.saveUser(userDTO);
 	}
 	

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.RecommendMapper">
+
+	<select id="selectDataSet" resultType="" parameterType="">
+		SELECT c2.WRITER, p.CATNUM, count(c2.COMMENTS)*1.0
+		FROM CATEGORY c , POST p , COMMENTS c2
+		WHERE c.CATNUM = p.CATNUM  AND c2.PNUM = p.PNUM
+		GROUP BY c2.WRITER, p.CATNUM
+	</select>
+
+</mapper>
