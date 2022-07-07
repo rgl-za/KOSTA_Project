@@ -3,110 +3,53 @@
 	layout:decorate="layouts/basic_write">
 
 <th:block layout:fragment="content">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<div class="container-fluid">
-		<!--	<body>-->
-		<!-- HEADER -->
-		<!-- NAVIGATION -->
-		<nav id="navigation">
-			<!-- container -->
-			<div class="container">
-				<!-- responsive-nav -->
 
-				<!-- /responsive-nav -->
-			</div>
-			<!-- /container -->
-		</nav>
-		<!-- /NAVIGATION -->
+	<!--	<body>-->
+	<!-- HEADER -->
+	<!-- NAVIGATION -->
+	<nav id="navigation">
+		<!-- container -->
+		<div class="container">
+			<!-- responsive-nav -->
 
-		<!-- BREADCRUMB -->
-		<div id="breadcrumb" class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<h3 class="aside-title">진행 중인 거래</h3>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
+			<!-- /responsive-nav -->
 		</div>
-		<!-- /BREADCRUMB -->
+		<!-- /container -->
+	</nav>
+	<!-- /NAVIGATION -->
 
-		<!-- SECTION -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<!-- ASIDE -->
-					<div id="aside" class="col-md-3">
-						<!-- aside Widget -->
-						<div class="aside">
-							<h3 class="aside-title">Categories</h3>
-							<div class="checkbox-filter">
+	<!-- BREADCRUMB -->
+	<div id="breadcrumb" class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="aside-title">진행 중인 거래</h3>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /BREADCRUMB -->
 
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-1">
-									<label for="category-1">
-										<span></span>
-										Laptops
-										<small>(120)</small>
-									</label>
-								</div>
+	<!-- SECTION -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- ASIDE -->
 
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-2">
-									<label for="category-2">
-										<span></span>
-										Smartphones
-										<small>(740)</small>
-									</label>
-								</div>
 
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-3">
-									<label for="category-3">
-										<span></span>
-										Cameras
-										<small>(1450)</small>
-									</label>
-								</div>
+				<div id="aside" class="col-md-3">
+					<!-- aside Widget -->
 
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-4">
-									<label for="category-4">
-										<span></span>
-										Accessories
-										<small>(578)</small>
-									</label>
-								</div>
+					<!-- /aside Widget -->
 
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-5">
-									<label for="category-5">
-										<span></span>
-										Laptops
-										<small>(120)</small>
-									</label>
-								</div>
-
-								<div class="input-checkbox">
-									<input type="checkbox" id="category-6">
-									<label for="category-6">
-										<span></span>
-										Smartphones
-										<small>(740)</small>
-									</label>
-								</div>
-							</div>
-						</div>
-						<!-- /aside Widget -->
-
-						<!-- aside Widget -->
-						<div class="aside">
+					<!-- aside Widget -->
+					<div class="aside">
 							<h3 class="aside-title">Top selling</h3>
 							<div class="product-widget">
 								<div class="product-img">
@@ -141,86 +84,151 @@
 								</div>
 							</div>
 						</div>
-						<!-- /aside Widget -->
-					</div>
-					<!-- /ASIDE -->
+					<!-- /aside Widget -->
+				</div>
+				<!-- /ASIDE -->
 
-					<!-- STORE -->
-					<!-- STORE -->
-					<div id="store" class="col-md-9">
-						<!-- store top filter -->
-						<div class="store-filter clearfix">
-							<div class="store-sort" style="display: flex; flex-direction:row-reverse">
-								<button
-									class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
-									type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false">최신순
-								</button>
-								<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="/sortMain/latest">최신순</a>
-									<a class="dropdown-item" th:href="|@{/sortMain/}popular|">인기순</a>
-									<a class="dropdown-item" th:href="|@{/sortMain/}latest|">거리순</a>
-								</div>
+
+				<!-- STORE -->
+				<!-- STORE -->
+				<div id="store" class="col-md-9">
+					<!-- store top filter -->
+					<div class="store-filter clearfix">
+						<div class="store-sort" style="display: flex; flex-direction:row-reverse">
+							<button class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
+								type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">최신순
+							</button>
+							<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="/sortMain/latest">최신순</a>
+								<a class="dropdown-item" th:href="|@{/sortMain/}popular|">인기순</a>
+								<a class="dropdown-item" th:href="|@{/sortMain/}latest|">거리순</a>
 							</div>
+						</div>
 
-							<!--<ul class="store-grid">
+						<!--<ul class="store-grid">
 							<li class="active"><i class="fa fa-th"></i></li>
 							<li><a href="#"><i class="fa fa-th-list"></i></a></li>
 						</ul>-->
-						</div>
-						<!-- /store top filter -->
+					</div>
+					<!-- /store top filter -->
 
-						<!-- store products -->
-						<section class="py-5">
-							<div class="row">
-								<!-- product -->
-								<div class="col-md-4 col-xs-6">
-									<div class="product" th:each="postList,i : ${postList}">
-										<div class="product-img" id="photo" name="photo">
-											<img th:src="|@{/imagePath/}${postList.getPhoto()}|" alt="">
-											<div class="product-label">
-												<span class="sale">업로드 날짜</span>
-												<span class="new">NEW</span>
-											</div>
-										</div>
-										<!-- Product details-->
-										<div class="product-body">
-											<!-- Product category -->
-											<p class="product-category">Category</p>
-											<!-- Product title-->
-											<h3 class="product-name" th:text="${postList.title}"></h3>
-											<!-- Product price -->
-											<h4 class="product-price">$980.00 <del
-													class="product-old-price">$990.00</del>
-											</h4>
-											<div class="product-rating">
-												<!-- Product price-->
-												<input type="hidden" id="enddate" th:value="${#temporals.format(postList.enddate, 'yyyy-MM-dd HH:mm:ss')}">
-												<img src="img/clock.png"><span th:id="|timer*{i.index}|" style="font-size:15px; color: red;"></span>
-											</div>
-											<div class="product-btns">
-												<button class="add-to-wishlist"
-													th:onclick="insertHeart( [[${postList.pnum}]], [[${postList.title}]] )">
-													<i class="fa fa-heart-o"></i><span class="tooltipp">
-														add to wishlist</span></button>
-											</div>
-										</div>
-										<div class="add-to-cart">
-											<button th:href="@{/detail.do( pnum=${postList.pnum} )}"
-												class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
-												입장하기</button>
-										</div>
+					<!-- store products -->
+					<div class="row">
+
+
+						<!-- product -->
+
+						<!-- product -->
+						<div class="col-md-4 col-xs-6" th:each="postList,i : ${postList}">
+							<div class="product">
+								<div class="product-img">
+									<!-- 사진 넣는 곳 -->
+									<!--<img src="./img/product02.png" alt="">-->
+									
+									<img th:src="|@{/imagePath/}${postList.getPhoto()}|" alt="" style="width: 200px; height:200px">
+										
+
+									<div class="product-label">
+										<span class="new">NEW</span>
 									</div>
 								</div>
-								<!-- /product -->
-
-
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name" th:text="${postList.title}"></h3>
+									<div class="dealing" th:id="|deal*{i.index}|"
+										style="margin-top:30px; color: red;">
+										<input type="hidden" id="enddate"
+											th:value="${#temporals.format(postList.enddate, 'yyyy-MM-dd HH:mm:ss')}">
+										<img src="img/clock.png" style="width:25px; margin-right:7px;"><span
+											th:id="|timer*{i.index}|" style="font-size:15px; color: red;"></span>
+									</div>
+									<div class="product-rating">
+									</div>
+									<div class="product-btns">
+										<button class="add-to-wishlist" th:onclick="insertHeart( [[${postList.pnum}]], [[${postList.title}]] )"><i class="fa fa-heart-o"></i><span
+												class="tooltipp">add to wishlist</span></button>
+										
+									</div>
+								</div>
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><a th:href="@{/detail.do( pnum=${postList.pnum} )}"
+                                   ><i class="fa fa-shopping-cart"></i> 입장하기 </button></a>
+								</div>
 							</div>
-							</section>
-							<!-- /store products -->
+						</div>
+						<!-- /product -->
+						<!-- product -->
+						<!--<div class="col-md-4 col-xs-6">
+							<div class="product">
+								<div class="product-img">
+									<img src="./img/product02.png" alt="">
+									<div class="product-label">
+										<span class="new">NEW</span>
+									</div>
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									<div class="product-rating">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-o"></i>
+									</div>
+									<div class="product-btns">
+										<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												class="tooltipp">add to wishlist</span></button>
+										<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+												class="tooltipp">add to compare</span></button>
+										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+												view</span></button>
+									</div>
+								</div>
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+										cart</button>
+								</div>
+							</div>
+						</div>-->
+						<!-- /product -->
 
-							<!-- store bottom filter -->
-							<!--<div class="store-filter clearfix">
+						<!-- product -->
+						<!--<div class="col-md-4 col-xs-6">
+							<div class="product">
+								<div class="product-img">
+									<img src="./img/product04.png" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									<div class="product-rating">
+									</div>
+									<div class="product-btns">
+										<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												class="tooltipp">add to wishlist</span></button>
+										<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+												class="tooltipp">add to compare</span></button>
+										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+												view</span></button>
+									</div>
+								</div>
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+										cart</button>
+								</div>
+							</div>
+						</div>-->
+						<!-- /product -->
+
+
+						<!-- /store products -->
+
+						<!-- store bottom filter -->
+						<!--<div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
 							<ul class="store-pagination">
 								<li class="active">1</li>
@@ -230,15 +238,17 @@
 								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
 							</ul>
 						</div>-->
-							<!-- /store bottom filter -->
+						<!-- /store bottom filter -->
 					</div>
+
+
 					<!-- /STORE -->
 				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
-		
+
 		<!-- /SECTION -->
 
 		<!-- NEWSLETTER -->
@@ -249,7 +259,6 @@
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
-	</div>
 </th:block>
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
@@ -345,15 +354,6 @@
         /*]]>*/
 	</script>
 
-	<!-- jQuery Plugins -->
-	<!--		<script src="store/js/jquery.min.js"></script>
-		<script src="store/js/bootstrap.min.js"></script>
-		<script src="store/js/slick.min.js"></script>
-		<script src="store/js/nouislider.min.js"></script>
-		<script src="store/js/jquery.zoom.min.js"></script>
-		<script src="store/js/main.js"></script>-->
-
-	<!--	</body>-->
 </th:block>
 
 </html>
