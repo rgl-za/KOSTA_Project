@@ -93,14 +93,10 @@ public class Polygon {
 			if (rsSize <= 2) {
 				// 종료
 
-				System.out.println(">>>>>>>>>>rsSize>>>>>>>>>>>>>>>>>>>>>" + rsSize);// 2또는 1이 나오겠지?
+				System.out.println(">>>>>rsSize>>>" + rsSize);
 
 				// 점이 2개라면 거리계산 또 해야함.
 				if (rsSize == 2) {
-
-					// test
-					System.out.println(">>>>찐 최종 이전 1벙 좌표>>" + points.get(0).x + "," + points.get(0).y);
-					System.out.println(">>>>찐 최종 이전 2벙 좌표>>" + points.get(1).x + "," + points.get(1).y);
 
 					// 점 2개 중간 지점
 					double midx = points.get(0).x + (points.get(1).x - points.get(0).x) / 2;
@@ -108,11 +104,15 @@ public class Polygon {
 					// Point midBy2Points = new Point(midx,midy);
 					// System.out.println(">>>>찐 최종>>"+midBy2Points.x+","+midBy2Points.y);
 
+					System.out.println(">>>점이2개일때result>>>"+midx+","+midy);
+					
 					resultPoint.setX(midx);
 					resultPoint.setY(midy);
+					
+					
 
 				} else if (rsSize == 1) {
-					System.out.println(">>>>찐 최종>>" + points.get(0).x + "," + points.get(0).y);
+					System.out.println(">>>>점이1개일때result>>>" + points.get(0).x + "," + points.get(0).y);
 					resultPoint.setX(points.get(0).x);
 					resultPoint.setY(points.get(0).y);
 				}
@@ -126,6 +126,7 @@ public class Polygon {
 
 				System.out.println("pointToMidPoint를 거친 points" + points.size());
 
+				//이 부분 없어도 작동할까?
 				rsSize = points.size();
 				System.out.println("resultsize 남은 점의 갯수" + rsSize);
 
@@ -144,9 +145,6 @@ public class Polygon {
 		List<Point> basketPoints = new ArrayList<>();
 		List<Point> resultPoints = new ArrayList<>();
 
-		// basketPoints=pointList;
-
-		// System.out.println(">>>>>>final>>>>");
 		// System.out.println(trianlgeList);//ok
 		// trianlge 리스트에서 각각의 triangle에 getOnePoint()로 나온 점들로 또다른 리스트를 만든다.
 		for (int i = 0; i < trianlgeList.size(); i++) {
@@ -161,8 +159,7 @@ public class Polygon {
 		return resultPoints;
 	}
 
-	// 수정전. 포인트 리스트 생성하고 삼각형리스트로 반환
-	// 수정 후
+
 	// 초기설정, 정렬되지 않은 point리스트를 받아서 다각형리스트로 변환하고 삼각형리스트로 반환.
 	public static List<Triangle> init(List<Point> pointList) {
 		// int number =8;//총 숫자의 갯수
