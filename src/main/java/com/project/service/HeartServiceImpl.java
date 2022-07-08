@@ -25,4 +25,11 @@ public class HeartServiceImpl implements HeartService{
         heartList = heartMapper.selectHeartList(params);
         return heartList;
     }
+
+    @Override
+    public int checkHeart (int pnum) {
+        int result = heartMapper.checkHeart(pnum);
+        System.out.println("pnum: "+ pnum);
+        return result;
+    }
 }

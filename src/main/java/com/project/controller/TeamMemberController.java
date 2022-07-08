@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +23,13 @@ public class TeamMemberController {
     private TeamMemberService teamMemberService;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @PostMapping("/checkTeamMember")
+    @ResponseBody
+    private int checkTeamMember(@RequestParam(value = "userId") String userId, @RequestParam(value = "pnum") Long pnum){
+        int result = teamMemberService.checkTeamMember(userId, pnum);
+        return result;
+    }
 
     @PostMapping(value = "/team.do")
     private String insertTeamMember(@RequestParam(value = "pnum", required = false) Long pnum, TeamMemberDTO params, HttpSession session) {
