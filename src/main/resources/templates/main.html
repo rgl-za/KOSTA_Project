@@ -149,13 +149,13 @@
             //console.log("els: " + els);
             for (var i = 0; i < els.length; i++) {
                 var endDate = convertStringToDate($(els[i]).val());
-                console.log("endDate: ", endDate);
+                //console.log("endDate: ", endDate);
 
                 var startDatetime = new Date();
-                console.log("startDatetime: ", startDatetime);
+                //console.log("startDatetime: ", startDatetime);
 
                 var RemainDate = endDate - startDatetime;
-                console.log("RemainDate: ", RemainDate);
+                //console.log("RemainDate: ", RemainDate);
 
                 var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
                 var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -212,19 +212,12 @@
         
         function setSortoption(option){
         	var sortopt = option;
-        	console.log("sortopt: " + sortopt);
+        	//console.log("sortopt: " + sortopt);
         	
         	document.getElementById("sortoption").value = sortopt;
         	document.getElementById("searchForm").submit();
-        	
-        	//var sortNameId = document.getElementById("cate");
-        	
-        	//var sortName = sortNameId.options[sortNameId.selectedIndex].value;
-        	//console.log("sortName: " + sortName);
-        	
-        	//var cateName = cateSelect.options[cateSelect.selectedIndex].text;
-        	//console.log("itemName: " + itemName);
         }
+        
         /*]]>*/
     </script>
 
