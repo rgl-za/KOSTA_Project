@@ -25,8 +25,8 @@
 	</sql>
 	
 
-	<!-- 수정 필요 (문정현) -->
-	<!-- <insert id="insertPost" parameterType="PostDTO">
+	
+	<insert id="insertPost" parameterType="PostDTO">
 		<![CDATA[
 			insert into post (
 		]]>
@@ -59,9 +59,10 @@
 			 SELECT seq_post_no.nextval from dual
 		]]>
 	  </selectKey>
-	</insert> -->
+	</insert> 
 	
-	<insert id="insertPost" parameterType="PostDTO">
+
+	<insert id="insertPost2" parameterType="PostDTO">
 		INSERT INTO POST (
 			<include refid="postColumns"/>
 		) VALUES (
@@ -86,6 +87,7 @@
 			, #{numbers}
 		)
 	</insert>
+	
 	
 	<!-- 수정 필요 (문정현)-->
 	<update id="updatePost" parameterType="PostDTO">
