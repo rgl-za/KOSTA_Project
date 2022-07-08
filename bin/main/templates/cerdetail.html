@@ -3,7 +3,7 @@
 <html lang="ko" xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layouts/basic">
-<th:block layout:fragment="content" th:object="${postDTO}">
+<th:block layout:fragment="content" th:object="${cerDTO}">
 	<!--  <div th:text="${ @point.getX() }"></div>-->
 	<div class="container-fluid">
 		<!-- Page Heading -->
@@ -64,7 +64,7 @@
 				var uri = /*[[ @{/cerdelete.do} ]]*/null;
 				var html = "";
 				html += '<form name="dataForm" action="'+uri+'" method="post">';
-				html += '<input type="hidden" name="pnum" value="'+cernum+'" />';
+				html += '<input type="hidden" name="cernum" value="'+cernum+'" />';
 				html += '</form>';
 				$("body").append(html);
 				document.dataForm.submit();
