@@ -141,6 +141,11 @@ public class CertificateController extends UiUtils {
 		logger.info("cernum"+cernum);
 		return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/cermain.do", Method.GET, null, model);
 	}
+	
+	@GetMapping(value = "/error.do")
+	public String openErrorList() {
 
+		return "/error";
+	}
 
 }
