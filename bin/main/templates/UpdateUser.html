@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko" xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layouts/basic">
@@ -55,6 +55,8 @@
 								<h1 class="h4 text-gray-900 mb-4">회원정보 수정 FORM</h1>
 							</div>
 							<form class="user" action="/user/UpdateUser" method="post">
+							
+							<input type = "hidden" class="form-control" value="${userDTO.userid}">
 
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
