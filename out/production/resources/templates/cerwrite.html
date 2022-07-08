@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<!--	layout:decorate="layouts/basic">-->
+
+<th:block layout:fragment="content">
+	<div class="container-fluid">
+		<!-- ===============================================-->
+		<!-- form 시작	-->
+		<!-- ===============================================-->
+		<form class="container px-4 px-lg-5 mt-5" th:action="@{/cerregister.do}" th:object="${cer}" method="post"
+			enctype="multipart/form-data" onsubmit="return registerCer(this)">
+			<!--                      <form class="row g-4 mt-5" th:action="@{/register.do}" th:object="${post}" method="post" enctype="multipart/form-data">-->
+
+			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
+			<input type="hidden" th:if="*{cernum != null and cernum > 0}" th:field="*{cernum}" />
+
+
+
+			<!-- ===============================================-->
+			<!-- 	사진 정하는 부분 시작	-->
+			<!-- ===============================================-->
+			<!-- 썸네일 부분-->
+				<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
+					<div class="text-center">
+						<img class="card-img-top" th:if="*{cernum != null and cernum > 0}" th:src="|@{/imagePath/}${cer.getCfile()}|">
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
+					<div class="input-group-icon">
+						<input class="form-control form-control-user" type="file" multiple="multiple" name="file" id="file_0" onchange="setDetailImage(event);">
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	사진 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	글 제목 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputTitle">title</label>
+						<input th:field="*{title}" class="form-control input-box form-voyage-control" id="inputTitle"
+							type="text" placeholder="제목"/>
+						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+								class="fas fa-map-marker-alt"></i></span>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	글 제목 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	글 내용	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5" style="width: 83%;">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputContent">content</label>
+						<textarea th:field="*{content}" class="form-control" placeholder="내용을 입력해 주세요."></textarea>
+						<!--th:field="*{content}"-->
+						<!-- textarea 옆에 붙여야해용 -->
+						<!--<span class="nav-link-icon text-800 fs1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>-->
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	/글 내용	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	작성하기, 메인으로 가기 시작	-->
+				<!-- ===============================================-->
+				<div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+					<button class="btn btn-secondary" type="submit">작성하기</button>
+				</div>
+				<div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+					<button class="btn btn-secondary">
+						<a th:href="@{/cermain.do}">메인으로 가기</a>
+					</button>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	작성하기, 메인으로 가기 끝	-->
+				<!-- ===============================================-->
+		</form>
+	</div>
+	<!-- ===============================================-->
+	<!-- form 끝	-->
+	<!-- ===============================================-->
+</th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		function setDetailImage(event) {
+			for (var image of event.target.files) {
+				var reader = new FileReader();
+
+				reader.onload = function (event) {
+					var img = document.createElement("img");
+					img.setAttribute("src", event.target.result);
+					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#images_container").appendChild(img);
+				};
+
+				console.log(image);
+				reader.readAsDataURL(image);
+			}
+		}
+	</script>
+</th:block>
+
+</html>

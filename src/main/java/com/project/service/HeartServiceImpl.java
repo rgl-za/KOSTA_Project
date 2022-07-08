@@ -1,12 +1,13 @@
 package com.project.service;
 
-import com.project.domain.HeartDTO;
-import com.project.mapper.HeartMapper;
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
+import com.project.domain.HeartDTO;
+import com.project.mapper.HeartMapper;
 
 @Service
 public class HeartServiceImpl implements HeartService{
@@ -23,5 +24,12 @@ public class HeartServiceImpl implements HeartService{
         List<HeartDTO> heartList = Collections.emptyList();
         heartList = heartMapper.selectHeartList(params);
         return heartList;
+    }
+
+    @Override
+    public int checkHeart (int pnum) {
+        int result = heartMapper.checkHeart(pnum);
+        System.out.println("pnum: "+ pnum);
+        return result;
     }
 }

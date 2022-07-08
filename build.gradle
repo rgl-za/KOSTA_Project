@@ -19,10 +19,6 @@ repositories {
 }
 
 dependencies {
-// 문정현이 추가한 부분이에요
-//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.12'
-// 끝
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
@@ -53,15 +49,11 @@ dependencies {
 	implementation 'commons-io:commons-io:2.11.0'
 	implementation 'commons-fileupload:commons-fileupload:1.4'
 	
-	//함석민 추가 부분
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-	testImplementation 'org.springframework.security:spring-security-test'
-	
+	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'	
 	
 	compileOnly 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
-	
-	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
+
+	implementation "org.springframework.boot:spring-boot-starter-quartz"
 }
 
 tasks.named('test') {

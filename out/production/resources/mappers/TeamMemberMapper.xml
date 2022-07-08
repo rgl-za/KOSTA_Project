@@ -12,13 +12,19 @@
 		INSERT INTO teammember(memberNum, pnum, userId)
 			VALUES ( seq_member_no.nextval
 			   		, #{pnum}
-			   		, 'test')
+			   		, #{userId})
 	</insert>
 
 	<select id="selectTeamMemberTotalCount" parameterType="Long" resultType="int">
 		SELECT COUNT(*)
 		FROM teammember
 		WHERE pnum = #{pnum}
+	</select>
+
+	<select id="checkTeamMember" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+		FROM teammember
+		WHERE userId = #{userId} AND pnum = #{pnum}
 	</select>
 	
 </mapper>

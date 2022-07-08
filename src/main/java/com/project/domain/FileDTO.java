@@ -4,11 +4,17 @@ import lombok.Data;
 
 @Data
 public class FileDTO {
+	
+	  private Long fnum; private Long pnum;
+	 
+
 	private String orgName;
 	private String exName;
+
 	private String saveName;
 	private String filePath;
 	private long fileSize;
+	
 	
 	public FileDTO(String orgName, String exName, String saveName, String filePath, long fileSize) {
 		super();
@@ -19,4 +25,5 @@ public class FileDTO {
 		this.fileSize = fileSize;
 	}
 
+	
 }

@@ -1,7 +1,6 @@
 package com.project.domain;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -67,7 +66,7 @@ public class PostDTO {
 	
 	// 물품 개수
 	private Long numbers;
-
+	
 
 
 }

@@ -13,14 +13,15 @@
 		, gender
 		, birth
 		, realaddress
+		, userno
 	</sql>
 
 
 
-	 <insert id="saveUser" parameterType="UserDTO">
+	<insert id="saveUser" parameterType="UserDTO">
 		INSERT INTO USERS (
 		<include refid="userColumns" />
-		) VALUES 
+		) VALUES
 		(
 		#{userid}
 		, #{username}
@@ -32,23 +33,26 @@
 		, #{gender}
 		, #{birth}
 		, #{realaddress}
+		, seq_users_no.nextval
 		)
-	</insert> 
-	
-	<select id = "overlappedID" parameterType= "String" resultType="int">
-	select count(userid)
-	from users
-	where userid = #{userid}
-	</select>
-	
-	<select id="memberLogin" parameterType="String" resultType="UserDTO">
-		select *
+	</insert>
+
+	<select id="overlappedID" parameterType="String" resultType="int">
+		select count(userid)
 		from users
 		where userid = #{userid}
-		</select>
-		
-		<update id="UserUpdate" parameterType ="UserDTO">
-		update users 
+	</select>
+
+	<select id="memberLogin" parameterType="UserDTO"
+		resultType="UserDTO">
+		select userid, password
+		from users
+		where userid = #{userid}
+		and password = #{password}
+	</select>
+
+	<update id="UserUpdate" parameterType="UserDTO">
+		update users
 		set
 		username = #{username},
 		password = #{password},
@@ -58,9 +62,9 @@
 		nickname = #{nickname},
 		realaddress = #{realaddress}
 		where userid = #{userid}
-		</update>
-	
-	
-	
+	</update>
 
-	</mapper>
+
+
+
+</mapper>

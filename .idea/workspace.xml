@@ -5,24 +5,177 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/controller/MapController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/map/Point.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/map/Polygon.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/main/com/project/map/Triangle.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/MapController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/map/Point.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/map/Polygon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/project/map/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/domain/PostDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/project/service/PostServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/ProjectApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/ProjectApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/configuration/DBConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/configuration/DBConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/configuration/DateTimeFormatConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/configuration/MvcConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/configuration/MvcConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/constant/Method.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/constant/Method.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/BoardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/CommentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/DateController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/DealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/DealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/GetController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/CommentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/CommentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/CommonDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/CommonDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/DealHistoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/DealHistoryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/FileDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/FileDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/GetModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/LatLng.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/LatLng.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/PostDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/PostFileDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/PostFileRequestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/PostFileResponseDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/UploadResultDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/UploadResultDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/UserAccountDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/domain/UserAccountDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/entity/PostFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/exception/FileException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/interceptor/LoggerInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/interceptor/LoggerInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/CommentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/CommentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/DealMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/DealMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/FileMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/FileMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/PostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/mapper/PostMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/service/CommentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/service/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/service/CommentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/service/DealService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/service/DealService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/service/DealServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/service/DealServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/project/util/FileUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/project/util/FileUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/mappers/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mappers/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/mappers/DealMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mappers/DealMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/mappers/FileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mappers/FileMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/sb-admin-2.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/sb-admin-2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/css/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/css/font-awesome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/animated.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/animated.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/bordered-pulled.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/bordered-pulled.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/core.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/core.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/fixed-width.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/fixed-width.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/font-awesome.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/font-awesome.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/icons.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/icons.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/larger.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/larger.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/list.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/list.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/mixins.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/mixins.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/path.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/path.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/rotated-flipped.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/rotated-flipped.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/screen-reader.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/screen-reader.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/stacked.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/stacked.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/variables.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/less/variables.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_animated.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_animated.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_bordered-pulled.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_bordered-pulled.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_core.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_core.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_fixed-width.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_fixed-width.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_icons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_icons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_larger.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_larger.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_list.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_path.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_path.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_rotated-flipped.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_rotated-flipped.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_screen-reader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_screen-reader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_stacked.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_stacked.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/font-awesome.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/font-awesome/scss/font-awesome.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap-theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap-theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap-theme.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap-theme.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/js/npm.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/bootstrap/js/npm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/common/moment.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/common/moment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/scripts/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/scripts/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/scripts/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/scripts/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/scripts/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/vendor/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/AlarmTimer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/TestFileUpload.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/breakdown.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/body.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/fragments/body.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/fragments/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/fragments/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/fragments/topbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/pick.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/pick.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/write_test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/CertificateController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/HeartController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/HeartController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/TeamMemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/TeamMemberController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/CertificateDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/CertificateDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostFileDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/mapper/CertificateMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/mapper/CertificateMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/mapper/HeartMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/mapper/HeartMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/mapper/PostMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/mapper/PostMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/mapper/TeamMemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/mapper/TeamMemberMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/CertificateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/CertificateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/CertificateServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/CertificateServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/FileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/FileServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/HeartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/HeartService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/HeartServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/HeartServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/PostServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/TeamMemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/TeamMemberService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/TeamMemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/TeamMemberServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/CertificateMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/CertificateMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/HeartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/HeartMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/RecommendMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/TeamMemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/TeamMemberMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/cerwrite.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/cerwrite.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/asidebar_write.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/fragments/asidebar_write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/pick.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/pick.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/storere.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/CertificateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/CertificateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/HeartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/HeartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/TeamMemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/TeamMemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/HeartMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/HeartMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/mapper/TeamMemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/mapper/TeamMemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/HeartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/HeartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/HeartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/HeartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/service/TeamMemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/HeartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/HeartMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/RecommendMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/TeamMemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/TeamMemberMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/asidebar_write.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/asidebar_write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pick.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pick.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,12 +190,26 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="project" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="project" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -114,6 +281,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ProjectApplication">
+    <configuration name="KOSTA_Project [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ProjectApplicationTests.ModelAttribute의_LocalDate는_변환된다" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project.test" />
       <extension name="coverage">
@@ -153,9 +341,11 @@
       <item itemvalue="JUnit.ProjectApplicationTests.ModelAttribute의_LocalDate는_변환된다" />
       <item itemvalue="Spring Boot.Unnamed" />
       <item itemvalue="Spring Boot.ProjectApplication" />
+      <item itemvalue="Gradle.KOSTA_Project [test]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.KOSTA_Project [test]" />
         <item itemvalue="JUnit.ProjectApplicationTests.ModelAttribute의_LocalDate는_변환된다" />
       </list>
     </recent_temporary>
@@ -210,7 +400,18 @@
       <workItem from="1655954558236" duration="13646000" />
       <workItem from="1656033247764" duration="9136000" />
       <workItem from="1656051825512" duration="2923000" />
-      <workItem from="1656056566732" duration="2549000" />
+      <workItem from="1656056566732" duration="2873000" />
+      <workItem from="1656249911731" duration="24000" />
+      <workItem from="1656292516244" duration="4345000" />
+      <workItem from="1656312477619" duration="3015000" />
+      <workItem from="1656331576706" duration="12000" />
+      <workItem from="1656379307830" duration="10028000" />
+      <workItem from="1656465561745" duration="9474000" />
+      <workItem from="1656558681177" duration="4228000" />
+      <workItem from="1656643471528" duration="3649000" />
+      <workItem from="1656889198863" duration="9000" />
+      <workItem from="1656910335374" duration="182000" />
+      <workItem from="1656983628213" duration="27570000" />
     </task>
     <servers />
   </component>

@@ -3,12 +3,7 @@ package com.project.service;
 import java.util.HashMap;
 import java.util.Map;
 
-//import org.hibernate.validator.internal.util.logging.Log_.logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,12 +13,11 @@ import org.springframework.validation.FieldError;
 import com.project.domain.UserDTO;
 import com.project.mapper.UserMapper;
 
-import ch.qos.logback.classic.Logger;
 import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class UserService implements UserDetailsService {
+public class UserService {
 	
 	@Autowired
 	UserMapper userMapper;
@@ -44,43 +38,27 @@ public class UserService implements UserDetailsService {
 	}
 	
 	//회원가입
-	@Transactional
 	public void joinUser(UserDTO userDTO) {
-		BCryptPasswordEncoder passwordencoder = new BCryptPasswordEncoder();
-		userDTO.setPassword(passwordencoder.encode(userDTO.getPassword()));
+		System.out.println("ddd???/");
         userMapper.saveUser(userDTO);
 	}
 	
 	//아이디 중복 체크
-	public int overlappedID(String userid) throws Exception{
+	public int overlappedID(String userid) {
 		int result = userMapper.overlappedID(userid);
 		
 		return result;
 	}
 	
-//	//로그인
-//	public UserDTO memberLogin(String userid) throws Exception{
-//		return userMapper.memberLogin(userid);
-//	}
+	//로그인
+	public UserDTO memberLogin(UserDTO userDTO) throws Exception{
+		return userMapper.memberLogin(userDTO);
+	}
 	
 	//회원정보 수정
-	public int UserUpdate(UserDTO userDTO) {
+	public String UserUpdate(UserDTO userDTO) {
 		return userMapper.UserUpdate(userDTO);
 	}
-
-	@Override
-	public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
-		
-		System.out.println("$$loadUserByUsername$$");
-		
-		UserDTO userDTO = userMapper.memberLogin(userid);
-		if(userDTO == null) {
-			
-			throw new UsernameNotFoundException("존재하지 않는 아이디 입니다.");
-		}
-		return userDTO;
-	}
-
 	
 }
 	

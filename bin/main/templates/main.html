@@ -16,13 +16,13 @@
                 <button
                         class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
                         type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">최신순
+                        aria-haspopup="true" aria-expanded="false" th:text="${(sortoption == null || sortoption == '') ? '최신순':'인기순'}">
                 </button>
                 <div class="dropdown-menu animated--fade-in"
                      aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item" href="/sortMain/latest">최신순</a>
-					<a class="dropdown-item" th:href="|@{/sortMain/}popular|">인기순</a>
-					<a class="dropdown-item" th:href="|@{/sortMain/}latest|">거리순</a>
+					<a class="dropdown-item" onclick="setSortoption('latest')">최신순</a>
+					<a class="dropdown-item" onclick="setSortoption('popular')">인기순</a>
+					<!-- <a class="dropdown-item" onclick="setSortoption('popular')">거리순</a> -->
                 </div>
             </div>
         </div>
@@ -109,6 +109,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="pick"></div>
                 </div>
             </div>
         </section>
@@ -122,18 +124,37 @@
     <script th:inline="javascript">
         /*<![CDATA[*/
         function insertHeart(pnum, title) {
-            if (confirm(title + "에 관심 있나요?")) {
-                var uri = /*[[ @{/heart.do} ]]*/null;
-                var html = "";
+            confirm(title + "에 관심 있나요?");
+            $.ajax({
+                type: 'POST',
+                url: '/checkHeart',
+                dataType: 'json',
+                data: {
+                    // pnum: dataForm[0]["value"],
+                    pnum: pnum
+                },
+                success: function (result){
+                    if(result >= 1){
+                        alert("이미 담겨진 상품입니다!");
+                        console.log("ㅇㅇ");
+                    } else {
+                        console.log("돌아가");
+                        var uri = /*[[ @{/heart.do} ]]*/null;
+                        var html = "";
 
-                html += '<form name="dataForm" action="'+uri+'" method="post">';
-                html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-                html += '<input type="hidden" name="title" value="'+title+'">';
-                html += '</form>';
+                        html += '<form name="dataForm" action="'+uri+'" method="post">';
+                        html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+                        html += '<input type="hidden" name="title" value="'+title+'">';
+                        html += '</form>';
 
-                $("body").append(html);
-                document.dataForm.submit();
-            }
+                        $(".pick").html(html);
+                        document.dataForm.submit();
+                    }
+                },
+                error: function (data){
+                    console.log("ㅡㅡ");
+                }
+            });
         }
         function convertStringToDate(endDate) {
             //console.log(enddate);
@@ -209,6 +230,22 @@
             console.log("success");
             StartTimeRemaining();
         });
+        
+        function setSortoption(option){
+        	var sortopt = option;
+        	console.log("sortopt: " + sortopt);
+        	
+        	document.getElementById("sortoption").value = sortopt;
+        	document.getElementById("searchForm").submit();
+        	
+        	//var sortNameId = document.getElementById("cate");
+        	
+        	//var sortName = sortNameId.options[sortNameId.selectedIndex].value;
+        	//console.log("sortName: " + sortName);
+        	
+        	//var cateName = cateSelect.options[cateSelect.selectedIndex].text;
+        	//console.log("itemName: " + itemName);
+        }
         /*]]>*/
     </script>
 
