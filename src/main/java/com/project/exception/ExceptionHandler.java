@@ -1,4 +1,4 @@
-package com.project.common;
+package com.project.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,14 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 @Slf4j
 public class ExceptionHandler {
-
+	
 	@org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-	public ModelAndView defaultExceptionHandler(HttpServletRequest request, Exception exception) {
+	public ModelAndView defaultExceptionHandler(HttpServletRequest request, Exception exception){
 		ModelAndView mv = new ModelAndView("/error/error_default");
 		mv.addObject("exception", exception);
-
+		
 		log.error("defaultExceptionHandler", exception);
-
+		
 		return mv;
 	}
 }

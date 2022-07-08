@@ -31,7 +31,6 @@ import com.project.service.TeamMemberService;
 import com.project.util.FileUtil;
 import com.project.util.UiUtils;
 
-
 @Controller
 public class PostController extends UiUtils {
 
@@ -45,29 +44,30 @@ public class PostController extends UiUtils {
 
 	@Autowired
 	private TeamMemberService teamMemberService;
-	
+
 	@Autowired
 	private CatService catService;
 
 	// 게시글 작성 폼으로
 	@GetMapping(value = "/write.do")
-	public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum, @ModelAttribute("params") PostDTO params,@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostWrite(@ModelAttribute("catnum") CatDTO catnum, @ModelAttribute("params") PostDTO params,
+			@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		logger.info("PostDTO" + params);
 		if (pnum == null) { // pnum이 null일 경우 빈 객체를 보여준다
-			 model.addAttribute("post", new PostDTO());
-			 List<CatDTO> catlist = catService.selectCatList(catnum);
-			 model.addAttribute("catlist", catlist);
+			model.addAttribute("post", new PostDTO());
+			List<CatDTO> catlist = catService.selectCatList(catnum);
+			model.addAttribute("catlist", catlist);
 		} else { // pnum에서 받아온 경우
 			List<CatDTO> catlist = catService.selectCatList(catnum);
 			PostDTO post = postService.getPostDetail(pnum);
-			
+
 			if (post == null) {
 				return "redirect:/main.do";
 			}
 			model.addAttribute("catlist", catlist);
-			logger.info(""+catlist);
+			logger.info("" + catlist);
 			model.addAttribute("post", post);
-			logger.info(""+post);
+			logger.info("" + post);
 		}
 
 		logger.info("PostDTO-->" + params);
@@ -126,7 +126,6 @@ public class PostController extends UiUtils {
 //			return "redirect:/main.do";
 //		}
 
-	
 //	@PostMapping(value = "/register.do")
 //	public String registerBoard(final PostDTO params, final MultipartFile[] files, Model model) {
 //		try {
@@ -143,20 +142,19 @@ public class PostController extends UiUtils {
 //
 //		return showMessageWithRedirect("게시글 등록이 완료되었습니다.", "/main.do", Method.GET, null, model);
 //	}
-	
-	
+
 	@GetMapping(value = "/main.do")
-	public String openPostList(@RequestParam(value="keyword", required=false) String keyword,
-							@RequestParam(value="category", required=false, defaultValue="0") String category,
-							@RequestParam(value="sortoption", required=false) String sortopt, Model model) {
-		
+	public String openPostList(@RequestParam(value = "keyword", required = false) String keyword,
+			@RequestParam(value = "category", required = false, defaultValue = "0") String category,
+			@RequestParam(value = "sortoption", required = false) String sortopt, Model model) {
+
 		System.out.println("keyword: " + keyword + " category: " + category + " sortoption: " + sortopt);
-		
-		if(keyword==null && category=="0" && sortopt ==null) {
+
+		if (keyword == null && category == "0" && sortopt == null) {
 			List<PostDTO> postList = postService.getPostList();
 			model.addAttribute("postList", postList);
-			
-		}else {
+
+		} else {
 			String optionName;
 			List<PostDTO> postList = postService.getSearchPostList(keyword, category, sortopt);
 			model.addAttribute("postList", postList);
@@ -166,13 +164,14 @@ public class PostController extends UiUtils {
 		}
 		return "/main";
 	}
-	
+
 	// 게시글 상세내용 detail
 	@GetMapping(value = "/detail.do")
-	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostDetail(@ModelAttribute("params") PostDTO params,
+			@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		System.out.println("현재 pnum -->" + pnum);
-
+//		long pnumex = 1;
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
 
@@ -181,8 +180,8 @@ public class PostController extends UiUtils {
 			return "redirect:/main.do";
 		}
 
-		List<CommentDTO> commentList= commentService.getCommentList(pnum);
-		List<UserDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
+		List<CommentDTO> commentList = commentService.getCommentList(pnum);
+		List<TeamMemberDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
 
 		model.addAttribute("postDTO", postDTO);
 
@@ -190,32 +189,32 @@ public class PostController extends UiUtils {
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
 
 		model.addAttribute("teamMemberList", teamMemberList);
-		model.addAttribute("teamMember", new UserDTO());
-		
-		//PostDTO post = postService.getPostDetail(pnum);
-		System.out.println("teamMemberList>>"+teamMemberList);//애매
+		model.addAttribute("teamMember", new TeamMemberDTO());
+
+		// PostDTO post = postService.getPostDetail(pnum);
+
 		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
 //			return "redirect:/main.do";
 //		}
-		//model.addAttribute("post", post);
-		//logger.info("detail.do");
+		// model.addAttribute("post", post);
+		// logger.info("detail.do");
 
 		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
-		model.addAttribute("countMember", countMember+1);
+		model.addAttribute("countMember", countMember + 1);
 
-		if (countMember >= postDTO.getMinpeople()){
+		if (countMember >= postDTO.getMinpeople()) {
 			model.addAttribute("minpeople", true);
 			System.out.println(countMember);
 		}
 
 		return "/detail";
 	}
-	
+
 	@PostMapping(value = "/delete.do")
 	public String deletePost(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
-		System.out.println("/delete.do 접근 --->"+pnum);
+		System.out.println("/delete.do 접근 --->" + pnum);
 		// 올바르지 않은 접근 시
 		if (pnum == null) {
 			return showMessageWithRedirect("올바르지 않은 접근입니다.", "/main.do", Method.GET, null, model);
@@ -224,8 +223,8 @@ public class PostController extends UiUtils {
 		try {
 			System.out.println("try 접근. pnum = " + pnum);
 			boolean isDeleted = postService.deletePost(pnum);
-			System.out.println("deletePost 실행 후. isDeleted = "+isDeleted);
-			
+			System.out.println("deletePost 실행 후. isDeleted = " + isDeleted);
+
 			// false면 이미 게시글이 삭제된 상태
 			if (isDeleted == false) {
 				return showMessageWithRedirect("게시글 삭제에 실패하였습니다.", "/main.do", Method.GET, null, model);
@@ -236,9 +235,8 @@ public class PostController extends UiUtils {
 		} catch (Exception e) {
 			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
 		}
-		logger.info("pnum"+pnum);
+		logger.info("pnum" + pnum);
 		return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/main.do", Method.GET, null, model);
 	}
-
 
 }
