@@ -109,6 +109,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="pick"></div>
                 </div>
             </div>
         </section>
@@ -122,18 +124,37 @@
     <script th:inline="javascript">
         /*<![CDATA[*/
         function insertHeart(pnum, title) {
-            if (confirm(title + "에 관심 있나요?")) {
-                var uri = /*[[ @{/heart.do} ]]*/null;
-                var html = "";
+            confirm(title + "에 관심 있나요?");
+            $.ajax({
+                type: 'POST',
+                url: '/checkHeart',
+                dataType: 'json',
+                data: {
+                    // pnum: dataForm[0]["value"],
+                    pnum: pnum
+                },
+                success: function (result){
+                    if(result >= 1){
+                        alert("이미 담겨진 상품입니다!");
+                        console.log("ㅇㅇ");
+                    } else {
+                        console.log("돌아가");
+                        var uri = /*[[ @{/heart.do} ]]*/null;
+                        var html = "";
 
-                html += '<form name="dataForm" action="'+uri+'" method="post">';
-                html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-                html += '<input type="hidden" name="title" value="'+title+'">';
-                html += '</form>';
+                        html += '<form name="dataForm" action="'+uri+'" method="post">';
+                        html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
+                        html += '<input type="hidden" name="title" value="'+title+'">';
+                        html += '</form>';
 
-                $("body").append(html);
-                document.dataForm.submit();
-            }
+                        $(".pick").html(html);
+                        document.dataForm.submit();
+                    }
+                },
+                error: function (data){
+                    console.log("ㅡㅡ");
+                }
+            });
         }
         function convertStringToDate(endDate) {
             //console.log(enddate);
