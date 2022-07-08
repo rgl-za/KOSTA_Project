@@ -12,7 +12,7 @@ import com.project.domain.FileDTO;
 
 public class FileUtil {
 
-	public FileDTO fileUpload(MultipartFile file) {
+	public FileDTO fileUpload(MultipartFile file) throws Exception {
 		
 	
 		
