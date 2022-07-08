@@ -128,5 +128,53 @@
 				AND deletedyn = 'N'
 	</select>
 	
+	<insert id="insertCerFileList" parameterType="CerFileDTO">
+			INSERT INTO t_file
+			(
+				boardIdx,
+				originalFileName,
+				storedFilePath,
+				fileSize,
+				creatorid,
+				createddatetime
+			)
+			VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.SEQ_BOARDIDX_NO.nextval},
+				#{item.originalFileName},
+				#{item.storedFilePath},
+				#{item.fileSize},
+				'admin',
+				SYSDATE
+			)
+		</foreach>
+	</insert>
+	
+	<select id="selectCerFileList" parameterType="int" resultType="CerFileDTO">
+			SELECT
+				idx
+				,boardIdx
+				,originalfilename
+				,FORMAT(ROUND(filesize / 1024), 0) AS filesize
+			FROM
+				t_file
+			WHERE
+				boardIdx = #{boardIdx}
+				AND deletedyn = 'N'
+	</select>
+	
+	<select id="selectCerFileInformation" parameterType="map" resultType="CerFileDTO">
+			SELECT
+				originalfilename
+				,storedfilepath
+				,filesize
+			FROM
+				t_file
+			WHERE
+				idx = #{idx}
+				AND boardidx = #{boardIdx}
+				AND deletedyn = 'N'
+	</select>
 	
 </mapper>
