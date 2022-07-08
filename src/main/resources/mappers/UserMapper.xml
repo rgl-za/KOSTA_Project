@@ -41,11 +41,10 @@
 	where userid = #{userid}
 	</select>
 	
-	<select id="memberLogin" parameterType ="UserDTO" resultType="UserDTO">
-		select userid, password
+	<select id="memberLogin" parameterType="String" resultType="UserDTO">
+		select *
 		from users
 		where userid = #{userid}
-		and password = #{password}
 		</select>
 		
 		<update id="UserUpdate" parameterType ="UserDTO">

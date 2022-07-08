@@ -1,15 +1,27 @@
 package com.project.domain;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SuppressWarnings("serial")
 @Data
 @NoArgsConstructor
-public class UserDTO {
+public class UserDTO implements UserDetails{
 
+	
+	
 	@NotBlank(message = "아이디를 입력해주세요")
 	@Pattern(regexp = "[A-Za-z0-9]{4,15}$", message = "아이디는 영어, 숫자 4 ~15자리로 입력 가능합니다")
 	private String userid;     //유저 아이디 
@@ -45,5 +57,48 @@ public class UserDTO {
 	@NotBlank(message = "상세주소를 입력해주세요")
 	private String realaddress;
 	
-		
+	private String userauth;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Collections.singletonList(new SimpleGrantedAuthority(this.userauth));
 	}
+	
+	
+	@Override
+	public String getUsername() {
+		return this.userid;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+
+	}
+
+	
+	
+	
+		
+	
