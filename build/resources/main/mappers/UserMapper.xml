@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.UserMapper">
+
+	<sql id="userColumns">
+		userid
+		, username
+		, password
+		, phone
+		, postnum
+		, address
+		, nickname
+		, gender
+		, birth
+		, realaddress
+		, userno
+	</sql>
+
+
+
+	<insert id="saveUser" parameterType="UserDTO">
+		INSERT INTO USERS (
+		<include refid="userColumns" />
+		) VALUES
+		(
+		#{userid}
+		, #{username}
+		, #{password}
+		, #{phone}
+		, #{postnum}
+		, #{address}
+		, #{nickname}
+		, #{gender}
+		, #{birth}
+		, #{realaddress}
+		, seq_users_no.nextval
+		)
+	</insert>
+
+	<select id="overlappedID" parameterType="String" resultType="int">
+		select count(userid)
+		from users
+		where userid = #{userid}
+	</select>
+
+	<select id="memberLogin" parameterType="UserDTO"
+		resultType="UserDTO">
+		select userid, password
+		from users
+		where userid = #{userid}
+		and password = #{password}
+	</select>
+
+	<update id="UserUpdate" parameterType="UserDTO">
+		update users
+		set
+		username = #{username},
+		password = #{password},
+		phone = #{phone},
+		postnum = #{postnum},
+		address = #{address},
+		nickname = #{nickname},
+		realaddress = #{realaddress}
+		where userid = #{userid}
+	</update>
+
+
+
+
+</mapper>
