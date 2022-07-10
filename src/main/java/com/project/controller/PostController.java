@@ -172,7 +172,7 @@ public class PostController extends UiUtils {
 	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		System.out.println("현재 pnum -->" + pnum);
-//		long pnumex = 1;
+
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
 
@@ -182,8 +182,7 @@ public class PostController extends UiUtils {
 		}
 
 		List<CommentDTO> commentList= commentService.getCommentList(pnum);
-		List<TeamMemberDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
-
+		List<UserDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
 
 		model.addAttribute("postDTO", postDTO);
 
@@ -191,10 +190,10 @@ public class PostController extends UiUtils {
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
 
 		model.addAttribute("teamMemberList", teamMemberList);
-		model.addAttribute("teamMember", new TeamMemberDTO());
-
+		model.addAttribute("teamMember", new UserDTO());
+		
 		//PostDTO post = postService.getPostDetail(pnum);
-
+		System.out.println("teamMemberList>>"+teamMemberList);//애매
 		System.out.println(commentList);
 //		if (post == null || "Y".equals(post.getDelete_yn())) {
 //			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
