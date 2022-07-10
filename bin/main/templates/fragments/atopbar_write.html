@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 <th:block th:fragment="topbarFragment">
 	<!-- Topbar -->
 	<nav
@@ -17,11 +12,17 @@
 		</button>
 
 		<!-- Topbar Search -->
-		<form th:action="@{/main.do}" method="get" id="searchForm" 
-				class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-			<div class="input-group" style="right-margin:10px">
-				<select name="category" id="cate">
-					<option value="0" th:selected="${cateNum=='0'}">전체</option>
+		<form th:action="@{/main.do}" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+			<div class="input-group">
+				<input type="text" name="keyword" class="form-control bg-light border-0 small"
+					placeholder="Title..." aria-label="Search" aria-describedby="basic-addon2">
+				<div class="input-group-append">
+					<button class="btn btn-primary">
+						<i class="fas fa-search fa-sm"></i>
+					</button>
+				</div>
+				<select name="category">
+					<option disabled selected>카테고리</option>
 					<option value="1" th:selected="${cateNum=='1'}">패션의류</option>
 					<option value="2" th:selected="${cateNum=='2'}">뷰티</option>
 					<option value="3" th:selected="${cateNum=='3'}">유아용품</option>
@@ -39,29 +40,8 @@
 					<option value="15" th:selected="${cateNum=='15'}">여행/티켓</option>
 					<option value="16" th:selected="${cateNum=='16'}">기타</option>
 				</select>
-				
-				<input type="text" id="keyword" name="keyword" class="form-control bg-light border-0 small" style="width:100px"
-					placeholder="Title..." aria-label="Search" aria-describedby="basic-addon2" th:value="${(keyword ==null || keyword =='')? null:keyword}">
-				<input type="hidden" id="sortoption" name="sortoption">
-				<div class="input-group-append" style="width:0px;">
-					<button class="btn btn-primary">
-						<i class="fas fa-search fa-sm"></i>
-					</button>
-				</div>
 			</div>
-			<!-- <div id="speechSearch" style="width:30%">
-			<button id="start" style="background-color:white; border:0px;">
-				<img src="img/mic.png" style="width:25px; height:27px;">
-			</button>
-			<button id="stop">Stop</button>
-			</div> -->
 		</form>
-		<div id="speechSearch" style="width:37%">
-			<button id="start" style="background-color:white; border:0px;">
-				<img src="img/mic.png" style="width:25px; height:27px;">
-			</button>
-			<!-- <button id="stop">Stop</button> -->
-		</div>
 
 		<!-- Topbar Navbar -->
 		<ul class="navbar-nav ml-auto">
@@ -230,38 +210,9 @@
 
 	</nav>
 	<!-- End of Topbar -->
-	<script th:inline="javascript">
-        /*<![CDATA[*/
-        //const speech = new webkitSpeechRecognition;
-        if(!("webkitSpeechRecognition" in window)){
-        	alert("지원 되지 않는 사이트 입니다. 크롬으로 작동해주세요.");
-        	
-        }else{
-        	console.log("음성검색")
-        	const speech = new webkitSpeechRecognition;
-        	
-        	document.getElementById("start").addEventListener("click", () => {
-        		console.log("start!!!");
-        		speech.start();
-        	});
-        	
-			/* document.getElementById("stop").addEventListener("click", () => {
-				console.log("stop!!!");
-				speech.stop();
-        	});  */
-			
-			speech.addEventListener("result", (event) => {
-				const {transcript} = event["results"][0][0];
-				//const transcript = event.results[0].transcript.join("");
-				console.log("transcript: " + transcript);
-				document.getElementById("keyword").value = transcript;
-			}) 
-        	
-        }
-        
-        
-      /*]]>*/
-  	</script>
+
+
+
 
 </th:block>
 </html>

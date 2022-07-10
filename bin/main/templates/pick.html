@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<th:block layout:fragment="content">
+	<div class="container-fluid">
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">찜한 목록</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6 mb-4" th:if="${not #lists.isEmpty( heartList )}" th:each="heartList : ${heartList}">
+				<div class="card bg-light text-black shadow">
+					<div class="card-body" th:each="heartList : ${heartList}">
+						<div class="text-black-50 small" th:text="${heartList.title}"></div>
+						<div class="represent_img">
+							<img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
+								 th:src="|@{/imagePath/}${heartList.getPhoto()}|">
+						</div>
+					</div>
+					<a th:href="@{/detail.do( pnum=${heartList.pnum} )}"
+					   class="btn btn-primary">
+							상세보기
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-6 mb-4" th:unless="${not #lists.isEmpty( heartList )}">
+				<div class="card bg-light text-black shadow">
+					<div class="card-body">
+						<h5>좋아요 페이지가 비었습니다.</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- row -->
+		<!-- /.container-fluid -->
+</th:block>
+
+</html>
