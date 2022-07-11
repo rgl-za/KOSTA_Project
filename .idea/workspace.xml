@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.1/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/UpdateUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/UpdateUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/DealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/DealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/fragments/sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/fragments/topbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/topbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/topbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -253,7 +251,7 @@
       <workItem from="1657338647905" duration="256000" />
       <workItem from="1657343413809" duration="15000" />
       <workItem from="1657500047587" duration="636000" />
-      <workItem from="1657501815410" duration="970000" />
+      <workItem from="1657501815410" duration="3560000" />
     </task>
     <servers />
   </component>
