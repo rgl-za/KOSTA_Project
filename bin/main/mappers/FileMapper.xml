@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.FileMapper">
+
+	<sql id="fileColumns">
+		  fnum
+		, pnum
+		, original_file_name
+		, save_file_name
+		, file_size
+	</sql>
+	
+	<insert id="insertFile" parameterType="FileDTO">
+			INSERT INTO files ( 
+			<include refid="fileColumns" />
+			) VALUES (
+			<foreach collection="list" item="item" separator=",">
+		(
+			#{item.seq_fnum_no.nextval}
+			, #{item.seq_post_no.currval}
+			, #{item.original_file_name}
+			, #{item.save_file_name}
+			, #{item.file_size}
+		)
+		</foreach>
+			<!-- seq_fnum_no.nextval
+			, seq_pnum_no.currval
+			, #{original_file_name}
+			, #{save_file_name}
+			, #{file_size} -->
+	</insert>
+	
+	<update id="updateFile" parameterType="long">
+		UPDATE files
+		SET
+			original_file_name = #{item.original_file_name}
+			, save_file_name = #{item.save_file_name}
+			, file_size = #{item.file_size}
+		WHERE
+		fnum = #{fnum}
+	</update>
+	
+<!-- 	<select id="selectFileList" parameterType="Long" resultType="FileDTO">
+		SELECT
+		<include refid="fileColumns" />
+		FROM post
+		where pnum = #{pnum}
+	</select> -->
+	
+	<select id="selectFileList" parameterType="FileDTO" resultType="FileDTO">
+		SELECT
+			photo
+		FROM
+			post
+		where pnum = #{pnum}
+	</select>
+</mapper>

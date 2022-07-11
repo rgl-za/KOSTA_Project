@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.CommentMapper">
+
+	<sql id="commentColumns">
+		cnum,
+		pnum,
+		comments,
+		writer,
+		regDate
+	</sql>
+
+	<select id="selectCommentList" resultType="CommentDTO" parameterType="long">
+		SELECT <include refid="commentColumns" />
+		FROM comments
+		WHERE pnum = #{pnum}
+	</select>
+
+	<insert id="insertComment" parameterType="CommentDTO">
+		INSERT INTO comments (
+			<include refid="commentColumns"/>
+		) VALUES (
+			seq_comments_no.nextval
+			, #{pnum}
+			, #{comments}
+			, #{writer}
+			,sysdate
+		)
+	</insert>
+	
+</mapper>

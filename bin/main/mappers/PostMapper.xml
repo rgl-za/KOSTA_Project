@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.PostMapper">
+
+	<sql id="postColumns">
+		pnum
+		, catnum
+		, leaderid
+		, title
+		, content
+		, photo
+		, link
+		, price
+		, postnum
+		, dealaddress
+		, maxpeople
+		, minpeople
+		, accountpost
+		, uploaddate
+		, enddate
+		, deleteyn
+		, deletetime
+		, finaldate
+		, numbers
+	</sql>
+	
+
+	<!-- 수정 필요 (문정현) -->
+	<!-- <insert id="insertPost" parameterType="PostDTO">
+		<![CDATA[
+			insert into post (
+		]]>
+		<include refid="postColumns" />
+		<![CDATA[
+		) VALUES (
+		#{pnum}
+		, 1				
+		, 'NULL'		
+		, #{title}
+		, #{content}
+		, #{photo}			
+		, #{link}
+		, #{price}
+		, NULL 			
+		, NULL			
+		, #{maxpeople}
+		, 2				
+		, NULL			
+		, SYSDATE 		
+		, #{enddate}
+		, 'N'			
+		, NULL
+		, NULL			
+		, #{numbers}	
+		)
+		]]>
+		<selectKey keyProperty="pnum" resultType="long" order="BEFORE">본 쿼리가 먼저 실행 
+		<![CDATA[
+			 SELECT seq_post_no.nextval from dual
+		]]>
+	  </selectKey>
+	</insert> -->
+	
+	<insert id="insertPost" parameterType="PostDTO">
+		INSERT INTO POST (
+			<include refid="postColumns"/>
+		) VALUES (
+			seq_post_no.nextval
+			, #{catnum}
+			, NULL			<!-- #{leaderid} -->
+			, #{title}
+			, #{content}
+			, #{photo}
+			, #{link}
+			, #{price}
+			, NULL			<!-- #{postnum} -->
+			, NULL			<!-- #{dealaddress} -->
+			, #{maxpeople}
+			, 2				<!-- #{minpeople} -->
+			, NULL			<!-- #{accountpost} -->
+			, SYSDATE		<!-- #{uploaddate} -->
+			, #{enddate}
+			, 'N'			<!-- #{deleteyn} -->
+			, NULL			<!-- #{deletetime} -->
+			, NULL			<!-- #{finaldate} -->
+			, #{numbers}
+		)
+	</insert>
+	
+	<!-- 수정 필요 (문정현)-->
+	<update id="updatePost" parameterType="PostDTO">
+		UPDATE post
+		SET
+			uploaddate 	= SYSDATE
+			, title 	= #{title}
+			<!-- , photo 	= #{photo} -->
+			, link 		= #{link}
+			, content 	= #{content}
+			, price 	= #{price}
+			, maxpeople = #{maxpeople}
+			, minpeople = 2
+			, enddate 	= #{enddate}
+		WHERE
+			pnum = #{pnum}
+	</update>
+
+	<!-- 포스트 상세내용 -->
+	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM
+			post
+		WHERE
+			deleteyn = 'N'
+		AND
+			pnum = #{pnum}
+	</select>
+
+	<!-- main -->
+	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE deleteyn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+
+	<select id="selectPostTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE deleteyn = 'N'
+	</select>
+	
+	
+	<!-- main  정렬기능 :민경 -->
+	<select id="PostTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			post
+		WHERE deleteyn = 'N'
+	</select>
+	
+	<!-- 최신순으로 게시물 가져오기 -->
+	<select id="latestPostList" resultType="PostDTO">
+		SELECT
+		<include refid="postColumns" />
+		FROM post
+		WHERE deleteyn = 'N'
+		ORDER BY uploaddate DESC
+	</select>
+	
+	<!-- 인기순으로 게시물 가져오기 -->
+	<select id="popularPostList" resultType="PostDTO">
+		select p.*, NVL(hc.HEARTCOUNT,0)
+		from (
+		    select p.pnum, count(*) heartcount
+		    from post p, heart h
+		    where p.pnum = h.pnum
+		    group by p.pnum ) hc RIGHT OUTER JOIN post p
+		on hc.pnum = p.pnum
+		order by heartcount desc, uploaddate desc
+	</select>
+	
+	<!-- 검색한 게시물 가져오기 -->
+	<!-- <select id="getSearchPostList" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where title like '%' || #{keyword} || '%'
+		order by uploaddate desc
+	</select> -->
+	
+	<select id="getSearchPostListLatest" parameterType="String" resultType="PostDTO">
+		select 
+			<include refid="postColumns" />
+		from post
+		where deleteyn = 'N' 
+		<if test="keyword !='' and catenum != 0"> and catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum != 0"> and catnum = #{catenum} </if>
+		<if test="keyword !='' and catenum == 0"> and title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum == 0"> and 1=1 </if>
+		order by uploaddate desc
+	</select>
+	
+	<select id="getSearchPostListPopular" parameterType="String" resultType="PostDTO">
+		select p.*, NVL(hc.HEARTCOUNT,0)
+		from (
+		    select p.pnum, count(*) heartcount
+		    from post p, heart h
+		    where p.pnum = h.pnum
+		    group by p.pnum ) hc RIGHT OUTER JOIN post p
+		on hc.pnum = p.pnum
+		where p.deleteyn = 'N'
+		<if test="keyword !='' and catenum != 0"> and p.catnum = #{catenum} and p.title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum != 0"> and p.catnum = #{catenum} </if>
+		<if test="keyword !='' and catenum == 0"> and p.title like '%' || #{keyword} || '%' </if>
+		<if test="keyword =='' and catenum == 0"> and 1=1 </if>
+		order by heartcount desc, uploaddate desc
+	</select>
+	
+	<!-- 삭제 -->
+	<update id="deletePost" parameterType="long">
+		UPDATE post
+		SET
+			deleteyn = 'Y'
+			, deletetime = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+
+		WHERE
+		pnum = #{pnum}
+	</update>
+
+	<select id="getPost" parameterType="int" resultType="PostDTO">
+		SELECT
+			*
+		FROM
+			post
+		WHERE pnum = #{pnum}
+	</select>
+	
+	<!-- dealaddress 변경 -->
+	<update id="alterDealAdd" parameterType="PostDTO">
+		UPDATE post
+		SET
+		dealaddress = #{dealaddress}
+		
+		WHERE
+		pnum = #{pnum}
+	</update>
+
+</mapper>
