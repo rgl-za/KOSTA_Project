@@ -48,17 +48,23 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				</div>
 			</div>
 		</form>
-		<div id="speechSearch" style="width:32%;">
+		<div id="speechSearch" sec:authorize="isAuthenticated()" style="width:41%;">
 			<button id="start" style="background-color:white; border:0px;">
 				<img src="img/mic.png" style="width:25px; height:27px;">
 			</button>
 			<!-- <button id="stop">Stop</button> -->
 		</div>
 		
-
+		<div id="speechSearch" sec:authorize="isAnonymous()" style="width:32%;">
+			<button id="start" style="background-color:white; border:0px;">
+				<img src="img/mic.png" style="width:25px; height:27px;">
+			</button>
+			<!-- <button id="stop">Stop</button> -->
+		</div>
+		
 		<div sec:authorize="isAnonymous()">
 			<button class="btn btn-primary" type="button">
-				<a href="/user/register">회원 가입</a>
+				<a href="/user/register">회원가입</a>
 			</button>
 			<button class="btn btn-primary" type="button">
 				<a href="/user/login">로그인</a>
