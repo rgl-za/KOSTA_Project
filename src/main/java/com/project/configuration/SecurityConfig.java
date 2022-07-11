@@ -47,7 +47,7 @@ public class SecurityConfig {
             .anyRequest().authenticated()
             .and()
         .formLogin()
-            .loginPage("/login").permitAll() //로그인 페이지 링크
+            .loginPage("/user/login").permitAll() //로그인 페이지 링크
             .loginProcessingUrl("/user/login")
             .usernameParameter("userid")
             .defaultSuccessUrl("/main.do") //로그인 성공시 이동하는 페이지 등록
