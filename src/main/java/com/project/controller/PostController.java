@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -169,15 +170,21 @@ public class PostController extends UiUtils {
 	
 	// 게시글 상세내용 detail
 	@GetMapping(value = "/detail.do")
-	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
+	public String openPostDetail(@ModelAttribute("params") PostDTO params,
+								 @RequestParam(value = "pnum", required = false) Long pnum, Model model,
+								 @AuthenticationPrincipal UserDTO userDTO) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		System.out.println("현재 pnum -->" + pnum);
 
+		model.addAttribute("name", userDTO.getUserid());
+		System.out.println("현재 name -->" + userDTO.getUserid());
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
 
 		if (postDTO == null || "Y".equals(postDTO.getDeleteyn())) {
 			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
+			System.out.println("확인1"+postDTO);
+			System.out.println("확인2"+"Y".equals(postDTO.getDeleteyn()));
 			return "redirect:/main.do";
 		}
 

@@ -9,7 +9,7 @@
 	</sql>
 
 	<select id="selectHeartList" resultType="HeartDTO" parameterType="HeartDTO">
-		SELECT p.title as title, p.content as content, p.photo as photo, p.leaderId as leaderId, p.endDate as endDate, p.link as link
+		SELECT p.title as title, p.content as content, p.photo as photo, p.leaderId as leaderId, p.endDate as endDate, p.link as link, h.pnum as pnum
 		FROM heart h, post p
 		WHERE userid = #{userId} and p.pnum = h.pnum and p.deleteYn = 'N'
 		ORDER BY lnum desc
@@ -25,10 +25,10 @@
 		)
 	</insert>
 
-	<select id="checkHeart" parameterType="int" resultType="int">
+	<select id="checkHeart" parameterType="map" resultType="int">
 		SELECT COUNT(*)
 		FROM heart
-		WHERE pnum = #{pnum}
+		WHERE pnum = #{pnum} AND userId = #{userId}
 	</select>
 	
 </mapper>

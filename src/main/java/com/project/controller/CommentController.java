@@ -11,6 +11,7 @@ import com.project.domain.UserDTO;
 import com.project.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -28,11 +29,13 @@ public class CommentController {
     private CommentService commentService;
 
     @PostMapping("/comments.do")
-    private String insertComment(@RequestParam(value = "pnum", required = false) Long pnum, CommentDTO params, HttpSession session){
+    private String insertComment(@RequestParam(value = "pnum", required = false) Long pnum, CommentDTO params,
+                                 @AuthenticationPrincipal UserDTO userDTO){
 //        params.setPnum(pnum);
 //        System.out.println(params.getPnum());
 //        params.setWriter(); 회원 아이디 받아야함
-        params.setWriter(((UserDTO) session.getAttribute("userDTO")).getUserid());
+        //params.setWriter(((UserDTO) session.getAttribute("userDTO")).getUserid());
+        params.setWriter(userDTO.getUserid());
         commentService.registerComment(params);
         return "redirect:/detail.do?pnum="+ params.getPnum();
     }

@@ -27,9 +27,10 @@ public class HeartServiceImpl implements HeartService{
     }
 
     @Override
-    public int checkHeart (int pnum) {
-        int result = heartMapper.checkHeart(pnum);
-        System.out.println("pnum: "+ pnum);
+    public int checkHeart (int pnum, String userId) {
+        System.out.println("checjkj"+pnum +"ccc" + userId);
+        int result = heartMapper.checkHeart(pnum, userId);
+        System.out.println("pnu333m: "+ pnum);
         return result;
     }
 }
