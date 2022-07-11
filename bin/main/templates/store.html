@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic_write">
+
+<th:block layout:fragment="content">
+
+	<!--	<body>-->
+	<!-- HEADER -->
+	<!-- NAVIGATION -->
+	<nav id="navigation">
+		<!-- container -->
+		<div class="container">
+			<!-- responsive-nav -->
+
+			<!-- /responsive-nav -->
+		</div>
+		<!-- /container -->
+	</nav>
+	<!-- /NAVIGATION -->
+
+	<!-- BREADCRUMB -->
+	<div id="breadcrumb" class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="aside-title">진행 중인 거래</h3>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /BREADCRUMB -->
+
+	<!-- SECTION -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- ASIDE -->
+
+
+				<div id="aside" class="col-md-3">
+					<!-- aside Widget -->
+
+					<!-- /aside Widget -->
+
+					<!-- aside Widget -->
+					<div class="aside">
+							<h3 class="aside-title">Top selling</h3>
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/product01.png" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								</div>
+							</div>
+
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/product02.png" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								</div>
+							</div>
+
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="./img/product03.png" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+								</div>
+							</div>
+						</div>
+					<!-- /aside Widget -->
+				</div>
+				<!-- /ASIDE -->
+
+
+				<!-- STORE -->
+				<!-- STORE -->
+				<div id="store" class="col-md-9">
+					<!-- store top filter -->
+					<div class="store-filter clearfix">
+						<div class="store-sort" style="display: flex; flex-direction:row-reverse">
+							<button class="btn btn-primary dropdown-toggle d-sm-inline-block btn-sm shadow-sm d-none"
+								type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">최신순
+							</button>
+							<div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="/sortMain/latest">최신순</a>
+								<a class="dropdown-item" th:href="|@{/sortMain/}popular|">인기순</a>
+								<a class="dropdown-item" th:href="|@{/sortMain/}latest|">거리순</a>
+							</div>
+						</div>
+
+						<!--<ul class="store-grid">
+							<li class="active"><i class="fa fa-th"></i></li>
+							<li><a href="#"><i class="fa fa-th-list"></i></a></li>
+						</ul>-->
+					</div>
+					<!-- /store top filter -->
+
+					<!-- store products -->
+					<div class="row">
+
+
+						<!-- product -->
+
+						<!-- product -->
+						<div class="col-md-4 col-xs-6" th:each="postList,i : ${postList}">
+							<div class="product">
+								<div class="product-img">
+									<!-- 사진 넣는 곳 -->
+									<!--<img src="./img/product02.png" alt="">-->
+									
+									<img th:src="|@{/imagePath/}${postList.getPhoto()}|" alt="" style="width: 200px; height:200px">
+										
+
+									<div class="product-label">
+										<span class="new">NEW</span>
+									</div>
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name" th:text="${postList.title}"></h3>
+									<div class="dealing" th:id="|deal*{i.index}|"
+										style="margin-top:30px; color: red;">
+										<input type="hidden" id="enddate"
+											th:value="${#temporals.format(postList.enddate, 'yyyy-MM-dd HH:mm:ss')}">
+										<img src="img/clock.png" style="width:25px; margin-right:7px;"><span
+											th:id="|timer*{i.index}|" style="font-size:15px; color: red;"></span>
+									</div>
+									<div class="product-rating">
+									</div>
+									<div class="product-btns">
+										<button class="add-to-wishlist" th:onclick="insertHeart( [[${postList.pnum}]], [[${postList.title}]] )"><i class="fa fa-heart-o"></i><span
+												class="tooltipp">add to wishlist</span></button>
+										
+									</div>
+								</div>
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><a th:href="@{/detail.do( pnum=${postList.pnum} )}"
+                                   ><i class="fa fa-shopping-cart"></i> 입장하기 </button></a>
+								</div>
+							</div>
+						</div>
+						<!-- /product -->
+						<!-- product -->
+						<!--<div class="col-md-4 col-xs-6">
+							<div class="product">
+								<div class="product-img">
+									<img src="./img/product02.png" alt="">
+									<div class="product-label">
+										<span class="new">NEW</span>
+									</div>
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									<div class="product-rating">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-o"></i>
+									</div>
+									<div class="product-btns">
+										<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												class="tooltipp">add to wishlist</span></button>
+										<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+												class="tooltipp">add to compare</span></button>
+										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+												view</span></button>
+									</div>
+								</div>
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+										cart</button>
+								</div>
+							</div>
+						</div>-->
+						<!-- /product -->
+
+						<!-- product -->
+						<!--<div class="col-md-4 col-xs-6">
+							<div class="product">
+								<div class="product-img">
+									<img src="./img/product04.png" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category">Category</p>
+									<h3 class="product-name"><a href="#">product name goes here</a></h3>
+									<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									<div class="product-rating">
+									</div>
+									<div class="product-btns">
+										<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+												class="tooltipp">add to wishlist</span></button>
+										<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+												class="tooltipp">add to compare</span></button>
+										<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+												view</span></button>
+									</div>
+								</div>
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+										cart</button>
+								</div>
+							</div>
+						</div>-->
+						<!-- /product -->
+
+
+						<!-- /store products -->
+
+						<!-- store bottom filter -->
+						<!--<div class="store-filter clearfix">
+							<span class="store-qty">Showing 20-100 products</span>
+							<ul class="store-pagination">
+								<li class="active">1</li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							</ul>
+						</div>-->
+						<!-- /store bottom filter -->
+					</div>
+
+
+					<!-- /STORE -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+
+		<!-- /SECTION -->
+
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+</th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		function insertHeart(pnum, title) {
+			if (confirm(title + "에 관심 있나요?")) {
+				var uri = /*[[ @{/heart.do} ]]*/null;
+				var html = "";
+
+				html += '<form name="dataForm" action="' + uri + '" method="post">';
+				html += '<input type="hidden" name="pnum" value="' + pnum + '" />';
+				html += '<input type="hidden" name="title" value="' + title + '">';
+				html += '</form>';
+
+				$("body").append(html);
+				document.dataForm.submit();
+			}
+		}
+		function convertStringToDate(endDate) {
+			//console.log(enddate);
+			let dateComponents = endDate.split(' ');
+			let datePieces = dateComponents[0].split("-");
+			let timePieces = dateComponents[1].split(":");
+			return (new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
+				timePieces[0], timePieces[1], timePieces[2]))
+		}
+
+		function msg_time() {
+			var els = $("div.dealing").children("input#enddate");
+			//console.log("els: " + els);
+			for (var i = 0; i < els.length; i++) {
+				var endDate = convertStringToDate($(els[i]).val());
+				console.log("endDate: ", endDate);
+
+				var startDatetime = new Date();
+				console.log("startDatetime: ", startDatetime);
+
+				var RemainDate = endDate - startDatetime;
+				console.log("RemainDate: ", RemainDate);
+
+				var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+
+				if (RemainDate < 0) {
+					var tagid = '#timer' + i;
+					//console.log("tagid: " + tagid);
+					$(tagid).text("EXPIRED");
+
+				} else {
+					m = `${days}일 ${hours < 10 ? '0' : ''}${hours}:${miniutes < 10 ? '0' : ''}${miniutes}:${seconds < 10 ? '0' : ''}${seconds}`
+					//console.log("m: " + m);
+
+					var tagid = '#timer' + i;
+					//console.log("tagid: " + tagid);
+					$(tagid).text(m);
+
+				}
+			}
+		}
+
+		function StartTimeRemaining() {
+			msg_time();
+			setInterval(function () {
+				msg_time();
+			}, 1000)
+		}
+
+		// 각 게시물의 모달창 id 지정
+		$(function () {
+			var els = $("h5.fw-bolder");
+			console.log("els.length: " + els.length);
+			$.each(els, function (index, item) {
+				//console.log("index: "+ index +"item: "+ item);
+
+				var tagid = "#modal_btn" + index;
+				console.log("modal_btn: " + tagid); // 해당 모달창 띄우기 버튼 찾기
+
+				var value = "#exampleModalCenter" + index;
+				console.log("value:" + value); // data-target 속성값
+
+				//data-target 속성값 지정
+				$(tagid).attr("data-target", value);
+
+				//var els2 = $(tagid);
+				//console.log("els2: " + els2 + "length: " + els2.length);
+
+			});
+			console.log("success");
+			StartTimeRemaining();
+		});
+        /*]]>*/
+	</script>
+
+</th:block>
+
+</html>

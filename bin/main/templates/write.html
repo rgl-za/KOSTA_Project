@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<!--	layout:decorate="layouts/basic">-->
+
+<th:block layout:fragment="content">
+	<div class="container-fluid">
+		<!-- ===============================================-->
+		<!-- form 시작	-->
+		<!-- ===============================================-->
+		<form class="container px-4 px-lg-5 mt-5" th:action="@{/register.do}" th:object="${post}" method="post"
+			enctype="multipart/form-data" onsubmit="return registerCer(this)">
+
+			<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
+			<input type="hidden" th:if="*{pnum != null and pnum > 0}" th:field="*{pnum}" />
+
+
+			<!-- ===============================================-->
+			<!-- 카테고리 정하는 부분 시작	-->
+			<!-- ===============================================-->
+			<div class="col-sm-6 col-md-6 col-xl-5">
+				<div class="input-group-icon">
+					<label class="form-label visually-hidden" for="inputCatNum">catNum</label>
+					<!--id="inputCatNum" name="inputCatNum"-->
+					<select class="form-select" th:field="*{catnum}">
+						<option value="">-- 선택 --</option>
+						<option th:each="catlist : ${catlist}" th:value="${catlist.catnum}"
+							th:utext="${catlist.catindex}">
+						</option>
+					</select>
+					<span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
+				</div>
+			</div>
+			<!-- ===============================================-->
+			<!-- 	카테고리 정하는 부분 끝	-->
+			<!-- ===============================================-->
+
+
+
+			<!-- ===============================================-->
+			<!-- 	글 제목 정하는 부분 시작	-->
+			<!-- ===============================================-->
+			<div class="col-sm-6 col-md-6 col-xl-5">
+				<div class="input-group-icon">
+					<label class="form-label visually-hidden" for="inputTitle">title</label>
+					<input th:field="*{title}" class="form-control input-box form-voyage-control" id="inputTitle"
+						type="text" placeholder="제목" />
+					<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+							class="fas fa-map-marker-alt"></i></span>
+				</div>
+			</div>
+			<!-- ===============================================-->
+			<!-- 	글 제목 정하는 부분 끝	-->
+			<!-- ===============================================-->
+
+
+
+			<!-- ===============================================-->
+			<!-- 	사진 정하는 부분 시작	-->
+			<!-- ===============================================-->
+			<!-- 썸네일 부분-->
+			<th:if>
+				<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
+					<div class="text-center">
+						<img class="card-img-top" th:if="*{pnum != null and pnum > 0}"
+							th:src="|@{/imagePath/}${post.getPhoto()}|">
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
+					<div class="input-group-icon">
+						<input class="form-control form-control-user" type="file" multiple="multiple" name="file"
+							id="file_0" onchange="setDetailImage(event);">
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	사진 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	글 내용 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5" style="width: 83%;">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputContent">content</label>
+						<textarea th:field="*{content}" class="form-control" placeholder="내용을 입력해 주세요."></textarea>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	글 내용 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	상품 링크 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputLink">link</label>
+						<input th:field="*{link}" class="form-control input-box form-voyage-control" id="inputLink"
+							type="text" placeholder="제품 링크" />
+						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+								class="fas fa-map-marker-alt"></i></span>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	상품 링크 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	상품 원가 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputPrice">price</label>
+						<input th:field="*{price}" class="form-control input-box form-voyage-control" id="inputPrice"
+							type="text" placeholder="제품 원가" />
+						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+								class="fas fa-map-marker-alt"></i></span>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	상품 원가 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	상품 개수 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputNumbers">numbers</label>
+						<input th:field="*{numbers}" class="form-control input-box form-voyage-control"
+							id="inputNumbers" type="text" placeholder="제품 개수" />
+						<!-- th:field="*{price}" -->
+						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+								class="fas fa-map-marker-alt"></i></span>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	상품 개수 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	날짜 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<input th:field="*{enddate}" pattern="yyyy-MM-dd"
+							class="form-control input-box form-voyage-control" id="enddate" type="datetime-local"
+							placeholder="마감 날짜" aria-label="Enter search term..." />
+						<!-- th:field="*{enddate}" -->
+						<span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	날짜 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	인원 수 정하는 부분 시작	-->
+				<!-- ===============================================-->
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputPersonOne">minPeople</label>
+						<select class="form-select form-voyage-select input-box" disabled id="inputMinPeople">
+							<option selected="selected">최소 인원 수 : 2 명</option>
+						</select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i
+								class="fas fa-user"></i></span>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6 col-xl-5">
+					<div class="input-group-icon">
+						<label class="form-label visually-hidden" for="inputPersonOne">maxPeople</label>
+						<select th:field="*{maxpeople}" th:value="*{maxpeople}"
+							class="form-select form-voyage-select input-box" id="inputMaxPeople">
+							<option th:value="'2'" th:text="2"></option>
+							<option th:value="'3'" th:text="3"></option>
+						</select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user">
+							</i></span>
+					</div>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	인원 수 정하는 부분 끝	-->
+				<!-- ===============================================-->
+
+
+
+				<!-- ===============================================-->
+				<!-- 	작성하기, 메인으로 가기 시작	-->
+				<!-- ===============================================-->
+				<div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+					<button class="btn btn-secondary" type="submit">작성하기</button>
+				</div>
+				<div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+					<button class="btn btn-secondary">
+						<a th:href="@{/main.do}">메인으로 가기</a>
+					</button>
+				</div>
+				<!-- ===============================================-->
+				<!-- 	작성하기, 메인으로 가기 끝	-->
+				<!-- ===============================================-->
+		</form>
+	</div>
+	<!-- ===============================================-->
+	<!-- form 끝	-->
+	<!-- ===============================================-->
+</th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		function setDetailImage(event) {
+			for (var image of event.target.files) {
+				var reader = new FileReader();
+
+				reader.onload = function (event) {
+					var img = document.createElement("img");
+					img.setAttribute("src", event.target.result);
+					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#images_container").appendChild(img);
+				};
+
+				console.log(image);
+				reader.readAsDataURL(image);
+			}
+		}
+	</script>
+</th:block>
+
+</html>

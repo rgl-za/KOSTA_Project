@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+<th:block layout:fragment="content">
+	<div class="container-fluid">
+		<!-- 내정보 들어갈 자리입니다. -->
+
+		<th:block th:each="deallist,i:${dealList}">
+
+			<!-- 거래 내역 화면 입니다. -->
+			<div class="card shadow mb-4" style="width: 100%;">
+				<!-- Card Header - Dropdown -->
+				<div
+					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+					<h6 class="m-0 font-weight-bold text-primary">나의 거래 중인 내역</h6>
+					<div class="dropdown no-arrow">
+						<a class="dropdown-toggle" href="#" role="button"
+							id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+						</a>
+						<div
+							class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+							aria-labelledby="dropdownMenuLink">
+							<div class="dropdown-header">더보기</div>
+							<a class="dropdown-item" href="#">상세보기</a> <a
+								class="dropdown-item" href="#">미 정</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">도움말</a>
+						</div>
+					</div>
+				</div>
+				<!-- Card Body -->
+				<!--<div class="card mb-3" style="max-width: 200px; margin-left:15px; margin-top:10px;" >-->
+				<!--				<div class="card mb-3" style="max-width: 200px;" float="left" width= "33%" padding="10px">-->
+				<div class="cobuy-box" style="display: flex; width: 100%;">
+					<!--					<div class="card mb-41">-->
+					<div class="one" style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 230px; height: 80px; object-fit: cover">
+						<div class="small text-muted" style="margin-left: 10px;" th:text="${#temporals.format(deallist.uploaddate, 'yyyy-MM-dd')}"></div>
+						<br> <a href="#!"><img class="card-img-top" th:src="|@{/productImgs/}${deallist.photo}|" /></a>
+					</div>
+					<div class="two"
+						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
+						<!--<p class="card-text">상세보기는 우측 상단 버튼을 누르세요!</p-->
+						<ul class="list-group list-group-flush">
+							<div class="dealing" th:id="|deal*{i.index}|" style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">
+								<span>거래중</span>&emsp;&emsp; 
+								<input type="hidden" id="enddate" th:value="${#temporals.format(deallist.enddate, 'yyyy-MM-dd HH:mm:ss')}">
+								<img src="img/clock.png" style="width: 29px;"> &nbsp;<span th:id="|timer*{i.index}|" style="font-size: 15px; color: red;"></span>
+							</div>
+							<!-- <span style="margin-left: 19px; margin-top: 45px; margin-bottom: 4px; color: red;">거래중</span> -->
+							<li class="list-group-item" id="cobuy_title"
+								th:text="'제목:&emsp;' + ${deallist.title}"></li>
+							<li class="list-group-item" id="cobuy_deliveryAddress"
+								th:text="'구매동네:&emsp;' + ${deallist.dealaddress} +' ('+${deallist.postnum}+ ')'"></li>
+							<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
+							<li class="list-group-item" id="cobuy_price"
+								th:text="'구매가격:&emsp;' + ${deallist.money} + '원&emsp;&emsp;&emsp;'
+																				+ '거래인원수:&emsp;' + ${deallist.membercount} + '명&emsp;'"></li>
+							<li class="list-group-item"><a id="cobuy_price"
+								th:href="@{/detail.do(pnum = ${deallist.pnum})}">거래상세보기 >> </a></li>
+							<br>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</th:block>
+		
+		</div>
+		<!-- Content Row -->
+		<div class="row">
+
+			<!-- Content Column -->
+			<div class="col-lg-6 mb-4">
+
+
+				<div class="col-lg-6 mb-4">
+
+					<!-- Illustrations -->
+					<!--<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+						</div>
+						<div class="card-body">
+							<div class="text-center">
+								<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+									src="img/undraw_posting_photo.svg" alt="...">
+							</div>
+							<p>
+								Add some quality, svg illustrations to your project courtesy of <a target="_blank"
+									rel="nofollow" href="https://undraw.co/">unDraw</a>,
+								a constantly updated collection of beautiful svg images that you
+								can use completely free and without attribution!
+							</p>
+							<a target="_blank" rel="nofollow" href="https://undraw.co/">Browse
+								Illustrations on unDraw &rarr;</a>
+						</div>
+					</div>-->
+
+
+				</div>
+			</div>
+
+		</div>
+		<!-- /.container-fluid -->
+</th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		
+		function convertStringToDate(endDate) {
+			//console.log(enddate);
+			let dateComponents = endDate.split(' ');
+			let datePieces = dateComponents[0].split("-");
+			let timePieces = dateComponents[1].split(":");
+			return (new Date(datePieces[0], (datePieces[1] - 1), datePieces[2],
+					timePieces[0], timePieces[1], timePieces[2]))
+		}
+
+		function msg_time() {
+			var els = $("div.dealing").children("input#enddate");
+			//console.log("els: " + els);
+			for (var i = 0; i < els.length; i++) {
+				var endDate = convertStringToDate($(els[i]).val());
+				console.log("endDate: ", endDate);
+
+				var startDatetime = new Date();
+				console.log("startDatetime: ", startDatetime);
+
+				var RemainDate = endDate - startDatetime;
+				console.log("RemainDate: ", RemainDate);
+
+				var days = Math
+						.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))
+						/ (1000 * 60 * 60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))
+						/ (1000 * 60));
+				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+
+				if (RemainDate < 0) {
+					var tagid = '#timer' + i;
+					//console.log("tagid: " + tagid);
+					$(tagid).text("EXPIRED");
+
+				} else {
+					m = `${days}일 ${hours<10 ? '0':''}${hours}:${miniutes<10 ? '0':''}${miniutes}:${seconds<10 ? '0':''}${seconds}`
+					//console.log("m: " + m);
+
+					var tagid = '#timer' + i;
+					//console.log("tagid: " + tagid);
+					$(tagid).text(m);
+
+				}
+			}
+		}
+
+		function StartTimeRemaining() {
+			msg_time();
+			setInterval(function() {
+				msg_time();
+			}, 1000)
+		}
+
+		StartTimeRemaining();
+
+		/*]]>*/
+	</script>
+</th:block>
+</html>
