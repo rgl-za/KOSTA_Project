@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.CertificateMapper">
+
+	<sql id="certificateColumns">
+		cernum
+		, pnum
+		, cfile
+		, regdate
+		, userid
+		, title
+		, content
+		, deleteyn
+		, deletetime
+	</sql>
+	
+	<!-- 구매한 상품 인증 작성 --> <!-- 테스트 성공 -->
+	<insert id="insertCer" parameterType="CertificateDTO">
+		INSERT INTO certificate (
+			<include refid="certificateColumns"/>
+		) VALUES (
+			seq_cernum_no.nextval
+			, 61			<!-- #{pnum} -->
+			, #{cfile}
+			, sysdate
+			, 'munwjdgus1'	<!-- #{userid} -->
+			, #{title}
+			, #{content}
+			, 'N'			<!-- #{deleteyn} -->
+			, NULL			<!-- #{deletetime} -->
+		)
+	</insert>
+	
+	<!-- 글 상세 내용 -->
+	<select id="selectCerDetail" parameterType="CertificateDTO" resultType="CertificateDTO">
+		SELECT
+			<include refid="certificateColumns"/>
+		FROM
+			certificate
+		WHERE
+			deleteyn = 'N'
+		AND
+			cernum = #{cernum}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="updateCer" parameterType="CertificateDTO">
+		UPDATE post
+		SET
+			regdate 	= SYSDATE
+			, cfile 	= #{cfile}
+			, title 	= #{title}
+			, content 	= #{content}
+		WHERE
+			cernum = #{cernum}
+	</update>
+	
+	<!-- 삭제 -->
+	<update id="deleteCer" parameterType="long">
+		UPDATE certificate
+		SET
+			deleteyn = 'Y'
+			, deletetime = SYSDATE 	<!-- delete_time 컬럼 필요 -->
+		WHERE
+		cernum = #{cernum}
+	</update>
+	
+	<!-- /인증서 작성 -->
+	
+	
+	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
+	<select id="getCerList" parameterType="CertificateDTO" resultType="CertificateDTO">
+		SELECT
+			<include refid="certificateColumns"/>
+		FROM 
+			certificate
+		WHERE
+			deleteyn = 'N'
+		ORDER BY regdate DESC
+	</select>
+	
+	
+</mapper>
