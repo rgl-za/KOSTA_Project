@@ -33,7 +33,7 @@ public class SecurityConfig {
 	@Bean
 	 public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
 	        return (web) -> web.ignoring().antMatchers
-	        		("/", "/css/**" , "/assets/**", "/fonts/**", "/img/**", "/js/**", "/plugin/**", "/productlmgs/**", "/scripts/**", "/scss/**", "/vender/**"); //static 디렉터리 하위 파일 목윽은 인증 무시
+					("/css/**", "/img/**", "/js/**"); //static 디렉터리 하위 파일 목윽은 인증 무시
 	    }
 	
 	@Bean

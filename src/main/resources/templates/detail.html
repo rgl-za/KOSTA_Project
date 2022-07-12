@@ -131,7 +131,7 @@
 								<div class="user-ready-img" th:each="teamMember: ${teamMemberList}">
 									<div
 											class="text-gray-600 font-weight-bold bg-gray-100 align-center"
-											th:text="${teamMember.userid}"
+											th:text="${teamMember?.userid}"
 									></div>
 									<img class="ready-img rounded-circle"
 										 src="img/undraw_profile.svg">
@@ -1088,13 +1088,15 @@
 
 										<div class="d-flex justify-content-between">
 											<div class="d-flex flex-row align-items-center">
-												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
-													 height="25" />
+<!--												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"-->
+<!--													 height="25" />-->
+												<img class="rounded-circle" src="img/undraw_profile_1.svg"
+													 alt="avatar" width="25" height="25" />
 												<p class="small mb-0 ms-2"
-                                                   th:if="${comment.writer} == ${commentId}"
-                                                   th:text="${comment.writer}" style="padding-left: 3px; font-weight: bold;"></p> <!--th:text="${comment.writer}"-->
+                                                   th:if="${comment.writer} == ${#authentication.name}"
+                                                   th:text="${comment.writer}" style="padding-left: 3px; font-weight: bold; color: #36b9cc; "></p> <!--th:text="${comment.writer}"-->
                                                 <p class="small mb-0 ms-2"
-                                                   th:unless="${comment.writer} == ${commentId}"
+                                                   th:unless="${comment.writer} == ${#authentication.name}"
                                                    th:text="${comment.writer}" style="padding-left: 3px;"></p>
 											</div>
 											<div class="d-flex flex-row align-items-center">
@@ -1145,11 +1147,7 @@
 		/*<![CDATA[*/
 		function insertTeamMember(pnum, minpeople, dealName, money) {
 			confirm(dealName+ "공동구매에 참여하실건가요?");
-			// var userId = session.getAttribute("userDTO");
-			// var userId= sessionStroage.getItem('userId');
-			// var userId = "[[${session.userDTO}]]";
-			var userId = /*[[ ${session.userDTO.userid} ]]*/null;
-			console.log(userId);
+			var userId = [[${#authentication.name}]];
 			$.ajax({
 				type: 'POST',
 				url: '/checkTeamMember',
@@ -1159,7 +1157,7 @@
 					pnum: pnum
 				},
 				success: function (result){
-					if(result >= 1){
+					if(result == 1){
 						alert("이미 참가하신 공동구매 입니다!");
 					} else {
 						var uri1 = /*[[ @{/team.do} ]]*/null;
@@ -1214,58 +1212,6 @@
 					}
 				}
 			})
-
-			// if (confirm(dealName + " 공동구매에 참여하실건가요?")) {
-			// 	var uri1 = /*[[ @{/team.do} ]]*/null;
-			// 	var html = "";
-			// 	html += '<form name="dataForm1" id="a" action="'+uri1+'" method="post">';
-			// 	html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-			// 	html += '<input type="hidden" name="minpeople" value="'+minpeople+'">';
-			// 	html += '</form>';
-			// 	var uri2 =  /*[[ @{/account.do} ]]*/null;
-			// 	html += '<form name="dataForm2" id="b" action="'+uri2+'" method="post">';
-			// 	html += '<input type="hidden" name="pnum" value="'+pnum+'" />';
-			// 	html += '<input type="hidden" name="dealName" value="'+dealName+'" />';
-			// 	html += '<input type="hidden" name="money" value="'+money+'" >';
-			// 	html += '</form>';
-			// 	$("body").append(html);
-			// 	var formData = $("#a, #b").serializeArray();
-			// 	console.log(formData);
-			// 	$.ajax({
-			// 		type: 'POST',
-			// 		url: '/team.do',
-			// 		data: {
-			// 			pnum: formData[0]["value"],
-			// 			minpeople: formData[1]["value"]
-			// 		},
-			// 		success: function (result){
-			// 			console.log("ㅇㅇ");
-			// 			// console.log(formData);
-			// 			document.location.href = document.location.href;
-			// 			console.log
-			// 		},
-			// 		error: function (result){
-			// 			console.log("ㅡㅡ");
-			// 		}
-			// 	});
-			// 	$.ajax({
-			// 		type: 'POST',
-			// 		url: '/account.do',
-			// 		data: {
-			// 			pnum: formData[2]["value"],
-			// 			dealName: formData[3]["value"],
-			// 			money: formData[4]["value"]
-			// 		},
-			// 		success: function (result){
-			// 			console.log("ㅇㅇ2");
-			// 			// console.log(formData);
-			// 			document.location.href = document.location.href;
-			// 		},
-			// 		error: function (result){
-			// 			console.log("ㅡㅡ2");
-			// 		}
-			// 	})
-			// }
 		}
 		function convertStringToDate(endDate) {
 			let dateComponents = endDate.split(' ');

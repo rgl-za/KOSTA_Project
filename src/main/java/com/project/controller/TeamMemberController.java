@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import com.project.domain.TeamMemberDTO;
 import com.project.service.TeamMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,10 +33,12 @@ public class TeamMemberController {
     }
 
     @PostMapping(value = "/team.do")
-    private String insertTeamMember(@RequestParam(value = "pnum", required = false) Long pnum, TeamMemberDTO params, HttpSession session) {
+    private String insertTeamMember(@RequestParam(value = "pnum", required = false) Long pnum, TeamMemberDTO params,
+                                    @AuthenticationPrincipal UserDTO userDTO) {
         logger.info("" + params);
         System.out.println("참가하기: " + pnum);
-        params.setUserId(((UserDTO) session.getAttribute("userDTO")).getUserid());
+        // params.setUserId(((UserDTO) session.getAttribute("userDTO")).getUserid());
+        params.setUserId(userDTO.getUserid());
         try{
         	
             teamMemberService.registerTeamMember(params);

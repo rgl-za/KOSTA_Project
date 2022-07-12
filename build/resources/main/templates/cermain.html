@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+
+<th:block layout:fragment="content">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<div class="container-fluid">
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">진행 중인 거래 목록</h1>
+
+		</div>
+		<section class="py-5">
+			<div class="container px-4 px-lg-5 mt-5">
+				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+					<div class="col mb-5" th:each="cer : ${cer}">
+						<div class="card h-100">
+							<!-- Product image -->
+							<img class="card-img-top" id="cfile" name="cfile" style="width: 225px; height:200px;" th:src="|@{/imagePath/}${cer.getCfile()}|">
+							<!-- Product details -->
+							<div class="card-body p-4">
+								<div class="text-center">
+									<!-- Product name -->
+									<h5 class="fw-bolder">내용</h5>
+									<p th:text="${cer.content}"></p>
+								</div>
+							</div>
+							<!-- Product actions-->
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+
+								<a th:href="@{/cerdetail.do( cernum=${cer.cernum} )}"
+									class="btn btn-primary waves-effect waves-light">
+									상세보기
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- row -->
+		<!-- /.container-fluid -->
+	</div>
+</th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	</script>
+
+</th:block>
+
+</html>

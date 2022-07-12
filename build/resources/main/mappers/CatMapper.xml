@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.CatMapper">
+      
+		<sql id="postColumns">
+			catnum
+			,catindex
+		</sql>
+      
+	    <select id="selectCatList" parameterType="CatDTO" resultType="CatDTO">
+			SELECT 
+			<include refid="postColumns" />
+			FROM category
+			where 1=1
+			ORDER BY catnum
+		</select>
+	
+</mapper>

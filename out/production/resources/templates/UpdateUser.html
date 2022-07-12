@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko" xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layouts/basic">
@@ -55,6 +55,8 @@
 								<h1 class="h4 text-gray-900 mb-4">회원정보 수정 FORM</h1>
 							</div>
 							<form class="user" action="/user/UpdateUser" method="post">
+							
+							<input type = "hidden" class="form-control" value="${userDTO.userid}">
 
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
@@ -64,20 +66,20 @@
 										name ="userid" 
 										th:value="${userDTO?.userid}"
 										readonly="readonly"
-										placeholder= "id 변경불가"
+										placeholder= 아이디는 변경할수 없습니다
 										aria-label="Enter search term..."/>
 								</div>
 								
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user" value="${userDTO.username}" 
+										<input type="text" class="form-control form-control-user" value="" 
 											id="username" name="username" placeholder="이름">
 									</div>
 
 
 									<div class="col-sm-6 ">
-										<input type="text" class="form-control form-control-user" value="${userDTO.nickname}"
+										<input type="text" class="form-control form-control-user" value=""
 											id="nickname" name="nickname" placeholder="별명">
 									</div>
 								</div>
@@ -91,7 +93,7 @@
 											<span th:text ="${valid_password}"></span>
 									</div>
 									<div class="col-sm-6">
-										<input type="password" class="form-control form-control-user"  value="${userDTO?.password}"
+										<input type="password" class="form-control form-control-user"  value=""
 											id="password2" name="password"
 											placeholder="비밀번호 확인">
 											<span th:text ="${valid_password}"></span>
@@ -101,7 +103,7 @@
 								
 
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user" value="${userDTO.phone}"
+									<input type="text" class="form-control form-control-user" value=""
 										id="phoneNumber" name="phone" placeholder="'-'을 제외한 전화번호 11자리를 입력해주세요">
 								</div>
 
@@ -129,19 +131,12 @@
 										readonly="readonly" placeholder="주소">
 										<br>
 
-									<div class="form-group row">
-									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" id="sample6_detailAddress"
-											class="form-control form-control-user" name="realaddress" value="${userDTO.realaddress}"
-											placeholder="상세주소">
-											<span th:text="${valid_realaddress}"></span> 
-									</div>
-										<div class="col-sm-6 ">
-											<input type="text"
-											id="sample6_extraAddress"
-											class="form-control form-control-user" placeholder="참고사항">
-										</div>
-									</div>
+									
+									<div class="form-group">
+									<input type="text" class="form-control form-control-user" value=""
+										id="realaddress" name="realaddress" placeholder="상세 주소">
+										<span th:text="${valid_realaddress}"></span> 
+								</div>
 								</div>
 
 								<script
