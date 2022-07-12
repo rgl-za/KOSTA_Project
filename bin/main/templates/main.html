@@ -4,11 +4,11 @@
       layout:decorate="layouts/basic">
 
 <th:block layout:fragment="content">
-<link rel="stylesheet"
-             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="container-fluid">
         
         <!-- Page Heading -->
+
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">진행 중인 거래 목록</h1>
 
@@ -34,7 +34,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-                                th:src="|@{/imagePath/}${postList.getPhoto()}|">
+                                th:src="|@{uploadFile/}${postList.getPhoto()}|">
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -128,13 +128,12 @@
             $.ajax({
                 type: 'POST',
                 url: '/checkHeart',
-                dataType: 'json',
                 data: {
                     // pnum: dataForm[0]["value"],
                     pnum: pnum
                 },
                 success: function (result){
-                    if(result >= 1){
+                    if(result == 1){
                         alert("이미 담겨진 상품입니다!");
                         console.log("ㅇㅇ");
                     } else {
@@ -178,7 +177,7 @@
                 var RemainDate = endDate - startDatetime;
                 //console.log("RemainDate: ", RemainDate);
 
-                var days = Math.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
+                var days = Math.floor((RemainDate / (1000 * 60 * 60 * 24)));
                 var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
                 var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
