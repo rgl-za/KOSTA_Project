@@ -19,37 +19,64 @@ public class PostServiceImpl implements PostService {
 	private PostMapper postMapper;
 	
 	// 게시글 등록, 수정
-	/*
-	 * @Override public boolean registerPost(PostDTO params) { //int queryResult =
-	 * 0;
-	 * 
-	 * int pnum=0; System.out.println("registerPost 에 들어옴");
-	 * 
-	 * if (params.getPnum() == null) { //queryResult =
-	 * postMapper.insertPost(params); pnum = postMapper.insertPost(params); long
-	 * pnum2 = params.getPnum();
-	 * 
-	 * System.out.println("registerPost 에 들어옴"+pnum2);
-	 * 
-	 * return (int) pnum2;
-	 * 
-	 * } else { System.out.println("수정"); //수정이면 return 1 pnum =
-	 * postMapper.updatePost(params); } return pnum; //return (queryResult == 1) ?
-	 * true : false; }
-	 */
-	
-	@Override
-	public boolean registerPost(PostDTO params) {
-		int queryResult = 0;
+		@Override
+		public int registerPost(PostDTO params) {
+			//int queryResult = 0;
 
-		if (params.getPnum() == null) {
-			queryResult = postMapper.insertPost(params);
-		} else {
-			queryResult = postMapper.updatePost(params);
+			int pnum=0;
+			System.out.println("registerPost 에 들어옴");
+
+			if (params.getPnum() == null) {
+				//queryResult = postMapper.insertPost(params);
+				pnum = postMapper.insertPost(params);
+				long pnum2 = params.getPnum();
+
+				System.out.println("registerPost 에 들어옴"+pnum2);
+
+				return (int) pnum2;
+
+
+
+			} else {
+				System.out.println("수정");
+				//수정이면 return 1
+				pnum = postMapper.updatePost(params); 
+			}
+			return pnum;
+			//return (queryResult == 1) ? true : false;
 		}
-
-		return (queryResult == 1) ? true : false;
-	}
+	// 게시글 등록, 수정
+//	/*
+//	 * @Override public boolean registerPost(PostDTO params) { //int queryResult =
+//	 * 0;
+//	 * 
+//	 * int pnum=0; System.out.println("registerPost 에 들어옴");
+//	 * 
+//	 * if (params.getPnum() == null) { //queryResult =
+//	 * postMapper.insertPost(params); pnum = postMapper.insertPost(params); long
+//	 * pnum2 = params.getPnum();
+//	 * 
+//	 * System.out.println("registerPost 에 들어옴"+pnum2);
+//	 * 
+//	 * return (int) pnum2;
+//	 * 
+//	 * } else { System.out.println("수정"); //수정이면 return 1 pnum =
+//	 * postMapper.updatePost(params); } return pnum; //return (queryResult == 1) ?
+//	 * true : false; }
+//	 */
+	
+//	@Override
+//	public boolean registerPost(PostDTO params) {
+//		int queryResult = 0;
+//
+//		if (params.getPnum() == null) {
+//			queryResult = postMapper.insertPost(params);
+//		} else {
+//			queryResult = postMapper.updatePost(params);
+//		}
+//
+//		return (queryResult == 1) ? true : false;
+//	}
 	
 	// 상세내용에 불러올 글
 	@Override
