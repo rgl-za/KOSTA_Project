@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,7 +78,7 @@ public class PostController extends UiUtils {
 	// 게시글 등록, 수정
 		@Test
 		@PostMapping(value = "/register.do")
-		public String registerPost(final PostDTO params, MultipartFile file, HttpSession session)throws Exception {
+		public String registerPost(final PostDTO params, MultipartFile file)throws Exception {
 			logger.info("" + params);
 			
 			try { // 파일업로드
@@ -98,10 +99,18 @@ public class PostController extends UiUtils {
 					
 					System.out.println(">>>>>>>>>isRegisteredPnum>>"+registeredPnum);
 					
+					//security
+					Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+		
+					
 					//방장의 정보 teammember테이블에 등록
-					System.out.println("포스트 등록시 sesstion"+( (UserDTO)session.getAttribute("userDTO") ).getUserid());
+					//System.out.println("포스트 등록시 sesstion"+( (UserDTO)session.getAttribute("userDTO") ).getUserid());
 					TeamMemberDTO captain = new TeamMemberDTO();
-					String id= ( (UserDTO)session.getAttribute("userDTO") ).getUserid();
+					
+					//String id= ( (UserDTO)session.getAttribute("userDTO") ).getUserid();
+					
+					String id= ((UserDTO) principal).getUserid();
+					System.out.println(">>>sesstion에서변경된 captain id>>"+id);
 					
 					captain.setUserId(id);
 					captain.setPnum(pnum);

@@ -54,7 +54,7 @@
 		, #{numbers}	
 		)
 		]]>
-		<selectKey keyProperty="pnum" resultType="long" order="BEFORE">본 쿼리가 먼저 실행 
+		<selectKey keyProperty="pnum" resultType="long" order="BEFORE">
 		<![CDATA[
 			 SELECT seq_post_no.nextval from dual
 		]]>
