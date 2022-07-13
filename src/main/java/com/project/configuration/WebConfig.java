@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
-	private String connectPath = "/imagePath/**";
+	private String connectPath = "/uploadFile/**";
 	private String resourcePath = "file:///C:/uploadFile/";
 	
 	@Override
