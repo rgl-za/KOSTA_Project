@@ -9,6 +9,7 @@
     <div class="container-fluid">
         
         <!-- Page Heading -->
+
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">진행 중인 거래 목록</h1>
 
@@ -128,13 +129,12 @@
             $.ajax({
                 type: 'POST',
                 url: '/checkHeart',
-                dataType: 'json',
                 data: {
                     // pnum: dataForm[0]["value"],
                     pnum: pnum
                 },
                 success: function (result){
-                    if(result >= 1){
+                    if(result == 1){
                         alert("이미 담겨진 상품입니다!");
                         console.log("ㅇㅇ");
                     } else {
