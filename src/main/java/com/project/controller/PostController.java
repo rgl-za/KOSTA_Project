@@ -2,6 +2,7 @@ package com.project.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.junit.Test;
@@ -15,8 +16,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.constant.Method;
 import com.project.domain.CatDTO;
@@ -154,8 +157,10 @@ public class PostController extends UiUtils {
 //	}
 	
 	
+	//@RequestMapping(value = "/main.do")
 	@GetMapping(value = "/main.do")
-	public String openPostList(@RequestParam(value="keyword", required=false) String keyword,
+	public String openPostList(HttpServletRequest req, RedirectAttributes rtt,
+							@RequestParam(value="keyword", required=false) String keyword,
 							@RequestParam(value="category", required=false, defaultValue="0") String category,
 							@RequestParam(value="sortoption", required=false) String sortopt, Model model) {
 		
