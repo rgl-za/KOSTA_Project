@@ -109,21 +109,12 @@ public class PostController extends UiUtils {
 				captain.setUserId(id);
 			
 				// registeredPnum : 만약 업데이트라면 1, 새로운 등록이면 pnum, 실패하면 0이 리턴됨.
-				int registeredPnum = postService.registerPost(params, captain);
+				boolean isRegistered = postService.registerPost(params, captain);
 
 
-				System.out.println(">>>>>>>>>isRegisteredPnum>>" + registeredPnum);
+				System.out.println(">>>>>>>>>isRegistered>" + isRegistered);
 
-				
-				// 방장의 정보 teammember테이블에 등록
-				// System.out.println("포스트 등록시 sesstion"+(
-				// (UserDTO)session.getAttribute("userDTO") ).getUserid());
-				
-				//captain.setPnum(pnum);
-
-				//teamMemberService.registerTeamMember(captain);
-
-				if (registeredPnum == 0) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
+				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
 					System.out.println("<-----게시글 등록 실패----->");
 				}
 			} else {

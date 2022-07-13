@@ -8,7 +8,7 @@ import com.project.domain.TeamMemberDTO;
 public interface PostService {
 
 	// 게시글 등록, 수정
-	public int registerPost(PostDTO params, TeamMemberDTO captain); 
+	public boolean registerPost(PostDTO params, TeamMemberDTO captain); 
 
 
 	// 게시글 상세 내용 불러오기

@@ -26,32 +26,31 @@ public class PostServiceImpl implements PostService {
 	// 게시글 등록, 수정
 	@Transactional(noRollbackFor = Exception.class)
 	@Override
-	public int registerPost(PostDTO params, TeamMemberDTO captain) {
-		// int queryResult = 0;
-		int pnum = 0;
+	public boolean registerPost(PostDTO params, TeamMemberDTO captain) {
+		int queryResult = 0;
+		
 
 		if (params.getPnum() == null) { //new post
 			
 			// queryResult = postMapper.insertPost(params);
-			pnum = postMapper.insertPost(params);
-			long pnum2 = params.getPnum();
+			queryResult = postMapper.insertPost(params);
+			long pnum = params.getPnum();
 
-			System.out.println("registerPost 에 들어옴" + pnum2);
+			System.out.println("registerPost 에 들어옴" + pnum);
 			
 			TeamMemberDTO cap = captain;
-			cap.setPnum(pnum2);
+			cap.setPnum(pnum);
 
 			teamMemberMapper.insertTeamMember(captain);
 
-			return (int) pnum2;
 
 		} else {
 			System.out.println("수정");
 			// 수정이면 return 1
-			pnum = postMapper.updatePost(params);
+			queryResult = postMapper.updatePost(params);
 		}
-		return pnum;
-		// return (queryResult == 1) ? true : false;
+		
+		 return (queryResult == 1) ? true : false;
 	}
 	// 게시글 등록, 수정
 //	/*
