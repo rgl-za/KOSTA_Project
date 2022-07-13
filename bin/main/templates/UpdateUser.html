@@ -56,7 +56,7 @@
 							</div>
 							<form class="user" action="/user/UpdateUser" method="post">
 							
-							<input type = "hidden" class="form-control" value="${userDTO.userid}">
+							<input type = "hidden" class="form-control" th:value="${#authentication.principal.userid}">
 
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
@@ -64,62 +64,37 @@
 										type="text" 
 										id = "userid"
 										name ="userid" 
-										th:value="${userDTO?.userid}"
+										th:value="${#authentication.principal.userid}"
+										placeholder= "Enter username"
 										readonly="readonly"
-										placeholder= 아이디는 변경할수 없습니다
 										aria-label="Enter search term..."/>
 								</div>
 								
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user" value="" 
+										<input type="text" class="form-control form-control-user" th:value="${#authentication.principal.username}" 
 											id="username" name="username" placeholder="이름">
 									</div>
 
 
 									<div class="col-sm-6 ">
-										<input type="text" class="form-control form-control-user" value=""
-											id="nickname" name="nickname" placeholder="별명">
+										<input type="text" class="form-control form-control-user" th:value="${#authentication.principal.nickname}"
+											id="nickname" name="nickname" placeholder="닉네임">
 									</div>
 								</div>
 								
 								
-								
-								<div class="form-group row">
-									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="password" class="form-control form-control-user" value="${userDTO?.password}"
-											id="password1" name="password" placeholder="영문자, 숫자, 특수기호가 적어도 1개 이상 포함된 6자~12자의 비밀번호여야 합니다">
-											<span th:text ="${valid_password}"></span>
-									</div>
-									<div class="col-sm-6">
-										<input type="password" class="form-control form-control-user"  value=""
-											id="password2" name="password"
-											placeholder="비밀번호 확인">
-											<span th:text ="${valid_password}"></span>
-									</div>
-								</div>
-								
-								
-
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user" value=""
+									<input type="text" class="form-control form-control-user" th:value="${#authentication.principal.phone}"
 										id="phoneNumber" name="phone" placeholder="'-'을 제외한 전화번호 11자리를 입력해주세요">
 								</div>
 
-								<div class="input-group"
-									style="padding-top: 10px; padding-bottom: 10px">
-									<input class="form-control form-control-user" value="${birth}"
-										type="date" name ="birth" placeholder="생년-월-일"
-										aria-label="Enter search term..."
-										aria-describedby="button-search" />
-								</div>
-
 
 
 								<div class="input-group"
 									style="padding-top: 10px; padding-bottom: 10px">
-									<input type="text" class="form-control form-control-user" th:value="${userDTO?.postnum}" id="sample6_postcode" name ="postnum" readonly="readonly" placeholder="우편번호">
+									<input type="text" class="form-control form-control-user" th:value="${#authentication.principal.postnum}" id="sample6_postcode" name ="postnum" readonly="readonly" placeholder="우편번호">
 									
 									<input type="button" onclick="sample6_execDaumPostcode()"
 										value="우편번호 찾기">
@@ -127,13 +102,13 @@
 										</div>
 								<div>
 									<input type="text" id="sample6_address"
-										class="form-control form-control-user" name="address"
-										readonly="readonly" placeholder="주소">
+										class="form-control form-control-user" name="address" th:value="${#authentication.principal.address}"
+										readonly= "readonly" placeholder="주소">
 										<br>
 
 									
 									<div class="form-group">
-									<input type="text" class="form-control form-control-user" value=""
+									<input type="text" class="form-control form-control-user" th:value="${#authentication.principal.realaddress}"
 										id="realaddress" name="realaddress" placeholder="상세 주소">
 										<span th:text="${valid_realaddress}"></span> 
 								</div>
@@ -208,7 +183,7 @@
 									</script>
 
 								<button type="submit" id ="signUp" onclick="test()" class="btn btn-primary btn-user btn-block">
-										수정하기 버튼
+										수정
 										</button>
 							</form>
 							<hr>
@@ -225,15 +200,27 @@
 	
 
 </body>
+update: function (){
+        let data ={
+            id:$("#userid").val(),
+            username:$("#username").val(),
+            password:$("#password").val()
+        }
 
-<script type = "text/javascript">
-	function test(){
-		var p1 = document.getElementById('password1').value;
-		var p2 = document.getElementById('password2').value;
-		
-		if(p1.length <8){
-			alert("비밀번호 불일치");
-			return false;
-		}
-	}</script>
+        $.ajax({
+            type:"PUT",
+            url:"/user",
+            data:JSON.stringify(data), //object -> json
+            contentType:"application/json; charset=utf-8",
+            dataType:"json"
+        }).done(function (response){
+            alert("회원 수정 완료");
+            location.href = "/";
+        }).fail(function (error){
+            alert(error);
+            alert("회원 수정 실패");
+        }); //ajax통신으로 데이터를 json으로 변경 후 insert
+
+    }
+
 </html>

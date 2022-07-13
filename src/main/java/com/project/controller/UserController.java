@@ -54,23 +54,23 @@ public class UserController {
         return "/register";
     }
     
-    @ResponseBody
-    @PostMapping("/idCheck")
-	public int overlappedID(String userid)throws Exception {
-		int result = userService.overlappedID(userid);
-		
-		logger.info("*********************************" +result);
-		return result;
-	}
-    
 //    @ResponseBody
 //    @PostMapping("/idCheck")
-//	public int overlappedID(@RequestParam (value="userid" ,required=false) String userid)throws Exception {
+//	public int overlappedID(String userid)throws Exception {
 //		int result = userService.overlappedID(userid);
 //		
 //		logger.info("*********************************" +result);
 //		return result;
 //	}
+//    
+    @ResponseBody
+    @PostMapping("/idCheck")
+	public int overlappedID(@RequestParam (value="userid" ,required=false) String userid)throws Exception {
+		int result = userService.overlappedID(userid);
+		
+		logger.info("*********************************" +result);
+		return result;
+	}
 
     @PostMapping("/register")
     public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model){
@@ -147,20 +147,20 @@ public class UserController {
     }
     
     @PostMapping("/UpdateUser")
-    public String UpdateUser(UserDTO userDTO, HttpSession session) throws Exception{
+    public String UpdateUser(UserDTO userDTO) throws Exception{
     	
     	userService.UserUpdate(userDTO);
     	logger.info("$$$$$$$$$$$$$$$$$$$수정$$$$$$$$$$$$$$$$");
     	
-    	return "redirect:/mypage";
-    }
-    
-    @GetMapping("/logout")
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-    	System.out.println("로그아웃^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^66");
-    	new SecurityContextLogoutHandler().logout(request, response,SecurityContextHolder.getContext().getAuthentication());
     	return "redirect:/main.do";
     }
     
+//    @GetMapping("/logout")
+//    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+//    	System.out.println("로그아웃^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^66");
+//    	new SecurityContextLogoutHandler().logout(request, response,SecurityContextHolder.getContext().getAuthentication());
+//    	return "redirect:/UpdateUser";
+//    }
+//    
 
 }

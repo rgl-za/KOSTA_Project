@@ -48,17 +48,15 @@
 					<div class="col-lg-7">
 						<div class="p-5">
 							<div class="text-center">
-								<h1 class="h4 text-gray-900 mb-4">임시 회원가입 FORM</h1>
+								<h1 class="h4 text-gray-900 mb-4">함께이조 회원가입!</h1>
 							</div>
 							<form class="user" action="/user/register" method="post">
 							
-								<div class="input-group"
-									style="padding-top: 10px; padding-bottom: 10px">
+							<div class="form-group">
 									<input class="form-control form-control-user" 
 										type="text" 
 										id = "userid"
 										name ="userid" 
-										
 										th:value="${userDTO?.userid}"
 										placeholder="아이디는 영어,숫자 4~15자리로 입력해주세요"
 										aria-label="Enter search term..."/>
@@ -66,7 +64,6 @@
 										<span id = "checkid-msg" th:text="${valid_userid}"></span>
 										<span id = "olmessage"></span>
 										
-										<button class="idCheck" type="button" id="idCheck" onclick="fn_idCheck();" value="N"></button>
 								</div>
 								<!--  onchange = "checkId()"-->
 
@@ -91,25 +88,26 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="password" class="form-control form-control-user" th:value="${userDTO?.password}"
 											id="password1" name="password" placeholder="영문자, 숫자, 특수기호가 적어도 1개 이상 포함된 6자~12자의 비밀번호여야 합니다">
-											<span th:text ="${valid_password}"></span>
+											
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"  th:value="${userDTO?.password}"
 											id="password2" name="password2"
 											placeholder="비밀번호 확인">
-											<span th:text ="${valid_password}"></span>
 									</div>
 								</div>
+								<span th:text ="${valid_password}"></span>
+								<br>
 								
 								
 
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user" th:value="${userDTO?.phone}"
-										id="phoneNumber" name="phone" placeholder="'-'을 제외한 전화번호 11자리를 입력해주세요">
+										id="phoneNumber" name="phone" placeholder="전화번호 '-'을 제외한 전화번호 11자리를 입력해주세요">
 										<span th:text ="${valid_phone}"></span>
 								</div>
 
-								<div class="input-group"
+								<div class="form-group"
 									style="padding-top: 10px; padding-bottom: 10px">
 									<input class="form-control form-control-user" th:value="${userDTO?.birth}"
 										type="date" name ="birth" placeholder="생년-월-일"
@@ -133,12 +131,13 @@
 									
 									<input type="button" onclick="sample6_execDaumPostcode()"
 										value="우편번호 찾기">
-										<span th:text ="${valid_postnum}"></span>
+										
 										</div>
 								<div>
 									<input type="text" id="sample6_address"
-										class="form-control form-control-user" name="address"
+										class="form-control form-control-user" name="address" th:value="${userDTO?.address}"
 										readonly="readonly" placeholder="주소">
+										<span th:text ="${valid_postnum}"></span>
 										<br>
 
 									<div class="form-group row">
@@ -278,7 +277,7 @@
 
 </body>
 
-<!-- <th:block layout:fragment="text/script">
+<th:block layout:fragment="text/script">
 	<script th:inline="javascript">
 	/*<![CDATA[*/
 	    function checkId(){
@@ -306,7 +305,7 @@
 	        };
 	        /*]]>*/
 			</script>
-</th:block> -->
+</th:block>
 
 
 <script type = "text/javascript">
@@ -314,7 +313,7 @@
 		var p1 = document.getElementById('password1').value;
 		var p2 = document.getElementById('password2').value;
 		
-		if(p1.length <8){
+		if(p1 != p2){
 			alert("비밀번호 불일치");
 			return false;
 		}

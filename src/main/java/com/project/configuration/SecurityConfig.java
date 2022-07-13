@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -32,8 +33,9 @@ public class SecurityConfig {
 	
 	@Bean
 	 public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
-	        return (web) -> web.ignoring().antMatchers
-	        		("/", "/css/**" , "/assets/**", "/fonts/**", "/img/**", "/js/**", "/plugin/**", "/productlmgs/**", "/scripts/**", "/scss/**", "/vender/**"); //static 디렉터리 하위 파일 목윽은 인증 무시
+	        return (web) -> web.ignoring()
+	        		.antMatchers
+	        		("/css/**", "/img/**", "/js/**"); //static 디렉터리 하위 파일 목윽은 인증 무시
 	    }
 	
 	@Bean
@@ -47,7 +49,7 @@ public class SecurityConfig {
             .anyRequest().authenticated()
             .and()
         .formLogin()
-            .loginPage("/user/login").permitAll() //로그인 페이지 링크
+            .loginPage("/user/login") //로그인 페이지 링크
             .loginProcessingUrl("/user/login")
             .usernameParameter("userid")
             .defaultSuccessUrl("/main.do") //로그인 성공시 이동하는 페이지 등록

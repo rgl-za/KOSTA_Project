@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 	<th:block th:fragment="sidebarFragment">
+	<base href="/">
 
    
      <!-- Sidebar -->
@@ -81,6 +82,7 @@
                     <span>거래 중 목록</span></a>
             </li>
             
+            <div sec:authorize="isAuthenticated()">
             <!-- Divider -->
             <hr class="sidebar-divider">
             
@@ -90,7 +92,7 @@
                  
                     <span>마이페이지</span></a>
             </li>
-            
+            </div>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
