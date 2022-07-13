@@ -90,37 +90,26 @@ public class PostController extends UiUtils {
 					FileDTO fileDTO = fileUtil.fileUpload(file);
 					System.out.println("저장된 filevo: " + fileDTO.toString());
 					System.out.println("저장된 file이름: " + fileDTO.getSaveName());
-
-					// 블로그 logo-name 설정 
+				
+					// 블로그 logo-name 설정
 					params.setPhoto(fileDTO.getSaveName());
-
-					//boolean isRegistered = postService.registerPost(params);
-					//registeredPnum : 만약 업데이트라면 1, 새로운 등록이면 pnum, 실패하면 0이 리턴됨.
-					int registeredPnum = postService.registerPost(params);
 					
-					Long pnum = (long) registeredPnum;
+					// security
+					Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+					// String id= ( (UserDTO)session.getAttribute("userDTO") ).getUserid();
+					String id = ((UserDTO) principal).getUserid();
+					params.setLeaderid(id);
 					
-					System.out.println(">>>>>>>>>isRegisteredPnum>>"+registeredPnum);
-					
-					//security
-					Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		
-					
-					//방장의 정보 teammember테이블에 등록
-					//System.out.println("포스트 등록시 sesstion"+( (UserDTO)session.getAttribute("userDTO") ).getUserid());
 					TeamMemberDTO captain = new TeamMemberDTO();
-					
-					//String id= ( (UserDTO)session.getAttribute("userDTO") ).getUserid();
-					
-					String id= ((UserDTO) principal).getUserid();
-					System.out.println(">>>sesstion에서변경된 captain id>>"+id);
-					
 					captain.setUserId(id);
-					captain.setPnum(pnum);
+
+					// registeredPnum : 만약 업데이트라면 1, 새로운 등록이면 pnum, 실패하면 0이 리턴됨.
 					
-					teamMemberService.registerTeamMember(captain);
-					
-					if (registeredPnum == 0) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
+					boolean isRegistered = postService.registerPost(params, captain);
+
+					System.out.println(">>>>>>>>>isRegistered>" + isRegistered);
+
+					if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
 						System.out.println("<-----게시글 등록 실패----->");
 					}
 				} else {
