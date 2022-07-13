@@ -210,7 +210,7 @@ update: function (){
         $.ajax({
             type:"PUT",
             url:"/user",
-            data:JSON.stringify(data), //object -> json
+            data:JSON.stringify(data), 
             contentType:"application/json; charset=utf-8",
             dataType:"json"
         }).done(function (response){
