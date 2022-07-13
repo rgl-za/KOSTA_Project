@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.mapper.TeamMemberMapper">
+
+	<select id="selectTeamMemberList" resultType="TeamMemberDTO" parameterType="TeamMemberDTO">
+		SELECT userId
+		FROM teammember
+		WHERE pnum = #{pnum}
+	</select>
+
+	<insert id="insertTeamMember" parameterType="TeamMemberDTO">
+		INSERT INTO teammember(memberNum, pnum, userId)
+			VALUES ( seq_member_no.nextval
+			   		, #{pnum}
+			   		, #{userId})
+	</insert>
+
+	<select id="selectTeamMemberTotalCount" parameterType="Long" resultType="int">
+		SELECT COUNT(*)
+		FROM teammember
+		WHERE pnum = #{pnum}
+	</select>
+	
+</mapper>

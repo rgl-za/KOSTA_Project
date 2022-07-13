@@ -61,6 +61,7 @@ public class UserDTO implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
 		return Collections.singletonList(new SimpleGrantedAuthority(this.userauth));
 	}
 	
