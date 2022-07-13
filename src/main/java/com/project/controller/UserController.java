@@ -40,7 +40,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -92,16 +92,15 @@ public class UserController {
     @GetMapping("/login")
     public String memberLogin () { 
     
-    System.out.println("여기로 진입");
+    System.out.println("go to login page!");
     	return "/login";
     }
-    
 
     
     @PostMapping(value= "/login")
     public String Login(HttpServletRequest req, RedirectAttributes rtt) {
     	
-    	System.out.println("컨트롤러 메서드 진입@@@@@@@@@@@@@@@@");
+//    	System.out.println("컨트롤러 메서드 진입@@@@@@@@@@@@@@@@");
 //    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //    	UserDTO userDTO = (UserDTO) auth.getPrincipal();
 //    	
@@ -119,9 +118,9 @@ public class UserController {
     	return "redirect:/main.do";
     }
     
-    public String currentUsername(Principal principal) {
-    	return principal.getName();
-    }
+//    public String currentUsername(Principal principal) {
+//    	return principal.getName();
+//    }
     
     
 //    @PostMapping("/login")

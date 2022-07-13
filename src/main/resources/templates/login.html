@@ -47,8 +47,9 @@
                                         <h1 class="h4 text-gray-900 mb-4">로그인</h1>
                                     </div>
                                     
-                                    
-                                    <form class="login" action="/user/login" method="post">
+                   
+                                    <!-- <form class="login" action="/user/login" method="post"> -->
+                                    <form class="login" th:action="@{/login}" method="post">
                                         <div class="form-group">
                                         
                                             <input type="text" class="form-control form-control-user"
