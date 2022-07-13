@@ -13,7 +13,7 @@
 		, gender
 		, birth
 		, realaddress
-		, userno
+		, users_no
 	</sql>
 
 
