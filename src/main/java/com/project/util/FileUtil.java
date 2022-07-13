@@ -14,8 +14,10 @@ public class FileUtil {
 
 	public FileDTO fileUpload(MultipartFile file) {
 		
+		
 	  //String saveDir = "D:\\javaStudy\\upload";
-	  String saveDir = "C:\\uploadFile";
+	  //String saveDir = "C:\\uploadFile";
+	  String saveDir = getFileDir();
 //	  String saveDir = "C:\\Users\\moonj\\Documents\\GitHub\\KOSTA_Project\\src\\main\\resources\\static\\productImgs";
 	                    // C:\\Users\moonj\Documents\GitHub\KOSTA_Project\src\main\resources\static\productImgs
 	  //String saveDir = "D:/javastudy/workspace/jblog/src/main/resources/upload";
@@ -55,5 +57,18 @@ public class FileUtil {
 		
 		return fileDto;
 		
+	}
+	
+	
+	public String getFileDir() {
+	    String os = System.getProperty("os.name").toLowerCase();
+	    System.out.println("Using System Property: " + os);
+	    if(os.contains("win")) {
+	    	return "C:\\uploadFile";
+	    	
+	    }else {
+	    	return "/home/uploadFile/";
+	    }
+	    
 	}
 }
