@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ProjectApplicationTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ProjectApplicationTests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.project.html">com.project</a> &gt; ProjectApplicationTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.394s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">contextLoads()</td>
+<td class="success">0.389s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testByApplicationContext()</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>15:26:13.445 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+15:26:13.457 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+15:26:13.506 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.project.ProjectApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+15:26:13.523 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.project.ProjectApplicationTests], using SpringBootContextLoader
+15:26:13.529 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.project.ProjectApplicationTests]: class path resource [com/project/ProjectApplicationTests-context.xml] does not exist
+15:26:13.530 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.project.ProjectApplicationTests]: class path resource [com/project/ProjectApplicationTestsContext.groovy] does not exist
+15:26:13.531 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.project.ProjectApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+15:26:13.532 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.project.ProjectApplicationTests]: ProjectApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:26:13.591 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.project.ProjectApplicationTests]
+15:26:13.666 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/jihyeonjeong/KOSTA_Project/build/classes/java/main/com/project/ProjectApplication.class]
+15:26:13.668 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.project.ProjectApplication for test class com.project.ProjectApplicationTests
+15:26:13.797 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.project.ProjectApplicationTests]: using defaults.
+15:26:13.797 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+15:26:13.817 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@764faa6, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4c1f22f3, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@598bd2ba, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5a755cc1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7ae42ce3, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4f5991f6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@484094a5, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@38234a38, org.springframework.test.context.event.EventPublishingTestExecutionListener@63fbfaeb, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@602e0143, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2c07545f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@e57b96d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@32c726ee, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@22f31dec, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@34c01041]
+15:26:13.823 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@ab7395e testClass = ProjectApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@50d13246 testClass = ProjectApplicationTests, locations = '{}', classes = '{class com.project.ProjectApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@72cc7e6f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@5386659f, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7ce69770, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@7e057f43, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@359df09a, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@318ba8c8], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+15:26:14,104 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+15:26:14,104 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console]
+15:26:14,145 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+15:26:14,161 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+15:26:14,162 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [console-infolog]
+15:26:14,162 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+15:26:14,163 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [com.projet] to DEBUG
+15:26:14,163 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@83298d7 - Propagating DEBUG level on Logger[com.projet] onto the JUL framework
+15:26:14,164 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [jdbc.sqlonly] to INFO
+15:26:14,164 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@83298d7 - Propagating INFO level on Logger[jdbc.sqlonly] onto the JUL framework
+15:26:14,165 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [jdbc.resultsettable] to INFO
+15:26:14,165 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@83298d7 - Propagating INFO level on Logger[jdbc.resultsettable] onto the JUL framework
+15:26:14,165 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to INFO
+15:26:14,165 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@83298d7 - Propagating INFO level on Logger[ROOT] onto the JUL framework
+15:26:14,165 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [console] to Logger[ROOT]
+15:26:14,166 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+15:26:14,166 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@6f603e89 - Registering current configuration as safe fallback point
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.0)
+
+2022-07-07 15:26:14,212  WARN [org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer] 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/Users/jihyeonjeong/.gradle/caches/modules-2/files-2.1/org.json/json/20090211/c183aa3a2a6250293808bba12262c8920ce5a51c/json-20090211.jar!/org/json/JSONObject.class
+	jar:file:/Users/jihyeonjeong/.gradle/caches/modules-2/files-2.1/com.vaadin.external.google/android-json/0.0.20131108.vaadin1/fa26d351fe62a6a17f5cda1287c1c6110dec413f/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2022-07-07 15:26:14,235  INFO [com.project.ProjectApplicationTests] Starting ProjectApplicationTests using Java 1.8.0_321 on jihyeonjeong-ui-MacBookPro.local with PID 20084 (started by jihyeonjeong in /Users/jihyeonjeong/KOSTA_Project)
+2022-07-07 15:26:14,236  INFO [com.project.ProjectApplicationTests] No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-07-07 15:26:14,243  INFO [org.hibernate.validator.internal.util.Version] HV000001: Hibernate Validator 6.2.3.Final
+2022-07-07 15:26:15,857  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+2022-07-07 15:26:16,350  INFO [jdbc.connection] 1. Connection opened
+2022-07-07 15:26:16,350  INFO [jdbc.audit] 1. Connection.new Connection returned 
+2022-07-07 15:26:16,350  INFO [jdbc.audit] 1. Connection.getNetworkTimeout() returned 0
+2022-07-07 15:26:16,351  INFO [jdbc.audit] 1. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,351  INFO [jdbc.audit] 1. Connection.getAutoCommit() returned true
+2022-07-07 15:26:16,444  INFO [jdbc.audit] 1. Statement.new Statement returned 
+2022-07-07 15:26:16,444  INFO [jdbc.audit] 1. Connection.createStatement() returned net.sf.log4jdbc.sql.jdbcapi.StatementSpy@506aabf6
+2022-07-07 15:26:16,444  INFO [jdbc.sqlonly] SELECT SYSDATE FROM DUAL
+
+2022-07-07 15:26:16,502  INFO [jdbc.sqltiming] SELECT SYSDATE FROM DUAL
+ {executed in 58 msec}
+2022-07-07 15:26:16,502  INFO [jdbc.audit] 1. Statement.execute(SELECT SYSDATE FROM DUAL) returned true
+2022-07-07 15:26:16,502  INFO [jdbc.audit] 1. Statement.close() returned 
+2022-07-07 15:26:16,502  INFO [jdbc.audit] 1. Connection.getTransactionIsolation() returned 2
+2022-07-07 15:26:16,506  INFO [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+2022-07-07 15:26:16,661  INFO [jdbc.connection] 2. Connection opened
+2022-07-07 15:26:16,661  INFO [jdbc.audit] 2. Connection.new Connection returned 
+2022-07-07 15:26:16,661  INFO [jdbc.audit] 2. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,661  INFO [jdbc.audit] 2. Connection.getAutoCommit() returned true
+2022-07-07 15:26:16,726  INFO [jdbc.connection] 3. Connection opened
+2022-07-07 15:26:16,726  INFO [jdbc.audit] 3. Connection.new Connection returned 
+2022-07-07 15:26:16,726  INFO [jdbc.audit] 3. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,726  INFO [jdbc.audit] 3. Connection.getAutoCommit() returned true
+2022-07-07 15:26:16,779  INFO [jdbc.connection] 4. Connection opened
+2022-07-07 15:26:16,779  INFO [jdbc.audit] 4. Connection.new Connection returned 
+2022-07-07 15:26:16,779  INFO [jdbc.audit] 4. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,779  INFO [jdbc.audit] 4. Connection.getAutoCommit() returned true
+2022-07-07 15:26:16,829  INFO [jdbc.connection] 5. Connection opened
+2022-07-07 15:26:16,829  INFO [jdbc.audit] 5. Connection.new Connection returned 
+2022-07-07 15:26:16,829  INFO [jdbc.audit] 5. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,829  INFO [jdbc.audit] 5. Connection.getAutoCommit() returned true
+2022-07-07 15:26:16,876  INFO [jdbc.connection] 6. Connection opened
+2022-07-07 15:26:16,876  INFO [jdbc.audit] 6. Connection.new Connection returned 
+2022-07-07 15:26:16,876  INFO [jdbc.audit] 6. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,876  INFO [jdbc.audit] 6. Connection.getAutoCommit() returned true
+2022-07-07 15:26:16,930  INFO [jdbc.connection] 7. Connection opened
+2022-07-07 15:26:16,931  INFO [jdbc.audit] 7. Connection.new Connection returned 
+2022-07-07 15:26:16,931  INFO [jdbc.audit] 7. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,931  INFO [jdbc.audit] 7. Connection.getAutoCommit() returned true
+2022-07-07 15:26:16,988  INFO [jdbc.connection] 8. Connection opened
+2022-07-07 15:26:16,989  INFO [jdbc.audit] 8. Connection.new Connection returned 
+2022-07-07 15:26:16,989  INFO [jdbc.audit] 8. Connection.isReadOnly() returned false
+2022-07-07 15:26:16,989  INFO [jdbc.audit] 8. Connection.getAutoCommit() returned true
+2022-07-07 15:26:17,036  INFO [jdbc.connection] 9. Connection opened
+2022-07-07 15:26:17,036  INFO [jdbc.audit] 9. Connection.new Connection returned 
+2022-07-07 15:26:17,036  INFO [jdbc.audit] 9. Connection.isReadOnly() returned false
+2022-07-07 15:26:17,036  INFO [jdbc.audit] 9. Connection.getAutoCommit() returned true
+2022-07-07 15:26:17,078  INFO [jdbc.connection] 10. Connection opened
+2022-07-07 15:26:17,078  INFO [jdbc.audit] 10. Connection.new Connection returned 
+2022-07-07 15:26:17,078  INFO [jdbc.audit] 10. Connection.isReadOnly() returned false
+2022-07-07 15:26:17,078  INFO [jdbc.audit] 10. Connection.getAutoCommit() returned true
+2022-07-07 15:26:17,526  INFO [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] Adding welcome page: class path resource [static/index.html]
+2022-07-07 15:26:18,081  INFO [org.quartz.impl.StdSchedulerFactory] Using default implementation for ThreadExecutor
+2022-07-07 15:26:18,095  INFO [org.quartz.core.SchedulerSignalerImpl] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-07-07 15:26:18,095  INFO [org.quartz.core.QuartzScheduler] Quartz Scheduler v.2.3.2 created.
+2022-07-07 15:26:18,096  INFO [org.quartz.simpl.RAMJobStore] RAMJobStore initialized.
+2022-07-07 15:26:18,097  INFO [org.quartz.core.QuartzScheduler] Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-07-07 15:26:18,097  INFO [org.quartz.impl.StdSchedulerFactory] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2022-07-07 15:26:18,097  INFO [org.quartz.impl.StdSchedulerFactory] Quartz scheduler version: 2.3.2
+2022-07-07 15:26:18,098  INFO [org.quartz.core.QuartzScheduler] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6dd79214
+2022-07-07 15:26:18,227  INFO [org.springframework.scheduling.quartz.SchedulerFactoryBean] Starting Quartz Scheduler now
+2022-07-07 15:26:18,228  INFO [org.quartz.core.QuartzScheduler] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2022-07-07 15:26:18,243  INFO [com.project.ProjectApplicationTests] Started ProjectApplicationTests in 4.383 seconds (JVM running for 5.724)
+ex
+joeong
+한지원
+김남혁형
+test1
+test3
+test4
+test5
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.4.1</a> at 2022. 7. 7 오후 3:26:18</p>
+</div>
+</div>
+</body>
+</html>

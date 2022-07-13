@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/basic">
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+	<th:block layout:fragment="title">
+		<title>write page</title>
+	</th:block>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    
+    
+    
+<th:block layout:fragment="content">
+      <section class="mt-7 py-0">
+        <!--<div class="bg-holder w-50 bg-right d-none d-lg-block" style="background-image:url(assets/img/gallery/hero-section-1.png);">
+        </div>-->
+        <!--/.bg-holder-->
+
+        <div class="container">
+          <div class="row" style="justify-content: center">
+            <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+              <h1 class="display-3 text-1000 fw-normal">공동구매</h1>
+              <h1 class="display-3 text-primary fw-bold">Discover the beauty</h1>
+              <div class="pt-5">
+                <nav>
+                  <div class="nav nav-tabs voyage-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-map-marker-alt"></i></button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"> <i class="fas fa-plane"></i></button>
+                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"> <i class="fas fa-hotel"></i></button>
+                  </div>
+                  <div class="tab-content" id="nav-tabContent">
+                    <!-- tab 첫부분 -->
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    
+                    <!-- ===============================================-->
+    				<!-- form 시작	-->
+    				<!-- ===============================================-->
+                      <form class="row g-4 mt-5" th:action="@{/register.do}" th:object="${post}" method="post" enctype="multipart/form-data">
+                      
+                      	<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
+						<input type="hidden" th:if="*{pnum != null and pnum > 0}" th:field="*{pnum}" />
+                      
+                      	<!-- ===============================================-->
+    					<!-- 카테고리 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+                      	<div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputCatNum">catNum</label>
+<!--                            <select class="form-select form-voyage-select input-box" id="inputCatNum" 
+                            		th:field="*{catnum}" th:value="*{catnum}">
+                              <option th:value="'S'" selected="selected" disabled >카테고리</option>
+                              <option th:value="'1'" th:text="1"></option>
+                            </select>
+-->                            <select class="form-select form-voyage-select input-box" id="inputCatNum"> 
+                              <option selected="selected" disabled >카테고리</option>
+                              <option >1</option>
+                            </select>
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	카테고리 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+                        
+                        
+                        
+                        <!-- ===============================================-->
+    					<!-- 	글 제목 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+                        <div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputTitle">title</label>
+                            <input th:field="*{title}" class="form-control input-box form-voyage-control" id="inputTitle" type="text" placeholder="제목" />
+                            <!-- th:field="*{title}" -->
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	글 제목 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+                        
+                        
+                        
+                      	<!-- ===============================================-->
+    					<!-- 	사진 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+    					<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
+                       	<!--<div class="col-sm-6 col-md-6 col-xl-5">-->
+                          <div class="text-center">
+                          </div>
+                        </div>
+                        
+                       <!-- <div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon" >
+							<div class="input-group mb-3" data-name="fileDiv">
+							  <input type="file" class="form-control" id="inputFile">
+							</div>
+                          </div>
+                        </div>
+										-->						
+						<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
+							<div class="input-group-icon">
+							<input class="form-control form-control-user" type="file" multiple="multiple"
+									name="file" id="file_0" onchange="setDetailImage(event);">
+							</div>
+						</div>
+                        <!-- ===============================================-->
+    					<!-- 	사진 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+                      
+                      
+                      
+                        <!-- ===============================================-->
+    					<!-- 	글 내용 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+                        <div class="col-sm-6 col-md-6 col-xl-5" style="width: 83%;">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputContent">content</label>
+								<textarea th:field="*{content}" class="form-control" placeholder="내용을 입력해 주세요."></textarea>
+								<!--th:field="*{content}"--> <!-- textarea 옆에 붙여야해용 -->
+                            <!--<span class="nav-link-icon text-800 fs1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>-->
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	글 내용 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+    					
+    					
+    					
+    					<!-- ===============================================-->
+    					<!-- 	상품 링크 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+                        <div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputLink">link</label>
+                            <input th:field="*{link}" class="form-control input-box form-voyage-control" id="inputLink" type="text" placeholder="제품 링크" />
+                            <!-- th:field="*{link}" -->
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	상품 링크 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+    					
+    					
+    					
+    					<!-- ===============================================-->
+    					<!-- 	상품 원가 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+                        <div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPrice">price</label>
+                            <input th:field="*{price}" class="form-control input-box form-voyage-control" id="inputPrice" type="text" placeholder="제품 원가" />
+                            <!-- th:field="*{price}" -->
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	상품 원가 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+    					
+    					
+    					
+    					<!-- ===============================================-->
+    					<!-- 	상품 개수 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+    					<div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputNumbers">numbers</label>
+                            <input th:field="*{numbers}" class="form-control input-box form-voyage-control" id="inputNumbers" type="text" placeholder="제품 개수" />
+                            <!-- th:field="*{price}" -->
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	상품 개수 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+    					
+    					
+    					
+    					<!-- ===============================================-->
+    					<!-- 	날짜 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+                        <div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <input th:field="*{enddate}" pattern="yyyy-MM-dd" class="form-control input-box form-voyage-control" 
+                            		id="enddate" type="datetime-local" placeholder="마감 날짜" aria-label="Enter search term..."/>
+                            		<!-- th:field="*{enddate}" -->
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	날짜 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+    					
+    					
+    					
+                        <!-- ===============================================-->
+    					<!-- 	인원 수 정하는 부분 시작	-->
+    					<!-- ===============================================-->
+                        <div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPersonOne">minPeople</label>
+                            <select class="form-select form-voyage-select input-box" disabled id="inputMinPeople">
+                              <option selected="selected">최소 인원 수 : 2 명</option>
+                            </select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-xl-5">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPersonOne">maxPeople</label>
+                            <select th:field="*{maxpeople}" th:value="*{maxpeople}" 
+                            		class="form-select form-voyage-select input-box" id="inputMaxPeople">
+                              <!--<option th:value="'S'" selected="selected" th:text="최대 인원 수"></option>-->
+                              <!--<option selected="selected" disabled >최대 인원 수</option>-->
+                              <!--<option th:value="'1'" th:text="최대인원수" ><option>-->
+                              <option th:value="'2'" th:text="2"></option>
+                              <option th:value="'3'" th:text="3"></option>
+                            </select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
+                          </div>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	인원 수 정하는 부분 끝	-->
+    					<!-- ===============================================-->
+    					
+    					
+                        
+                        <!-- ===============================================-->
+    					<!-- 	작성하기, 메인으로 가기 시작	-->
+    					<!-- ===============================================-->
+                        <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+                          <button class="btn btn-secondary" type="submit">작성하기</button>
+                        </div>
+                        <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+                        	<button class="btn btn-secondary">
+                        	<a th:href="@{/main.do}">메인으로 가기</a>
+                        	</button>
+                        </div>
+                        <!-- ===============================================-->
+    					<!-- 	작성하기, 메인으로 가기 끝	-->
+    					<!-- ===============================================-->
+                      </form>
+                     </div>
+                    <!-- ===============================================-->
+    				<!-- form 끝	-->
+    				<!-- ===============================================-->
+                    
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                      <form class="row g-4 mt-5">
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputAddressThree">Address 1</label>
+                            <p class="form-control input-box form-voyage-control"/><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+                            	힘들엉
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-6" style="width: 83%;">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputContent">content</label>
+								<textarea class="form-control" placeholder="내용을 입력해 주세요."></textarea>
+								<!--th:field="*{content}"--> <!-- textarea 옆에 붙여야해용 -->
+                            <!--<span class="nav-link-icon text-800 fs1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>-->
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputAddressFour">Address 2</label>
+                            <input class="form-control input-box form-voyage-control" id="inputAddressFour" type="text" placeholder="To where" /><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"> </i></span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <input class="form-control input-box form-voyage-control" id="inputDateThree" type="date" /><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <input class="form-control input-box form-voyage-control" id="inputDateFour" type="date" /><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPeopleTwo">People</label>
+                            <select class="form-select form-voyage-select input-box" id="inputPeopleTwo">
+                              <option selected="selected">2 Adults</option>
+                              <option>2 Adults 1 children</option>
+                              <option>2 Adults 2 children</option>
+                            </select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
+                          </div>
+                        </div>
+                        <div class="col-12 d-grid mt-6">
+                          <button class="btn btn-secondary" type="submit">Search Packages</button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                      <form class="row g-4 mt-5">
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <input class="form-control input-box form-voyage-control" id="inputDateFive" type="date" /><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <input class="form-control input-box form-voyage-control" id="inputDateSix" type="date" /><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPeopleThree">Person</label>
+                            <select class="form-select form-voyage-select input-box" id="inputPeopleThree">
+                              <option selected="selected">2 Adults</option>
+                              <option>2 Adults 1 children</option>
+                              <option>2 Adults 2 children</option>
+                            </select><span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-user"> </i></span>
+                          </div>
+                        </div>
+                        <div class="col-12 d-grid mt-6">
+                          <button class="btn btn-secondary" type="submit">Search Packages</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+      </section>
+      
+      
+		<script th:inline="javascript">
+			function setDetailImage(event){
+			for(var image of event.target.files){
+				var reader = new FileReader();
+				
+				reader.onload = function(event){
+					var img = document.createElement("img");
+					img.setAttribute("src", event.target.result);
+					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#images_container").appendChild(img);
+				};
+				
+				console.log(image);
+				reader.readAsDataURL(image);
+			}
+		}
+		</script>
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <!--<script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/fontawesome/all.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+-->
+</th:block>
+
+</html>
