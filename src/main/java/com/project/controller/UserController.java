@@ -85,7 +85,7 @@ public class UserController {
         }
         
         userService.joinUser(userDTO);
-        return "redirect:/user/login";
+        return "redirect:/login";
 
     }
     
