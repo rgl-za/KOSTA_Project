@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,7 +30,7 @@ public class CertificateController extends UiUtils {
 	@Autowired
 	private CertificateService certificateService;
 
-	@GetMapping(value = "/cerwrite.do")
+	@GetMapping(value = "/cerwrite.do/{userid}")
 	public String openCerWrite(@ModelAttribute("params") CertificateDTO params,
 			@RequestParam(value = "cernum", required = false) Long cernum, Model model) throws Exception {
 		if (cernum == null) {
@@ -43,14 +44,14 @@ public class CertificateController extends UiUtils {
 			}
 
 			model.addAttribute("cer", cer);
-			logger.info(""+cer);
+			logger.info("" + cer);
 		}
 		// list로
 		return "/cerwrite";
 	}
 
 	@PostMapping(value = "/cerregister.do")
-	public String registerPost(final CertificateDTO params, MultipartFile file)  {
+	public String registerPost(final CertificateDTO params, MultipartFile file) {
 		logger.info("" + params);
 		try { // 파일업로드
 			if (!file.isEmpty()) {
@@ -88,18 +89,21 @@ public class CertificateController extends UiUtils {
 		return "redirect:/cermain.do";
 	}
 
-	@GetMapping(value = "/cermain.do")
-	public String openPostList(Model model) throws Exception {
-
-			List<CertificateDTO> cer = certificateService.getCerList();
-			model.addAttribute("cer", cer);
+	@GetMapping(value = "/cermain.do/{userid}")
+	public String openPostList(@PathVariable int userid, CertificateDTO params,Model model) throws Exception  {
+		System.out.println("cermain");
+		logger.info("userid : " + userid);
+		
+		List<CertificateDTO> cer = certificateService.getCerList();
+		model.addAttribute("cer", cer);
 
 		return "/cermain";
 //		return "/main";
 	}
 
-	@GetMapping(value = "/cerdetail.do")
-	public String openPostDetail(@ModelAttribute("params") CertificateDTO params, @RequestParam(value = "cernum", required = false) Long cernum, Model model) throws Exception {
+	@GetMapping(value = "/cerdetail.do/{userid}")
+	public String openPostDetail(@ModelAttribute("params") CertificateDTO params,
+			@RequestParam(value = "cernum", required = false) Long cernum, Model model) throws Exception {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
 		System.out.println("현재 pnum -->" + cernum);
 //		long pnumex = 1;
@@ -117,8 +121,8 @@ public class CertificateController extends UiUtils {
 	}
 
 	@PostMapping(value = "/cerdelete.do")
-	public String deletePost(@RequestParam(value = "cernum", required = false) Long cernum, Model model) throws Exception {
-		System.out.println("/cerdelete.do 접근 --->"+cernum);
+	public String deletePost(@RequestParam(value = "cernum", required = false) Long cernum, Model model) {
+		System.out.println("/cerdelete.do 접근 --->" + cernum);
 		// 올바르지 않은 접근 시
 		if (cernum == null) {
 			return showMessageWithRedirect("올바르지 않은 접근입니다.", "/cermain.do", Method.GET, null, model);
@@ -126,7 +130,7 @@ public class CertificateController extends UiUtils {
 		try {
 			System.out.println("try 접근. cernum = " + cernum);
 			boolean isDeleted = certificateService.deleteCer(cernum);
-			System.out.println("deleteCer 실행 후. isDeleted = "+isDeleted);
+			System.out.println("deleteCer 실행 후. isDeleted = " + isDeleted);
 
 			// false면 이미 게시글이 삭제된 상태
 			if (isDeleted == false) {
@@ -138,10 +142,10 @@ public class CertificateController extends UiUtils {
 		} catch (Exception e) {
 			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/cermain.do", Method.GET, null, model);
 		}
-		logger.info("cernum"+cernum);
+		logger.info("cernum" + cernum);
 		return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/cermain.do", Method.GET, null, model);
 	}
-	
+
 	@GetMapping(value = "/error.do")
 	public String openErrorList() {
 
