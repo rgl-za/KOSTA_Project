@@ -84,8 +84,10 @@ public class MapController {
 		// System.out.println("test출력결과"+poly.getPolygonMidPoint(pointList));
 
 		long beforeTime1 = System.currentTimeMillis();
-
+		System.out.println("3번 알고리즘 전 pointList:  " + pointList.size());
+		
 		returnToAjax.put("res", poly.getPolygonMidPoint(pointList));// point객체임
+		System.out.println("3번 알고리즘 후 pointList:  " + pointList.size());
 
 		long afterTime1 = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
 		long secDiffTime1 = (afterTime1 - beforeTime1); // 두 시간에 차 계산
@@ -93,6 +95,7 @@ public class MapController {
 
 		// 알고리즘2 적용
 		long beforeTime2 = System.currentTimeMillis();
+		System.out.println("2번 알고리즘 전 pointList:  " + pointList.size());
 		returnToAjax.put("two", poly.getPolyMid2(pointList));
 
 		long afterTime2 = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
