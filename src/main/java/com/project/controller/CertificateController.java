@@ -30,7 +30,7 @@ public class CertificateController extends UiUtils {
 	@Autowired
 	private CertificateService certificateService;
 
-	@GetMapping(value = "/cerwrite.do/{userid}")
+	@GetMapping(value = "/cerwrite.do")
 	public String openCerWrite(@ModelAttribute("params") CertificateDTO params,
 			@RequestParam(value = "cernum", required = false) Long cernum, Model model) throws Exception {
 		if (cernum == null) {
@@ -89,10 +89,8 @@ public class CertificateController extends UiUtils {
 		return "redirect:/cermain.do";
 	}
 
-	@GetMapping(value = "/cermain.do/{userid}")
-	public String openPostList(@PathVariable int userid, CertificateDTO params,Model model) throws Exception  {
-		System.out.println("cermain");
-		logger.info("userid : " + userid);
+	@GetMapping(value = "/cermain.do")
+	public String openPostList(CertificateDTO params,Model model) throws Exception  {
 		
 		List<CertificateDTO> cer = certificateService.getCerList();
 		model.addAttribute("cer", cer);
@@ -101,7 +99,7 @@ public class CertificateController extends UiUtils {
 //		return "/main";
 	}
 
-	@GetMapping(value = "/cerdetail.do/{userid}")
+	@GetMapping(value = "/cerdetail.do")
 	public String openPostDetail(@ModelAttribute("params") CertificateDTO params,
 			@RequestParam(value = "cernum", required = false) Long cernum, Model model) throws Exception {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
