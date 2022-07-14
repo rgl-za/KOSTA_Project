@@ -24,6 +24,7 @@ public class PostDTO {
 	private String content;
 
 	// 사진 업로드
+	
 	private String photo;
 
 	// 제품 링크

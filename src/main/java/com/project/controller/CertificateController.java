@@ -50,7 +50,7 @@ public class CertificateController extends UiUtils {
 	}
 
 	@PostMapping(value = "/cerregister.do")
-	public String registerPost(final CertificateDTO params, MultipartFile file) throws Exception {
+	public String registerPost(final CertificateDTO params, MultipartFile file)  {
 		logger.info("" + params);
 		try { // 파일업로드
 			if (!file.isEmpty()) {
@@ -78,7 +78,7 @@ public class CertificateController extends UiUtils {
 			}
 		} catch (DataAccessException e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는메시지를 전달
 			System.out.println("<-----데이터베이스 처리 과정 문제 발생----->");
-			return showMessageWithRedirect("데이터베이스 처리 과정에서 문제가 발생했습니다.", "/cermain.do", Method.GET, null, null);
+			return showMessageWithRedirect("데이터 처리에 실패했습니다. 빈칸없이 입력해 주세요.", "/cerwrite.do", Method.GET, null, null);
 		} catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
 			System.out.println("<-----시스템에 문제 발생----->");
 			return showMessageWithRedirect("시스템에 문제가 발생했습니다.", "/cermain.do", Method.GET, null, null);
@@ -133,7 +133,7 @@ public class CertificateController extends UiUtils {
 				return showMessageWithRedirect("게시글 삭제에 실패하였습니다.", "/cermain.do", Method.GET, null, model);
 			}
 		} catch (DataAccessException e) {
-			return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/cermain.do", Method.GET, null, model);
+			return showMessageWithRedirect("데이터 처리에 실패했습니다.", "/cermain.do", Method.GET, null, model);
 
 		} catch (Exception e) {
 			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/cermain.do", Method.GET, null, model);
