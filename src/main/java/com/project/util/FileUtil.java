@@ -12,7 +12,9 @@ import com.project.domain.FileDTO;
 
 public class FileUtil {
 
-	public FileDTO fileUpload(MultipartFile file) {
+	public FileDTO fileUpload(MultipartFile file) throws Exception {
+		
+	
 		
 	  //String saveDir = "D:\\javaStudy\\upload";
 	  String saveDir = "C:\\uploadFile";

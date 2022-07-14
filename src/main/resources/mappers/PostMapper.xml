@@ -231,5 +231,5 @@
 		WHERE
 		pnum = #{pnum}
 	</update>
-
+	
 </mapper>
