@@ -25,7 +25,7 @@
 					<!-- Card Body -->
 					<div class="card-body">
 						<div class="represent_img">
-							<img class="img-item" th:src="|@{/imagePath/}${postDTO.getPhoto()}|">
+							<img class="img-item" th:src="|@{uploadFile/}${postDTO.getPhoto()}|">
 						</div>
 						<!-- 글 내용 -->
 						<div class="">
@@ -1157,7 +1157,7 @@
 					pnum: pnum
 				},
 				success: function (result){
-					if(result >= 1){
+					if(result == 1){
 						alert("이미 참가하신 공동구매 입니다!");
 					} else {
 						var uri1 = /*[[ @{/team.do} ]]*/null;
