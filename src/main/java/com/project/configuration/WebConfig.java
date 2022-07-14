@@ -5,11 +5,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
-	private String connectPath = "/imagePath/**";
-//	private String resourcePath = "file:///C:/uploadFile/";
-	private String resourcePath = "src/main/webapp/images";
-
+public class WebConfig implements WebMvcConfigurer{
+	private String connectPath = "/uploadFile/**";
+	private String resourcePath = "file:///C:/uploadFile/";
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler(connectPath)
