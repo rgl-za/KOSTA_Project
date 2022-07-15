@@ -200,27 +200,5 @@
 	
 
 </body>
-update: function (){
-        let data ={
-            id:$("#userid").val(),
-            username:$("#username").val(),
-            password:$("#password").val()
-        }
-
-        $.ajax({
-            type:"PUT",
-            url:"/user",
-            data:JSON.stringify(data), 
-            contentType:"application/json; charset=utf-8",
-            dataType:"json"
-        }).done(function (response){
-            alert("회원 수정 완료");
-            location.href = "/";
-        }).fail(function (error){
-            alert(error);
-            alert("회원 수정 실패");
-        }); //ajax통신으로 데이터를 json으로 변경 후 insert
-
-    }
 
 </html>

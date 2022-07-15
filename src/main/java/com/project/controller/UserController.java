@@ -65,7 +65,7 @@ public class UserController {
 //    
     @ResponseBody
     @PostMapping("/idCheck")
-	public int overlappedID(@RequestParam (value="userid" ,required=false) String userid)throws Exception {
+	public int overlappedID(@RequestParam (value="userid") String userid){
 		int result = userService.overlappedID(userid);
 		
 		logger.info("*********************************" +result);
@@ -85,7 +85,7 @@ public class UserController {
         }
         
         userService.joinUser(userDTO);
-        return "redirect:/user/login";
+        return "redirect:/login";
 
  }
     

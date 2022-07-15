@@ -38,7 +38,7 @@
 	</insert> 
 	
 	<select id = "overlappedID" parameterType= "String" resultType="int">
-	select count(userid)
+	select count(*)
 	from users
 	where userid = #{userid}
 	</select>
