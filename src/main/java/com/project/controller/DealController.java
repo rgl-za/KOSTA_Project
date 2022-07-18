@@ -32,32 +32,14 @@ public class DealController {
 
 	// 나의 거래완료 내역(마이페이지)
 	@GetMapping(value = "/mydealhistory")
-	public String getEndDealList(Model model, HttpSession session) {
-		
-		//String userId = "kmg";
-		UserDTO user = (UserDTO) session.getAttribute("userDTO");
-		String userId = user.getUserid();
-		System.out.println("userId: " + userId);
-		
-		
-		List<DealHistoryDTO> dealList = dealService.getEndDealList(userId);
-		System.out.println("dealList" + dealList);
-		model.addAttribute("dealList", dealList);
+	public String getEndDealList() {
 
 		return "/mypage";
 	}
 
 	// 나의 거래중인 내역
 	@GetMapping(value = "/dealing")
-	public String getDealingList(Model model, HttpSession session) {
-
-		UserDTO user = (UserDTO) session.getAttribute("userDTO");
-		String userId = user.getUserid();
-		System.out.println("userId: " + userId);
-
-		List<DealHistoryDTO> dealList = dealService.getDealingList(userId);
-		System.out.println(dealList);
-		model.addAttribute("dealList", dealList);
+	public String getDealingList(Model model) {
 
 		return "/index";
 	}
