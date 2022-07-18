@@ -28,6 +28,8 @@ public interface PostService {
 	
 	
 	public boolean alterDealAdd(PostDTO params);
+
+	public List<PostDTO> recommendPostList(Long recommendItem);
 	
 	// 게시글 사진 불러오기
 	
