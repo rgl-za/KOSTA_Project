@@ -269,6 +269,10 @@ public class Polygon {
 		System.out.println("resultList.size()" + resultList.size());// 8
 
 		Loop1: while (true) {
+			
+			if(resultList.size()==1) {
+				break;
+			}
 
 			//System.out.println("중간지점 계산 반복");
 

@@ -76,11 +76,11 @@
             
              <!-- 내가 참여하고 있는 거래 목록들 -->
             <li class="nav-item active">
-            	<a class="nav-link" th:if="${session.userDTO == null}" href="" th:onclick="loginCheck()">
+            	<a class="nav-link" sec:authorize="isAnonymous()" href="" th:onclick="loginCheck()">
             	<i class="fas fa-fw fa-table"></i>
                 <span>나의 진행중인 거래</span></a>
                     
-               <a class="nav-link" th:if="${session.userDTO != null}" th:href="@{/dealing}">
+               <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/dealing}">
                 <i class="fas fa-fw fa-table"></i>
                 <span>나의 진행중인 거래</span></a>
                     
@@ -93,16 +93,16 @@
             <hr class="sidebar-divider">
             
             <li class="nav-item active">
-            	<a class="nav-link" th:if="${session.userDTO == null}" href="" th:onclick="loginCheck()">
+            	<a class="nav-link" sec:authorize="isAnonymous()" href="" th:onclick="loginCheck()">
             	<i class="fas fa-user"></i>
                     <span>마이페이지</span></a>
                     
-                <a class="nav-link" th:if="${session.userDTO != null}" th:href="@{/mydealhistory}">
+                <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/mydealhistory}">
 	                <i class="fas fa-user"></i>
 	                <span>마이페이지</span></a>
           
             </li>
-
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
             
