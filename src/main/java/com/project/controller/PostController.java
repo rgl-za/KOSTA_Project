@@ -219,7 +219,7 @@ public class PostController extends UiUtils {
 		}
 
 		try{
-			DataModel dm = new FileDataModel(new File("/Users/jihyeonjeong/KOSTA_Project/data/recommend"));
+			DataModel dm = new FileDataModel(new File("/github3/KOSTA_Project/data/recommend"));
 			TanimotoCoefficientSimilarity sim = new TanimotoCoefficientSimilarity(dm);
 			GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dm, sim);
 			for (LongPrimitiveIterator items = dm.getItemIDs(); items.hasNext();) {
