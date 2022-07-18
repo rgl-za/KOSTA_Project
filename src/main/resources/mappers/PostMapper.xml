@@ -232,4 +232,10 @@
 		pnum = #{pnum}
 	</update>
 
+	<select id="recommendPostList" resultType="PostDTO" parameterType="Long">
+		SELECT p.title as title, p.photo as photo
+		FROM post p
+		WHERE p.deleteYn = 'N' and pnum = #{recommendItem}
+	</select>
+
 </mapper>

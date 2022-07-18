@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer{
 	    	return "file:///C:/uploadFile/";
 	    	
 	    }else {
-	    	return "file:///Users/jihyeonjeong/uploadFile/";
+	    	return "/Users/jihyeonjeong/uploadFile";
 	    }
 	    
 	}

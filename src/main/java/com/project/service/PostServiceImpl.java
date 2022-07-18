@@ -174,6 +174,13 @@ public class PostServiceImpl implements PostService {
 		return postMapper.alterDealAdd(params);
 	}
 
+	@Override
+	public List<PostDTO> recommendPostList(Long recommendItem) {
+		List<PostDTO> recommendPostList = Collections.emptyList();
+		recommendPostList = postMapper.recommendPostList(recommendItem);
+		return recommendPostList;
+	}
+
 	/*
 	 * @Override public PostDTO getPost(int pnum) { PostDTO postDTO =
 	 * postMapper.getPost(pnum); }
