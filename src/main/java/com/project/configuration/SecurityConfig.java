@@ -7,9 +7,11 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -30,6 +32,8 @@ public class SecurityConfig {
 	@Autowired
 	UserService userService;
 	
+	
+	
 	@Bean
 	public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
 	        return (web) -> web.ignoring().antMatchers
@@ -43,7 +47,7 @@ public class SecurityConfig {
 		http
 		.csrf().disable()
         .authorizeRequests()
-            .antMatchers("/", "/user/register", "/login", "/main.do", "/mypage", "/detail", "/detail2", "/detail3", "/index", "/pick", "/update", "/updatePost", "/UpdateUser", "/write", "/write2" , "/cerwrite").permitAll() //누구나 접근 가능
+            .antMatchers("/", "/register", "/login", "/main.do", "/mypage", "/detail", "/detail2", "/detail3", "/index", "/pick", "/update", "/updatePost", "/UpdateUser", "/write", "/write2").permitAll() //누구나 접근 가능
             .anyRequest().authenticated()
             .and()
         .formLogin()
@@ -72,6 +76,13 @@ public class SecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+//	@Bean
+//	public AuthenticationManager authenticationManagerBean() throws Exception{
+//		return super.authenticationManagerBean();
+//	}
+	
+
 	
 	
    

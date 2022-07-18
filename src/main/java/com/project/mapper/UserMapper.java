@@ -12,7 +12,7 @@ public interface UserMapper {
 	
 	public void saveUser(UserDTO userDTO);
 
-	public int overlappedID(String userid) throws Exception;
+	public int overlappedID(String userid);
 	
 	public UserDTO memberLogin(String userid);
 	
