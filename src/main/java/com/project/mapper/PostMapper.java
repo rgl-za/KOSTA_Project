@@ -49,4 +49,6 @@ public interface PostMapper {
 	// post 개수
 	public int PostTotalCount();
 
+	public List<PostDTO> recommendPostList(Long recommendItem);
+
 }
