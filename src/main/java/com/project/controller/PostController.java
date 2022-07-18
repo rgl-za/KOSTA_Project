@@ -191,12 +191,17 @@ public class PostController extends UiUtils {
 
 		List<CommentDTO> commentList= commentService.getCommentList(pnum);
 		List<UserDTO> teamMemberList = teamMemberService.getTeamMembertList(pnum);
+		List<UserDTO> otherMemberList = teamMemberService.getOtherMembertList(pnum);
 
 		model.addAttribute("postDTO", postDTO);
 
 		model.addAttribute("commentList", commentList); // 댓글 리스트 보내주기 위함
 		model.addAttribute("comment", new CommentDTO()); // 댓글에서 객체를 받아오기 위해서 사용
 
+		model.addAttribute("otherMemberList", otherMemberList);
+		model.addAttribute("otherMember", new UserDTO());
+		
+		
 		model.addAttribute("teamMemberList", teamMemberList);
 		model.addAttribute("teamMember", new UserDTO());
 		
