@@ -262,6 +262,11 @@
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 												var map = new kakao.maps.Map(mapContainer, mapOption);
+												var geocoder = new kakao.maps.services.Geocoder();	// 주소-좌표 변환 객체를 생성합니다
+												var arrAdd= new Array();	//user들의 address를 저장할 배열 선언
+												var arrId= new Array();		//user들의 id를 저장할 배열 선언
+												
+												
 												
 												function getInfo() {
 												    // 지도의 현재 중심좌표를 얻어옵니다 
@@ -628,22 +633,10 @@
 												선그어서 거리와 이동시간 구하기 end
 												*/
 
-												// 주소-좌표 변환 객체를 생성합니다
-												var geocoder = new kakao.maps.services.Geocoder();
-
-												// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-												var markers = [];
-												var infowindows = [];
-
 												/*
-													user의 데이터 -> 처리 필요
-													var pnum="[[${postDTO.getPnum()}]]";
-													user의 주소데이터 받기
+											    user주소와 id로 위경도 변환 -> 중심 좌표 구하기(ajax) -> 중심 좌표의 주소 구하기 -> 중심 좌표의 마커 생성 & 중심좌표의 주소 db insert(ajax) 
+											    */
 												
-												*/
-									
-												var arrAdd= new Array();
-												var arrId= new Array();
 												
 											    /*[# th:each="page : ${teamMemberList}"]*/
 											     
@@ -654,16 +647,11 @@
 											        
 											    /*[/]*/
 											    
+											   
 											    console.log("arr"+arrAdd);
 											    console.log("arr"+arrId);
 			                                 
-												
-												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755','상중리 경기도 안성시 금광면'];
-												var nameList = ['jiwon1','jiwon2','jiwon3','jiwon4'];
-												
-												console.log("addList"+addList);
-												
-												//usersMarkers(addList,nameList);
+												//user들의 주소와 id를 받아서 maker를 생성
 												usersMarkers(arrAdd,arrId);
 												
 												//users 마커 : 주소 -> 위경도
@@ -800,7 +788,7 @@
 											
 												}//addMarker
 												
-												// 마커를 생성하고 지도위에 표시하는 함수입니다
+												// 편의점 마커를 생성하고 지도위에 표시하는 함수입니다
 												function addCS2Marker(position, title, url) {
 													
 													var imageSrc = 'assets/img/cs2store.png', // 마커이미지의 주소입니다    
@@ -846,15 +834,6 @@
 
 													
 												}//addMarker
-												
-												function openInfowindow(map, infowindows){
-													for (var i = 0; i < infowindows.length; i++) {
-														console.log(">>>infowindow"+infowindows[i]);
-														infowindows[i].open(map);
-														//infowindows[i].open(map, marker);
-
-													}
-												}
 												
 											
 												var imageSrc = 'assets/img/cust_marker-01.png';//, // 마커이미지의 주소입니다    
@@ -944,6 +923,11 @@
 												
 											  var pnum="[[${postDTO.getPnum()}]]";
 											  //alert(pnum);
+											  
+											  
+											  /*
+											   ajax 통신 코드 start
+											  */
 											  function addMidAddressToDB(address) {
 											     $.ajax({
 											         type : "GET",
@@ -980,8 +964,6 @@
 													     success: function (args) {
 													    	 
 													    	 var r= args.res;//Object
-													    	 //alert("res.x"+res.x);
-													    	 //alert("res.y"+res.y);
 													    	 
 													    	//중심 마커 생성 => getAddressByLatLng 호출
 													    	markerPosition=new kakao.maps.LatLng( r.y, r.x);
@@ -1002,15 +984,7 @@
 													        }
 													     }
 													   });//ajax
-													   /*
-													   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-													    mapOption = { 
-													        center: markerPosition, // 지도의 중심좌표
-													        level: 3 // 지도의 확대 레벨
-													    };
-													   map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-														*/
-													 //map.setCenter(markerPosition);
+													   
 												  
 												  }//function
 												  
@@ -1039,16 +1013,13 @@
 														    	 alert("ajax통신 완료");
 														    	 //var r= args.res;//Object
 													
-														    	//중심 마커 생성 => getAddressByLatLng 호출
-														    	//markerPosition=new kakao.maps.LatLng( r.y, r.x);
-																//getAddressByLatLng(markerPosition);
-																
-																//alterMapCenter(markerPosition);//계산된 중심 좌표로 map Center변경
-																
-																
 														     }
 														   });//ajax
 													  }//function
+													  
+													  /*
+													   ajax 통신 코드 end
+													  */
 											  /*]]>*/
 											</script>
 										</div>
@@ -1080,7 +1051,6 @@
 								<h3 th:text="${postDTO.getTitle()} + ' 공동구매 채팅방 입니다.'"></h3>
 							</div>
 
-
 							<div class="card-body p-4" style="height: 500px; overflow: scroll; ">
 								<div class="card mb-4" th:each="comment: ${commentList}">
 									<div class="card-body" th:if="${not #lists.isEmpty(commentList)}">
@@ -1088,8 +1058,6 @@
 
 										<div class="d-flex justify-content-between">
 											<div class="d-flex flex-row align-items-center">
-<!--												<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"-->
-<!--													 height="25" />-->
 												<img class="rounded-circle" src="img/undraw_profile_1.svg"
 													 alt="avatar" width="25" height="25" />
 												<p class="small mb-0 ms-2"
@@ -1106,39 +1074,39 @@
 									</div>
 								</div>
 							</div>
-							<form class="form-outline mb-4" style="padding-top: 20px;" th:action="@{/comments.do}" th:object="${comment}" method="post">
+							<form class="form-outline mb-4" id="commentForm" style="padding-top: 20px;" th:action="@{/comments.do}" th:object="${comment}" method="post">
 								<input th:field="*{comments}" type="text" id="addANote" class="form-control" placeholder="Type comment..." /> <!--th:field="*{comments}"-->
 								<input type="hidden" th:name="pnum" th:value="${postDTO.getPnum()}"/>
 							</form>
 						</div>
 					</div>
 				</div>
-
-
 			</div>
-
 		</div>
-
-
-		<!-- 거래 정보 표시 -->
-<!--		<div class="detail_top">-->
-<!--			<div class="detail_top_top"></div>-->
-<!--			<div class="detail_top_content">-->
-<!--				<div class="detial_top_content_left"></div>-->
-<!--				<div class="detial_top_content_right"></div>-->
-<!--				<div class="detial_top_content_bottom"></div>-->
-<!--			</div>-->
-<!--		</div>-->
-		<!-- 거래 정보 표시 end -->
-
-<!--		<div class="container my-auto">-->
-<!--			<div class="copyright text-center my-auto">-->
-<!--				<button class="btn btn-primary" id="button-save" type="button">저장하기</button>-->
-<!--				<button class="btn btn-primary" id="button-cancel" type="button">취소하기</button>-->
-<!--			</div>-->
-
-<!--		</div>-->
 		<!-- row -->
+			<div class="detail_top_top" style="margin-top: 100px; margin-bottom: 50px; font-size: x-large;" th:text="${postDTO.getTitle()}+'에 관심있으신 분들이 자주 보는 상품들이에요 👀'"></div>
+			<div class="col-lg-6 mb-4" th:if="${not #lists.isEmpty( recommendPostList )}" th:each="recommendPostList : ${recommendPostList}">
+				<div class="card bg-light text-black shadow">
+					<div class="card-body" th:each="recommendPostList : ${recommendPostList}">
+						<div class="text-black-50 small" th:text="${recommendPostList.title}"></div>
+						<div class="represent_img">
+							<img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
+								 th:src="|@{uploadFile/}${recommendPostList.getPhoto()}|">
+						</div>
+					</div>
+					<a th:href="@{/detail.do( pnum=${recommendPostList.getPnum()} )}"
+					   class="btn btn-primary">
+						상세보기
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-6 mb-4" th:unless="${not #lists.isEmpty( recommendPostList )}">
+				<div class="card bg-light text-black shadow">
+					<div class="card-body">
+						<h5>찜하기가 부족해서 분석을 완료하지 못했습니다...</h5>
+					</div>
+				</div>
+			</div>
 	</div>
 	<!-- /.container-fluid -->
 </th:block>
@@ -1213,6 +1181,42 @@
 				}
 			})
 		}
+
+		$("#commentForm").submit(function (e){
+			// console.log("Tq");
+			// var pnum = $('.pnum').val();
+			// var comments = $('.form-control').val();
+			// $.ajax({
+			// 	type: 'POST',
+			// 	url: '/comments.do',
+			// 	dataType: 'json',
+			// 	data:{
+			// 		pnum: pnum,
+			// 		comments: comments
+			// 	},
+			// 	success: function (){
+					var html = "";
+					html += '<div className="card-body" th:if="${not #lists.isEmpty(commentList)}">';
+					html += '<p th:text="${comment.comments}"></p>';
+					html += '<div className="d-flex justify-content-between">';
+					html += '<div className="d-flex flex-row align-items-center">';
+					html += '<img className="rounded-circle" src="img/undraw_profile_1.svg" alt="avatar" width="25" height="25"/>';
+					html += '<p className="small mb-0 ms-2" th:if="${comment.writer} == ${#authentication.name}" th:text="${comment.writer}" style="padding-left: 3px; font-weight: bold; color: #36b9cc; "></p>';
+					html += '<p className="small mb-0 ms-2" th:unless="${comment.writer} == ${#authentication.name}" th:text="${comment.writer}" style="padding-left: 3px;"></p>';
+					html += '</div>';
+					html += '<div className="d-flex flex-row align-items-center">';
+					html += '<p className="small text-muted mb-0" th:text="${#temporals.format(comment.regDate, \'yyyy-MM-dd:HH:mm\')}"></p>';
+					html += '</div>';
+					html += '</div>';
+					html += '</div>';
+					$(".card mb-4").append(html);
+			// 	},
+			// 	error: function (){
+			// 		alert("채팅 등록 실패! 다시 시도해주세요");
+			// 	}
+			// })
+		});
+
 		function convertStringToDate(endDate) {
 			let dateComponents = endDate.split(' ');
 			let datePieces = dateComponents[0].split("-");
