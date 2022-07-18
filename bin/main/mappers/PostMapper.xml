@@ -35,7 +35,7 @@
 		) VALUES (
 		#{pnum}
 		, 1				
-		, 'NULL'		
+		, #{leaderid}		
 		, #{title}
 		, #{content}
 		, #{photo}			
@@ -231,5 +231,5 @@
 		WHERE
 		pnum = #{pnum}
 	</update>
-
+	
 </mapper>

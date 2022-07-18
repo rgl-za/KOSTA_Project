@@ -17,7 +17,7 @@
 						<div class="text-black-50 small" th:text="${heartList.title}"></div>
 						<div class="represent_img">
 							<img class="card-img-top" id="photo" name="photo" style="width: 225px; height:200px;"
-								 th:src="|@{/imagePath/}${heartList.getPhoto()}|">
+								 th:src="|@{uploadFile/}${heartList.getPhoto()}|">
 						</div>
 					</div>
 					<a th:href="@{/detail.do( pnum=${heartList.pnum} )}"

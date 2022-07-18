@@ -67,7 +67,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				<a href="/user/register">회원가입</a>
 			</button>
 			<button class="btn btn-primary" type="button">
-				<a href="/user/login">로그인</a>
+				<a href="/login">로그인</a>
 			</button>
 		</div>
 
@@ -112,8 +112,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small"
-								sec:authentication="name"> </span> <img
-								class="img-profile rounded-circle" src="img/undraw_profile.svg">
+								sec:authentication="name"> </span> 
+								<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -133,7 +133,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 									data-toggle="modal2" data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Logout
-								</a> <a class="dropdown-item" href="user/login" data-toggle="modal2"
+								</a> <a class="dropdown-item" href="/login" data-toggle="modal2"
 									data-target="#loginModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Login

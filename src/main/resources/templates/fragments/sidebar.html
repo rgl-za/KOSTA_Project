@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 	<th:block th:fragment="sidebarFragment">
-	<base href="/">
 
    
      <!-- Sidebar -->
@@ -57,92 +56,62 @@
             -->
 
             <!-- Nav Item - Charts -->
-            <div sec:authorize="isAuthenticated()">
             <li class="nav-item active">
            		<a class="nav-link" th:href="@{/write.do}">
                     <i class="fas fa-money-check-alt"></i>
                     <span>거래 만들기</span></a>
             </li>
-            </div>
             
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- 찜 목록-->
-            <div sec:authorize="isAuthenticated()">
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{/pick}">
                     <i class="fas fa-hand-holding-heart"></i>
                     <span>찜 목록</span></a>
             </li>
-            </div>
-            
-            
             <!-- Divider -->
             <hr class="sidebar-divider">
             
              <!-- 내가 참여하고 있는 거래 목록들 -->
-             <div sec:authorize="isAuthenticated()">
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/dealing}">
+            	<a class="nav-link" sec:authorize="isAnonymous()" href="" th:onclick="loginCheck()">
+            	<i class="fas fa-fw fa-table"></i>
+                <span>나의 진행중인 거래</span></a>
+                    
+               <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/dealing}">
+                <i class="fas fa-fw fa-table"></i>
+                <span>나의 진행중인 거래</span></a>
+                    
+<!--                 <a class="nav-link" th:href="@{/dealing}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>나의 거래 중인 목록</span></a>
+                    <span>거래 중 목록</span></a> -->
             </li>
-            </div>
             
-            <div sec:authorize="isAuthenticated()">
             <!-- Divider -->
             <hr class="sidebar-divider">
             
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/mydealhistory}">
-                <i class="fas fa-user"></i>
-                 
+            	<a class="nav-link" sec:authorize="isAnonymous()" href="" th:onclick="loginCheck()">
+            	<i class="fas fa-user"></i>
                     <span>마이페이지</span></a>
+                    
+                <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/mydealhistory}">
+	                <i class="fas fa-user"></i>
+	                <span>마이페이지</span></a>
+          
             </li>
-            </div>
             
-            <div sec:authorize="isAuthenticated()">
             <!-- Divider -->
             <hr class="sidebar-divider">
             
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/user/logout}">
+                <a class="nav-link" th:href="@{/cermain.do}">
                 <i class="fas fa-user"></i>
                  
-                    <span>로그 아웃</span></a>
+                    <span>인증 글 목록</span></a>
             </li>
-            </div>
-            
-             <div sec:authorize="isAnonymous()">
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/login}">
-                <i class="fas fa-user"></i>
-                 
-                    <span>로그인</span></a>
-            </li>
-            </div>
-            
-             <div sec:authorize="isAnonymous()">
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/register}">
-                <i class="fas fa-user"></i>
-                 
-                    <span>회원 가입</span></a>
-            </li>
-            </div>
-            
-            
-            
-            
-            
-            
             
 
             <!-- Divider -->
@@ -156,7 +125,7 @@
         </ul>
         <!-- End of Sidebar -->
         
-<!--         <script th:inline="javascript">
+        <script th:inline="javascript">
         /*<![CDATA[*/
         function loginCheck(){
         	//var ch = check;
@@ -165,7 +134,7 @@
         }
         
         /*]]>*/
-    	</script> -->
+    	</script>
     
 
 </th:block>

@@ -16,7 +16,7 @@
 	<insert id="insertTeamMember" parameterType="TeamMemberDTO">
 		INSERT INTO teammember(memberNum, pnum, userId)
 			VALUES ( seq_member_no.nextval
-			   		, #{pnum}
+			   	, #{pnum}
 			   		, #{userId})
 	</insert>
 

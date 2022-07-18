@@ -2,6 +2,8 @@ package com.project.domain;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
@@ -17,6 +19,7 @@ public class CertificateDTO {
 	private Long pnum;		
     
 	/* 인증할 사진 */
+	@NotBlank(message = "사진을 선택해주세요")
 	private String cfile;	
     
 	/* 업로드날짜 */
@@ -26,9 +29,11 @@ public class CertificateDTO {
     private String userId;
     
     /* 인증 제목 */
+    @NotBlank(message = "제목을 입력해주세요")
     private String title;
     
     /* 인증 내용 */
+    @NotBlank(message = "내용을 입력해주세요")
     private String content;
     
     /* deleteyn */

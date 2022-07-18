@@ -17,7 +17,7 @@ public class CertificateServiceImpl implements CertificateService {
 
 	// create, update
 	@Override
-	public boolean registerCer(CertificateDTO params) {
+	public boolean registerCer(CertificateDTO params) throws Exception {
 		int queryResult = 0;
 
 		if (params.getCernum() == null) {
@@ -33,13 +33,13 @@ public class CertificateServiceImpl implements CertificateService {
 
 	// read
 	@Override
-	public CertificateDTO getCerDetail(Long cernum) {
+	public CertificateDTO getCerDetail(Long cernum) throws Exception {
 		return certificateMapper.selectCerDetail(cernum);
 	}
 
 	// delete
 	@Override
-	public boolean deleteCer(Long cernum) {
+	public boolean deleteCer(Long cernum) throws Exception {
 		int queryResult = 0;
 
 		CertificateDTO cer = certificateMapper.selectCerDetail(cernum);
@@ -54,7 +54,7 @@ public class CertificateServiceImpl implements CertificateService {
 
 	// main list
 	@Override
-	public List<CertificateDTO> getCerList() {
+	public List<CertificateDTO> getCerList() throws Exception {
 		List<CertificateDTO> cerList = Collections.emptyList();
 		
 		cerList = certificateMapper.getCerList();

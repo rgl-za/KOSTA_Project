@@ -75,15 +75,13 @@ public class Polygon {
 	}// 다각형을 삼각형으로 분할 end
 
 	public Point getPolygonMidPoint(List<Point> pointList) {
-		List<Point> result = new ArrayList<>();
+		
 		List<Point> points = new ArrayList<>();
 		Point resultPoint = new Point();
-		// System.out.println(">>>>result>>>>"+result);//ok
-		// System.out.println(">>>>result>>>>"+result.size());//ok
+	
+		int rsSize = 1000000;// 결과로 나온 point의 size initialize
 
-		int rsSize = 1000000;// 결과로 나온 point의 size
-
-		points = pointList;
+		points.addAll(pointList);//deep copy 
 		System.out.println(">>points>" + points);
 
 		while (true) {
@@ -123,7 +121,7 @@ public class Polygon {
 				// 점이 3개 이상이라면
 
 				points = pointToMidPoint(points);
-
+			
 				System.out.println("pointToMidPoint를 거친 points" + points.size());
 
 				//이 부분 없어도 작동할까?
@@ -240,7 +238,7 @@ public class Polygon {
 	public Point getPolyMid2(List<Point> pointList) {
 		// int number =8;//총 숫자의 갯수
 		int number = pointList.size();// 총 숫자의 갯수
-		System.out.println("number:" + number);
+		System.out.println("알고리즘 2 number:" + number);
 
 		double x, y;
 
@@ -271,6 +269,10 @@ public class Polygon {
 		System.out.println("resultList.size()" + resultList.size());// 8
 
 		Loop1: while (true) {
+			
+			if(resultList.size()==1) {
+				break;
+			}
 
 			//System.out.println("중간지점 계산 반복");
 
