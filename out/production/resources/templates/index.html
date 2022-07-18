@@ -37,7 +37,7 @@
 					<!--					<div class="card mb-41">-->
 					<div class="one" style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 230px; height: 80px; object-fit: cover">
 						<div class="small text-muted" style="margin-left: 10px;" th:text="${#temporals.format(deallist.uploaddate, 'yyyy-MM-dd')}"></div>
-						<br> <a href="#!"><img class="card-img-top" th:src="|@{/productImgs/}${deallist.photo}|" /></a>
+						<br> <a href="#!"><img class="card-img-top" th:src="|@{uploadFile/}${deallist.photo}|" /></a>
 					</div>
 					<div class="two"
 						style="margin-right: 20px; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; width: 50%;">
@@ -55,7 +55,7 @@
 								th:text="'구매동네:&emsp;' + ${deallist.dealaddress} +' ('+${deallist.postnum}+ ')'"></li>
 							<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
 							<li class="list-group-item" id="cobuy_price"
-								th:text="'구매가격:&emsp;' + ${deallist.money} + '원&emsp;&emsp;&emsp;'
+								th:text="'제품가격:&emsp;' + ${deallist.money} + '원&emsp;&emsp;&emsp;'
 																				+ '거래인원수:&emsp;' + ${deallist.membercount} + '명&emsp;'"></li>
 							<li class="list-group-item"><a id="cobuy_price"
 								th:href="@{/detail.do(pnum = ${deallist.pnum})}">거래상세보기 >> </a></li>
@@ -130,12 +130,9 @@
 				var RemainDate = endDate - startDatetime;
 				console.log("RemainDate: ", RemainDate);
 
-				var days = Math
-						.floor(((RemainDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)));
-				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24))
-						/ (1000 * 60 * 60));
-				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60))
-						/ (1000 * 60));
+				var days = Math.floor((RemainDate / (1000 * 60 * 60 * 24)));
+				var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+				var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
 				var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
 
 				if (RemainDate < 0) {
