@@ -7,6 +7,17 @@
 		FROM teammember t, users u
 		WHERE t.pnum=#{pnum} and t.userid=u.userid
 	</select>
+	<select id="selectOtherMemberList" resultType="UserDTO" parameterType="TeamMemberDTO">
+		select *
+		FROM (
+    		SELECT rownum as numrow,t.membernum, u.userid, u.username, u.address, u.nickname
+			FROM teammember t, users u
+			WHERE t.pnum=#{pnum} and t.userid=u.userid
+       		order by t.membernum asc
+    	) 
+		WHERE numrow > 1
+
+	</select>
 	<select id="selectTeamMemberInfoList" resultType="TeamMemberDTO" parameterType="TeamMemberDTO">
 		SELECT userId
 		FROM teammember
