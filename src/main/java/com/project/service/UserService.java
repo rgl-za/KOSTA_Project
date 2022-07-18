@@ -52,7 +52,7 @@ public class UserService implements UserDetailsService {
 	}
 	
 	//아이디 중복 체크
-	public int overlappedID(String userid) throws Exception{
+	public int overlappedID(String userid){
 		int result = userMapper.overlappedID(userid);
 		
 		return result;
@@ -76,6 +76,8 @@ public class UserService implements UserDetailsService {
 		}
 		return userDTO;
 	}
+	
+	
 
 	
 }
