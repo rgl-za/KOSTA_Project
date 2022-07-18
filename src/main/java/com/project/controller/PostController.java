@@ -237,7 +237,7 @@ public class PostController extends UiUtils {
 						// PostDTO recommendPost = postService.getPostDetail(recommendation.getItemID());
 					}
 					model.addAttribute("recommendPostList", recommendPostList);
-//					 System.out.println("추천 리스트: "+recommendPostList.get(pnum.intValue()));
+					 System.out.println("추천 리스트: "+recommendPostList);
 					model.addAttribute("recommend", new PostDTO());
 				}
 			}
