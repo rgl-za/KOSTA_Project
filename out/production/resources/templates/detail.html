@@ -14,8 +14,8 @@
 			<!-- 수정, 삭제 -->
 			<div class="float-right">
 				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
-				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
-				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
 		</div>
 		<div class="row">
@@ -51,7 +51,6 @@
 									</div>
 									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
 									<text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>
-									(가능하다면)30분 전
 								</div>
 							</div>
 						</div>
@@ -120,7 +119,7 @@
 											</span>
 										<span class="text">거래 진행하기</span>
 									</a>
-									<a th:href="@{/dealing}" class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
+									<a class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
@@ -128,14 +127,14 @@
 									</a>
 								</div>
 								<!-- 팀원 영역 -->
-								<div class="user-ready-img" th:each="teamMember: ${teamMemberList}">
+								<div class="user-ready-img" th:each="teamMember: ${otherMemberList}">
 									<div
 											class="text-gray-600 font-weight-bold bg-gray-100 align-center"
 											th:text="${teamMember?.userid}"
 									></div>
 									<img class="ready-img rounded-circle"
 										 src="img/undraw_profile.svg">
-									<a th:href="@{/dealing}" class="btn btn-primary btn-icon-split" >
+									<a class="btn btn-primary btn-icon-split" >
 										<span class="icon text-white-50">
 											<i class="fas fa-flag"></i>
 										</span>

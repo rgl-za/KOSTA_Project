@@ -216,7 +216,7 @@ public class PostController extends UiUtils {
 		//logger.info("detail.do");
 
 		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
-		model.addAttribute("countMember", countMember+1);
+		model.addAttribute("countMember", countMember);
 
 		if (countMember >= postDTO.getMinpeople()){
 			model.addAttribute("minpeople", true);
@@ -224,7 +224,7 @@ public class PostController extends UiUtils {
 		}
 
 		try{
-			DataModel dm = new FileDataModel(new File("C:\\Users\\82106\\Documents\\GitHub\\KOSTA_Project\\data\\recommend"));
+			DataModel dm = new FileDataModel(new File("/Users/jihyeonjeong/KOSTA_Project/data/recommend"));
 			TanimotoCoefficientSimilarity sim = new TanimotoCoefficientSimilarity(dm);
 			GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dm, sim);
 			for (LongPrimitiveIterator items = dm.getItemIDs(); items.hasNext();) {
