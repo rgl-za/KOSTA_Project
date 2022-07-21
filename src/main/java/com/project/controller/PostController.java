@@ -131,25 +131,6 @@ public class PostController extends UiUtils {
 			logger.info("PostDTO-->" + params);
 			return "redirect:/main.do";
 		}
-
-	
-//	@PostMapping(value = "/register.do")
-//	public String registerBoard(final PostDTO params, final MultipartFile[] files, Model model) {
-//		try {
-//			boolean isRegistered = postService.registerPost(params, files);
-//			if (isRegistered == false) {
-//				return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/main.do", Method.GET, null, model);
-//			}
-//		} catch (DataAccessException e) {
-//			return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
-//
-//		} catch (Exception e) {
-//			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
-//		}
-//
-//		return showMessageWithRedirect("게시글 등록이 완료되었습니다.", "/main.do", Method.GET, null, model);
-//	}
-	
 	
 	//@RequestMapping(value = "/main.do")
 	@GetMapping(value = "/main.do")

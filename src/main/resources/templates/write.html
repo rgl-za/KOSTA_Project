@@ -12,8 +12,9 @@
 					<div class="row" style="justify-content: space-around;">
 						<div class="col-lg-7">
 							<!-- form -->
-							<form class="container px-4 px-lg-5 mt-5" th:action="@{/register.do}" th:object="${post}" name="form1"
-								method="post" enctype="multipart/form-data" onsubmit="return registerCer(this)">
+							<form class="container px-4 px-lg-5 mt-5" th:action="@{/register.do}" th:object="${post}"
+								name="form1" method="post" enctype="multipart/form-data"
+								onsubmit="return registerCer(this)">
 
 								<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
 								<input type="hidden" th:if="*{pnum != null and pnum > 0}" th:field="*{pnum}" />
@@ -125,8 +126,8 @@
 
 									<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
 										<div class="input-group-icon">
-											<input type="file" id="file_0" name="file" multiple="multiple"
-												onchange="setDetailImage(event);">
+											<input type="file" id="file_0" name="file" multiple="multiple">
+											<!--onchange="setDetailImage(event);"--> 
 										</div>
 									</div>
 									<!--<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
@@ -170,7 +171,7 @@
 	<!-- /form -->
 </th:block>
 <th:block layout:fragment="script">
-	<script th:inline="javascript">
+	<!--<script th:inline="javascript">
 		function setDetailImage(event) {
 			for (var image of event.target.files) {
 				var reader = new FileReader();
@@ -186,10 +187,10 @@
 				reader.readAsDataURL(image);
 			}
 		}
-	</script>
+	</script>-->
 	<script th:inline="javascript">
-		$(document).ready(function(){
-			$("btnSave").click(function(){
+		$(document).ready(function () {
+			$("btnSave").click(function () {
 				var cate = $("#cate").val();
 				var title = $("#title").val();
 				var content = $("#content").val();
@@ -199,48 +200,48 @@
 				var enddate = $("#enddate").val();
 				var maxpeople = $("#maxpeople").val();
 				var file_0 = $("#file_0").val();
-				
-				if(cate == ""){
+
+				if (cate == "") {
 					alert("카테고리를 선택하세요");
 					document.form1.cate.focus();
 					return;
 				}
-				if(title == ""){
+				if (title == "") {
 					alert("제목을 입력하세요");
 					document.form1.title.focus();
 					return;
 				}
-				if(content == ""){
+				if (content == "") {
 					alert("내용을 입력하세요");
 					document.form1.content.focus();
 					return;
 				}
-				if(link == ""){
+				if (link == "") {
 					alert("링크를 입력하세요");
 					document.form1.link.focus();
 					return;
 				}
-				if(price == ""){
+				if (price == "") {
 					alert("가격을 입력하세요");
 					document.form1.price.focus();
 					return;
 				}
-				if(numbers == ""){
+				if (numbers == "") {
 					alert("수량을 입력하세요");
 					document.form1.numbers.focus();
 					return;
 				}
-				if(enddate == ""){
+				if (enddate == "") {
 					alert("날짜를 선택하세요");
 					document.form1.enddate.focus();
 					return;
 				}
-				if(maxpeople == ""){
+				if (maxpeople == "") {
 					alert("인원을 입력하세요");
 					document.form1.maxpeople.focus();
 					return;
 				}
-				if(file_0 == ""){
+				if (file_0 == "") {
 					alert("파일을 선택하세요");
 					document.form1.file_0.focus();
 					return;

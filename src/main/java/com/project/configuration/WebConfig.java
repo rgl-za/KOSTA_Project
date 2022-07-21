@@ -14,8 +14,8 @@ public class WebConfig implements WebMvcConfigurer{
 	    String os = System.getProperty("os.name").toLowerCase();
 	    System.out.println("Using System Property: " + os);
 	    if(os.contains("win")) {
-	    	return "C:\\uploadFile";
-	    	
+	    	return "file:///C:/uploadFile/";
+//	    	return "C:\\uploadFile";
 	    }else {
 	    	return "/Users/jihyeonjeong/uploadFile";
 	    }
