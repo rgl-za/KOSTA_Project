@@ -23,7 +23,7 @@
 			, 61			<!-- #{pnum} -->
 			, #{cfile}
 			, sysdate
-			, 'munwjdgus1'	<!-- #{userid} -->
+			, NULL	<!-- #{userid} -->
 			, #{title}
 			, #{content}
 			, 'N'			<!-- #{deleteyn} -->
