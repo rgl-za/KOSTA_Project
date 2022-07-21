@@ -31,6 +31,7 @@ public interface PostService {
 
 	public List<PostDTO> recommendPostList(Long recommendItem);
 	
+	
 	// 게시글 사진 불러오기
 	
 	/*
