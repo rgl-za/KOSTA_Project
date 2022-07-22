@@ -68,7 +68,11 @@ public class FileUtil {
 	    if(os.contains("win")) {
 	    	return "C:\\uploadFile";
 	    	
-	    }else {
+	    } else if(os.contains("mac")){
+			System.out.print("os 확인");
+			return "/Users/jihyeonjeong/uploadFile";
+		}
+		else {
 	    	return "/home/uploadFile/";
 	    }
 	    
