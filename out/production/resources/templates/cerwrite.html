@@ -11,8 +11,7 @@
 					<div class="col-lg-7">
 						<!-- form -->
 						<form class="container px-4 px-lg-5 mt-5" th:action="@{/cerregister.do}" th:object="${cer}"
-							name="form1" method="post" enctype="multipart/form-data"
-							onsubmit="return registerCer(this)">
+							method="post" enctype="multipart/form-data" onsubmit="return registerCer(this)">
 
 							<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
 							<input type="hidden" th:if="*{cernum != null and cernum > 0}" th:field="*{cernum}" />
@@ -23,32 +22,44 @@
 
 							<!-- 제목 -->
 							<div class="form-group">
-								<input th:field="*{title}" class="form-control form-control-user" name="title"
-									id="title" type="text" placeholder="제목" />
+								<input th:field="*{title}" class="form-control form-control-user" id="inputTitle"
+									type="text" placeholder="제목" />
 							</div>
 							<!-- /제목 -->
 
 							<!-- 내용 -->
 							<div class="input-group">
 								<span class="input-group-text">내용</span>
-								<textarea th:field="*{content}" class="form-control" name="contents"
-									id="contents"></textarea>
+								<textarea th:field="*{content}" class="form-control"
+									aria-label="With textarea"></textarea>
 							</div>
 							<div class="my-2"></div>
 							<div class="my-2"></div>
 							<!-- /내용	-->
 
 							<!-- 사진 -->
+							<!-- 썸네일 부분-->
+							<!--<div class="col-sm-6 col-md-6 col-xl-5" id="images_container">
+								<div class="text-center">
+									<img class="card-img-top" th:if="*{cernum != null and cernum > 0}"
+										th:src="|@{/uploadFile}${cer.getCfile()}|">
+								</div>
+							</div>-->
+
 							<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
 								<div class="input-group-icon">
-									<input type="file" id="file_0" name="file" multiple="multiple">
+									<!--<input class="form-control form-control-user" type="file" multiple="multiple" name="file"
+						id="file_0" onchange="setDetailImage(event);">-->
+									<input type="file" id="files" name="files" multiple="multiple"
+										onchange="setDetailImage(event);">
 								</div>
 							</div>
 							<!-- /사진 -->
 
 							<!-- 작성하기, 메인으로 가기 -->
 							<div class="text-center">
-								<button class="btn btn-primary" id="btnSave" type="button">&ensp;&ensp;Send
+								<!--<button class="btn btn-secondary" type="submit">작성하기</button>-->
+								<button class="btn btn-primary" type="submit">&ensp;&ensp;Send
 									CerPost&ensp;&ensp;</button>
 							</div>
 
@@ -70,36 +81,27 @@
 			</div>
 		</div>
 	</div>
+	<!-- ===============================================-->
 	<!-- form 끝	-->
+	<!-- ===============================================-->
 </th:block>
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
-		$(document).ready(function () {
-			$("#btnSave").click(function () {
+		function setDetailImage(event) {
+			for (var image of event.target.files) {
+				var reader = new FileReader();
 
-				var title = $("#title").val();
-				var contents = $("#contents").val();
-				var file = $("#file").val();
+				reader.onload = function (event) {
+					var img = document.createElement("img");
+					img.setAttribute("src", event.target.result);
+					img.setAttribute("class", "col-lg-6");
+					document.querySelector("div#images_container").appendChild(img);
+				};
 
-				if (title == "") {
-					alert("제목을 입력해 주세요.")
-					document.form1.title.focus();
-					return;
-				}
-				if (contents == "") {
-					alert("내용을 입력해 주세요.")
-					document.form1.contents.focus();
-					return;
-				}
-				if (file == "") {
-					alert("파일을 선택해 주세요.")
-					document.form1.file.focus();
-					return;
-				}
-				document.form1.submit();
-			})
-		})
-	</script>
+				console.log(image);
+				reader.readAsDataURL(image);
+			}
+		}
 	</script>
 </th:block>
 
