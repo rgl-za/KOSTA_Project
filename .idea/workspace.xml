@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.temp-project - ProjectApplication-classpath-arg-1658322768935.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.temp-project - ProjectApplication-classpath-arg-1658378141514.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.temp-project - ProjectApplication-classpath-arg-1658421328074.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.temp-project - ProjectApplication-classpath-arg-1658468973285.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/configuration/BatchConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/configuration/BatchConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/configuration/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/configuration/WebConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/AuthFailureHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/update.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
