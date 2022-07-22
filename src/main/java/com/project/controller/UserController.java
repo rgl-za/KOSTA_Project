@@ -72,6 +72,7 @@ public class UserController {
     @PostMapping("/idCheck")
 	public int overlappedID(@RequestParam("userid") String userid){
 		int result = userService.overlappedID(userid);
+        System.out.println("result 확인: " + result);
 		return result;
 	}
 

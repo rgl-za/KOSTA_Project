@@ -7,14 +7,27 @@
     <list default="true" id="87ba2784-6eda-4700-ae22-12ac3d18cea3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/configuration/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/configuration/WebConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/UserAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/UserAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/util/FileUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/util/FileUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/project/domain/PostDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/CertificateMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/CertificateMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/mappers/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/certificatelist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/cerwrite.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/cerwrite.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/comingsoon.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/detail2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/abody_write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/aheader_write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/asidebar_write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/fragments/atopbar_write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/maintest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/store.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/updatePost.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/write.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/write.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/write2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/configuration/BatchConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/configuration/BatchConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/project/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,6 +283,7 @@
       <workItem from="1658224856701" duration="162000" />
       <workItem from="1658296220626" duration="43000" />
       <workItem from="1658371564403" duration="9482000" />
+      <workItem from="1658465990912" duration="4473000" />
     </task>
     <servers />
   </component>
