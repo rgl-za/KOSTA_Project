@@ -51,7 +51,7 @@ public class CertificateController extends UiUtils {
 	}
 
 	@PostMapping(value = "/cerregister.do")
-	public String registerPost(final CertificateDTO params, MultipartFile file) {
+	public String registerPost(final CertificateDTO params, MultipartFile file, Model model) {
 		logger.info("" + params);
 		try { // 파일업로드
 			if (!file.isEmpty()) {
@@ -64,25 +64,22 @@ public class CertificateController extends UiUtils {
 				params.setCfile(fileDTO.getSaveName());
 
 				boolean isRegistered = certificateService.registerCer(params);
+				
 				System.out.println(isRegistered);
+				
 				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
-					return showMessageWithRedirect("게시글 등록에 실패했습니다.", "/cermain.do", Method.GET, null, null);
-//					System.out.println("<-----게시글 등록 실패----->");
+					System.out.println("<-----게시글 등록 실패----->");
 				}
-			} else { // 파일이 있는 상태
-				boolean isRegistered = certificateService.registerCer(params);
-				System.out.println(isRegistered);
-				if (isRegistered == false) { // TODO => 게시글등록에 실패하였다는 메시지를 전달
-					System.out.println("<-----게시글 등록실패----->");
-					return showMessageWithRedirect("게시글 등록에 실패했습니다.", "/cermain.do", Method.GET, null, null);
-				}
+			} else {
+				System.out.println("<-----파일이 존재하지 않습니다.----->");
+
 			}
 		} catch (DataAccessException e) { // TODO => 데이터베이스 처리 과정에 문제가 발생하였다는메시지를 전달
 			System.out.println("<-----데이터베이스 처리 과정 문제 발생----->");
-			return showMessageWithRedirect("데이터 처리에 실패했습니다. 빈칸없이 입력해 주세요.", "/cerwrite.do", Method.GET, null, null);
+			return showMessageWithRedirect("데이터 처리에 실패했습니다. 빈칸없이 입력해 주세요.", "/cerwrite.do", Method.GET, null, model);
 		} catch (Exception e) { // TODO => 시스템에 문제가 발생하였다는 메시지를 전달
 			System.out.println("<-----시스템에 문제 발생----->");
-			return showMessageWithRedirect("시스템에 문제가 발생했습니다.", "/cermain.do", Method.GET, null, null);
+			return showMessageWithRedirect("시스템에 문제가 발생했습니다.", "/cermain.do", Method.GET, null, model);
 		}
 		logger.info("PostDTO-->" + params);
 
@@ -90,8 +87,8 @@ public class CertificateController extends UiUtils {
 	}
 
 	@GetMapping(value = "/cermain.do")
-	public String openPostList(CertificateDTO params,Model model) throws Exception  {
-		
+	public String openPostList(CertificateDTO params, Model model) throws Exception {
+
 		List<CertificateDTO> cer = certificateService.getCerList();
 		model.addAttribute("cer", cer);
 
