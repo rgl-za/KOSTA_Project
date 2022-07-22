@@ -32,7 +32,7 @@
 										<div>
 											<select class="col-sm-6 mb-3 mb-sm-0" th:field="*{catnum}" name="cate"
 												id="cate">
-												<option value="">Open this select category menu</option>
+												<option value="">Open this select category</option>
 												<option th:each="catlist : ${catlist}" th:value="${catlist.catnum}"
 													th:utext="${catlist.catindex}">
 												</option>
@@ -50,9 +50,9 @@
 								<!-- /글 제목 -->
 
 								<!-- 글 내용 -->
-								<div class="form-group">
+								<div class="input-group">
 									<!--<div class="input-group">-->
-									<!--<span class="input-group-text">내용</span>-->
+									<span class="input-group-text">내용</span>
 									<textarea th:field="*{content}" class="form-control input-box form-voyage-control"
 										name="contents" id="contents" placeholder="내용을 입력해 주세요."></textarea>
 								</div>
@@ -123,27 +123,12 @@
 								</div>
 								<!-- 사진 -->
 								<div class="form-group row">
-									<!-- 썸네일 부분-->
-									<!--<div class="col-sm-6 mb-3 mb-sm-0" id="images_container">
-										<img class="card-img-top" th:if="*{pnum != null and pnum > 0}"
-											th:src="|@{/imagePath/}${post.getPhoto()}|">
-									</div>-->
-
 									<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
 										<div class="input-group-icon">
 											<input type="file" id="file_0" name="file" multiple="multiple"
 												placeholder="파일 선택해 주세요.">
-											<!--onchange="setDetailImage(event);"-->
 										</div>
 									</div>
-									<!--<div class="col-sm-6 col-md-6 col-xl-5" data-name="fileDiv">
-										<div class="input-group-icon">
-											<input class="form-control form-control-user" type="file"
-												multiple="multiple" name="file" id="file_0"
-												onchange="setDetailImage(event);">
-										</div>
-									</div>-->
-									<!-- /사진 -->
 								</div>
 								<!-- /사진 -->
 
@@ -153,12 +138,6 @@
 									<button class="btn btn-primary" id="btnSave" type="button">&ensp;&ensp;Send
 										Post&ensp;&ensp;</button>
 								</div>
-								<!--<div class="text-center">
-									<button class="btn btn-primary" id="btnSave" type="submit">&ensp;&ensp;Send
-										Post&ensp;&ensp;</button>
-								</div>-->
-
-
 
 								<div class="my-2"></div>
 								<div class="text-center">
@@ -246,30 +225,6 @@
 			})
 		})
 	</script>
-
-	<!--<script th:inline="javascript">
-		/*<![CDATA[*/
-
-		function registerPost(form) {
-
-
-			var result = (
-				isValid(form.catnum, "카테고리", null, null)
-				&& isValid(form.title, "제목", null, null)
-				&& isValid(form.content, "내용", null, null)
-				&& isValid(form.link, "링크", null, null)
-				&& isValid(form.price, "가격", null, null)
-				&& isValid(form.numbers, "개수", null, null)
-				&& isValid(form.enddate, "날짜", null, null)
-				&& isValid(form.maxpeople, "인원 수", null, null));
-
-			if (result == false) {
-				return false;
-			}
-		}
-
-		/*]]>*/
-	</script>-->
 </th:block>
 
 </html>
