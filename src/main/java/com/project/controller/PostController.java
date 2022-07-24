@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.project.domain.*;
-import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
-import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
-import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
-import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
-import org.apache.mahout.cf.taste.model.DataModel;
-import org.apache.mahout.cf.taste.recommender.RecommendedItem;
+//import org.apache.mahout.cf.taste.common.TasteException;
+//import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
+//import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
+//import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
+//import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
+//import org.apache.mahout.cf.taste.model.DataModel;
+//import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -175,7 +175,7 @@ public class PostController extends UiUtils {
 		return "/main";
 	}
 	
-	// 게시글 상세내용 detail
+/*	// 게시글 상세내용 detail
 	@GetMapping(value = "/detail.do")
 	public String openPostDetail(@ModelAttribute("params") PostDTO params, @RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("현재 -->" + this.getClass().getName() + "<-- 수행중...");
@@ -256,7 +256,7 @@ public class PostController extends UiUtils {
 
 		return "/detail";
 	}
-	
+	*/
 	@PostMapping(value = "/delete.do")
 	public String deletePost(@RequestParam(value = "pnum", required = false) Long pnum, Model model) {
 		System.out.println("/delete.do 접근 --->"+pnum);
