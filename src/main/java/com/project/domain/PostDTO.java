@@ -3,6 +3,7 @@ package com.project.domain;
 import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,7 +27,6 @@ public class PostDTO {
 	private String content;
 
 	// 사진 업로드
-	
 	private String photo;
 
 	// 제품 링크
@@ -50,7 +50,6 @@ public class PostDTO {
 
 	// 최소 인원
 	/* private int minpeople; */
-
 	private Long minpeople;
 
 	// 게시글 전용 계좌

@@ -70,9 +70,17 @@ public class UserController {
  
     @ResponseBody
     @PostMapping("/idCheck")
-	public int overlappedID(@RequestParam("userid") String userid){
+	public boolean overlappedID(@RequestParam("userid") String userid){
+    	System.out.println("start!!");
+    	System.out.println("userid 들어왔니?: " + userid);
 		int result = userService.overlappedID(userid);
-		return result;
+        System.out.println("result 확인: " + result);
+        if(result==1) {
+        	return false;
+        }else {
+        	return true;
+        	
+        }
 	}
 
     @PostMapping("/register")

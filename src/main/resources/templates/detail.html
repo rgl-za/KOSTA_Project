@@ -14,8 +14,8 @@
 			<!-- 수정, 삭제 -->
 			<div class="float-right">
 				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
-				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
-				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
 		</div>
 		<div class="row">
@@ -26,6 +26,7 @@
 					<div class="card-body">
 						<div class="represent_img">
 							<img class="img-item" th:src="|@{uploadFile/}${postDTO.getPhoto()}|">
+							<th:text></th:text>
 						</div>
 						<!-- 글 내용 -->
 						<div class="">
@@ -33,7 +34,9 @@
 								<!-- Card Body -->
 								<div class="card-body">
 									<p>
-										<h7 class="m-0 font-weight-bold text-gray-900">구매 동네 </h7>
+										<h7 class="m-0 font-weight-bold text-gray-900">
+											<text th:text="${postDTO.getContent()}"></text>
+										</h7>
 									</p>
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
@@ -51,7 +54,6 @@
 									</div>
 									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
 									<text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>
-									(가능하다면)30분 전
 								</div>
 							</div>
 						</div>
@@ -114,13 +116,14 @@
 											th:text="${postDTO.getLeaderid()}"
 									></div>
 									<img class="ready-img rounded-circle" src="img/undraw_profile.svg">
-									<a th:href="@{/cerwrite.do}" class="btn btn-primary-cap btn-icon-split" th:if="${minpeople == true}">
+									<a th:onclick="insertCertification([[${postDTO.getPnum()}]], [[${postDTO.getTitle()}]], [[${postDTO.getContent()}]], )"
+									   class="btn btn-primary-cap btn-icon-split" th:if="${minpeople == true} and ${postDTO.getLeaderid()} == ${#authentication.name}">
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
-										<span class="text">거래 진행하기</span>
+										<span class="text">거래 완료하기</span>
 									</a>
-									<a th:href="@{/dealing}" class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
+									<a class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
@@ -135,7 +138,7 @@
 									></div>
 									<img class="ready-img rounded-circle"
 										 src="img/undraw_profile.svg">
-									<a th:href="@{/dealing}" class="btn btn-primary btn-icon-split" >
+									<a class="btn btn-primary btn-icon-split" >
 										<span class="icon text-white-50">
 											<i class="fas fa-flag"></i>
 										</span>
@@ -1142,6 +1145,26 @@
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
 		/*<![CDATA[*/
+
+		function insertCertification(pnum, title, content){
+			var userId = [[${#authentication.name}]];
+			$.ajax({
+				type: 'POST',
+				url: '/cerwrite.do',
+				data: {
+					userId: userId,
+					pnum: pnum,
+					title: title,
+					content: content
+				},
+				success: function (){
+					alert("상품 거래가 완료되었습니다!");
+				}, error: function (){
+					alert("상품 거래 등록 오류... 다시 시도해주세요");
+				}
+			})
+		}
+
 		function insertTeamMember(pnum, minpeople, dealName, money) {
 			confirm(dealName+ "공동구매에 참여하실건가요?");
 			var userId = [[${#authentication.name}]];
