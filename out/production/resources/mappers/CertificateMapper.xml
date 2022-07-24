@@ -7,7 +7,7 @@
 		, pnum
 		, cfile
 		, regdate
-		, userid
+		, userId
 		, title
 		, content
 		, deleteyn
@@ -20,54 +20,17 @@
 			<include refid="certificateColumns"/>
 		) VALUES (
 			seq_cernum_no.nextval
-			, 61			<!-- #{pnum} -->
-			, #{cfile}
+			, #{pnum}			<!-- #{pnum} -->
+			, 'null'
 			, sysdate
-			, 'munwjdgus1'	<!-- #{userid} -->
+			, #{userId}	<!-- #{userid} -->
 			, #{title}
 			, #{content}
 			, 'N'			<!-- #{deleteyn} -->
 			, NULL			<!-- #{deletetime} -->
 		)
 	</insert>
-	
-	<!-- 글 상세 내용 -->
-	<select id="selectCerDetail" parameterType="CertificateDTO" resultType="CertificateDTO">
-		SELECT
-			<include refid="certificateColumns"/>
-		FROM
-			certificate
-		WHERE
-			deleteyn = 'N'
-		AND
-			cernum = #{cernum}
-	</select>
-	
-	<!-- 수정 -->
-	<update id="updateCer" parameterType="CertificateDTO">
-		UPDATE post
-		SET
-			regdate 	= SYSDATE
-			, cfile 	= #{cfile}
-			, title 	= #{title}
-			, content 	= #{content}
-		WHERE
-			cernum = #{cernum}
-	</update>
-	
-	<!-- 삭제 -->
-	<update id="deleteCer" parameterType="long">
-		UPDATE certificate
-		SET
-			deleteyn = 'Y'
-			, deletetime = SYSDATE 	<!-- delete_time 컬럼 필요 -->
-		WHERE
-		cernum = #{cernum}
-	</update>
-	
-	<!-- /인증서 작성 -->
-	
-	
+
 	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
 	<select id="getCerList" parameterType="CertificateDTO" resultType="CertificateDTO">
 		SELECT
