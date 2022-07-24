@@ -9,7 +9,8 @@ public class DealHistoryDTO{
 
 	private String userId;
 	private Long pnum;
-	private int money;
+	//private int money;
+	private int price;
 	private String title;
 	private String photo;
 	private String dealaddress;
@@ -19,6 +20,7 @@ public class DealHistoryDTO{
 	private LocalDateTime enddate;
 	private LocalDateTime uploaddate;
 	private int membercount;
+	private int maxpeople;
 	
 
 }

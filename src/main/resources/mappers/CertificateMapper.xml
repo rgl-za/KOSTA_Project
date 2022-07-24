@@ -31,6 +31,7 @@
 		)
 	</insert>
 	
+	
 	<!-- 글 상세 내용 -->
 	<select id="selectCerDetail" parameterType="CertificateDTO" resultType="CertificateDTO">
 		SELECT

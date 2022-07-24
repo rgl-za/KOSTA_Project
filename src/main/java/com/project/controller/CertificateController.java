@@ -19,6 +19,7 @@ import com.project.constant.Method;
 import com.project.domain.CertificateDTO;
 import com.project.domain.FileDTO;
 import com.project.service.CertificateService;
+import com.project.service.PostService;
 import com.project.util.FileUtil;
 import com.project.util.UiUtils;
 
@@ -29,6 +30,9 @@ public class CertificateController extends UiUtils {
 
 	@Autowired
 	private CertificateService certificateService;
+	
+	@Autowired
+	private PostService postService;
 
 	@GetMapping(value = "/cerwrite.do")
 	public String openCerWrite(@ModelAttribute("params") CertificateDTO params,
@@ -64,6 +68,7 @@ public class CertificateController extends UiUtils {
 				params.setCfile(fileDTO.getSaveName());
 
 				boolean isRegistered = certificateService.registerCer(params);
+				boolean pushFinaldate = postService.pushFinaldate(params);
 				
 				System.out.println(isRegistered);
 				
@@ -86,6 +91,7 @@ public class CertificateController extends UiUtils {
 		return "redirect:/cermain.do";
 	}
 
+	// 관리자 
 	@GetMapping(value = "/cermain.do")
 	public String openPostList(CertificateDTO params, Model model) throws Exception {
 

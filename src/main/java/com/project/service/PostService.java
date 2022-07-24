@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.util.List;
 
+import com.project.domain.CertificateDTO;
 import com.project.domain.PostDTO;
 import com.project.domain.TeamMemberDTO;
 
@@ -26,8 +27,9 @@ public interface PostService {
 	// 게시물 검색, 정렬
     public List<PostDTO> getSearchPostList(String keyword, String category, String sortopt);
 	
-	
 	public boolean alterDealAdd(PostDTO params);
+	
+	public boolean pushFinaldate(CertificateDTO params);
 
 	public List<PostDTO> recommendPostList(Long recommendItem);
 	

@@ -61,6 +61,12 @@
 	  </selectKey>
 	</insert> 
 	
+	<update id="pushFinaldate" parameterType="long">
+		update post
+		set finaldate = SYSDATE
+		where = #{pnum}
+	</update>
+	
 
 <!-- 	<insert id="insertPost" parameterType="PostDTO">
 		INSERT INTO POST (
