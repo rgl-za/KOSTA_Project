@@ -239,7 +239,7 @@
 	</update>
 
 	<select id="recommendPostList" resultType="PostDTO" parameterType="Long">
-		SELECT p.title as title, p.photo as photo, p.pnum
+		SELECT p.title as title, p.photo as photo, p.pnum as pnum
 		FROM post p
 		WHERE p.deleteYn = 'N' and pnum = #{recommendItem}
 	</select>

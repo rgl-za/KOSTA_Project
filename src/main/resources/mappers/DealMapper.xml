@@ -6,6 +6,7 @@
 		userId,
 		pnum,
 		price,
+		money,
 		title,
 		photo,
 		dealaddress,
@@ -33,8 +34,7 @@
 		from (select a.userId, a.pnum, a.money, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate
 		        from useraccount a, post p
 		        where a.pnum = p.pnum
-		        and a.userId= #{userId}
-		        and p.finaldate is not null) d, teammember t
+		        and a.userId = #{userId}) d, teammember t
 		where t.pnum = d.pnum 
 		group by d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate
 		order by d.enddate desc
@@ -69,6 +69,20 @@
 	    where t.pnum = p.pnum
 	    and t.userId= #{userId}
 	    and p.finaldate is null
+	    order by p.enddate desc
 	</select>
+	
+	<!-- <select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
+		select d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.maxpeople, count(*) as membercount
+		from (select a.userId, a.pnum, a.money, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate, p.maxpeople
+		        from useraccount a, post p
+		        where a.pnum = p.pnum
+		        and a.userId != #{userId}) d, teammember t
+				where t.pnum = d.pnum 
+				group by d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate, d.maxpeople
+				order by d.enddate desc
+	</select>
+	 -->
+
 
 </mapper>

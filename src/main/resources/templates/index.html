@@ -9,7 +9,7 @@
 		<th:block th:each="deallist,i:${dealList}">
 
 			<!-- 거래 내역 화면 입니다. -->
-			<div class="card shadow mb-4" style="width: 100%;">
+			<div class="card shadow mb-4" style="width: 80%;">
 				<!-- Card Header - Dropdown -->
 				<div
 					class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -52,10 +52,10 @@
 							<li class="list-group-item" id="cobuy_title"
 								th:text="'제목:&emsp;' + ${deallist.title}"></li>
 							<li class="list-group-item" id="cobuy_deliveryAddress"
-								th:text="'구매동네:&emsp;' + ${deallist.dealaddress} +' ('+${deallist.postnum}+ ')'"></li>
+								th:text="'예상구매지점:&emsp;' + ${deallist.dealaddress} +' ('+${deallist.postnum}+ ')'"></li>
 							<!-- 배달 주소에 링크를 걸어 누르면 map으로?? -->
 							<li class="list-group-item" id="cobuy_price"
-								th:text="'제품가격:&emsp;' + ${deallist.price} + '원&emsp;&emsp;&emsp;'
+								th:text="'예상구매가격:&emsp;' + ${deallist.price} + '원&emsp;&emsp;&emsp;'
 																				+ '목표인원수:&emsp;' + ${deallist.maxpeople} + '명&emsp;'"></li>
 							<li class="list-group-item"><a id="cobuy_price"
 								th:href="@{/detail.do(pnum = ${deallist.pnum})}">거래상세보기 >> </a></li>
