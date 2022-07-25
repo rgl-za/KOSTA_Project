@@ -48,6 +48,8 @@ public interface PostMapper {
 
 	// post 개수
 	public int PostTotalCount();
+	
+	public boolean pushFinaldate(Long postPnum);
 
 	public List<PostDTO> recommendPostList(Long recommendItem);
 

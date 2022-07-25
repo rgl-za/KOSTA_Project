@@ -39,11 +39,13 @@ public class DealController {
 		//UserDTO user = (UserDTO) session.getAttribute("userDTO");
 		String userId =  userDTO.getUserid();
 		System.out.println("userId: " + userId);
+		//System.out.println("user: " + userDTO.getBirth());
 		
 		
 		List<DealHistoryDTO> dealList = dealService.getEndDealList(userId);
 		System.out.println("dealList" + dealList);
 		model.addAttribute("dealList", dealList);
+		model.addAttribute("userDTO", userDTO);
 
 		return "/mypage";
 	}
