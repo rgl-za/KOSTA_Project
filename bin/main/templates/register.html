@@ -60,7 +60,7 @@
 										placeholder="아이디는 영어,숫자 4~15자리로 입력해주세요"
 										aria-label="Enter search term..."/>
 									
-										<span class ="olmessagef"id = "checkid-msg" th:text="${valid_userid}"></span> 
+										<span class ="olmessagef" id = "checkid-msg" th:text="${valid_userid}"></span> 
 										<span class="id_ok">사용 가능한 아이디입니다.</span> 
 										<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
 										
@@ -259,21 +259,22 @@
 
 </body>
 
-<!-- <th:block layout:fragment="text/script"> -->
-	<script type="text/javascript">
+<th:block layout:fragment="text/script">
+
+	<script th:inline="javascript">
 	/*<![CDATA[*/
 	    function checkId(){
-	    	console.log("check");
+	    	console.log("idcheck");
 	        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
-	        console.log(id);
+	        console.log("id:" + id);
 	        $.ajax({
 	            url:'/idCheck', //Controller에서 요청 받을 주소
-	            type:'post', //POST 방식으로 전달
-	            dataType : 'JSON',
-	            data:{userid:id},
-	            success:function(result){  
-	            	console.log(result)
-	                if(result != 1){  
+	            type:'POST', //GET 방식으로 전달
+	            traditional: true,
+			    data: JSON.stringify(id),
+	            success: function(data){  
+	            	console.log("result:"+ data)
+	                if(data != false){  
 	                    $('.id_ok').css("display","inline-block"); 
 	                    $('.id_already').css("display", "none");
 	                } else { 
@@ -281,22 +282,28 @@
 	                    $('.id_ok').css("display", "none");
 	                }
 	            },
-	            error:function(){
+	            error:function(a, b, c){
+	            	console.log(a, b, c);
 	                alert("에러입니다");
 	            }
 	        });
-	        };
+	     }
+	        
+        function test(){
+    		var p1 = document.getElementById('password1').value;
+    		var p2 = document.getElementById('password2').value;
+    		
+    		if(p1 != p2){
+    			alert("비밀번호 불일치");
+    			return false;
+    		}
+    	}
 	        /*]]>*/
-			</script>
-</th:block>
+		</script>
 
 
 
-
-
-
-
-<script type = "text/javascript">
+<!-- <script type = "text/javascript">
 	function test(){
 		var p1 = document.getElementById('password1').value;
 		var p2 = document.getElementById('password2').value;
@@ -305,5 +312,6 @@
 			alert("비밀번호 불일치");
 			return false;
 		}
-	}</script>
+	}
+</script> -->
 </html>
