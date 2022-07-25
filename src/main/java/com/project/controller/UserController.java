@@ -82,21 +82,52 @@ public class UserController {
         	
         }
 	}
-
-    @PostMapping("/register")
-    public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model){
+    
+    @ResponseBody
+    @GetMapping("/idCheck")
+    public String idCheck(String userid) {
+		/*
+		 * if(userid != null) { int result = userService.overlappedID(userid);
+		 * System.out.println("result 확인: " + result); return "false"; }else { int
+		 * result = userService.overlappedID(userid); System.out.println("result 확인: " +
+		 * result); return "true"; }
+		 */
+    	 
+    	 int result = userService.overlappedID(userid);
+         System.out.println("result 확인: " + result);
+         String answer = String.valueOf(result);
+         return answer;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model, @RequestParam(value="checkId", required=false) String userid){
     	model.addAttribute("userDTO", userDTO);
+    	
+        System.out.println("설마 여기?" + userid);
         
-        if(errors.hasErrors()) {
-        	Map<String, String> validatorResult = userService.validateHandling(errors);
-        	 for (String key : validatorResult.keySet()) {
-                 model.addAttribute(key, validatorResult.get(key));
-        	}
-        	 return "/register";
-        }
         
-        userService.joinUser(userDTO);
-        return "redirect:/login";
+        if(userid == null) {
+        	//회원가입
+        	if(errors.hasErrors()) {
+            	Map<String, String> validatorResult = userService.validateHandling(errors);
+            	 for (String key : validatorResult.keySet()) {
+                     model.addAttribute(key, validatorResult.get(key));
+            	}
+            	return "/register";
+            }else {
+            	userService.joinUser(userDTO);
+                return "redirect:/login";
+            }
+        	
+         }else {
+        	 //id 중복체크
+        	 int result = userService.overlappedID(userid);
+             System.out.println("result 확인: " + result);
+             String answer = String.valueOf(result);
+             return answer;
+
+         }
 
     }
     

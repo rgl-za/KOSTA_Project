@@ -58,9 +58,9 @@ public class SecurityConfig {
             .failureUrl("/login")
             .and()
         .logout()
-        	.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) //로그아웃 경로를 지정
+        	.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 경로를 지정
         	.logoutSuccessUrl("/main.do")  //로그아웃 성공시 경로를 지정
-        	.invalidateHttpSession(true).deleteCookies("JSESSIONID" ); //로그아웃 성공시 세션을 제거
+        	.invalidateHttpSession(true).deleteCookies("JSESSIONID"); //로그아웃 성공시 세션을 제거
 		
 		http.rememberMe()
 		.key("remember-me")

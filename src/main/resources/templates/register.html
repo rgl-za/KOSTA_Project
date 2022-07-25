@@ -268,13 +268,13 @@
 	        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
 	        console.log("id:" + id);
 	        $.ajax({
-	            url:'/idCheck', //Controller에서 요청 받을 주소
+	            url:'/register', //Controller에서 요청 받을 주소
 	            type:'POST', //GET 방식으로 전달
-	            traditional: true,
-			    data: JSON.stringify(id),
-	            success: function(data){  
-	            	console.log("result:"+ data)
-	                if(data != false){  
+	            data: {"checkId":id},
+	            cache: false,
+	            success: function(result){  
+	            	console.log("result:"+ result)
+	                if(result != "1"){  
 	                    $('.id_ok').css("display","inline-block"); 
 	                    $('.id_already').css("display", "none");
 	                } else { 
