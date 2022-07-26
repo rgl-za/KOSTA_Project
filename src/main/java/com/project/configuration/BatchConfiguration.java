@@ -58,7 +58,8 @@ public class BatchConfiguration {
     @Bean
     public FlatFileItemWriter<RecommendDTO> writer(){
         FlatFileItemWriter<RecommendDTO> writer = new FlatFileItemWriter<RecommendDTO>();
-        writer.setResource(new FileSystemResource("C:\\Users\\mingyeongkim\\Documents\\GitHub\\KOSTA_Project\\data\\recommend"));
+        
+        writer.setResource(new FileSystemResource("C:\\Users\\jiwon\\github\\KOSTA_Project\\data\\recommend"));
         DelimitedLineAggregator<RecommendDTO> aggregator = new DelimitedLineAggregator<>();
         BeanWrapperFieldExtractor<RecommendDTO> fieldExtractor = new BeanWrapperFieldExtractor<>();
         fieldExtractor.setNames(new String[] {"userNo", "pnum", "prefer"});
