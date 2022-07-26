@@ -18,7 +18,6 @@ import org.springframework.validation.FieldError;
 import com.project.domain.UserDTO;
 import com.project.mapper.UserMapper;
 
-import ch.qos.logback.classic.Logger;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -53,13 +52,14 @@ public class UserService implements UserDetailsService {
 	
 	//아이디 중복 체크
 	public int overlappedID(String userid){
-		int result = userMapper.overlappedID(userid);
-		
-		return result;
+		int cnt = userMapper.overlappedID(userid);
+		System.out.println(cnt + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		return cnt;
 	}
 	
 	
 	//회원정보 수정
+	@Transactional
 	public int UserUpdate(UserDTO userDTO) {
 		return userMapper.UserUpdate(userDTO);
 	}

@@ -1,37 +1,21 @@
 package com.project.controller;
 
-import java.security.Principal;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.domain.UserDTO;
@@ -54,7 +38,7 @@ public class UserController {
 	
 
     @GetMapping("/register")
-    public String signUpForm() {
+    public String signUpForm(UserDTO userDTO) {
     	System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddd");
         return "/register";
     }
@@ -70,20 +54,34 @@ public class UserController {
  
     @ResponseBody
     @PostMapping("/idCheck")
-	public int overlappedID(@RequestParam("userid") String userid){
-		int result = userService.overlappedID(userid);
-		return result;
+	public int overlappedID(@RequestParam("userid") String userid) throws Exception{
+		int cnt = userService.overlappedID(userid);
+		System.out.println(cnt + "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		return cnt;
 	}
+    
+
+    
+
+    
 
     @PostMapping("/register")
-    public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model){
-    	model.addAttribute("userDTO", userDTO);
+    public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model, String username, String nickname)throws Exception{
+    	
         
         if(errors.hasErrors()) {
+        	
+        	model.addAttribute("userDTO", userDTO);
+        	model.addAttribute("username", username);
+        	model.addAttribute("nickname", nickname);
+        	
+        	System.out.println("dkdkdk아아아ㅏ아아아ㅏ아아아아아ㅏ아아아ㅏ아아아ㅏ아아아아" + userDTO);
+        	
         	Map<String, String> validatorResult = userService.validateHandling(errors);
         	 for (String key : validatorResult.keySet()) {
                  model.addAttribute(key, validatorResult.get(key));
         	}
+         	
         	 return "/register";
         }
         
@@ -121,7 +119,6 @@ public class UserController {
     public String UpdateUser(UserDTO userDTO) throws Exception{
     	
     	userService.UserUpdate(userDTO);
-    	logger.info("$$$$$$$$$$$$$$$$$$$수정$$$$$$$$$$$$$$$$");
     	
     	return "redirect:/main.do";
     }

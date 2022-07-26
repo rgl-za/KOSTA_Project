@@ -26,17 +26,6 @@
 
 <link href="/css/sb-admin-2.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<style>
-.id_ok {
-	color: #008000;
-	display: none;
-}
-
-.id_already {
-	color: #6A82FB;
-	display: none;
-}
-</style>
 
 
 </head>
@@ -48,13 +37,11 @@
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
-				<div class="row">
-					<div class="col-lg-7">
 						<div class="p-5">
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">회원정보 수정 FORM</h1>
 							</div>
-							<form class="user" action="/UpdateUser" method="post">
+							<form class="userUpdate" action="/UpdateUser" method="post" >
 							
 							<input type = "hidden" class="form-control" th:value="${#authentication.principal.userid}">
 
@@ -108,17 +95,19 @@
 
 
 										<div class="form-group row">
-										<div class="form-group">
-											<input type="text" class="form-control form-control-user"
-												th:value="${#authentication.principal.realaddress}"
-												id="realaddress" name="realaddress" placeholder="상세 주소">
-											<span th:text="${valid_realaddress}"></span>
-										</div>
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="text" id="sample6_detailAddress"
+											class="form-control form-control-user" name="realaddress" th:value="${#authentication.principal.realaddress}"
+											placeholder="상세주소">
+											<span class ="olmessagef" th:text="${valid_realaddress}"></span> 
+									</div>
 										<div class="col-sm-6 ">
-											<input type="text" id="sample6_extraAddress"
-												class="form-control form-control-user" placeholder="참고사항">
+											<input type="text"
+											id="sample6_extraAddress"
+											readonly="readonly"
+											class="form-control form-control-user" placeholder="참고사항">
 										</div>
-										</div>
+									</div>
 									</div>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -200,7 +189,7 @@
     }
 </script> -->
 
-									<button type="submit" id ="signUp" onclick="test()" class="btn btn-primary btn-user btn-block">
+									<button type="submit" id ="signUp" class="btn btn-primary btn-user btn-block">
 										수정
 										</button>
 							</form>
@@ -211,9 +200,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-	</div>
 	
 	
 

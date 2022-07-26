@@ -1123,7 +1123,7 @@
 								 th:src="|@{uploadFile/}${recommendPostList.getPhoto()}|">
 						</div>
 					</div>
-					<a th:href="@{/detail.do( pnum=${recommendPostList.pnum} )}"
+					<a th:href="@{/detail.do( pnum=${recommendPostList.getPnum()} )}"
 					   class="btn btn-primary">
 						상세보기
 					</a>

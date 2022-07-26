@@ -22,6 +22,7 @@
 
 <link href="/css/sb-admin-2.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <style>
 .id_ok {
 	color: #008000;
@@ -44,28 +45,29 @@
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
-						<div class="p-5">
+						<div class="p-5" style="width:500px; margin:auto">
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">함께이조 회원가입!</h1>
 							</div>
-							<form class="user" action="/register" method="post">
+							<form class="user" action="/register" method="post" > 
 							
 							<div class="form-group">
 									<input class="form-control form-control-user" 
 										type="text" 
 										id = "userid"
+										onchange="checkId();"
 										name ="userid" 
-										onchange = "checkId()"
 										th:value="${userDTO?.userid}"
 										placeholder="아이디는 영어,숫자 4~15자리로 입력해주세요"
 										aria-label="Enter search term..."/>
-									
-										<span class ="olmessagef"id = "checkid-msg" th:text="${valid_userid}"></span> 
+										
+										<span id="olmessage"></span>
+										<span class ="olmessagef" id = "checkid-msg" th:text="${valid_userid}"></span> 
 										<span class="id_ok">사용 가능한 아이디입니다.</span> 
 										<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
 										
 								</div>
-								<!--  onchange = "checkId()"-->
+								
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
@@ -92,11 +94,12 @@
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"  th:value="${userDTO?.password}"
-											id="password2" name="password2"
+											id="password2" name="repassword" oninput="test()"
 											placeholder="비밀번호 확인">
 									</div>
 								</div>
 								<span class ="olmessagef" th:text ="${valid_password}"></span>
+								<span id = "confirmMsg"></span>
 								
 								
 								
@@ -118,7 +121,7 @@
 
 
 								<div>
-									<input type="radio" id="contactChoice1" name="gender"
+									<input type="radio"  id="contactChoice1" name="gender"
 										value="man" checked> <label for="contactChoice1">남자</label> 
 										<input type="radio" id="contactChoice2" name="gender" 
 										value="woman"> <label for="contactChoice2">여자</label>
@@ -132,7 +135,7 @@
 									<input type="button" onclick="sample6_execDaumPostcode()"
 										value="우편번호 찾기">
 										
-										</div>
+								</div>
 								<div>
 									<input type="text" id="sample6_address"
 										class="form-control form-control-user" name="address" th:value="${userDTO?.address}"
@@ -143,13 +146,13 @@
 									<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" id="sample6_detailAddress"
-											class="form-control form-control-user" name="realaddress" th:value="${userDTO?.realaddress}"
+											class="form-control form-control-user" name="realaddress"
 											placeholder="상세주소">
-											<span class ="olmessagef" th:text="${valid_realaddress}"></span> 
 									</div>
 										<div class="col-sm-6 ">
 											<input type="text"
 											id="sample6_extraAddress"
+											readonly="readonly"
 											class="form-control form-control-user" placeholder="참고사항">
 										</div>
 									</div>
@@ -226,7 +229,7 @@
 							
 									
 
-								<button type="submit" id ="signUp" onclick="test()" class="btn btn-primary btn-user btn-block">
+								<button type="submit" id ="signUp" class="btn btn-primary btn-user btn-block">
 										회원가입 버튼
 										</button>
 										<hr>
@@ -254,41 +257,35 @@
 		</div>
 
 	</div>
-	
-	
 
-</body>
-
-<!-- <th:block layout:fragment="text/script"> -->
 	<script type="text/javascript">
-	/*<![CDATA[*/
-	    function checkId(){
-	    	console.log("check");
-	        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
-	        console.log(id);
-	        $.ajax({
-	            url:'/idCheck', //Controller에서 요청 받을 주소
-	            type:'post', //POST 방식으로 전달
-	            dataType : 'JSON',
-	            data:{userid:id},
-	            success:function(result){  
-	            	console.log(result)
-	                if(result != 1){  
-	                    $('.id_ok').css("display","inline-block"); 
-	                    $('.id_already').css("display", "none");
-	                } else { 
-	                    $('.id_already').css("display","inline-block");
-	                    $('.id_ok').css("display", "none");
-	                }
-	            },
-	            error:function(){
-	                alert("에러입니다");
-	            }
-	        });
-	        };
-	        /*]]>*/
-			</script>
-</th:block>
+	    
+	function checkId(){
+    	console.log("idcheck");
+        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
+        console.log("id:" + id);
+        $.ajax({
+            url:'/register', //Controller에서 요청 받을 주소
+            type:'POST', //GET 방식으로 전달
+            data: {"userid":id},
+            cache: false,
+            success: function(result){  
+            	console.log("result:"+ result)
+                if(result != "1"){  
+                    $('.id_ok').css("display","inline-block"); 
+                    $('.id_already').css("display", "none");
+                } else { 
+                    $('.id_already').css("display","inline-block");
+                    $('.id_ok').css("display", "none");
+                }
+            },
+            error:function(a, b, c){
+            	console.log(a, b, c);
+                alert("에러입니다");
+            }
+        });
+     }
+	</script>
 
 
 
@@ -296,14 +293,24 @@
 
 
 
-<script type = "text/javascript">
+	<script type = "text/javascript">
 	function test(){
 		var p1 = document.getElementById('password1').value;
 		var p2 = document.getElementById('password2').value;
+		var confrimMsg = document.getElementById('confirmMsg');	
+		var correctColor = "#00ff00";
+		var wrongColor ="#ff0000";
 		
-		if(p1 != p2){
-			alert("비밀번호 불일치");
-			return false;
+		if(p1 == p2){
+			confirmMsg.style.color = correctColor;
+			confirmMsg.innerHTML ="비밀번호가 일치 합니다";
+		}else{
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML ="비밀번호가 불일치 합니다";
 		}
 	}</script>
+
+</body>
+
+
 </html>
