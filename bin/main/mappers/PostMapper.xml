@@ -61,32 +61,38 @@
 	  </selectKey>
 	</insert> 
 	
+	<update id="pushFinaldate" parameterType="long">
+		update post
+		set finaldate = SYSDATE
+		where = #{pnum}
+	</update>
+	
 
-	<insert id="insertPost2" parameterType="PostDTO">
+<!-- 	<insert id="insertPost" parameterType="PostDTO">
 		INSERT INTO POST (
 			<include refid="postColumns"/>
 		) VALUES (
 			seq_post_no.nextval
 			, #{catnum}
-			, NULL			<!-- #{leaderid} -->
+			, NULL			#{leaderid}
 			, #{title}
 			, #{content}
 			, #{photo}
 			, #{link}
 			, #{price}
-			, NULL			<!-- #{postnum} -->
-			, NULL			<!-- #{dealaddress} -->
+			, NULL			#{postnum}
+			, NULL			#{dealaddress}
 			, #{maxpeople}
-			, 2				<!-- #{minpeople} -->
-			, NULL			<!-- #{accountpost} -->
-			, SYSDATE		<!-- #{uploaddate} -->
+			, 2				#{minpeople}
+			, NULL			#{accountpost}
+			, SYSDATE		#{uploaddate}
 			, #{enddate}
-			, 'N'			<!-- #{deleteyn} -->
-			, NULL			<!-- #{deletetime} -->
-			, NULL			<!-- #{finaldate} -->
+			, 'N'			#{deleteyn}
+			, NULL			#{deletetime}
+			, NULL			#{finaldate}
 			, #{numbers}
 		)
-	</insert>
+	</insert> -->
 	
 	
 	<!-- 수정 필요 (문정현)-->
@@ -233,7 +239,7 @@
 	</update>
 
 	<select id="recommendPostList" resultType="PostDTO" parameterType="Long">
-		SELECT p.title as title, p.photo as photo, p.pnum
+		SELECT p.title as title, p.photo as photo, p.pnum as pnum
 		FROM post p
 		WHERE p.deleteYn = 'N' and pnum = #{recommendItem}
 	</select>

@@ -208,13 +208,16 @@ public class PostController extends UiUtils {
 		
 		//거래장소 : 방장 주소 기준
 		String leaderId =  postDTO.getLeaderid();
+		String leaderPlace ="";
 		for(int i =0; i<teamMemberList.size(); i++) {
 			if(teamMemberList.get(i).getUserid()==leaderId) {
-				String leaderPlace = teamMemberList.get(i).getAddress();
-				System.out.println(leaderPlace);
-				model.addAttribute("leaderPlace", leaderPlace);
+				leaderPlace = teamMemberList.get(i).getAddress();
+				System.out.println("leaderPlace>>"+leaderPlace);
+				
 			}
 		}
+		System.out.println("leaderPlace>>model>"+leaderPlace);
+		model.addAttribute("leaderPlace", leaderPlace);
 		
 		
 		
