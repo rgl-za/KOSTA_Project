@@ -183,6 +183,7 @@ public class PostController extends UiUtils {
 
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
+		
 
 		if (postDTO == null || "Y".equals(postDTO.getDeleteyn())) {
 			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
@@ -204,6 +205,21 @@ public class PostController extends UiUtils {
 		
 		model.addAttribute("teamMemberList", teamMemberList);
 		model.addAttribute("teamMember", new UserDTO());
+		
+		//거래장소 : 방장 주소 기준
+		String leaderId =  postDTO.getLeaderid();
+		String leaderPlace ="";
+		for(int i =0; i<teamMemberList.size(); i++) {
+			if(teamMemberList.get(i).getUserid()==leaderId) {
+				leaderPlace = teamMemberList.get(i).getAddress();
+				System.out.println("leaderPlace>>"+leaderPlace);
+				
+			}
+		}
+		System.out.println("leaderPlace>>model>"+leaderPlace);
+		model.addAttribute("leaderPlace", leaderPlace);
+		
+		
 		
 		//PostDTO post = postService.getPostDetail(pnum);
 		System.out.println("teamMemberList>>"+teamMemberList);//애매
