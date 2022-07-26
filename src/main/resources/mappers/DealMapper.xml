@@ -21,6 +21,20 @@
 	
 	<!-- 나의 거래완료 내역 -->
 	<select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
+		select d.userId, d.pnum, d.price, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, count(*) as membercount
+		from (select t.userId, p.pnum, p.price, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate, p.maxpeople
+                from teammember t, post p
+                where p.PNUM IN (
+                    SELECT c.PNUM
+                    FROM CERTIFICATE c)
+                and t.pnum = p.pnum
+                and t.userId= #{userId}) d, teammember t
+		where t.pnum = d.pnum 
+		group by d.userId, d.pnum, d.price, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate
+		order by d.enddate desc
+	</select>
+	
+	<!-- <select id="selectEndDealList" parameterType="String" resultType="DealHistoryDTO">
 		select d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, count(*) as membercount
 		from (select a.userId, a.pnum, a.money, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate
 		        from useraccount a, post p
@@ -29,18 +43,9 @@
 		where t.pnum = d.pnum 
 		group by d.userId, d.pnum, d.money, d.title, d.postnum, d.photo, d.dealaddress, d.link, d.finaldate, d.enddate, d.uploaddate
 		order by d.enddate desc
-	</select>
-	
-	<!-- 나의 거래중인 내역 -->
-	<!-- <select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
-		select t.userId, p.pnum, p.price, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate, p.maxpeople
-		from teammember t, post p
-	    where t.pnum = p.pnum
-	    and t.userId= #{userId}
-	    and p.finaldate is null
-	    order by p.enddate desc
 	</select> -->
 	
+	<!-- 나의 거래중인 내역 -->
 	<select id="selectDealingList" parameterType="String" resultType="DealHistoryDTO">
 		select t.userId, p.pnum, p.price, p.title, p.postnum, p.photo, p.dealaddress, p.link, p.finaldate, p.enddate, p.uploaddate, p.maxpeople
 		from teammember t, post p
