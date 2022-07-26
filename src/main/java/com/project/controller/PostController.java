@@ -184,6 +184,9 @@ public class PostController extends UiUtils {
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
 		
+		System.out.println("postDTO>>"+postDTO);
+		System.out.println("postDTO.getLeaderid()>>"+postDTO.getLeaderid());
+		
 
 		if (postDTO == null || "Y".equals(postDTO.getDeleteyn())) {
 			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
@@ -210,7 +213,11 @@ public class PostController extends UiUtils {
 		String leaderId =  postDTO.getLeaderid();
 		String leaderPlace ="";
 		for(int i =0; i<teamMemberList.size(); i++) {
+			System.out.println("teamMemberList.get(i)>>"+teamMemberList.get(i).getUserid());
 			if(teamMemberList.get(i).getUserid()==leaderId) {
+				
+				//System.out.println("teamMemberList.get(i)>>"+teamMemberList.get(i).getUserid());
+				System.out.println("leaderId>>"+leaderId);
 				leaderPlace = teamMemberList.get(i).getAddress();
 				System.out.println("leaderPlace>>"+leaderPlace);
 				
