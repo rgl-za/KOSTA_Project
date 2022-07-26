@@ -14,9 +14,6 @@ public class FileUtil {
 
 	public FileDTO fileUpload(MultipartFile file) throws Exception {
 		
-	
-		
-		
 	  //String saveDir = "D:\\javaStudy\\upload";
 	  //String saveDir = "C:\\uploadFile";
 	  String saveDir = getFileDir();
@@ -61,7 +58,7 @@ public class FileUtil {
 		
 	}
 	
-	
+	// 운영체제에 따라 파일경로 설정
 	public String getFileDir() {
 	    String os = System.getProperty("os.name").toLowerCase();
 	    System.out.println("Using System Property: " + os);
