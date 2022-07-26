@@ -76,6 +76,11 @@ dependencies {
 	// implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.0'
 	implementation 'org.apache.commons:commons-math3:3.6.1'
 	
+	// https://mvnrepository.com/artifact/org.springframework/springloaded
+	implementation 'org.springframework:springloaded:1.2.6.RELEASE'
+	
+	
+	
 	
 
 }
