@@ -108,7 +108,7 @@
             <hr class="sidebar-divider">
             
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/user/logout}">
+                <a class="nav-link" th:href="@{/logout}">
                 <i class="fas fa-user"></i>
                  
                     <span>로그아웃</span></a>
@@ -126,7 +126,8 @@
                     <span>로그인</span></a>
             </li>
             </div>
-            
+
+
              <div sec:authorize="isAnonymous()">
             <!-- Divider -->
             <hr class="sidebar-divider">

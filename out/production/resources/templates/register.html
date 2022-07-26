@@ -48,14 +48,14 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">함께이조 회원가입!</h1>
 							</div>
-							<form class="user" action="/registerSave" method="post">
+							<form class="user" action="/register" method="post">
 							
 							<div class="form-group">
 									<input class="form-control form-control-user" 
 										type="text" 
 										id = "userid"
-										name ="userid"
-										   required oninput= "checkId()"
+										name ="userid" 
+										onchange = "checkId()"
 										th:value="${userDTO?.userid}"
 										placeholder="아이디는 영어,숫자 4~15자리로 입력해주세요"
 										aria-label="Enter search term..."/>
@@ -260,25 +260,21 @@
 </body>
 
 <th:block layout:fragment="text/script">
+
 	<script th:inline="javascript">
 	/*<![CDATA[*/
 	    function checkId(){
 	    	console.log("idcheck");
-	        var userid = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
-	        console.log("userid:" + userid);
+	        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
+	        console.log("id:" + id);
 	        $.ajax({
-				type: 'POST', //GET 방식으로 전달
-	            url: '/idCheck', //Controller에서 요청 받을 주소
-				// dataType: 'json',
-				contentType: 'application/json; charset=utf-8',
-	            // traditional: true,
-			    // data: JSON.stringify(id),
-				data: {
-					userid: userid
-				},
-	            success: function(cnt){
-	            	console.log("result:"+ cnt);
-	                if(cnt != 1){
+	            url:'/idCheck', //Controller에서 요청 받을 주소
+	            type:'POST', //GET 방식으로 전달
+	            data: {"checkId":id},
+	            cache: false,
+	            success: function(result){  
+	            	console.log("result:"+ result)
+	                if(result != "1"){  
 	                    $('.id_ok').css("display","inline-block"); 
 	                    $('.id_already').css("display", "none");
 	                } else { 
@@ -286,14 +282,12 @@
 	                    $('.id_ok').css("display", "none");
 	                }
 	            },
-	            error:function(request, status, error){
-					alert("status : " + request.status + ", message : " + request.responseText + ", error : " + error);
-					console.log("status : " + request.status + ", message : " + request.responseText + ", error : " + error);
-					console.log("ㅡㅡ");
-	                // alert("에러입니다");
+	            error:function(a, b, c){
+	            	console.log(a, b, c);
+	                alert("에러입니다");
 	            }
 	        });
-	     };
+	     }
 	        
         function test(){
     		var p1 = document.getElementById('password1').value;
@@ -306,5 +300,18 @@
     	}
 	        /*]]>*/
 		</script>
-	</th:block>
+
+
+
+<!-- <script type = "text/javascript">
+	function test(){
+		var p1 = document.getElementById('password1').value;
+		var p2 = document.getElementById('password2').value;
+		
+		if(p1 != p2){
+			alert("비밀번호 불일치");
+			return false;
+		}
+	}
+</script> -->
 </html>
