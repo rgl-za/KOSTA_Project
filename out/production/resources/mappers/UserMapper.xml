@@ -21,8 +21,7 @@
 	 <insert id="saveUser" parameterType="UserDTO">
 		INSERT INTO USERS (
 		<include refid="userColumns" />
-		) VALUES 
-		(
+		) VALUES (
 		#{userid}
 		, #{username}
 		, #{password}
@@ -53,7 +52,6 @@
 		update users 
 		set
 		username = #{username},
-		password = #{password},
 		phone = #{phone},
 		postnum = #{postnum},
 		address = #{address},

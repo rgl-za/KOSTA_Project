@@ -14,8 +14,8 @@
 			<!-- 수정, 삭제 -->
 			<div class="float-right">
 				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
-				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
-				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
 		</div>
 		<div class="row">
@@ -34,24 +34,27 @@
 								<div class="card-body">
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">구매 동네 </h7>
+										<text th:text="${leaderPlace}"></text>&ensp;<br>
+									</p>
+									<p>
+										<h7 class="m-0 font-weight-bold text-gray-900">글 내용 </h7>
+										<text th:text="${postDTO.getContent()}"></text> <br>
 									</p>
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
-										<text th:text="${postDTO.getPrice()}"></text>
-										원 &nbsp;<br>
+										<text th:text="${postDTO.getPrice()}"></text>원 &nbsp;<br>
 										<h7 class="m-0 font-weight-bold text-gray-900">물품 개수 </h7>
-										15개입 &ensp;<br>
+										<text th:text="${postDTO.getNumbers()}"></text> 개<br>
 									</p>
 									<div class="margin-bottom">
 										<p>
-											<h7 class="m-0 font-weight-bold text-gray-900">링크주소: </h7>
+											<h7 class="m-0 font-weight-bold text-gray-900">링크주소 </h7>
 											<a th:href="@{${postDTO.getLink()}}">바로가기</a>
 											<text th:text="${postDTO.getLink()}"></text>
 										</p>
 									</div>
 									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
 									<text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>
-									(가능하다면)30분 전
 								</div>
 							</div>
 						</div>
@@ -73,6 +76,7 @@
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 										최소 구매가 </h7>
 									<text th:text="${postDTO.getPrice()}/${postDTO.getMaxpeople()}"></text>
+									원
 									<br>
 								</p>
 								<p>
@@ -114,13 +118,17 @@
 											th:text="${postDTO.getLeaderid()}"
 									></div>
 									<img class="ready-img rounded-circle" src="img/undraw_profile.svg">
-									<a href="#" class="btn btn-primary-cap btn-icon-split" th:if="${minpeople == true}">
+									<a class="btn btn-primary-cap btn-icon-split"
+									   th:if="${minpeople == true} and ${postDTO.getLeaderid()} == ${#authentication.name}"
+									   th:onclick="insertCertification([[${postDTO.getPnum()}]], [[${postDTO.getTitle()}]], [[${postDTO.getContent()}]])"
+									>
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
-										<span class="text">거래 진행하기</span>
+										<span class="text">거래 완료하기</span>
 									</a>
-									<a th:href="@{/dealing}" class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
+									<a class="btn btn-primary-cap btn-icon-split"
+									   th:unless="${postDTO.getLeaderid()} == ${#authentication.name} and ${minpeople == true}">
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
@@ -262,6 +270,11 @@
 
 												// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 												var map = new kakao.maps.Map(mapContainer, mapOption);
+												var geocoder = new kakao.maps.services.Geocoder();	// 주소-좌표 변환 객체를 생성합니다
+												var arrAdd= new Array();	//user들의 address를 저장할 배열 선언
+												var arrId= new Array();		//user들의 id를 저장할 배열 선언
+												
+												
 												
 												function getInfo() {
 												    // 지도의 현재 중심좌표를 얻어옵니다 
@@ -273,8 +286,9 @@
 												산술평균의 마커를 생성합니다.
 												
 												*/
-												addMarker(new kakao.maps.LatLng(
+												/*addMarker(new kakao.maps.LatLng(
 														midLat, midLng), '산술 평균');
+												*/
 												
 												// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 												var infowindow = new kakao.maps.InfoWindow({zIndex:1});
@@ -628,22 +642,10 @@
 												선그어서 거리와 이동시간 구하기 end
 												*/
 
-												// 주소-좌표 변환 객체를 생성합니다
-												var geocoder = new kakao.maps.services.Geocoder();
-
-												// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-												var markers = [];
-												var infowindows = [];
-
 												/*
-													user의 데이터 -> 처리 필요
-													var pnum="[[${postDTO.getPnum()}]]";
-													user의 주소데이터 받기
+											    user주소와 id로 위경도 변환 -> 중심 좌표 구하기(ajax) -> 중심 좌표의 주소 구하기 -> 중심 좌표의 마커 생성 & 중심좌표의 주소 db insert(ajax) 
+											    */
 												
-												*/
-									
-												var arrAdd= new Array();
-												var arrId= new Array();
 												
 											    /*[# th:each="page : ${teamMemberList}"]*/
 											     
@@ -654,16 +656,11 @@
 											        
 											    /*[/]*/
 											    
+											   
 											    console.log("arr"+arrAdd);
 											    console.log("arr"+arrId);
 			                                 
-												
-												var addList = ['서울특별시 도봉구 해등로','부산시 해운대구 반송2동','강원도 강릉시 사천면 석교리 755','상중리 경기도 안성시 금광면'];
-												var nameList = ['jiwon1','jiwon2','jiwon3','jiwon4'];
-												
-												console.log("addList"+addList);
-												
-												//usersMarkers(addList,nameList);
+												//user들의 주소와 id를 받아서 maker를 생성
 												usersMarkers(arrAdd,arrId);
 												
 												//users 마커 : 주소 -> 위경도
@@ -800,7 +797,7 @@
 											
 												}//addMarker
 												
-												// 마커를 생성하고 지도위에 표시하는 함수입니다
+												// 편의점 마커를 생성하고 지도위에 표시하는 함수입니다
 												function addCS2Marker(position, title, url) {
 													
 													var imageSrc = 'assets/img/cs2store.png', // 마커이미지의 주소입니다    
@@ -846,15 +843,6 @@
 
 													
 												}//addMarker
-												
-												function openInfowindow(map, infowindows){
-													for (var i = 0; i < infowindows.length; i++) {
-														console.log(">>>infowindow"+infowindows[i]);
-														infowindows[i].open(map);
-														//infowindows[i].open(map, marker);
-
-													}
-												}
 												
 											
 												var imageSrc = 'assets/img/cust_marker-01.png';//, // 마커이미지의 주소입니다    
@@ -944,6 +932,11 @@
 												
 											  var pnum="[[${postDTO.getPnum()}]]";
 											  //alert(pnum);
+											  
+											  
+											  /*
+											   ajax 통신 코드 start
+											  */
 											  function addMidAddressToDB(address) {
 											     $.ajax({
 											         type : "GET",
@@ -980,8 +973,6 @@
 													     success: function (args) {
 													    	 
 													    	 var r= args.res;//Object
-													    	 //alert("res.x"+res.x);
-													    	 //alert("res.y"+res.y);
 													    	 
 													    	//중심 마커 생성 => getAddressByLatLng 호출
 													    	markerPosition=new kakao.maps.LatLng( r.y, r.x);
@@ -1002,15 +993,7 @@
 													        }
 													     }
 													   });//ajax
-													   /*
-													   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-													    mapOption = { 
-													        center: markerPosition, // 지도의 중심좌표
-													        level: 3 // 지도의 확대 레벨
-													    };
-													   map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-														*/
-													 //map.setCenter(markerPosition);
+													   
 												  
 												  }//function
 												  
@@ -1039,16 +1022,13 @@
 														    	 alert("ajax통신 완료");
 														    	 //var r= args.res;//Object
 													
-														    	//중심 마커 생성 => getAddressByLatLng 호출
-														    	//markerPosition=new kakao.maps.LatLng( r.y, r.x);
-																//getAddressByLatLng(markerPosition);
-																
-																//alterMapCenter(markerPosition);//계산된 중심 좌표로 map Center변경
-																
-																
 														     }
 														   });//ajax
 													  }//function
+													  
+													  /*
+													   ajax 통신 코드 end
+													  */
 											  /*]]>*/
 											</script>
 										</div>
@@ -1114,7 +1094,7 @@
 		</div>
 		<!-- row -->
 			<div class="detail_top_top" style="margin-top: 100px; margin-bottom: 50px; font-size: x-large;" th:text="${postDTO.getTitle()}+'에 관심있으신 분들이 자주 보는 상품들이에요 👀'"></div>
-			<div class="col-lg-6 mb-4" th:if="${not #lists.isEmpty( recommendPostList )}" th:each="recommendPostList : ${recommendPostList}">
+			<div class="col-lg-3 mb-2" th:if="${not #lists.isEmpty( recommendPostList )}" th:each="recommendPostList : ${recommendPostList}">
 				<div class="card bg-light text-black shadow">
 					<div class="card-body" th:each="recommendPostList : ${recommendPostList}">
 						<div class="text-black-50 small" th:text="${recommendPostList.title}"></div>
@@ -1142,6 +1122,26 @@
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
 		/*<![CDATA[*/
+		function insertCertification(pnum, title, content){
+			var userId = [[${#authentication.name}]];
+			$.ajax({
+				type: 'POST',
+				url: '/cerwrite.do',
+				data: {
+					userId: userId,
+					pnum: pnum,
+					title: title,
+					content: content
+				},
+				success: function (){
+					alert("상품 거래가 완료되었습니다!");
+
+				}, error: function (){
+					alert("상품 거래 등록 오류... 다시 시도해주세요");
+				}
+			})
+		}
+
 		function insertTeamMember(pnum, minpeople, dealName, money) {
 			confirm(dealName+ "공동구매에 참여하실건가요?");
 			var userId = [[${#authentication.name}]];

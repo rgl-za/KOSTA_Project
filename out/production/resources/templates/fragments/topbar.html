@@ -62,22 +62,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			<!-- <button id="stop">Stop</button> -->
 		</div>
 		
-		<div sec:authorize="isAnonymous()">
-			<button class="btn btn-primary" type="button">
-				<a href="/register">회원가입</a>
-			</button>
-			<button class="btn btn-primary" type="button">
-				<a href="/login">로그인</a>
-			</button>
-		</div>
-
-		<div sec:authorize="isAuthenticated()">
-			<button class="btn btn-primary" type="button">
-				<a href="/user/logout"> Logout</a>
-			</button>
-		</div>
-
-		<!-- Topbar Navbar -->
+				<!-- Topbar Navbar -->
 		<ul class="navbar-nav ml-auto">
 
 			<!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -115,30 +100,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 								sec:authentication="name"> </span> 
 								<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
-							<div
-								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#"> <i
-									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Settings
-								</a> <a class="dropdown-item" href="#"> <i
-									class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Activity Log
-								</a>
-
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/user/logout"
-									data-toggle="modal2" data-target="#logoutModal"> <i
-									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Logout
-								</a> <a class="dropdown-item" href="/login" data-toggle="modal2"
-									data-target="#loginModal"> <i
-									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Login
-								</a>
-							</div></li>
+						</li>
 		</ul>
 
 	</nav>

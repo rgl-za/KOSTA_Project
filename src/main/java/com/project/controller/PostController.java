@@ -84,7 +84,6 @@ public class PostController extends UiUtils {
 	}
 
 	// 게시글 등록, 수정
-		@Test
 		@PostMapping(value = "/register.do")
 		public String registerPost(final PostDTO params, MultipartFile file)throws Exception {
 			logger.info("" + params);
@@ -131,25 +130,6 @@ public class PostController extends UiUtils {
 			logger.info("PostDTO-->" + params);
 			return "redirect:/main.do";
 		}
-
-	
-//	@PostMapping(value = "/register.do")
-//	public String registerBoard(final PostDTO params, final MultipartFile[] files, Model model) {
-//		try {
-//			boolean isRegistered = postService.registerPost(params, files);
-//			if (isRegistered == false) {
-//				return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/main.do", Method.GET, null, model);
-//			}
-//		} catch (DataAccessException e) {
-//			return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
-//
-//		} catch (Exception e) {
-//			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
-//		}
-//
-//		return showMessageWithRedirect("게시글 등록이 완료되었습니다.", "/main.do", Method.GET, null, model);
-//	}
-	
 	
 	//@RequestMapping(value = "/main.do")
 	@GetMapping(value = "/main.do")
@@ -183,6 +163,10 @@ public class PostController extends UiUtils {
 
 
 		PostDTO postDTO = postService.getPostDetail(pnum); // 임의의 pnum
+		
+		System.out.println("postDTO>>"+postDTO);
+		System.out.println("postDTO.getLeaderid()>>"+postDTO.getLeaderid());
+		
 
 		if (postDTO == null || "Y".equals(postDTO.getDeleteyn())) {
 			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
@@ -205,18 +189,32 @@ public class PostController extends UiUtils {
 		model.addAttribute("teamMemberList", teamMemberList);
 		model.addAttribute("teamMember", new UserDTO());
 		
-		//PostDTO post = postService.getPostDetail(pnum);
+		//거래장소 : 방장 주소 기준
+		String leaderId =  postDTO.getLeaderid();
+		String leaderPlace ="";
+		for(int i =0; i<teamMemberList.size(); i++) {
+			System.out.println("teamMemberList.get(i)>>"+teamMemberList.get(i).getUserid());
+			
+			if( (teamMemberList.get(i).getUserid()).equals(leaderId) ) {
+				
+				//System.out.println("teamMemberList.get(i)>>"+teamMemberList.get(i).getUserid());
+				System.out.println("leaderId>>"+leaderId);
+				leaderPlace = teamMemberList.get(i).getAddress();
+				System.out.println("leaderPlace>>"+leaderPlace);
+				
+			}else {
+				System.out.println("if문 안됨");
+				
+			}
+		}
+		System.out.println("수정 후 leaderPlace>>model>"+leaderPlace);
+		model.addAttribute("leaderPlace", leaderPlace);
+
 		System.out.println("teamMemberList>>"+teamMemberList);//애매
 		System.out.println(commentList);
-//		if (post == null || "Y".equals(post.getDelete_yn())) {
-//			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
-//			return "redirect:/main.do";
-//		}
-		//model.addAttribute("post", post);
-		//logger.info("detail.do");
 
 		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
-		model.addAttribute("countMember", countMember+1);
+		model.addAttribute("countMember", countMember);
 
 		if (countMember >= postDTO.getMinpeople()){
 			model.addAttribute("minpeople", true);
@@ -224,16 +222,16 @@ public class PostController extends UiUtils {
 		}
 
 		try{
-			DataModel dm = new FileDataModel(new File("C:\\Users\\82106\\Documents\\GitHub\\KOSTA_Project\\data\\recommend"));
-			TanimotoCoefficientSimilarity sim = new TanimotoCoefficientSimilarity(dm);
-			GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dm, sim);
-			for (LongPrimitiveIterator items = dm.getItemIDs(); items.hasNext();) {
-				long itemId = items.nextLong();
+			DataModel dm = new FileDataModel(new File("/Users/jihyeonjeong/KOSTA_Project/data/recommend")); // 데이터 모델 생성
+			TanimotoCoefficientSimilarity sim = new TanimotoCoefficientSimilarity(dm); // 유사도 모델 선택
+			GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dm, sim); // 추천기 선택: ItemBased
+			for (LongPrimitiveIterator items = dm.getItemIDs(); items.hasNext();) { // 데이터 모델 내의 Item들의 iterator를 단계별 이동하여 추천 아이템 제공
+				long itemId = items.nextLong(); // 현재 Item ID
 
-				List<RecommendedItem> recommendations = recommender.mostSimilarItems(itemId, 5);
-				List<PostDTO> recommendPostList = new ArrayList<PostDTO>();
-				if(pnum == itemId){
-					for (RecommendedItem recommendation : recommendations) {
+				List<RecommendedItem> recommendations = recommender.mostSimilarItems(itemId, 5); // 현재 item ID와 가장 유사한 5개 아이템 추천
+				List<PostDTO> recommendPostList = new ArrayList<PostDTO>(); // 추천 아이템 리스트를 받는 ArrayList 생성
+				if(pnum == itemId){ // 게시글 번호랑 현재 Item ID가 같다면
+					for (RecommendedItem recommendation : recommendations) {  // 유사한 아이템 출력  = 현재 아이템 ID | 추천된 아이템 ID | 유사도
 						System.out.println(itemId + "," + recommendation.getItemID() + "," + recommendation.getValue());
 
 						System.out.println("현재 pnum: "+pnum +" 유사한 아이템: "+recommendation.getItemID());
