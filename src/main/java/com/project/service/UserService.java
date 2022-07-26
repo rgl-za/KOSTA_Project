@@ -53,9 +53,10 @@ public class UserService implements UserDetailsService {
 	
 	//아이디 중복 체크
 	public int overlappedID(String userid){
-		int result = userMapper.overlappedID(userid);
-		
-		return result;
+		System.out.println("tq");
+		int cnt = userMapper.overlappedID(userid);
+		System.out.println("die:"+ cnt);
+		return cnt;
 	}
 	
 	

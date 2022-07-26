@@ -61,6 +61,12 @@
 	  </selectKey>
 	</insert> 
 	
+	<update id="pushFinaldate" parameterType="long">
+		update post
+		set finaldate = SYSDATE
+		where = #{pnum}
+	</update>
+	
 
 <!-- 	<insert id="insertPost" parameterType="PostDTO">
 		INSERT INTO POST (
@@ -108,31 +114,40 @@
 
 	<!-- 포스트 상세내용 -->
 	<select id="selectPostDetail" parameterType="long" resultType="PostDTO">
-		SELECT
-		<include refid="postColumns" />
-		FROM
-			post
-		WHERE
-			deleteyn = 'N'
-		AND
-			pnum = #{pnum}
+<!--		SELECT-->
+<!--		<include refid="postColumns" />-->
+<!--		FROM-->
+<!--			post-->
+<!--		WHERE-->
+<!--			deleteyn = 'N'-->
+<!--		AND-->
+<!--			pnum = #{pnum}-->
+		SELECT <include refid="postColumns" />
+		FROM POST p
+		WHERE p.pnum NOT IN (
+		SELECT c.pnum
+		FROM CERTIFICATE c
+		) AND p.deleteyn = 'N' AND p.pnum = #{pnum}
 	</select>
 
 	<!-- main -->
 	<select id="selectPostList" parameterType="PostDTO" resultType="PostDTO">
-		SELECT
-		<include refid="postColumns" />
-		FROM post
-		WHERE deleteyn = 'N'
+		SELECT <include refid="postColumns" />
+		FROM POST p
+		WHERE p.pnum NOT IN (
+			SELECT c.pnum
+			FROM CERTIFICATE c
+		) AND p.deleteyn = 'N'
 		ORDER BY uploaddate DESC
 	</select>
 
 	<select id="selectPostTotalCount" resultType="int">
-		SELECT
-			COUNT(*)
-		FROM
-			post
-		WHERE deleteyn = 'N'
+		SELECT count(*)
+		FROM POST p
+		WHERE p.pnum NOT IN (
+			SELECT c.pnum
+			FROM CERTIFICATE c
+		) AND p.deleteyn = 'N'
 	</select>
 	
 	
@@ -175,11 +190,26 @@
 		order by uploaddate desc
 	</select> -->
 	
+<!--	<select id="getSearchPostListLatest" parameterType="String" resultType="PostDTO">-->
+<!--		select -->
+<!--			<include refid="postColumns" />-->
+<!--		from post-->
+<!--		where deleteyn = 'N' -->
+<!--		<if test="keyword !='' and catenum != 0"> and catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>-->
+<!--		<if test="keyword =='' and catenum != 0"> and catnum = #{catenum} </if>-->
+<!--		<if test="keyword !='' and catenum == 0"> and title like '%' || #{keyword} || '%' </if>-->
+<!--		<if test="keyword =='' and catenum == 0"> and 1=1 </if>-->
+<!--		order by uploaddate desc-->
+<!--	</select>-->
+
 	<select id="getSearchPostListLatest" parameterType="String" resultType="PostDTO">
-		select 
-			<include refid="postColumns" />
-		from post
-		where deleteyn = 'N' 
+		select
+		<include refid="postColumns" />
+		from post p
+		where p.PNUM NOT IN (
+		SELECT c.PNUM
+		FROM CERTIFICATE c
+		) AND p.DELETEYN = 'N'
 		<if test="keyword !='' and catenum != 0"> and catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
 		<if test="keyword =='' and catenum != 0"> and catnum = #{catenum} </if>
 		<if test="keyword !='' and catenum == 0"> and title like '%' || #{keyword} || '%' </if>

@@ -9,5 +9,5 @@ public interface CertificateService {
 	
 	// 게시글 등록, 수정
 	public void registerCer(CertificateDTO params);
-	
+
 }
