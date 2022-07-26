@@ -121,14 +121,5 @@ public class UserController {
     	
     	return "redirect:/main.do";
     }
-    
-    
-//    @GetMapping("/logout")
-//    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-//    	System.out.println("로그아웃^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^66");
-//    	new SecurityContextLogoutHandler().logout(request, response,SecurityContextHolder.getContext().getAuthentication());
-//    	return "redirect:/UpdateUser";
-//    }
-//    
 
 }

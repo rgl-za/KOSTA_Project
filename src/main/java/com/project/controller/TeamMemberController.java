@@ -48,7 +48,7 @@ public class TeamMemberController {
             System.out.println(e.getMessage());
 
         } finally {
-            System.out.println("TQTTQtqtqtq");
+            System.out.println("error");
         }
         return "redirect:/detail.do?pnum="+pnum;
     }
