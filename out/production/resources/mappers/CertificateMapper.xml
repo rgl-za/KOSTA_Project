@@ -26,21 +26,9 @@
 			, #{userId}	<!-- #{userid} -->
 			, #{title}
 			, #{content}
-			, 'N'			<!-- #{deleteyn} -->
+			, 'Y'			<!-- #{deleteyn} -->
 			, NULL			<!-- #{deletetime} -->
 		)
 	</insert>
 
-	<!-- 인증서 목록 --> <!-- 테스트 성공 -->
-	<select id="getCerList" parameterType="CertificateDTO" resultType="CertificateDTO">
-		SELECT
-			<include refid="certificateColumns"/>
-		FROM 
-			certificate
-		WHERE
-			deleteyn = 'N'
-		ORDER BY regdate DESC
-	</select>
-	
-	
 </mapper>

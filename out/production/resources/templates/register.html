@@ -48,19 +48,19 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">함께이조 회원가입!</h1>
 							</div>
-							<form class="user" action="/register" method="post">
+							<form class="user" action="/registerSave" method="post">
 							
 							<div class="form-group">
 									<input class="form-control form-control-user" 
 										type="text" 
 										id = "userid"
-										name ="userid" 
-										onchange = "checkId()"
+										name ="userid"
+										   required oninput= "checkId()"
 										th:value="${userDTO?.userid}"
 										placeholder="아이디는 영어,숫자 4~15자리로 입력해주세요"
 										aria-label="Enter search term..."/>
 									
-										<span class ="olmessagef"id = "checkid-msg" th:text="${valid_userid}"></span> 
+										<span class ="olmessagef" id = "checkid-msg" th:text="${valid_userid}"></span> 
 										<span class="id_ok">사용 가능한 아이디입니다.</span> 
 										<span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
 										
@@ -259,21 +259,26 @@
 
 </body>
 
-<!-- <th:block layout:fragment="text/script"> -->
-	<script type="text/javascript">
+<th:block layout:fragment="text/script">
+	<script th:inline="javascript">
 	/*<![CDATA[*/
 	    function checkId(){
-	    	console.log("check");
-	        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
-	        console.log(id);
+	    	console.log("idcheck");
+	        var userid = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
+	        console.log("userid:" + userid);
 	        $.ajax({
-	            url:'/idCheck', //Controller에서 요청 받을 주소
-	            type:'post', //POST 방식으로 전달
-	            dataType : 'JSON',
-	            data:{userid:id},
-	            success:function(result){  
-	            	console.log(result)
-	                if(result != 1){  
+				type: 'POST', //GET 방식으로 전달
+	            url: '/idCheck', //Controller에서 요청 받을 주소
+				// dataType: 'json',
+				contentType: 'application/json; charset=utf-8',
+	            // traditional: true,
+			    // data: JSON.stringify(id),
+				data: {
+					userid: userid
+				},
+	            success: function(cnt){
+	            	console.log("result:"+ cnt);
+	                if(cnt != 1){
 	                    $('.id_ok').css("display","inline-block"); 
 	                    $('.id_already').css("display", "none");
 	                } else { 
@@ -281,29 +286,25 @@
 	                    $('.id_ok').css("display", "none");
 	                }
 	            },
-	            error:function(){
-	                alert("에러입니다");
+	            error:function(request, status, error){
+					alert("status : " + request.status + ", message : " + request.responseText + ", error : " + error);
+					console.log("status : " + request.status + ", message : " + request.responseText + ", error : " + error);
+					console.log("ㅡㅡ");
+	                // alert("에러입니다");
 	            }
 	        });
-	        };
+	     };
+	        
+        function test(){
+    		var p1 = document.getElementById('password1').value;
+    		var p2 = document.getElementById('password2').value;
+    		
+    		if(p1 != p2){
+    			alert("비밀번호 불일치");
+    			return false;
+    		}
+    	}
 	        /*]]>*/
-			</script>
-</th:block>
-
-
-
-
-
-
-
-<script type = "text/javascript">
-	function test(){
-		var p1 = document.getElementById('password1').value;
-		var p2 = document.getElementById('password2').value;
-		
-		if(p1 != p2){
-			alert("비밀번호 불일치");
-			return false;
-		}
-	}</script>
+		</script>
+	</th:block>
 </html>
