@@ -268,7 +268,7 @@
 	        var id = $("#userid").val(); //id값이 "id"인 입력란의 값을 저장
 	        console.log("id:" + id);
 	        $.ajax({
-	            url:'/register', //Controller에서 요청 받을 주소
+	            url:'/idCheck', //Controller에서 요청 받을 주소
 	            type:'POST', //GET 방식으로 전달
 	            data: {"checkId":id},
 	            cache: false,

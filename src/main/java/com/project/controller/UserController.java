@@ -68,24 +68,21 @@ public class UserController {
 //		return result;
 //	}
  
+	/*
+	 * @ResponseBody
+	 * 
+	 * @PostMapping("/idCheck") public boolean overlappedID(@RequestParam("userid")
+	 * String userid){ System.out.println("start!!");
+	 * System.out.println("userid 들어왔니?: " + userid); int result =
+	 * userService.overlappedID(userid); System.out.println("result 확인: " + result);
+	 * if(result==1) { return false; }else { return true;
+	 * 
+	 * } }
+	 */
     @ResponseBody
     @PostMapping("/idCheck")
-	public boolean overlappedID(@RequestParam("userid") String userid){
-    	System.out.println("start!!");
-    	System.out.println("userid 들어왔니?: " + userid);
-		int result = userService.overlappedID(userid);
-        System.out.println("result 확인: " + result);
-        if(result==1) {
-        	return false;
-        }else {
-        	return true;
-        	
-        }
-	}
-    
-    @ResponseBody
-    @GetMapping("/idCheck")
-    public String idCheck(String userid) {
+    public String idCheck( @RequestParam(value="checkId", required=false) String userid) {
+    	System.out.println("들어는오나?");
 		/*
 		 * if(userid != null) { int result = userService.overlappedID(userid);
 		 * System.out.println("result 확인: " + result); return "false"; }else { int
@@ -100,7 +97,7 @@ public class UserController {
     }
     
     @ResponseBody
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model, @RequestParam(value="checkId", required=false) String userid){
     	model.addAttribute("userDTO", userDTO);
     	
