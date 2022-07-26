@@ -214,16 +214,20 @@ public class PostController extends UiUtils {
 		String leaderPlace ="";
 		for(int i =0; i<teamMemberList.size(); i++) {
 			System.out.println("teamMemberList.get(i)>>"+teamMemberList.get(i).getUserid());
-			if(teamMemberList.get(i).getUserid()==leaderId) {
+			
+			if( (teamMemberList.get(i).getUserid()).equals(leaderId) ) {
 				
 				//System.out.println("teamMemberList.get(i)>>"+teamMemberList.get(i).getUserid());
 				System.out.println("leaderId>>"+leaderId);
 				leaderPlace = teamMemberList.get(i).getAddress();
 				System.out.println("leaderPlace>>"+leaderPlace);
 				
+			}else {
+				System.out.println("if문 안됨");
+				
 			}
 		}
-		System.out.println("leaderPlace>>model>"+leaderPlace);
+		System.out.println("수정 후 leaderPlace>>model>"+leaderPlace);
 		model.addAttribute("leaderPlace", leaderPlace);
 		
 		
