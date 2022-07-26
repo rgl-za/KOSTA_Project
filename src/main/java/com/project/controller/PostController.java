@@ -161,6 +161,7 @@ public class PostController extends UiUtils {
 		System.out.println("keyword: " + keyword + " category: " + category + " sortoption: " + sortopt);
 		
 		if(keyword==null && category=="0" && sortopt ==null) {
+			// System.out.println("ddd");
 			List<PostDTO> postList = postService.getPostList();
 			model.addAttribute("postList", postList);
 			
@@ -283,6 +284,4 @@ public class PostController extends UiUtils {
 		logger.info("pnum"+pnum);
 		return showMessageWithRedirect("게시글 삭제가 완료되었습니다.", "/main.do", Method.GET, null, model);
 	}
-
-
 }

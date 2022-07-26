@@ -47,7 +47,7 @@ public class SecurityConfig {
 		http
 		.csrf().disable()
         .authorizeRequests()
-            .antMatchers("/", "/register", "/login", "/main.do", "/mypage", "/detail", "/detail2", "/detail3", "/index", "/pick", "/update", "/updatePost", "/UpdateUser", "/write", "/write2").permitAll() //누구나 접근 가능
+            .antMatchers("/", "/registerForm", "/login", "/main.do", "/mypage", "/detail", "/detail2", "/detail3", "/index", "/pick", "/update", "/updatePost", "/UpdateUser", "/write", "/write2").permitAll() //누구나 접근 가능
             .anyRequest().authenticated()
             .and()
         .formLogin()
