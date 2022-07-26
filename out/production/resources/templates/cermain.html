@@ -9,7 +9,12 @@
 		<!-- Page Heading -->
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
 			<h1 class="h3 mb-0 text-gray-800">진행 중인 거래 목록</h1><br>
-			<a th:href="@{/cerwrite.do}">인증글 쓰기</a>
+			<a th:href="@{/cerwrite.do}" class="btn btn-success btn-icon-split">
+				<span class="icon text-white-50">
+					<i class="fas fa-check"></i>
+				</span>
+				<span class="text">인증 글 쓰기</span>
+			</a>
 
 		</div>
 		<section class="py-5">
@@ -18,7 +23,8 @@
 					<div class="col mb-5" th:each="cer : ${cer}">
 						<div class="card h-100">
 							<!-- Product image -->
-							<img class="card-img-top" id="cfile" name="cfile" style="width: 225px; height:200px;" th:src="|@{/imagePath/}${cer.getCfile()}|">
+							<img class="card-img-top" id="cfile" name="cfile" style="width: 225px; height:200px;"
+								th:src="|@{uploadFile/}${cer.getCfile()}|">
 							<!-- Product details -->
 							<div class="card-body p-4">
 								<div class="text-center">

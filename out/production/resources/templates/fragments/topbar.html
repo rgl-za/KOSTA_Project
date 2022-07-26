@@ -62,22 +62,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			<!-- <button id="stop">Stop</button> -->
 		</div>
 		
-		<div sec:authorize="isAnonymous()">
-			<button class="btn btn-primary" type="button">
-				<a href="/register">회원가입</a>
-			</button>
-			<button class="btn btn-primary" type="button">
-				<a href="/login">로그인</a>
-			</button>
-		</div>
-
-		<div sec:authorize="isAuthenticated()">
-			<button class="btn btn-primary" type="button">
-				<a href="/user/logout"> Logout</a>
-			</button>
-		</div>
-
-		<!-- Topbar Navbar -->
+				<!-- Topbar Navbar -->
 		<ul class="navbar-nav ml-auto">
 
 			<!-- Nav Item - Search Dropdown (Visible Only XS) -->

@@ -229,7 +229,7 @@ public class PostController extends UiUtils {
 		//logger.info("detail.do");
 
 		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
-		model.addAttribute("countMember", countMember+1);
+		model.addAttribute("countMember", countMember);
 
 		if (countMember >= postDTO.getMinpeople()){
 			model.addAttribute("minpeople", true);
@@ -237,16 +237,16 @@ public class PostController extends UiUtils {
 		}
 
 		try{
-			DataModel dm = new FileDataModel(new File("/Users/jihyeonjeong/KOSTA_Project/data/recommend"));
-			TanimotoCoefficientSimilarity sim = new TanimotoCoefficientSimilarity(dm);
-			GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dm, sim);
-			for (LongPrimitiveIterator items = dm.getItemIDs(); items.hasNext();) {
-				long itemId = items.nextLong();
+			DataModel dm = new FileDataModel(new File("/Users/jihyeonjeong/KOSTA_Project/data/recommend")); // 데이터 모델 생성
+			TanimotoCoefficientSimilarity sim = new TanimotoCoefficientSimilarity(dm); // 유사도 모델 선택
+			GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(dm, sim); // 추천기 선택: ItemBased
+			for (LongPrimitiveIterator items = dm.getItemIDs(); items.hasNext();) { // 데이터 모델 내의 Item들의 iterator를 단계별 이동하여 추천 아이템 제공
+				long itemId = items.nextLong(); // 현재 Item ID
 
-				List<RecommendedItem> recommendations = recommender.mostSimilarItems(itemId, 5);
-				List<PostDTO> recommendPostList = new ArrayList<PostDTO>();
-				if(pnum == itemId){
-					for (RecommendedItem recommendation : recommendations) {
+				List<RecommendedItem> recommendations = recommender.mostSimilarItems(itemId, 5); // 현재 item ID와 가장 유사한 5개 아이템 추천
+				List<PostDTO> recommendPostList = new ArrayList<PostDTO>(); // 추천 아이템 리스트를 받는 ArrayList 생성
+				if(pnum == itemId){ // 게시글 번호랑 현재 Item ID가 같다면
+					for (RecommendedItem recommendation : recommendations) {  // 유사한 아이템 출력  = 현재 아이템 ID | 추천된 아이템 ID | 유사도
 						System.out.println(itemId + "," + recommendation.getItemID() + "," + recommendation.getValue());
 
 						System.out.println("현재 pnum: "+pnum +" 유사한 아이템: "+recommendation.getItemID());

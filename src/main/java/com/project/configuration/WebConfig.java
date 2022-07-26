@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
-	
+
 	private String connectPath = "/uploadFile/**";
 	//private String resourcePath = "file:///C:/uploadFile/";
 	
@@ -15,9 +15,9 @@ public class WebConfig implements WebMvcConfigurer{
 	    System.out.println("Using System Property: " + os);
 	    if(os.contains("win")) {
 	    	return "file:///C:/uploadFile/";
-	    	
+//	    	return "C:\\uploadFile";
 	    }else {
-	    	return "/Users/jihyeonjeong/uploadFile";
+	    	return "file:///Users/jihyeonjeong/uploadFile/";
 	    }
 	    
 	}

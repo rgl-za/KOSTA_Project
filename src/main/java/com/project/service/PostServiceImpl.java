@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.project.domain.CertificateDTO;
 import com.project.domain.PostDTO;
 import com.project.domain.TeamMemberDTO;
 import com.project.mapper.PostMapper;
@@ -172,6 +173,14 @@ public class PostServiceImpl implements PostService {
 		List<PostDTO> recommendPostList = Collections.emptyList();
 		recommendPostList = postMapper.recommendPostList(recommendItem);
 		return recommendPostList;
+	}
+	
+	@Override
+	public boolean pushFinaldate(CertificateDTO params){
+		long postPnum = params.getPnum();
+		
+		return postMapper.pushFinaldate(postPnum);
+		
 	}
 
 	/*

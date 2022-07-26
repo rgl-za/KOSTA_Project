@@ -12,6 +12,8 @@ import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +25,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +51,7 @@ public class UserController {
 
 	@Autowired
     UserService userService;
+	
 
     @GetMapping("/register")
     public String signUpForm() {
@@ -54,23 +59,29 @@ public class UserController {
         return "/register";
     }
     
-    @ResponseBody
-    @PostMapping("/idCheck")
-	public int overlappedID(String userid)throws Exception {
-		int result = userService.overlappedID(userid);
-		
-		logger.info("*********************************" +result);
-		return result;
-	}
-    
 //    @ResponseBody
 //    @PostMapping("/idCheck")
-//	public int overlappedID(@RequestParam (value="userid" ,required=false) String userid)throws Exception {
+//	public int overlappedID(String userid)throws Exception {
 //		int result = userService.overlappedID(userid);
 //		
 //		logger.info("*********************************" +result);
 //		return result;
 //	}
+ 
+    @ResponseBody
+    @PostMapping("/idCheck")
+	public boolean overlappedID(@RequestParam("userid") String userid){
+    	System.out.println("start!!");
+    	System.out.println("userid 들어왔니?: " + userid);
+		int result = userService.overlappedID(userid);
+        System.out.println("result 확인: " + result);
+        if(result==1) {
+        	return false;
+        }else {
+        	return true;
+        	
+        }
+	}
 
     @PostMapping("/register")
     public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model){
@@ -99,22 +110,7 @@ public class UserController {
     
     @PostMapping(value= "/login")
     public String Login(HttpServletRequest req, RedirectAttributes rtt) {
-    	
-//    	System.out.println("컨트롤러 메서드 진입@@@@@@@@@@@@@@@@");
-//    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//    	UserDTO userDTO = (UserDTO) auth.getPrincipal();
-//    	
-//    	HttpSession session = req.getSession();
-//    	
-//    	System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%userid :" + userDTO.getUserid());
-//    	System.out.println("#################authorities : "+userDTO.getAuthorities());
-//    	
-//    	session.setAttribute("userid", userDTO.getUserid());
-//    	session.setAttribute("auth", userDTO.getAuthorities());
-//    	
-//    	System.out.println("session.userid" + session.getAttribute("userid"));
-//    	System.out.println("session.userid" + session.getAttribute("auth"));
-    	
+	
     	return "redirect:/main.do";
     }
     
@@ -122,23 +118,7 @@ public class UserController {
 //    	return principal.getName();
 //    }
     
-    
-//    @PostMapping("/login")
-//    public String memberLogin(String userid, HttpSession session) throws Exception{
-//    	
-//    	userid = userService.memberLogin(userid);
-//    	logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-//    	if(userid != null) {
-//    		session.setAttribute("userDTO", userid);
-//    		
-//    		logger.info("성공ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ" + session);
-//    		return "redirect:/main.do";
-//    	}else {
-//    		
-//    		logger.info("실패ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
-//    	return "redirect:/user/login";
-//    }
-//    }
+
     
     @GetMapping("/UpdateUser")
     public String UpdateUser() {
@@ -146,20 +126,22 @@ public class UserController {
     }
     
     @PostMapping("/UpdateUser")
-    public String UpdateUser(UserDTO userDTO, HttpSession session) throws Exception{
+    public String UpdateUser(UserDTO userDTO) throws Exception{
     	
     	userService.UserUpdate(userDTO);
     	logger.info("$$$$$$$$$$$$$$$$$$$수정$$$$$$$$$$$$$$$$");
     	
-    	return "redirect:/mypage";
-    }
-    
-    @GetMapping("/logout")
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-    	System.out.println("로그아웃^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^66");
-    	new SecurityContextLogoutHandler().logout(request, response,SecurityContextHolder.getContext().getAuthentication());
     	return "redirect:/main.do";
     }
     
+
+    
+//    @GetMapping("/logout")
+//    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+//    	System.out.println("로그아웃^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^66");
+//    	new SecurityContextLogoutHandler().logout(request, response,SecurityContextHolder.getContext().getAuthentication());
+//    	return "redirect:/UpdateUser";
+//    }
+//    
 
 }
