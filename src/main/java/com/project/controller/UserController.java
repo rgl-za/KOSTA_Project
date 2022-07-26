@@ -52,54 +52,46 @@ public class UserController {
 	@Autowired
     UserService userService;
 	
-
+	//회원가입폼
     @GetMapping("/register")
     public String signUpForm() {
-    	System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddd");
+    	System.out.println("회원가입");
         return "/register";
     }
-    
-//    @ResponseBody
-//    @PostMapping("/idCheck")
-//	public int overlappedID(String userid)throws Exception {
-//		int result = userService.overlappedID(userid);
-//		
-//		logger.info("*********************************" +result);
-//		return result;
-//	}
- 
+
+    //id 중복체크
     @ResponseBody
     @PostMapping("/idCheck")
-	public boolean overlappedID(@RequestParam("userid") String userid){
-    	System.out.println("start!!");
-    	System.out.println("userid 들어왔니?: " + userid);
-		int result = userService.overlappedID(userid);
-        System.out.println("result 확인: " + result);
-        if(result==1) {
-        	return false;
-        }else {
-        	return true;
-        	
-        }
-	}
-
+    public String idCheck( @RequestParam(value="checkId", required=false) String userid) {
+    	 System.out.println("들어는오나?");
+    	 
+		 int result = userService.overlappedID(userid);
+	     System.out.println("result 확인: " + result);
+	     String answer = String.valueOf(result);
+	     return answer;
+    }
+    
+    // 회원가입 내용 등록(회원등록)
     @PostMapping("/register")
     public String execSignUp(@Valid UserDTO userDTO, Errors errors, Model model){
     	model.addAttribute("userDTO", userDTO);
-        
-        if(errors.hasErrors()) {
+    	
+        //System.out.println("설마 여기?" + userid);
+    
+    	if(errors.hasErrors()) {
         	Map<String, String> validatorResult = userService.validateHandling(errors);
         	 for (String key : validatorResult.keySet()) {
                  model.addAttribute(key, validatorResult.get(key));
         	}
-        	 return "/register";
+        	return "/register";
+        }else {
+        	userService.joinUser(userDTO);
+            return "redirect:/login";
         }
-        
-        userService.joinUser(userDTO);
-        return "redirect:/login";
-
+        	
     }
     
+    //로그인 폼
     @GetMapping("/login")
     public String memberLogin () { 
     
@@ -107,24 +99,20 @@ public class UserController {
     	return "/login";
     }
 
-    
+    // 로그인 입력, 세션 저장
     @PostMapping(value= "/login")
     public String Login(HttpServletRequest req, RedirectAttributes rtt) {
 	
     	return "redirect:/main.do";
     }
     
-//    public String currentUsername(Principal principal) {
-//    	return principal.getName();
-//    }
-    
-
-    
+    //회원정보수정 폼
     @GetMapping("/UpdateUser")
     public String UpdateUser() {
     	return "/UpdateUser";
     }
     
+    //회원정보 수정내용 저장
     @PostMapping("/UpdateUser")
     public String UpdateUser(UserDTO userDTO) throws Exception{
     	
@@ -133,15 +121,5 @@ public class UserController {
     	
     	return "redirect:/main.do";
     }
-    
-
-    
-//    @GetMapping("/logout")
-//    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-//    	System.out.println("로그아웃^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^66");
-//    	new SecurityContextLogoutHandler().logout(request, response,SecurityContextHolder.getContext().getAuthentication());
-//    	return "redirect:/UpdateUser";
-//    }
-//    
 
 }

@@ -47,7 +47,7 @@ public class SecurityConfig {
 		http
 		.csrf().disable()
         .authorizeRequests()
-            .antMatchers("/", "/register", "/login", "/main.do", "/mypage", "/detail", "/detail2", "/detail3", "/index", "/pick", "/update", "/updatePost", "/UpdateUser", "/write", "/write2").permitAll() //누구나 접근 가능
+            .antMatchers("/", "/idCheck", "/register", "/login", "/main.do", "/mypage", "/detail", "/index", "/pick", "/update", "/updatePost", "/UpdateUser", "/write").permitAll() //누구나 접근 가능
             .anyRequest().authenticated()
             .and()
         .formLogin()
@@ -58,9 +58,9 @@ public class SecurityConfig {
             .failureUrl("/login")
             .and()
         .logout()
-        	.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")) //로그아웃 경로를 지정
+        	.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 경로를 지정
         	.logoutSuccessUrl("/main.do")  //로그아웃 성공시 경로를 지정
-        	.invalidateHttpSession(true).deleteCookies("JSESSIONID" ); //로그아웃 성공시 세션을 제거
+        	.invalidateHttpSession(true).deleteCookies("JSESSIONID"); //로그아웃 성공시 세션을 제거
 		
 		http.rememberMe()
 		.key("remember-me")

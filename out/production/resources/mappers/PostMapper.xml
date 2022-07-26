@@ -61,6 +61,12 @@
 	  </selectKey>
 	</insert> 
 	
+	<update id="pushFinaldate" parameterType="long">
+		update post
+		set finaldate = SYSDATE
+		where = #{pnum}
+	</update>
+	
 
 <!-- 	<insert id="insertPost" parameterType="PostDTO">
 		INSERT INTO POST (
@@ -137,49 +143,14 @@
 	
 	
 	<!-- main  정렬기능 :민경 -->
-	<select id="PostTotalCount" resultType="int">
-		SELECT
-			COUNT(*)
-		FROM
-			post
-		WHERE deleteyn = 'N'
-	</select>
-	
-	<!-- 최신순으로 게시물 가져오기 -->
-	<select id="latestPostList" resultType="PostDTO">
-		SELECT
-		<include refid="postColumns" />
-		FROM post
-		WHERE deleteyn = 'N'
-		ORDER BY uploaddate DESC
-	</select>
-	
-	<!-- 인기순으로 게시물 가져오기 -->
-	<select id="popularPostList" resultType="PostDTO">
-		select p.*, NVL(hc.HEARTCOUNT,0)
-		from (
-		    select p.pnum, count(*) heartcount
-		    from post p, heart h
-		    where p.pnum = h.pnum
-		    group by p.pnum ) hc RIGHT OUTER JOIN post p
-		on hc.pnum = p.pnum
-		order by heartcount desc, uploaddate desc
-	</select>
-	
-	<!-- 검색한 게시물 가져오기 -->
-	<!-- <select id="getSearchPostList" parameterType="String" resultType="PostDTO">
-		select 
-			<include refid="postColumns" />
-		from post
-		where title like '%' || #{keyword} || '%'
-		order by uploaddate desc
-	</select> -->
-	
 	<select id="getSearchPostListLatest" parameterType="String" resultType="PostDTO">
 		select 
 			<include refid="postColumns" />
-		from post
-		where deleteyn = 'N' 
+		from post p
+		where p.PNUM NOT IN (
+			SELECT c.PNUM
+			FROM CERTIFICATE c	
+		) AND p.DELETEYN = 'N'
 		<if test="keyword !='' and catenum != 0"> and catnum = #{catenum} and title like '%' || #{keyword} || '%' </if>
 		<if test="keyword =='' and catenum != 0"> and catnum = #{catenum} </if>
 		<if test="keyword !='' and catenum == 0"> and title like '%' || #{keyword} || '%' </if>
@@ -195,7 +166,10 @@
 		    where p.pnum = h.pnum
 		    group by p.pnum ) hc RIGHT OUTER JOIN post p
 		on hc.pnum = p.pnum
-		where p.deleteyn = 'N'
+		where p.PNUM NOT IN (
+			SELECT c.PNUM
+			FROM CERTIFICATE c	
+		) AND p.DELETEYN = 'N'
 		<if test="keyword !='' and catenum != 0"> and p.catnum = #{catenum} and p.title like '%' || #{keyword} || '%' </if>
 		<if test="keyword =='' and catenum != 0"> and p.catnum = #{catenum} </if>
 		<if test="keyword !='' and catenum == 0"> and p.title like '%' || #{keyword} || '%' </if>
