@@ -14,8 +14,8 @@
 			<!-- 수정, 삭제 -->
 			<div class="float-right">
 				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
-				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
-				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
 		</div>
 		<div class="row">
