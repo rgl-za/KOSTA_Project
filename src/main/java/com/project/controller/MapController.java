@@ -74,12 +74,6 @@ public class MapController {
 
 		}
 
-//		for (int i = 0; i < pointList.size(); i++) {
-//
-//			System.out.print(pointList.get(i).getX() + " / ");
-//			System.out.println(pointList.get(i).getY());
-//		}
-
 		Polygon poly = new Polygon();
 		// System.out.println("test출력결과"+poly.getPolygonMidPoint(pointList));
 

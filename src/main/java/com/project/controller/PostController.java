@@ -84,7 +84,6 @@ public class PostController extends UiUtils {
 	}
 
 	// 게시글 등록, 수정
-		@Test
 		@PostMapping(value = "/register.do")
 		public String registerPost(final PostDTO params, MultipartFile file)throws Exception {
 			logger.info("" + params);
@@ -131,25 +130,6 @@ public class PostController extends UiUtils {
 			logger.info("PostDTO-->" + params);
 			return "redirect:/main.do";
 		}
-
-	
-//	@PostMapping(value = "/register.do")
-//	public String registerBoard(final PostDTO params, final MultipartFile[] files, Model model) {
-//		try {
-//			boolean isRegistered = postService.registerPost(params, files);
-//			if (isRegistered == false) {
-//				return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/main.do", Method.GET, null, model);
-//			}
-//		} catch (DataAccessException e) {
-//			return showMessageWithRedirect("데이터베이스 처리 과정에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
-//
-//		} catch (Exception e) {
-//			return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/main.do", Method.GET, null, model);
-//		}
-//
-//		return showMessageWithRedirect("게시글 등록이 완료되었습니다.", "/main.do", Method.GET, null, model);
-//	}
-	
 	
 	//@RequestMapping(value = "/main.do")
 	@GetMapping(value = "/main.do")
@@ -229,18 +209,9 @@ public class PostController extends UiUtils {
 		}
 		System.out.println("수정 후 leaderPlace>>model>"+leaderPlace);
 		model.addAttribute("leaderPlace", leaderPlace);
-		
-		
-		
-		//PostDTO post = postService.getPostDetail(pnum);
+
 		System.out.println("teamMemberList>>"+teamMemberList);//애매
 		System.out.println(commentList);
-//		if (post == null || "Y".equals(post.getDelete_yn())) {
-//			// TODO => 없는 게시글이거나, 이미 삭제된 게시글이라는 메시지를 전달하고, 게시글 리스트로 리다이렉트
-//			return "redirect:/main.do";
-//		}
-		//model.addAttribute("post", post);
-		//logger.info("detail.do");
 
 		int countMember = teamMemberService.selectTeamMemberTotalCount(pnum);
 		model.addAttribute("countMember", countMember);

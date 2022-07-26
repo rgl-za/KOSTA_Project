@@ -37,8 +37,6 @@ public class CertificateController extends UiUtils {
 			params.setUserId(userDTO.getUserid());
 			certificateService.registerCer(params);
 
-			System.out.println("tq"+params);
-		// list로
 		return "/mydealhistory";
 	}
 }
