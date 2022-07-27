@@ -6,6 +6,7 @@ import java.util.Collections;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -48,6 +49,7 @@ public class UserDTO implements UserDetails{
 	@NotBlank(message = "성별을 체크해주세요")
 	private String gender;	   //성별
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotBlank(message = "생일을 입력해주세요")
 	private String birth;	   //주민번호 앞 자리
 	
