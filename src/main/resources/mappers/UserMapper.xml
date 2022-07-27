@@ -20,8 +20,20 @@
 
 	 <insert id="saveUser" parameterType="UserDTO">
 		INSERT INTO USERS (
-		<include refid="userColumns" />
-		) VALUES (
+		userid
+		, username
+		, password
+		, phone
+		, postnum
+		, address
+		, nickname
+		, gender
+		, birth
+		, realaddress
+		, userno
+		)
+		 VALUES 
+		 (
 		#{userid}
 		, #{username}
 		, #{password}

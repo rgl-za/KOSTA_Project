@@ -7,11 +7,9 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -38,7 +36,7 @@ public class SecurityConfig {
 	public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
 	        return (web) -> web.ignoring().antMatchers
 					("/assets/**", "/css/**","/fonts/**", "/img/**", "/js/**", "/plugin/**", 
-					"/vendor/**","/scripts/**", "/productImgs/**", "/store/**", "/uploadFile/**"); //static 디렉터리 하위 파일 목윽은 인증 무시
+					"/vendor/**","/scripts/**", "/productImgs/**", "/store/**", "/uploadFile/**", "/error"); //static 디렉터리 하위 파일 목윽은 인증 무시
 	}
 	
 	@Bean
@@ -78,9 +76,14 @@ public class SecurityConfig {
 	}
 	
 //	@Bean
-//	public AuthenticationManager authenticationManagerBean() throws Exception{
-//		return super.authenticationManagerBean();
+//	public AuthenticationManager authenticationManagerBean(AuthenticationManagerBuilder builder) throws Exception{
+//		return builder.userDetailsService(userService).passwordEncoder(passwordEncoder()).and().build();
 //	}
+//	
+//	@Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+//        return authenticationConfiguration.getAuthenticationManager();
+//    }
 	
 
 	
