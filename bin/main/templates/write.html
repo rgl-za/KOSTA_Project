@@ -23,7 +23,7 @@
 								<div class="my-2"></div>
 								<div class="my-2"></div>
 								<div class="text-center">
-									<h1 class="h4 text-gray-900 mb-4">Create Post !</h1>
+									<h1 class="h4 text-gray-900 mb-4">새로운 거래 생성하기</h1>
 								</div>
 
 								<div class="text-center">
@@ -32,7 +32,7 @@
 										<div>
 											<select class="col-sm-6 mb-3 mb-sm-0" th:field="*{catnum}" name="cate"
 												id="cate">
-												<option value="">Open this select category</option>
+												<option value="">카테고리</option>
 												<option th:each="catlist : ${catlist}" th:value="${catlist.catnum}"
 													th:utext="${catlist.catindex}">
 												</option>
@@ -135,8 +135,7 @@
 								<!-- 작성하기, 메인으로 가기 -->
 								<!--<button class="btn btn-secondary" type="submit">작성하기</button>-->
 								<div class="text-center">
-									<button class="btn btn-primary" id="btnSave" type="button">&ensp;&ensp;Send
-										Post&ensp;&ensp;</button>
+									<button class="btn btn-primary" id="btnSave" type="button">저장하기</button>
 								</div>
 
 								<div class="my-2"></div>
@@ -145,7 +144,7 @@
 										<span class="icon text-white-50">
 											<i class="fas fa-arrow-right"></i>
 										</span>
-										<span class="text">Button Main Page</span>
+										<span class="text">메인으로 돌아가기</span>
 									</a>
 								</div>
 								<div class="my-2"></div>

@@ -55,53 +55,6 @@
                                    class="btn btn-primary waves-effect waves-light">
                                     상세보기
                                 </a>
-
-                                <!---모달창 안쓸 것 같음: 임시 주석처리-->
-
-                                <!-- 모달창 버튼 -->
-<!--                                <button type="button" class="btn btn-primary" th:id="|modal_btn*{i.index}|" data-toggle="modal"-->
-<!--                                        data-target="#exampleModalCenter">-->
-<!--                                    상세 보기-->
-<!--                                </button>-->
-<!--                                &lt;!&ndash; 모달창 &ndash;&gt;-->
-<!--                                <div class="modal fade" th:id="|exampleModalCenter*{i.index}|" tabindex="-1" role="dialog"-->
-<!--                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
-<!--                                    <div class="modal-dialog modal-dialog-centered" role="document">-->
-<!--                                        <div class="modal-content">-->
-<!--                                            <div class="modal-header">-->
-<!--                                                <h5 class="modal-title" id="exampleModalCenterTitle"-->
-<!--                                                    th:text="${postList.title}"></h5>-->
-<!--                                                <button type="button" class="close" data-dismiss="modal"-->
-<!--                                                        aria-label="Close">-->
-<!--                                                    <span aria-hidden="true">&times;</span>-->
-<!--                                                </button>-->
-<!--                                            </div>-->
-<!--                                            <div class="modal-body">-->
-<!--                                                <h5>방장</h5>-->
-<!--                                                <p th:text="${postList.leaderid}"></p>-->
-<!--                                                <hr>-->
-<!--                                                <h5>내용</h5>-->
-<!--                                                <p th:text="${postList.content}"></p>-->
-<!--                                                <hr>-->
-<!--                                                <h5>모집 마감 날짜</h5>-->
-<!--                                                <p th:text="${postList.enddate}"></p>-->
-<!--                                                <hr>-->
-<!--                                                <h5>제품 정보</h5>-->
-<!--                                                <p th:text="${postList.link}"></p>-->
-
-<!--                                            </div>-->
-<!--                                            <div class="modal-footer">-->
-<!--                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">-->
-<!--                                                    나가기-->
-<!--                                                </button>-->
-<!--                                                &lt;!&ndash;로그인 정보를 넘겨줘야 함&ndash;&gt;-->
-<!--                                                <a th:href="@{/detail.do( pnum=${postList.pnum} )}"-->
-<!--                                                   class="btn btn-primary waves-effect waves-light">참여하기</a>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
                                 <!-- 찜 버튼 -->
                                 <button class="btn btn-primary btn-icon-split" th:onclick="insertHeart( [[${postList.pnum}]], [[${postList.title}]] )">
                                     <a><img style="width: 30px; height: 30px;" alt="찜" src="assets/heart.ico"></a>
