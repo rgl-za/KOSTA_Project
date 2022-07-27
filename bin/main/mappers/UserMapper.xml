@@ -20,9 +20,20 @@
 
 	 <insert id="saveUser" parameterType="UserDTO">
 		INSERT INTO USERS (
-		<include refid="userColumns" />
-		) VALUES 
-		(
+		userid
+		, username
+		, password
+		, phone
+		, postnum
+		, address
+		, nickname
+		, gender
+		, birth
+		, realaddress
+		, userno
+		)
+		 VALUES 
+		 (
 		#{userid}
 		, #{username}
 		, #{password}
@@ -38,7 +49,7 @@
 	</insert> 
 	
 	<select id = "overlappedID" parameterType= "String" resultType="int">
-	select count(*)
+	select count(userid)
 	from users
 	where userid = #{userid}
 	</select>
