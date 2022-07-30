@@ -100,19 +100,6 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 								sec:authentication="name"> </span> 
 								<img class="img-profile rounded-circle" src="img/undraw_profile.svg">
 						</a> <!-- Dropdown - User Information -->
-<!--							<div-->
-<!--								class="dropdown-menu dropdown-menu-right shadow animated&#45;&#45;grow-in"-->
-<!--								aria-labelledby="userDropdown">-->
-<!--								<a class="dropdown-item" href="/user/logout"-->
-<!--									data-toggle="modal2" data-target="#logoutModal"> <i-->
-<!--									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>-->
-<!--									로그아웃-->
-<!--								</a> <a class="dropdown-item" href="/login" data-toggle="modal2"-->
-<!--									data-target="#loginModal"> <i-->
-<!--									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>-->
-<!--									로그인-->
-<!--								</a>-->
-<!--							</div>-->
 						</li>
 		</ul>
 
@@ -120,7 +107,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<!-- End of Topbar -->
 	<script th:inline="javascript">
         /*<![CDATA[*/
-        //const speech = new webkitSpeechRecognition;
+        // 음성검색
         if(!("webkitSpeechRecognition" in window)){
         	alert("지원 되지 않는 사이트 입니다. 크롬으로 작동해주세요.");
         	
@@ -140,7 +127,6 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			
 			speech.addEventListener("result", (event) => {
 				const {transcript} = event["results"][0][0];
-				//const transcript = event.results[0].transcript.join("");
 				console.log("transcript: " + transcript);
 				document.getElementById("keyword").value = transcript;
 			}) 

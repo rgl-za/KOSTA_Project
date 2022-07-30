@@ -37,6 +37,10 @@
 										<text th:text="${leaderPlace}"></text>&ensp;<br>
 									</p>
 									<p>
+										<h7 class="m-0 font-weight-bold text-gray-900">글 내용 </h7>
+										<text th:text="${postDTO.getContent()}"></text>
+									</p>
+									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
 										<text th:text="${postDTO.getPrice()}"></text>
 										원 &nbsp;<br>
@@ -115,13 +119,17 @@
 											th:text="${postDTO.getLeaderid()}"
 									></div>
 									<img class="ready-img rounded-circle" src="img/undraw_profile.svg">
-									<a href="#" class="btn btn-primary-cap btn-icon-split" th:if="${minpeople == true}">
+									<a class="btn btn-primary-cap btn-icon-split"
+									   th:if="${minpeople == true} and ${postDTO.getLeaderid()} == ${#authentication.name}"
+									   th:onclick="insertCertification([[${postDTO.getPnum()}]], [[${postDTO.getTitle()}]], [[${postDTO.getContent()}]])"
+									>
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
-										<span class="text">거래 진행하기</span>
+										<span class="text">거래 완료하기</span>
 									</a>
-									<a th:href="@{/dealing}" class="btn btn-primary-cap btn-icon-split" th:unless="${minpeople == true}">
+									<a class="btn btn-primary-cap btn-icon-split"
+									   th:unless="${postDTO.getLeaderid()} == ${#authentication.name}">
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
@@ -1086,7 +1094,7 @@
 		</div>
 		<!-- row -->
 			<div class="detail_top_top" style="margin-top: 100px; margin-bottom: 50px; font-size: x-large;" th:text="${postDTO.getTitle()}+'에 관심있으신 분들이 자주 보는 상품들이에요 👀'"></div>
-			<div class="col-lg-6 mb-4" th:if="${not #lists.isEmpty( recommendPostList )}" th:each="recommendPostList : ${recommendPostList}">
+			<div class="col-lg-3 mb-2" th:if="${not #lists.isEmpty( recommendPostList )}" th:each="recommendPostList : ${recommendPostList}">
 				<div class="card bg-light text-black shadow">
 					<div class="card-body" th:each="recommendPostList : ${recommendPostList}">
 						<div class="text-black-50 small" th:text="${recommendPostList.title}"></div>
@@ -1114,6 +1122,26 @@
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
 		/*<![CDATA[*/
+		function insertCertification(pnum, title, content){
+			var userId = [[${#authentication.name}]];
+			$.ajax({
+				type: 'POST',
+				url: '/cerwrite.do',
+				data: {
+					userId: userId,
+					pnum: pnum,
+					title: title,
+					content: content
+				},
+				success: function (){
+					alert("상품 거래가 완료되었습니다!");
+
+				}, error: function (){
+					alert("상품 거래 등록 오류... 다시 시도해주세요");
+				}
+			})
+		}
+
 		function insertTeamMember(pnum, minpeople, dealName, money) {
 			confirm(dealName+ "공동구매에 참여하실건가요?");
 			var userId = [[${#authentication.name}]];
