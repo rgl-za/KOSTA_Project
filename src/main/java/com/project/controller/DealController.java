@@ -34,13 +34,9 @@ public class DealController {
 	// 나의 거래완료 내역(마이페이지)
 	@GetMapping(value = "/mydealhistory")
 	public String getEndDealList(Model model, @AuthenticationPrincipal UserDTO userDTO) {
-		
-		//String userId = "kmg";
-		//UserDTO user = (UserDTO) session.getAttribute("userDTO");
+
 		String userId =  userDTO.getUserid();
 		System.out.println("userId: " + userId);
-		//System.out.println("user: " + userDTO.getBirth());
-		
 		
 		List<DealHistoryDTO> dealList = dealService.getEndDealList(userId);
 		System.out.println("dealList" + dealList);

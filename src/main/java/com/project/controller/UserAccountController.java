@@ -22,10 +22,6 @@ public class UserAccountController {
                                      UserAccountDTO params, @AuthenticationPrincipal UserDTO userDTO){
         System.out.println("참가유저 등록 게시판: " + pnum);
         System.out.println("!!!!!@@@@"+params);
-        //UserDTO userDTO1 = (UserDTO) session.getAttribute("userDTO");
-        //System.out.println("sssss"+((UserDTO) session.getAttribute("userDTO")).getUserid());
-
-        // params.setUserId(((UserDTO) session.getAttribute("userDTO")).getUserid());
         params.setUserId(userDTO.getUserid());
         try{
             System.out.println("유저 등록 성공");

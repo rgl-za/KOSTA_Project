@@ -10,9 +10,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/main.do}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-people-carry"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">서비스명 <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Groubing</div>
             </a>
 
             <!-- Divider -->
@@ -108,7 +108,7 @@
             <hr class="sidebar-divider">
             
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/user/logout}">
+                <a class="nav-link" th:href="@{/logout}">
                 <i class="fas fa-user"></i>
                  
                     <span>로그아웃</span></a>
@@ -126,7 +126,8 @@
                     <span>로그인</span></a>
             </li>
             </div>
-            
+
+
              <div sec:authorize="isAnonymous()">
             <!-- Divider -->
             <hr class="sidebar-divider">

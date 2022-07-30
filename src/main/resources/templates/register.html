@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Register</title>
+<title>그루빙 - Groubing</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -42,11 +42,12 @@
 
 
 		<div class="card o-hidden border-0 shadow-lg my-5">
-			<div class="card-body p-0">
+			<div class="card-body p-0" style="width:600px; margin:auto">
 				<!-- Nested Row within Card Body -->
+				
 						<div class="p-5">
 							<div class="text-center">
-								<h1 class="h4 text-gray-900 mb-4">함께이조 회원가입!</h1>
+								<h1 class="h4 text-gray-900 mb-4">그루빙 회원가입</h1>
 							</div>
 							<form class="user" action="/register" method="post">
 							
@@ -69,14 +70,14 @@
 
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user" th:value="${userDto?.username}" 
+										<input type="text" class="form-control form-control-user" th:value="${userDTO?.username}" 
 											id="username" name="username" placeholder="이름">
 											<span class ="olmessagef" th:text="${valid_username}"></span>
 									</div>
 
 
 									<div class="col-sm-6 ">
-										<input type="text" class="form-control form-control-user" th:value="${userDto?.nickname}"
+										<input type="text" class="form-control form-control-user" th:value="${userDTO?.nickname}"
 											id="nickname" name="nickname" placeholder="별명">
 											<span class ="olmessagef" th:text="${valid_nickname}"></span>
 									</div>
@@ -92,11 +93,12 @@
 									</div>
 									<div class="col-sm-6">
 										<input type="password" class="form-control form-control-user"  th:value="${userDTO?.password}"
-											id="password2" name="password2"
+											id="password2" name="password2" oninput="test()"
 											placeholder="비밀번호 확인">
 									</div>
 								</div>
 								<span class ="olmessagef" th:text ="${valid_password}"></span>
+								<span id = "confirmMsg"></span>
 								
 								
 								
@@ -143,9 +145,8 @@
 									<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" id="sample6_detailAddress"
-											class="form-control form-control-user" name="realaddress" th:value="${userDTO?.realaddress}"
+											class="form-control form-control-user" name="realaddress"
 											placeholder="상세주소">
-											<span class ="olmessagef" th:text="${valid_realaddress}"></span> 
 									</div>
 										<div class="col-sm-6 ">
 											<input type="text"
@@ -226,7 +227,7 @@
 							
 									
 
-								<button type="submit" id ="signUp" onclick="test()" class="btn btn-primary btn-user btn-block">
+								<button type="submit" id ="signUp" class="btn btn-primary btn-user btn-block">
 										회원가입 버튼
 										</button>
 										<hr>
@@ -289,29 +290,24 @@
 	        });
 	     }
 	        
-        function test(){
-    		var p1 = document.getElementById('password1').value;
-    		var p2 = document.getElementById('password2').value;
-    		
-    		if(p1 != p2){
-    			alert("비밀번호 불일치");
-    			return false;
-    		}
-    	}
+		function test(){
+			var p1 = document.getElementById('password1').value;
+			var p2 = document.getElementById('password2').value;
+			var confrimMsg = document.getElementById('confirmMsg');	
+			var correctColor = "#00ff00";
+			var wrongColor ="#ff0000";
+			
+			
+			if(p1 == p2){
+				confirmMsg.style.color = correctColor;
+				confirmMsg.innerHTML ="비밀번호가 일치 합니다";
+			}else{
+				confirmMsg.style.color = wrongColor;
+				confirmMsg.innerHTML ="비밀번호가 불일치 합니다";
+			}
+		}
+		
 	        /*]]>*/
 		</script>
-
-
-
-<!-- <script type = "text/javascript">
-	function test(){
-		var p1 = document.getElementById('password1').value;
-		var p2 = document.getElementById('password2').value;
-		
-		if(p1 != p2){
-			alert("비밀번호 불일치");
-			return false;
-		}
-	}
-</script> -->
+	</th:block>
 </html>
