@@ -44,9 +44,8 @@
 #### 유저플로우
 ![그림10](https://user-images.githubusercontent.com/76260153/183008681-67c9591e-ebff-4aba-b779-161a4e165187.png)
 ![그림00](https://user-images.githubusercontent.com/76260153/183008690-e5030dad-555b-4362-ab5b-5fa1267ecc02.png)
-![그림12](https://user-images.githubusercontent.com/76260153/182781716-cad30bbc-b67f-4749-ada0-2aff463c4fa7.png)
-![그림13](https://user-images.githubusercontent.com/76260153/182781731-1ed0794b-88ca-4e31-8522-c7e56250dad9.png)
-
+![그림13](https://user-images.githubusercontent.com/76260153/183011489-da2edca2-7a26-4cc9-85cd-eefc442fadeb.png)
+![그림12](https://user-images.githubusercontent.com/76260153/183012287-0ee5a0a4-1bcc-48c9-a08f-13811b3ea550.png)
 
 #### ERD
 ![그림2](https://user-images.githubusercontent.com/76260153/182779942-a8667e4d-da77-4ad4-ae62-e816791a7aea.png)
