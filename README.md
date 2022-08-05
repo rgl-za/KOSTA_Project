@@ -3,12 +3,12 @@
 ## 프로젝트 설명 
 1인 가구를 위한 공동 구매 웹 플랫폼 
 
-- 개발 환경: STS4, IntelliJ
-- 개발 언어 및 프레임워크: Java, Spring Boot, HTML, CSS, Javascript
-- 템플릿 엔진: Thymeleaf
-- 라이브러리: Lombok, Spring Security, Spring Batch, spring Quartz, Mahout 
-- 데이터베이스: Oracle
-- 빌드 도구: Gradle
+|개발 환경|개발 언어 및 프레임워크|템플릿 엔진|라이브러리|데이터베이스|빌드 도구|기타|
+|---|---|---|---|---|---|---|
+|![Spring](https://img.shields.io/badge/STS4-6DB33F?style=flat-square&logo=Spring&logoColor=black)|![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black)|![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F?style=flat-square&logo=Thymeleaf&logoColor=white)|![Lombok](https://img.shields.io/badge/Lombok-red?style=flat-square&logo=Lombok&logoColor=white)|![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=Oracle&logoColor=white)|![Gradle](https://img.shields.io/badge/Gradle-02303A?style=flat-square&logo=Gradle&logoColor=white)|
+|![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ-yellow?style=flat-square&logo=IntelliJIDEA&logoColor=black)|![SpringBoot](https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=SpringBoot&logoColor=black)||![Spring Security](https://img.shields.io/badge/SpringSecurity-6DB33F?style=flat-square&logo=SpringSecurity&logoColor=black) |||
+||||![Spring Batch](https://img.shields.io/badge/SpringBatch-6DB33F?style=flat-square&logo=Spring&logoColor=black) ![Spring Quartz](https://img.shields.io/badge/SpringQuartz-6DB33F?style=flat-square&logo=Spring&logoColor=black)||
+||||![Mahout](https://img.shields.io/badge/Mahout-66CCFF?style=flat-square&logo=apache&logoColor=black)||
 
 ## 프로젝트 목표(개요)
 1) 대량의 물건을 원하는 만큼만 저렴하게 구매 가능한 공동구매 플랫폼 개발
@@ -42,9 +42,8 @@
 ![그림1](https://user-images.githubusercontent.com/76260153/182779524-943f5d95-1c5b-4ed4-a2a6-4bfa8b35e7e1.png)
 
 #### 유저플로우
-
-![그림10](https://user-images.githubusercontent.com/76260153/182781671-4c879337-d202-4e50-b23a-8dcccedb5ee3.png)
-![그림11](https://user-images.githubusercontent.com/76260153/182781693-3e5d50cb-ef71-4fd2-9abc-f989f94e59c1.png)
+![그림10](https://user-images.githubusercontent.com/76260153/183008681-67c9591e-ebff-4aba-b779-161a4e165187.png)
+![그림00](https://user-images.githubusercontent.com/76260153/183008690-e5030dad-555b-4362-ab5b-5fa1267ecc02.png)
 ![그림12](https://user-images.githubusercontent.com/76260153/182781716-cad30bbc-b67f-4749-ada0-2aff463c4fa7.png)
 ![그림13](https://user-images.githubusercontent.com/76260153/182781731-1ed0794b-88ca-4e31-8522-c7e56250dad9.png)
 
