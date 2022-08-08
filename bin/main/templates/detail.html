@@ -14,8 +14,8 @@
 			<!-- 수정, 삭제 -->
 			<div class="float-right">
 				<a th:href="@{/main.do}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
-				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" class="btn btn-primary waves-effect waves-light">수정하기</a>
-				<button type="button" class="btn btn-danger waves-effect waves-light" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
+				<a th:href="@{/write.do( pnum=${postDTO.pnum} )}" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" class="btn btn-primary waves-effect waves-light">수정하기</a>
+				<button type="button" class="btn btn-danger waves-effect waves-light" th:if="${postDTO.getLeaderid()} == ${#authentication.name}" th:onclick="deletePost([[ ${postDTO.pnum} ]])">삭제하기</button>
 			</div>
 		</div>
 		<div class="row">
@@ -38,25 +38,23 @@
 									</p>
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">글 내용 </h7>
-										<text th:text="${postDTO.getContent()}"></text>
+										<text th:text="${postDTO.getContent()}"></text> <br>
 									</p>
 									<p>
 										<h7 class="m-0 font-weight-bold text-gray-900">원가 </h7>
-										<text th:text="${postDTO.getPrice()}"></text>
-										원 &nbsp;<br>
+										<text th:text="${postDTO.getPrice()}"></text>원 &nbsp;<br>
 										<h7 class="m-0 font-weight-bold text-gray-900">물품 개수 </h7>
-										15개입 &ensp;<br>
+										<text th:text="${postDTO.getNumbers()}"></text> 개<br>
 									</p>
 									<div class="margin-bottom">
 										<p>
-											<h7 class="m-0 font-weight-bold text-gray-900">링크주소: </h7>
+											<h7 class="m-0 font-weight-bold text-gray-900">링크주소 </h7>
 											<a th:href="@{${postDTO.getLink()}}">바로가기</a>
 											<text th:text="${postDTO.getLink()}"></text>
 										</p>
 									</div>
 									<span class="m-0 font-weight-bold text-gray-900">작성 날짜 </span>
 									<text th:text="${#temporals.format(postDTO.getUploaddate(), 'yyyy-MM-dd HH:mm')}"></text>
-									(가능하다면)30분 전
 								</div>
 							</div>
 						</div>
@@ -78,6 +76,7 @@
 									<h7 class="m-0 font-weight-bold text-primary bg-gray-100">
 										최소 구매가 </h7>
 									<text th:text="${postDTO.getPrice()}/${postDTO.getMaxpeople()}"></text>
+									원
 									<br>
 								</p>
 								<p>
@@ -129,7 +128,7 @@
 										<span class="text">거래 완료하기</span>
 									</a>
 									<a class="btn btn-primary-cap btn-icon-split"
-									   th:unless="${postDTO.getLeaderid()} == ${#authentication.name}">
+									   th:unless="${postDTO.getLeaderid()} == ${#authentication.name} and ${minpeople == true}">
 											<span class="icon text-white-50">
 												<i class="fas fa-flag"></i>
 											</span>
