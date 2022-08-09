@@ -1,13 +1,12 @@
 package com.project.domain;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,10 +49,10 @@ public class UserDTO implements UserDetails{
 	@NotBlank(message = "성별을 체크해주세요")
 	private String gender;	   //성별
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotBlank(message = "생일을 입력해주세요")
 	private String birth;	   //주민번호 앞 자리
 	
-	@NotBlank(message = "상세주소를 입력해주세요")
 	private String realaddress;
 	
 	private String userauth;
@@ -65,10 +64,7 @@ public class UserDTO implements UserDetails{
 	}
 	
 	
-	@Override
-	public String getUsername() {
-		return this.userid;
-	}
+
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -89,6 +85,8 @@ public class UserDTO implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
+	
+	
 	
 
 	}
